@@ -12,5 +12,22 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('login');
+});
+
+Route::get('login', function(){
+    return view('auth.login');
+});
+
+Route::prefix('admin')->group(function(){
+    Route::get('/', function () {
+        return redirect('/admin/inscritos');
+    });
+
+    Route::get('inscritos', function(){
+        return view('admin.inscritos.index');
+    });
+    Route::get('inscritos/create', function(){
+        return view('admin.inscritos.crear');
+    });
 });
