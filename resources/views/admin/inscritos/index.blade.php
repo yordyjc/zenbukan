@@ -73,6 +73,9 @@ use Carbon\Carbon;
                                     <span class="label label-success" data-toggle="tooltip" data-placement="left" data-original-title="Activo">Asiste normalmente</span>
                                 </td>
                                 <td class="text-center">
+                                    <a href="{{ url('/admin/inscritos/historial') }}">
+                                        <i class="icon feather icon-external-link f-w-600 f-16 m-r-15 text-c-blue" data-toggle="tooltip" data-placement="left" data-original-title="Historial"></i>
+                                    </a>
                                     <a href="{{ url('/admin/inscritos/edit') }}">
                                         <i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-blue" data-toggle="tooltip" data-placement="left" data-original-title="Editar"></i>
                                     </a>

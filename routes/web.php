@@ -30,4 +30,7 @@ Route::prefix('admin')->group(function(){
     Route::get('inscritos/create', function(){
         return view('admin.inscritos.crear');
     });
+    Route::get('inscritos/historial', function(){
+        return view('admin.inscritos.historial');
+    });
 });

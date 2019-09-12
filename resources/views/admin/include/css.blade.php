@@ -14,5 +14,7 @@
 
 	{!! Html::style("resources/admin/assets/css/style.css") !!}
 	{!! Html::style("resources/admin/assets/css/pages.css") !!}
+	
+	
 
 	@yield('css')

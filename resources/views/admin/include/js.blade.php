@@ -7,6 +7,7 @@
 	{!! Html::script('resources/admin/assets/pages/waves/js/waves.min.js') !!}
 	{!! Html::script('resources/admin/bower_components/jquery-slimscroll/js/jquery.slimscroll.js') !!}
 	{!! Html::script('resources/admin/assets/js/pcoded.min.js') !!}
+
 	{!! Html::script('resources/admin/assets/js/vertical/vertical-layout.min.js') !!}
 	{!! Html::script('resources/admin/assets/js/script.min.js') !!}
 
@@ -21,7 +22,6 @@
 	{!! Html::script('resources/admin/bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') !!}
 	{!! Html::script('resources/admin/bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') !!}
 
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.26.28/dist/sweetalert2.all.min.js"></script>
 
     <script>
         function sendRequest(url,data,method,cb) {
