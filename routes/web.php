@@ -19,18 +19,21 @@ Route::get('login', function(){
     return view('auth.login');
 });
 
-Route::prefix('admin')->group(function(){
-    Route::get('/', function () {
-        return redirect('/admin/inscritos');
-    });
 
-    Route::get('inscritos', function(){
-        return view('admin.inscritos.index');
+// Route::middleware(['auth'])->group(function () {
+    Route::prefix('admin')->group(function(){
+        Route::get('/sin-permiso', function (){
+            return view('errors.permiso');
+        });
+
+        Route::middleware(['admin'])->group(function () {
+            Route::get('/', function () {
+                return redirect('/admin/inscritos');
+            });
+        });
+
+        Route::resource('/inscritos','Admin\InscritosController');
+        Route::get('/fichas','Admin\FichasController@listaFichas');
     });
-    Route::get('inscritos/create', function(){
-        return view('admin.inscritos.crear');
-    });
-    Route::get('inscritos/historial', function(){
-        return view('admin.inscritos.historial');
-    });
-});
+// });
+

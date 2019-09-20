@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4a49f5c6f2ceada999a01ee4f61800d3",
+    "content-hash": "f2cf17652bc5ce479cedd7af17b8a9be",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -1646,16 +1646,16 @@
         },
         {
             "name": "realrashid/sweet-alert",
-            "version": "v1.1.2",
+            "version": "v1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/realrashid/sweet-alert.git",
-                "reference": "7bd78445947ef8ce483412afbddb2dec7fc40eb0"
+                "reference": "93ff28c430c5f3973eb1a4c56039b9e436d5f014"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/realrashid/sweet-alert/zipball/7bd78445947ef8ce483412afbddb2dec7fc40eb0",
-                "reference": "7bd78445947ef8ce483412afbddb2dec7fc40eb0",
+                "url": "https://api.github.com/repos/realrashid/sweet-alert/zipball/93ff28c430c5f3973eb1a4c56039b9e436d5f014",
+                "reference": "93ff28c430c5f3973eb1a4c56039b9e436d5f014",
                 "shasum": ""
             },
             "require": {
@@ -1674,7 +1674,7 @@
                         "RealRashid\\SweetAlert\\SweetAlertServiceProvider"
                     ],
                     "aliases": {
-                        "Alert": "RealRashid\\SweetAlert\\Facades\\Alert"
+                        "Alert": "RealRashid\\SweetAlert\\Facades"
                     }
                 }
             },
@@ -1708,7 +1708,7 @@
                 "sweet",
                 "sweet-alert2"
             ],
-            "time": "2019-03-29T18:34:57+00:00"
+            "time": "2018-04-04T13:43:57+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

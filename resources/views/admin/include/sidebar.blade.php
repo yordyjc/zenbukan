@@ -36,6 +36,20 @@
                     </ul>
                 </li>
 
+                <li class="pcoded-hasmenu @yield('fichas')">
+                    <a href="javascript:void(0)" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="feather icon-file-text"></i></span>
+                        <span class="pcoded-mtext">Fichas de evaluación</span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li class="@yield('lista-fichas')">
+                            <a href="{{ url('/admin/fichas') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Fichas activas</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
                 <li class="pcoded-hasmenu @yield('reportes')">
                     <a href="javascript:void(0)" class="waves-effect waves-dark">
                         <span class="pcoded-micon"><i class="feather icon-save"></i></span>

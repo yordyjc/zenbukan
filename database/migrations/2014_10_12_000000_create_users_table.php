@@ -15,11 +15,32 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('nombres')->nullable();
+            $table->string('apellidos')->nullable();
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('telefono');
+            $table->boolean('sexo');//0 mujer, 1 hombre
+            $table->integer('sector_id')->unsigned();
+            $table->string('direccion')->nullable();
+            //1 perder peso, 2 tonificar, 3 musculación, 4 competencia, 5 otro
+            $table->integer('interes')->default(0);
+            $table->date('nacimiento')->nullable();
+            $table->integer('edad')->nullable();
+            $table->text('enfermedad')->nullable();
+            $table->integer('tipo')->default(2);//1->admin | 2->usuario
+            $table->string('foto')->nullable();
+            $table->text('observaciones')->nullable();
+
+            $table->boolean('confirmado')->default(1); //1 correo confirmado, 0 sin confirmar
+            $table->string('confirmacion_code')->nullable();
+            $table->boolean('activo')->default(1); //1 activo, 2 baneado
             $table->rememberToken();
             $table->timestamps();
+        });
+
+        Schema::table('users', function($table) {
+            $table->foreign('sector_id')->references('id')->on('sectores');
         });
     }
 

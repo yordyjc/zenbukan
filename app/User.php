@@ -15,7 +15,23 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'nombres',
+        'apellidos',
+        'email',
+        'password',
+        'telefono',
+        'sexo',
+        'sector_id',
+        'interes',
+        'nacimiento',
+        'edad',
+        'enfermedad',
+        'tipo',
+        'foto',
+        'observaciones',
+        'confirmado',
+        'confirmacion_token',
+        'activo',
     ];
 
     /**
@@ -26,4 +42,17 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function sector(){
+        return $this->belongsTo('App\Models\Sector','sector_id');
+    }
+
+    public function fichas(){
+        return $this->hasMany('App\Models\Ficha','user_id');
+    }
+
+    public function getNameAndSurnameAttribute()
+    {
+        return $this->nombres.' '.$this->apellidos;
+    }
 }

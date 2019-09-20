@@ -25,7 +25,7 @@ active
             </div>
             <div class="card-block">
 
-                <form {{-- action="{{ url('/admin/instructores') }} --}}" method="post" enctype="multipart/form-data">
+                <form action="{{ url('/admin/inscritos') }}" method="post" enctype="multipart/form-data">
                     @csrf
 
                     <div class="col-sm-10 offset-sm-1">
@@ -58,6 +58,26 @@ active
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label" for="sexo">
+                                Sexo
+                            </label>
+                            <div class="col-md-10 form-radio">
+                                <div class="radio radio-inline">
+                                    <label>
+                                    <input type="radio" name="sexo" id="sexo" value="1" checked="checked">
+                                    <i class="helper"></i>Hombre
+                                    </label>
+                                </div>
+                                <div class="radio radio-inline">
+                                    <label>
+                                    <input type="radio" name="sexo" id="sexo" value="0" >
+                                    <i class="helper"></i>Mujer
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="form-group {{ $errors->has('email') ? ' has-danger' : '' }} row">
                             <label class="col-md-2 col-form-label" for="email">
                                 E-mail
@@ -77,7 +97,7 @@ active
                                 Celular
                             </label>
                             <div class="col-md-10">
-                                <input type="text" class="form-control form-control-round {{ $errors->has('telefono') ? ' form-control-danger' : '' }}" id="telefono" name="telefono" value="{{ old('telefono') }}">
+                                <input type="number" class="form-control form-control-round {{ $errors->has('telefono') ? ' form-control-danger' : '' }}" id="telefono" name="telefono" value="{{ old('telefono') }}">
                                 @if ($errors->has('telefono'))
                                 <div class="col-form-label">
                                     {{ $errors->first('telefono') }}
@@ -86,78 +106,52 @@ active
                             </div>
                         </div>
 
-                        <div class="form-group  row">
-                            <label class="col-md-2 col-form-label" for="region">
-                                Región
+                        <div class="form-group {{ $errors->has('sector') ? ' has-danger' : '' }} row">
+                            <label class="col-md-2 col-form-label" for="sector">
+                                Vive en
                             </label>
                             <div class="col-md-10">
-                                <select class="region form-control form-control-round fill select2 " required="" id="region" name="region"><option selected="selected" value="">-- SELECCIONE --</option><option value="10000">Amazonas</option><option value="20000">Áncash</option><option value="30000">Apurímac</option><option value="40000">Arequipa</option><option value="50000">Ayacucho</option><option value="60000">Cajamarca</option><option value="70000">Callao</option><option value="80000">Cusco</option><option value="90000">Huancavelica</option><option value="100000">Huánuco</option><option value="110000">Ica</option><option value="120000">Junín</option><option value="130000">La Libertad</option><option value="140000">Lambayeque</option><option value="150000">Lima</option><option value="160000">Loreto</option><option value="170000">Madre de Dios</option><option value="180000">Moquegua</option><option value="190000">Pasco</option><option value="200000">Piura</option><option value="210000">Puno</option><option value="220000">San Martín</option><option value="230000">Tacna</option><option value="240000">Tumbes</option><option value="250000">Ucayali</option></select>
-                            </div>
-                        </div>
-
-                        <div class="form-group  row">
-                            <label class="col-md-2 col-form-label" for="provincia">
-                                Provincia
-                            </label>
-                            <div class="col-md-10">
-                                <select name="provincia" id="provincia" class="form-control form-control-round fill select2" required>
-                                    <option>-- SELECCIONE --</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group  row">
-                            <label class="col-md-2 col-form-label" for="distrito">
-                                Distrito
-                            </label>
-                            <div class="col-md-10">
-                                <select name="distrito" id="distrito" class="form-control form-control-round fill select2" required>
-                                    <option>-- SELECCIONE --</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group  row">
-                            <label class="col-md-2 col-form-label" for="direccion">
-                                Dirección
-                            </label>
-                            <div class="col-md-10">
-                                <input type="text" class="form-control form-control-round " id="direccion" name="direccion" value="">
+                                {!! Form::select('sector',$sectores,old('sector'),["class"=>"sector form-control form-control-round fill select2 ",'placeholder' => '-- Sector --',"required"=>"","id"=>"sector"]) !!}
+                                @if ($errors->has('sector'))
+                                    <div class="col-form-label">
+                                        {{ $errors->first('sector') }}
+                                    </div>
+                                @endif
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-2 col-form-label" for="estado">
+                            <label class="col-md-2 col-form-label" for="interes">
                                 Interesado en
                             </label>
                             <div class="col-md-10 form-radio">
                                 <div class="radio radio-inline">
                                     <label>
-                                    <input type="radio" name="suspendido" id="suspendido" value="0" checked=&quot;checked&quot;>
+                                    <input type="radio" name="interes" id="interes" value="1" checked="checked">
                                     <i class="helper"></i>Perder peso
                                     </label>
                                 </div>
                                 <div class="radio radio-inline">
                                     <label>
-                                    <input type="radio" name="suspendido" id="suspendido" value="1" >
+                                    <input type="radio" name="interes" id="interes" value="2" >
                                     <i class="helper"></i>Tonificar
                                     </label>
                                 </div>
                                 <div class="radio radio-inline">
                                     <label>
-                                    <input type="radio" name="suspendido" id="suspendido" value="1" >
+                                    <input type="radio" name="interes" id="interes" value="3" >
                                     <i class="helper"></i>Musculación
                                     </label>
                                 </div>
                                 <div class="radio radio-inline">
                                     <label>
-                                    <input type="radio" name="suspendido" id="suspendido" value="1" >
+                                    <input type="radio" name="interes" id="interes" value="4" >
                                     <i class="helper"></i>Competencia
                                     </label>
                                 </div>
                                 <div class="radio radio-inline">
                                     <label>
-                                    <input type="radio" name="suspendido" id="suspendido" value="1" >
+                                    <input type="radio" name="interes" id="interes" value="5" >
                                     <i class="helper"></i>Otro
                                     </label>
                                 </div>
@@ -166,15 +160,21 @@ active
 
                         <div class="form-group {{ $errors->has('nacimiento') ? ' has-danger' : '' }} row">
                             <label class="col-md-2 col-form-label" for="nacimiento">
-                                Fecha de nacimiento
+                                Fecha de Nac.
                             </label>
-                            <div class="col-md-10">
+                            <div class="col-md-4">
                                 <input type="date" class="form-control form-control-round {{ $errors->has('nacimiento') ? ' form-control-danger' : '' }}" id="nacimiento" name="nacimiento" value="{{ old('nacimiento') }}">
                                 @if ($errors->has('nacimiento'))
                                 <div class="col-form-label">
                                     {{ $errors->first('nacimiento') }}
                                 </div>
                                 @endif
+                            </div>
+                            <label class="col-md-2 col-form-label" for="edad">
+                                o edad
+                            </label>
+                            <div class="col-md-4">
+                                <input type="number" class="form-control form-control-round {{ $errors->has('edad') ? ' form-control-danger' : '' }}" id="edad" name="edad" value="{{ old('edad') }}">
                             </div>
                         </div>
 
@@ -183,10 +183,43 @@ active
                                 Talla
                             </label>
                             <div class="col-md-10">
-                                <textarea  rows="2" class="form-control {{ $errors->has('talla') ? ' form-control-danger' : '' }}" id="talla" name="talla">{{ old('talla') }}</textarea>
+                                <div class="input-group">
+                                    <input type="number" class="form-control form-control-round {{ $errors->has('talla') ? ' form-control-danger' : '' }}" id="talla" name="talla" value="{{ old('talla') }}" step="0.01" min="0.60" max="2.20">
+                                    <span class="input-group-append">
+                                        <label class="input-group-text">metros</label>
+                                    </span>
+                                </div>
                                 @if ($errors->has('talla'))
                                 <div class="col-form-label">
                                     {{ $errors->first('talla') }}
+                                </div>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group {{ $errors->has('enfermedad') ? ' has-danger' : '' }} row">
+                            <label class="col-md-2 col-form-label" for="enfermedad">
+                                Enfermedad o lesión
+                            </label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control form-control-round {{ $errors->has('enfermedad') ? ' form-control-danger' : '' }}" id="enfermedad" name="enfermedad" value="{{ old('enfermedad') }}">
+                                @if ($errors->has('enfermedad'))
+                                <div class="col-form-label">
+                                    {{ $errors->first('enfermedad') }}
+                                </div>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group {{ $errors->has('observaciones') ? ' has-danger' : '' }} row">
+                            <label class="col-md-2 col-form-label" for="observaciones">
+                                Observaciones
+                            </label>
+                            <div class="col-md-10">
+                                <textarea  rows="10" class="form-control {{ $errors->has('observaciones') ? ' form-control-danger' : '' }}" id="observaciones" name="observaciones">{{ old('observaciones') }}</textarea>
+                                @if ($errors->has('observaciones'))
+                                <div class="col-form-label">
+                                    {{ $errors->first('observaciones') }}
                                 </div>
                                 @endif
                             </div>
@@ -205,15 +238,6 @@ active
                                 @endif
                                 <h6>Previsualización:</h6><img id="img-foto" src="/resources/img/default.jpg" style="width:120px;height:120px;" alt="Previsualización" class="img-fluid">
                             </div>
-                        </div>
-                        <div class="form-group {{ $errors->has('contenido') ? ' has-danger' : '' }} row">
-                            <label class="col-form-label" for="contenido">Observaciones</label>
-                            <textarea name="contenido" id="contenido" class="form-control {{ $errors->has('contenido') ? ' form-control-danger' : '' }}" cols="30" rows="10">{{ old('contenido') }}</textarea>
-                            @if ($errors->has('contenido'))
-                            <div class="col-form-label">
-                                {{ $errors->first('contenido') }}
-                            </div>
-                            @endif
                         </div>
                     </div>
 
@@ -245,11 +269,10 @@ active
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
 <script type="text/javascript">
-    var editor = textboxio.replace('#contenido');
+    var editor = textboxio.replace('#observaciones');
 
     $(document).ready(function() {
-        $('#titulo').select2();
-        $('#pais').select2();
+        $('.select2').select2();
     });
 
     $( ".select2" ).select2({
