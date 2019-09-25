@@ -73,37 +73,31 @@ function concatenar($numero){
                                             <h6>
                                                 {{ $inscrito->nombres }} {{ $inscrito->apellidos }}
                                             </h6>
-                                            <p class="text-muted m-b-0">Inscrito el {{ Carbon::parse($inscrito->created_at)->format('d/m/Y h:i a') }}</p>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    {{ $inscrito->telefono }}
-                                    <br />
-                                    {{ $inscrito->email }}
-                                </td>
-                                <td>{{ $inscrito->sector->sector }}</td>
-                                <td>
-                                    @if ($inscrito->activo == 1)
-                                        <span class="label label-success" data-toggle="tooltip" data-placement="left" data-original-title="Asiste con normalidad">Asiste</span>
-                                    @else
-                                        <span class="label label-danger" data-toggle="tooltip" data-placement="left" data-original-title="Dejo de asistir">No asiste</span>
-                                    @endif
+                                    @foreach ($inscrito->fichas as $ficha)
+                                        @if (count($ficha->periodos)>0)
+                                        <ol>
+                                            @foreach ($ficha->periodos as $periodo)
+                                            <li>{{ $periodo->fecha }}</li>
+                                            @endforeach
+                                        </ol>
+                                        @else
+                                        Aún no hay periodos
+                                        @endif
+                                    @endforeach
                                 </td>
                                 <td class="text-center">
 
-                                    <a href="{{ url('/admin/inscritos/historial') }}">
-                                        <i class="icon feather icon-external-link f-w-600 f-16 m-r-15 text-c-green" data-toggle="tooltip" data-placement="left" data-original-title="Historial"></i>
+                                    <a href="{{ url('/admin/ver-ficha/'.$ficha->correlativo) }}">
+                                        <i class="icon feather icon-external-link f-w-600 f-16 m-r-15 text-c-green" data-toggle="tooltip" data-placement="left" data-original-title="Ver ficha de evaluación"></i>
                                     </a>
 
-                                    <a href="{{ url('/admin/inscritos/'.$inscrito->id.'/edit') }}">
-                                        <i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-blue" data-toggle="tooltip" data-placement="left" data-original-title="Editar información"></i>
+                                    <a href="#">
+                                        <i class="icon feather icon-plus-circle f-w-600 f-16 m-r-15 text-c-blue" data-toggle="tooltip" data-placement="left" data-original-title="Agregar periodo"></i>
                                     </a>
-                                    @if ($inscrito->activo==1)
-                                    <a href="#" onclick="eliminarModal({{ $inscrito->id }})" data-toggle="modal" data-target="#eliminarModal">
-                                        <i class="feather icon-trash-2 f-w-600 f-16 text-c-red" data-toggle="tooltip" data-placement="left" data-original-title="¿Deja de asistir?"></i>
-                                    </a>
-                                    @endif
 
                                 </td>
                             </tr>

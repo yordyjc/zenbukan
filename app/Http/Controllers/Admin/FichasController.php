@@ -57,4 +57,11 @@ class FichasController extends Controller
         return view('admin.fichas.index')
             ->with('inscritos',$inscritos);
     }
+
+    public function verFicha($correlativo)
+    {
+        $ficha = Ficha::where('correlativo',$correlativo)->with('periodos')->first();
+        return view('admin.fichas.ver')
+            ->with('ficha',$ficha);
+    }
 }

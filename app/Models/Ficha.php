@@ -13,4 +13,8 @@ class Ficha extends Model
     public function usuario(){
         return $this->belongsTo('App\User','user_id');
     }
+
+    public function periodos(){
+        return $this->hasMany('App\Models\Periodo','ficha_id');
+    }
 }

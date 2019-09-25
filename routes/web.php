@@ -27,13 +27,14 @@ Route::get('login', function(){
         });
 
         Route::middleware(['admin'])->group(function () {
-            Route::get('/', function () {
-                return redirect('/admin/inscritos');
-            });
         });
 
+        Route::get('/', function () {
+            return redirect('/admin/inscritos');
+        });
         Route::resource('/inscritos','Admin\InscritosController');
         Route::get('/fichas','Admin\FichasController@listaFichas');
+        Route::get('/ver-ficha/{correlativo}','Admin\FichasController@verFicha');
     });
 // });
 

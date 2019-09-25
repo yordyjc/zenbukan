@@ -48,7 +48,7 @@ class User extends Authenticatable
     }
 
     public function fichas(){
-        return $this->hasMany('App\Models\Ficha','user_id');
+        return $this->hasMany('App\Models\Ficha','user_id')->with('periodos');
     }
 
     public function getNameAndSurnameAttribute()
