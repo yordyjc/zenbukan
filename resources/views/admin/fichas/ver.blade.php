@@ -142,45 +142,61 @@ function concatenar($numero){
                                 <th>N°</th>
                                 <th>Fecha</th>
                                 <th>Monitoreo</th>
-                                <th>Exámen físico</th>
+                                <th>Examen físico</th>
+                                <th></th>
                             </thead>
                             <tbody>
+                                @if (count($ficha->periodos)>0)
+                                    @foreach ($ficha->periodos as $periodo)
+                                        <tr>
+                                            <td>{{ $periodo->numero }}</td>
+                                            <td>{{ Carbon::parse($periodo->fecha)->format('d \d\e M. \d\e Y') }}</td>
+                                            <td>
+                                            @switch($periodo->check_monitoreo)
+                                                @case(0)
+                                                    <i class="icon feather icon-x-circle f-w-600 f-20 text-c-red" data-toggle="tooltip" data-placement="left" data-original-title="No realizado"></i>
+                                                    @break
+
+                                                @case(1)
+                                                    <i class="icon feather icon-check-circle f-w-600 f-20 text-c-green" data-toggle="tooltip" data-placement="left" data-original-title="Realizado"></i>
+                                                    @break
+
+                                                @default
+                                                    <i class="icon feather icon-help-circle f-w-600 f-20 text-c-yellow" data-toggle="tooltip" data-placement="left" data-original-title="Incompleto"></i>
+                                            @endswitch
+                                            </td>
+                                            <td>
+                                            @switch($periodo->check_fisico)
+                                                @case(0)
+                                                    <i class="icon feather icon-x-circle f-w-600 f-20 text-c-red" data-toggle="tooltip" data-placement="left" data-original-title="No realizado"></i>
+                                                    @break
+
+                                                @case(1)
+                                                    <i class="icon feather icon-check-circle f-w-600 f-20 text-c-green" data-toggle="tooltip" data-placement="left" data-original-title="Realizado"></i>
+                                                    @break
+
+                                                @default
+                                                    <i class="icon feather icon-help-circle f-w-600 f-20 text-c-yellow" data-toggle="tooltip" data-placement="left" data-original-title="Incompleto"></i>
+                                            @endswitch
+                                            </td>
+                                            <td>
+                                                <a href="{{ url('/admin/periodos/'.$periodo->id.'/edit') }}">
+                                                    <i class="icon feather icon-edit-2 f-w-500 f-20 m-l-5 text-c-blue" data-toggle="tooltip" data-placement="left" data-original-title="Editar"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @else
                                 <tr>
-                                    <td>1</td>
-                                    <td>12 de Dec, 2019</td>
-                                    <td>
-                                        <i class="icon feather icon-check-circle f-w-600 f-20 text-c-green"></i>
-                                    </td>
-                                    <td>
-                                        <i class="icon feather icon-x-circle f-w-600 f-20 text-c-red"></i>
-                                    </td>
+                                    <td colspan="5">Aún no hay periodos registrados</td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>12 de Jan, 2019</td>
-                                    <td>
-                                        <i class="icon feather icon-check-circle f-w-600 f-20 text-c-green"></i>
-                                    </td>
-                                    <td>
-                                        <i class="icon feather icon-x-circle f-w-600 f-20 text-c-red"></i>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>12 de Jul, 2019</td>
-                                    <td>
-                                        <i class="icon feather icon-check-circle f-w-600 f-20 text-c-green"></i>
-                                    </td>
-                                    <td>
-                                        <i class="icon feather icon-x-circle f-w-600 f-20 text-c-red"></i>
-                                    </td>
-                                </tr>
+                                @endif
                             </tbody>
                         </table>
 
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-3">
-                                <a href="#" class="btn waves-effect waves-light btn-primary btn-outline-primary btn-block mt-2">
+                                <a href="{{ url('/admin/crear-periodo/'.$ficha->correlativo) }}" class="btn waves-effect waves-light btn-primary btn-outline-primary btn-block mt-2">
                                     <i class="icofont icofont-plus"></i> Agregar periodo
                                 </a>
                             </div>

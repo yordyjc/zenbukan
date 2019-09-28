@@ -81,7 +81,7 @@ function concatenar($numero){
                                         @if (count($ficha->periodos)>0)
                                         <ol>
                                             @foreach ($ficha->periodos as $periodo)
-                                            <li>{{ $periodo->fecha }}</li>
+                                            <li>{{ Carbon::parse($periodo->fecha)->format('d \d\e M. \d\e Y') }}</li>
                                             @endforeach
                                         </ol>
                                         @else
@@ -95,7 +95,7 @@ function concatenar($numero){
                                         <i class="icon feather icon-external-link f-w-600 f-16 m-r-15 text-c-green" data-toggle="tooltip" data-placement="left" data-original-title="Ver ficha de evaluación"></i>
                                     </a>
 
-                                    <a href="#">
+                                    <a href="{{ url('/admin/crear-periodo/'.$ficha->correlativo) }}">
                                         <i class="icon feather icon-plus-circle f-w-600 f-16 m-r-15 text-c-blue" data-toggle="tooltip" data-placement="left" data-original-title="Agregar periodo"></i>
                                     </a>
 

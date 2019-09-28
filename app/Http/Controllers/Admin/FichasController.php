@@ -16,6 +16,7 @@ use Auth;
 use App\User;
 use App\Models\Sector;
 use App\Models\Ficha;
+use App\Models\Periodo;
 
 class FichasController extends Controller
 {
@@ -51,6 +52,7 @@ class FichasController extends Controller
         }
         return $a;
     }
+
     public function listaFichas()
     {
         $inscritos = User::where('tipo',2)->where('activo',1)->orderBy('id','desc')->get();

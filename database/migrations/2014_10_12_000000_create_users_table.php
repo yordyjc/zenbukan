@@ -34,7 +34,7 @@ class CreateUsersTable extends Migration
 
             $table->boolean('confirmado')->default(1); //1 correo confirmado, 0 sin confirmar
             $table->string('confirmacion_code')->nullable();
-            $table->boolean('activo')->default(1); //1 activo, 2 baneado
+            $table->boolean('activo')->default(1); //1 activo, 0 baneado
             $table->rememberToken();
             $table->timestamps();
         });
