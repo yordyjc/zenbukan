@@ -17,9 +17,25 @@ class CreatePeriodosTable extends Migration
             $table->increments('id');
             $table->integer('numero')->unsigned();
             $table->integer('ficha_id')->unsigned();
+            $table->date('fecha')->nullable();
+
+            $table->float('talla')->nullable();
+            $table->float('peso')->nullable();
+            $table->string('presion')->nullable();
+            $table->float('grasa')->nullable();
+            $table->float('ritmo')->nullable();
 
             //monitoreo
             $table->integer('check_monitoreo')->default(0); //0 no realizado, 1 completo, 2 faltan datos
+            $table->float('pecho')->nullable();
+            $table->float('espalda')->nullable();
+            $table->float('hombros')->nullable();
+            $table->float('biceps')->nullable();
+            $table->float('cintura')->nullable();
+            $table->float('gluteos')->nullable();
+            $table->float('pierna')->nullable();
+            $table->float('pantorrilla')->nullable();
+            $table->text('obs_monitoreo')->nullable();
 
             //examen fisico
             $table->integer('check_fisico')->default(0); //0 no realizado, 1 completo, 2 faltan datos
@@ -30,7 +46,6 @@ class CreatePeriodosTable extends Migration
 
             $table->integer('tipo')->unsigned()->default(1); //1 normal, modelo
             $table->boolean('estado')->default(1); // activo
-            $table->date('fecha')->nullable();
             $table->timestamps();
         });
 
