@@ -209,36 +209,850 @@ function concatenar($numero){
         </div>
     </div>
 </div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header text-center">
+                <h3>Datos históricos</h3>
+            </div>
+            <div class="card-block">
+
+                <div class="row m-b-50">
+                    <div class="col-sm-4 table-responsive">
+                        <table class="table table-bordered table-hover dataTable no-footer text-center">
+                            <thead>
+                                <tr>
+                                    <th colspan="4">Peso</th>
+                                </tr>
+                                <th>Periodo</th>
+                                <th>Medida</th>
+                            </thead>
+                            <tbody>
+                                @if (count($ficha->periodos)>0)
+                                    @foreach ($ficha->periodos as $periodo)
+                                        <tr>
+                                            <td>{{ Carbon::parse($periodo->fecha)->format('d \d\e M. \d\e Y') }}</td>
+                                            <td>{{ $periodo->peso }} Kg.</td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                <tr>
+                                    <td colspan="2">Sin datos</td>
+                                </tr>
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-sm-8">
+                        <div id="chart_peso" style="width: 100%; height: 250px;"></div>
+                    </div>
+                </div>
+
+                <div class="row m-b-50">
+                    <div class="col-sm-4 table-responsive">
+                        <table class="table table-bordered table-hover dataTable no-footer text-center">
+                            <thead>
+                                <tr>
+                                    <th colspan="4">Grasa corporal</th>
+                                </tr>
+                                <th>Periodo</th>
+                                <th>Medida</th>
+                            </thead>
+                            <tbody>
+                                @if (count($ficha->periodos)>0)
+                                    @foreach ($ficha->periodos as $periodo)
+                                        <tr>
+                                            <td>{{ Carbon::parse($periodo->fecha)->format('d \d\e M. \d\e Y') }}</td>
+                                            <td>{{ $periodo->grasa }} %</td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                <tr>
+                                    <td colspan="2">Sin datos</td>
+                                </tr>
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-sm-8">
+                        <div id="chart_grasa" style="width: 100%; height: 250px;"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header text-center">
+                <h3>Monitoreo</h3>
+            </div>
+            <div class="card-block">
+
+                <div class="row m-b-50">
+                    <div class="col-sm-4 table-responsive">
+                        <table class="table table-bordered table-hover dataTable no-footer text-center">
+                            <thead>
+                                <tr>
+                                    <th colspan="4">Pecho</th>
+                                </tr>
+                                <th>Periodo</th>
+                                <th>Medida</th>
+                            </thead>
+                            <tbody>
+                                @if (count($ficha->periodos)>0)
+                                    @foreach ($ficha->periodos as $periodo)
+                                        <tr>
+                                            <td>{{ Carbon::parse($periodo->fecha)->format('d \d\e M. \d\e Y') }}</td>
+                                            <td>{{ $periodo->pecho }} cm.</td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                <tr>
+                                    <td colspan="2">Sin datos</td>
+                                </tr>
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-sm-8">
+                        <div id="chart_pecho" style="width: 100%; height: 250px;"></div>
+                    </div>
+                </div>
+
+                <div class="row m-b-50">
+                    <div class="col-sm-4 table-responsive">
+                        <table class="table table-bordered table-hover dataTable no-footer text-center">
+                            <thead>
+                                <tr>
+                                    <th colspan="4">Espalda</th>
+                                </tr>
+                                <th>Periodo</th>
+                                <th>Medida</th>
+                            </thead>
+                            <tbody>
+                                @if (count($ficha->periodos)>0)
+                                    @foreach ($ficha->periodos as $periodo)
+                                        <tr>
+                                            <td>{{ Carbon::parse($periodo->fecha)->format('d \d\e M. \d\e Y') }}</td>
+                                            <td>{{ $periodo->espalda }} cm.</td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                <tr>
+                                    <td colspan="2">Sin datos</td>
+                                </tr>
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-sm-8">
+                        <div id="chart_espalda" style="width: 100%; height: 250px;"></div>
+                    </div>
+                </div>
+
+                <div class="row m-b-50">
+                    <div class="col-sm-4 table-responsive">
+                        <table class="table table-bordered table-hover dataTable no-footer text-center">
+                            <thead>
+                                <tr>
+                                    <th colspan="4">Hombros</th>
+                                </tr>
+                                <th>Periodo</th>
+                                <th>Medida</th>
+                            </thead>
+                            <tbody>
+                                @if (count($ficha->periodos)>0)
+                                    @foreach ($ficha->periodos as $periodo)
+                                        <tr>
+                                            <td>{{ Carbon::parse($periodo->fecha)->format('d \d\e M. \d\e Y') }}</td>
+                                            <td>{{ $periodo->hombros }} cm.</td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                <tr>
+                                    <td colspan="2">Sin datos</td>
+                                </tr>
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-sm-8">
+                        <div id="chart_hombros" style="width: 100%; height: 250px;"></div>
+                    </div>
+                </div>
+
+                <div class="row m-b-50">
+                    <div class="col-sm-4 table-responsive">
+                        <table class="table table-bordered table-hover dataTable no-footer text-center">
+                            <thead>
+                                <tr>
+                                    <th colspan="4">Bíceps</th>
+                                </tr>
+                                <th>Periodo</th>
+                                <th>Medida</th>
+                            </thead>
+                            <tbody>
+                                @if (count($ficha->periodos)>0)
+                                    @foreach ($ficha->periodos as $periodo)
+                                        <tr>
+                                            <td>{{ Carbon::parse($periodo->fecha)->format('d \d\e M. \d\e Y') }}</td>
+                                            <td>{{ $periodo->biceps }} cm.</td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                <tr>
+                                    <td colspan="2">Sin datos</td>
+                                </tr>
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-sm-8">
+                        <div id="chart_biceps" style="width: 100%; height: 250px;"></div>
+                    </div>
+                </div>
+
+                <div class="row m-b-50">
+                    <div class="col-sm-4 table-responsive">
+                        <table class="table table-bordered table-hover dataTable no-footer text-center">
+                            <thead>
+                                <tr>
+                                    <th colspan="4">Cintura</th>
+                                </tr>
+                                <th>Periodo</th>
+                                <th>Medida</th>
+                            </thead>
+                            <tbody>
+                                @if (count($ficha->periodos)>0)
+                                    @foreach ($ficha->periodos as $periodo)
+                                        <tr>
+                                            <td>{{ Carbon::parse($periodo->fecha)->format('d \d\e M. \d\e Y') }}</td>
+                                            <td>{{ $periodo->cintura }} cm.</td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                <tr>
+                                    <td colspan="2">Sin datos</td>
+                                </tr>
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-sm-8">
+                        <div id="chart_cintura" style="width: 100%; height: 250px;"></div>
+                    </div>
+                </div>
+
+                <div class="row m-b-50">
+                    <div class="col-sm-4 table-responsive">
+                        <table class="table table-bordered table-hover dataTable no-footer text-center">
+                            <thead>
+                                <tr>
+                                    <th colspan="4">Glúteos</th>
+                                </tr>
+                                <th>Periodo</th>
+                                <th>Medida</th>
+                            </thead>
+                            <tbody>
+                                @if (count($ficha->periodos)>0)
+                                    @foreach ($ficha->periodos as $periodo)
+                                        <tr>
+                                            <td>{{ Carbon::parse($periodo->fecha)->format('d \d\e M. \d\e Y') }}</td>
+                                            <td>{{ $periodo->gluteos }} cm.</td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                <tr>
+                                    <td colspan="2">Sin datos</td>
+                                </tr>
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-sm-8">
+                        <div id="chart_gluteos" style="width: 100%; height: 250px;"></div>
+                    </div>
+                </div>
+
+                <div class="row m-b-50">
+                    <div class="col-sm-4 table-responsive">
+                        <table class="table table-bordered table-hover dataTable no-footer text-center">
+                            <thead>
+                                <tr>
+                                    <th colspan="4">Pierna</th>
+                                </tr>
+                                <th>Periodo</th>
+                                <th>Medida</th>
+                            </thead>
+                            <tbody>
+                                @if (count($ficha->periodos)>0)
+                                    @foreach ($ficha->periodos as $periodo)
+                                        <tr>
+                                            <td>{{ Carbon::parse($periodo->fecha)->format('d \d\e M. \d\e Y') }}</td>
+                                            <td>{{ $periodo->pierna }} cm.</td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                <tr>
+                                    <td colspan="2">Sin datos</td>
+                                </tr>
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-sm-8">
+                        <div id="chart_pierna" style="width: 100%; height: 250px;"></div>
+                    </div>
+                </div>
+
+                <div class="row m-b-50">
+                    <div class="col-sm-4 table-responsive">
+                        <table class="table table-bordered table-hover dataTable no-footer text-center">
+                            <thead>
+                                <tr>
+                                    <th colspan="4">Pantorrilla</th>
+                                </tr>
+                                <th>Periodo</th>
+                                <th>Medida</th>
+                            </thead>
+                            <tbody>
+                                @if (count($ficha->periodos)>0)
+                                    @foreach ($ficha->periodos as $periodo)
+                                        <tr>
+                                            <td>{{ Carbon::parse($periodo->fecha)->format('d \d\e M. \d\e Y') }}</td>
+                                            <td>{{ $periodo->pantorrilla }} cm.</td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                <tr>
+                                    <td colspan="2">Sin datos</td>
+                                </tr>
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-sm-8">
+                        <div id="chart_pantorrilla" style="width: 100%; height: 250px;"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header text-center">
+                <h3>Examen médico</h3>
+            </div>
+            <div class="card-block">
+
+                <div class="row m-b-50">
+                    <div class="col-sm-4 table-responsive">
+                        <table class="table table-bordered table-hover dataTable no-footer text-center">
+                            <thead>
+                                <tr>
+                                    <th colspan="4">Planchas</th>
+                                </tr>
+                                <th>Periodo</th>
+                                <th>Medida</th>
+                            </thead>
+                            <tbody>
+                                @if (count($ficha->periodos)>0)
+                                    @foreach ($ficha->periodos as $periodo)
+                                        <tr>
+                                            <td>{{ Carbon::parse($periodo->fecha)->format('d \d\e M. \d\e Y') }}</td>
+                                            <td>{{ $periodo->planchas }}</td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                <tr>
+                                    <td colspan="2">Sin datos</td>
+                                </tr>
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-sm-8">
+                        <div id="chart_planchas" style="width: 100%; height: 250px;"></div>
+                    </div>
+                </div>
+
+                <div class="row m-b-50">
+                    <div class="col-sm-4 table-responsive">
+                        <table class="table table-bordered table-hover dataTable no-footer text-center">
+                            <thead>
+                                <tr>
+                                    <th colspan="4">Sentadillas</th>
+                                </tr>
+                                <th>Periodo</th>
+                                <th>Medida</th>
+                            </thead>
+                            <tbody>
+                                @if (count($ficha->periodos)>0)
+                                    @foreach ($ficha->periodos as $periodo)
+                                        <tr>
+                                            <td>{{ Carbon::parse($periodo->fecha)->format('d \d\e M. \d\e Y') }}</td>
+                                            <td>{{ $periodo->sentadillas }}</td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                <tr>
+                                    <td colspan="2">Sin datos</td>
+                                </tr>
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-sm-8">
+                        <div id="chart_sentadillas" style="width: 100%; height: 250px;"></div>
+                    </div>
+                </div>
+
+                <div class="row m-b-50">
+                    <div class="col-sm-4 table-responsive">
+                        <table class="table table-bordered table-hover dataTable no-footer text-center">
+                            <thead>
+                                <tr>
+                                    <th colspan="4">Abdominales</th>
+                                </tr>
+                                <th>Periodo</th>
+                                <th>Medida</th>
+                            </thead>
+                            <tbody>
+                                @if (count($ficha->periodos)>0)
+                                    @foreach ($ficha->periodos as $periodo)
+                                        <tr>
+                                            <td>{{ Carbon::parse($periodo->fecha)->format('d \d\e M. \d\e Y') }}</td>
+                                            <td>{{ $periodo->abdominales }}</td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                <tr>
+                                    <td colspan="2">Sin datos</td>
+                                </tr>
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-sm-8">
+                        <div id="chart_abdominales" style="width: 100%; height: 250px;"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 
 @section('js')
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 <script>
-    $(document).ready( function () {
-        $('#fitnessTable').DataTable({
-            // "paging":    false,
-            //"info":      false,
-            // "searching": false,
-            "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "Todos"]],
-            "language": {
-                "lengthMenu": "Mostrar  _MENU_  registros por página",
-                "zeroRecords": "Ningún registro encontrado",
-                "info": "Página _PAGE_ de _PAGES_",
-                "infoEmpty": "Sin registros",
-                "infoFiltered": "(búsqueda realizada en _MAX_  registros)",
-                "search": "Buscar: ",
-                "paginate": {
-                    "previous": "Anterior",
-                    "next": "Siguiente"
-                }
+
+    //////////////////////////////////////////////////////////
+    //PESO
+    //////////////////////////////////////////////////////////
+    google.charts.load('current', { packages: ['corechart', 'bar'] });
+    google.charts.setOnLoadCallback(drawPeso);
+
+    function drawPeso() {
+        var data = google.visualization.arrayToDataTable([
+            ['Fecha', 'Peso'],
+            @foreach ($ficha->periodos as $periodo)
+                ['{{ Carbon::parse($periodo->fecha)->format('d-m-Y') }}',  {{ $periodo->peso }}],
+            @endforeach
+        ]);
+
+        var options = {
+            // title: 'Peso',
+            chartArea: { width: '65%' },
+            hAxis: {
+                title: 'Peso en Kg.',
+                legend: { position: 'top', maxLines: 1 },
+                minValue: 0,
             },
-            "order":[]
-        });
-    });
-    function eliminarModal(id){
-        var formModal=$("#form-modal");
-        var url=location.origin;
-        var path=location.pathname
-        formModal.attr('action',url+path+'/'+id);
+            vAxis: {
+                title: 'Periodos'
+            },
+            colors: ['#01579b']
+        };
+        var chart = new google.visualization.BarChart(document.getElementById('chart_peso'));
+        chart.draw(data, options);
     }
+
+    //////////////////////////////////////////////////////////
+    //GRASA
+    //////////////////////////////////////////////////////////
+    google.charts.load('current', { packages: ['corechart', 'bar'] });
+    google.charts.setOnLoadCallback(drawGrasa);
+
+    function drawGrasa() {
+        var data = google.visualization.arrayToDataTable([
+            ['Fecha', 'Grasa'],
+            @foreach ($ficha->periodos as $periodo)
+                ['{{ Carbon::parse($periodo->fecha)->format('d-m-Y') }}',  {{ $periodo->grasa }}],
+            @endforeach
+        ]);
+
+        var options = {
+            chartArea: { width: '65%' },
+            hAxis: {
+                title: 'Grasa en %.',
+                legend: { position: 'top', maxLines: 1 },
+                minValue: 0,
+            },
+            vAxis: {
+                title: 'Periodos'
+            },
+            colors: ['#0277bd']
+        };
+        var chart = new google.visualization.BarChart(document.getElementById('chart_grasa'));
+        chart.draw(data, options);
+    }
+
+
+    //////////////////////////////////////////////////////////
+    //PECHO
+    //////////////////////////////////////////////////////////
+    google.charts.load('current', { packages: ['corechart', 'bar'] });
+    google.charts.setOnLoadCallback(drawPecho);
+
+    function drawPecho() {
+        var data = google.visualization.arrayToDataTable([
+            ['Fecha', 'Pecho'],
+            @foreach ($ficha->periodos as $periodo)
+                ['{{ Carbon::parse($periodo->fecha)->format('d-m-Y') }}',  {{ $periodo->pecho }}],
+            @endforeach
+        ]);
+
+        var options = {
+            chartArea: { width: '65%' },
+            hAxis: {
+                title: 'Pecho en cm.',
+                legend: { position: 'top', maxLines: 1 },
+                minValue: 0,
+            },
+            vAxis: {
+                title: 'Periodos'
+            },
+            colors: ['#01579b']
+        };
+        var chart = new google.visualization.BarChart(document.getElementById('chart_pecho'));
+        chart.draw(data, options);
+    }
+
+    //////////////////////////////////////////////////////////
+    //ESPALDA
+    //////////////////////////////////////////////////////////
+    google.charts.load('current', { packages: ['corechart', 'bar'] });
+    google.charts.setOnLoadCallback(drawEspalda);
+
+    function drawEspalda() {
+        var data = google.visualization.arrayToDataTable([
+            ['Fecha', 'Espalda'],
+            @foreach ($ficha->periodos as $periodo)
+                ['{{ Carbon::parse($periodo->fecha)->format('d-m-Y') }}',  {{ $periodo->espalda }}],
+            @endforeach
+        ]);
+
+        var options = {
+            chartArea: { width: '65%' },
+            hAxis: {
+                title: 'Espalda en cm.',
+                legend: { position: 'top', maxLines: 1 },
+                minValue: 0,
+            },
+            vAxis: {
+                title: 'Periodos'
+            },
+            colors: ['#0277bd']
+        };
+        var chart = new google.visualization.BarChart(document.getElementById('chart_espalda'));
+        chart.draw(data, options);
+    }
+
+    //////////////////////////////////////////////////////////
+    //HOMBROS
+    //////////////////////////////////////////////////////////
+    google.charts.load('current', { packages: ['corechart', 'bar'] });
+    google.charts.setOnLoadCallback(drawHombros);
+
+    function drawHombros() {
+        var data = google.visualization.arrayToDataTable([
+            ['Fecha', 'Hombros'],
+            @foreach ($ficha->periodos as $periodo)
+                ['{{ Carbon::parse($periodo->fecha)->format('d-m-Y') }}',  {{ $periodo->hombros }}],
+            @endforeach
+        ]);
+
+        var options = {
+            chartArea: { width: '65%' },
+            hAxis: {
+                title: 'Hombros en cm.',
+                legend: { position: 'top', maxLines: 1 },
+                minValue: 0,
+            },
+            vAxis: {
+                title: 'Periodos'
+            },
+            colors: ['#0288d1']
+        };
+        var chart = new google.visualization.BarChart(document.getElementById('chart_hombros'));
+        chart.draw(data, options);
+    }
+
+    //////////////////////////////////////////////////////////
+    //BICEPS
+    //////////////////////////////////////////////////////////
+    google.charts.load('current', { packages: ['corechart', 'bar'] });
+    google.charts.setOnLoadCallback(drawBiceps);
+
+    function drawBiceps() {
+        var data = google.visualization.arrayToDataTable([
+            ['Fecha', 'Bíceps'],
+            @foreach ($ficha->periodos as $periodo)
+                ['{{ Carbon::parse($periodo->fecha)->format('d-m-Y') }}',  {{ $periodo->biceps }}],
+            @endforeach
+        ]);
+
+        var options = {
+            chartArea: { width: '65%' },
+            hAxis: {
+                title: 'Bíceps en cm.',
+                legend: { position: 'top', maxLines: 1 },
+                minValue: 0,
+            },
+            vAxis: {
+                title: 'Periodos'
+            },
+            colors: ['#039be5']
+        };
+        var chart = new google.visualization.BarChart(document.getElementById('chart_biceps'));
+        chart.draw(data, options);
+    }
+
+    //////////////////////////////////////////////////////////
+    //CINTURA
+    //////////////////////////////////////////////////////////
+    google.charts.load('current', { packages: ['corechart', 'bar'] });
+    google.charts.setOnLoadCallback(drawCintura);
+
+    function drawCintura() {
+        var data = google.visualization.arrayToDataTable([
+            ['Fecha', 'Cintura'],
+            @foreach ($ficha->periodos as $periodo)
+                ['{{ Carbon::parse($periodo->fecha)->format('d-m-Y') }}',  {{ $periodo->cintura }}],
+            @endforeach
+        ]);
+
+        var options = {
+            chartArea: { width: '65%' },
+            hAxis: {
+                title: 'Cintura en cm.',
+                legend: { position: 'top', maxLines: 1 },
+                minValue: 0,
+            },
+            vAxis: {
+                title: 'Periodos'
+            },
+            colors: ['#03a9f4']
+        };
+        var chart = new google.visualization.BarChart(document.getElementById('chart_cintura'));
+        chart.draw(data, options);
+    }
+
+    //////////////////////////////////////////////////////////
+    //GLUTEOS
+    //////////////////////////////////////////////////////////
+    google.charts.load('current', { packages: ['corechart', 'bar'] });
+    google.charts.setOnLoadCallback(drawGluteos);
+
+    function drawGluteos() {
+        var data = google.visualization.arrayToDataTable([
+            ['Fecha', 'Glúteos'],
+            @foreach ($ficha->periodos as $periodo)
+                ['{{ Carbon::parse($periodo->fecha)->format('d-m-Y') }}',  {{ $periodo->gluteos }}],
+            @endforeach
+        ]);
+
+        var options = {
+            chartArea: { width: '65%' },
+            hAxis: {
+                title: 'Glúteos en cm.',
+                legend: { position: 'top', maxLines: 1 },
+                minValue: 0,
+            },
+            vAxis: {
+                title: 'Periodos'
+            },
+            colors: ['#29b6f6']
+        };
+        var chart = new google.visualization.BarChart(document.getElementById('chart_gluteos'));
+        chart.draw(data, options);
+    }
+
+    //////////////////////////////////////////////////////////
+    //PIERNA
+    //////////////////////////////////////////////////////////
+    google.charts.load('current', { packages: ['corechart', 'bar'] });
+    google.charts.setOnLoadCallback(drawPierna);
+
+    function drawPierna() {
+        var data = google.visualization.arrayToDataTable([
+            ['Fecha', 'Pierna'],
+            @foreach ($ficha->periodos as $periodo)
+                ['{{ Carbon::parse($periodo->fecha)->format('d-m-Y') }}',  {{ $periodo->pierna }}],
+            @endforeach
+        ]);
+
+        var options = {
+            chartArea: { width: '65%' },
+            hAxis: {
+                title: 'Pierna en cm.',
+                legend: { position: 'top', maxLines: 1 },
+                minValue: 0,
+            },
+            vAxis: {
+                title: 'Periodos'
+            },
+            colors: ['#4fc3f7']
+        };
+        var chart = new google.visualization.BarChart(document.getElementById('chart_pierna'));
+        chart.draw(data, options);
+    }
+
+    //////////////////////////////////////////////////////////
+    //PANTORRILLA
+    //////////////////////////////////////////////////////////
+    google.charts.load('current', { packages: ['corechart', 'bar'] });
+    google.charts.setOnLoadCallback(drawPantorrilla);
+
+    function drawPantorrilla() {
+        var data = google.visualization.arrayToDataTable([
+            ['Fecha', 'Pantorrilla'],
+            @foreach ($ficha->periodos as $periodo)
+                ['{{ Carbon::parse($periodo->fecha)->format('d-m-Y') }}',  {{ $periodo->pantorrilla }}],
+            @endforeach
+        ]);
+
+        var options = {
+            chartArea: { width: '65%' },
+            hAxis: {
+                title: 'Pantorrilla en cm.',
+                legend: { position: 'top', maxLines: 1 },
+                minValue: 0,
+            },
+            vAxis: {
+                title: 'Periodos'
+            },
+            colors: ['#81d4fa']
+        };
+        var chart = new google.visualization.BarChart(document.getElementById('chart_pantorrilla'));
+        chart.draw(data, options);
+    }
+
+    //////////////////////////////////////////////////////////
+    //PLANCHAS
+    //////////////////////////////////////////////////////////
+    google.charts.load('current', { packages: ['corechart', 'bar'] });
+    google.charts.setOnLoadCallback(drawPlanchas);
+
+    function drawPlanchas() {
+        var data = google.visualization.arrayToDataTable([
+            ['Fecha', 'Planchas'],
+            @foreach ($ficha->periodos as $periodo)
+                ['{{ Carbon::parse($periodo->fecha)->format('d-m-Y') }}',  {{ $periodo->planchas }}],
+            @endforeach
+        ]);
+
+        var options = {
+            chartArea: { width: '65%' },
+            hAxis: {
+                title: 'Cantidad de Planchas',
+                legend: { position: 'top', maxLines: 1 },
+                minValue: 0,
+            },
+            vAxis: {
+                title: 'Periodos'
+            },
+            colors: ['#01579b']
+        };
+        var chart = new google.visualization.BarChart(document.getElementById('chart_planchas'));
+        chart.draw(data, options);
+    }
+
+    //////////////////////////////////////////////////////////
+    //Sentadillas
+    //////////////////////////////////////////////////////////
+    google.charts.load('current', { packages: ['corechart', 'bar'] });
+    google.charts.setOnLoadCallback(drawSentadillas);
+
+    function drawSentadillas() {
+        var data = google.visualization.arrayToDataTable([
+            ['Fecha', 'Sentadillas'],
+            @foreach ($ficha->periodos as $periodo)
+                ['{{ Carbon::parse($periodo->fecha)->format('d-m-Y') }}',  {{ $periodo->sentadillas }}],
+            @endforeach
+        ]);
+
+        var options = {
+            chartArea: { width: '65%' },
+            hAxis: {
+                title: 'Cantidad de sentadillas',
+                legend: { position: 'top', maxLines: 1 },
+                minValue: 0,
+            },
+            vAxis: {
+                title: 'Periodos'
+            },
+            colors: ['#0277bd']
+        };
+        var chart = new google.visualization.BarChart(document.getElementById('chart_sentadillas'));
+        chart.draw(data, options);
+    }
+
+    //////////////////////////////////////////////////////////
+    //HOMBROS
+    //////////////////////////////////////////////////////////
+    google.charts.load('current', { packages: ['corechart', 'bar'] });
+    google.charts.setOnLoadCallback(drawAbdominales);
+
+    function drawAbdominales() {
+        var data = google.visualization.arrayToDataTable([
+            ['Fecha', 'Abdominales'],
+            @foreach ($ficha->periodos as $periodo)
+                ['{{ Carbon::parse($periodo->fecha)->format('d-m-Y') }}',  {{ $periodo->abdominales }}],
+            @endforeach
+        ]);
+
+        var options = {
+            chartArea: { width: '65%' },
+            hAxis: {
+                title: 'Cantidad de abdominales',
+                legend: { position: 'top', maxLines: 1 },
+                minValue: 0,
+            },
+            vAxis: {
+                title: 'Periodos'
+            },
+            colors: ['#0288d1']
+        };
+        var chart = new google.visualization.BarChart(document.getElementById('chart_abdominales'));
+        chart.draw(data, options);
+    }
+
+
+
+
+
 </script>
 @endsection

@@ -91,6 +91,10 @@ function concatenar($numero){
                                 </td>
                                 <td class="text-center">
 
+                                    <a href="{{ url('/admin/ver-datos-historicos/'.$ficha->correlativo) }}">
+                                        <i class="icon feather icon-activity f-w-600 f-16 m-r-15 text-c-red" data-toggle="tooltip" data-placement="left" data-original-title="Ver historial de periodos"></i>
+                                    </a>
+
                                     <a href="{{ url('/admin/ver-ficha/'.$ficha->correlativo) }}">
                                         <i class="icon feather icon-external-link f-w-600 f-16 m-r-15 text-c-green" data-toggle="tooltip" data-placement="left" data-original-title="Ver ficha de evaluación"></i>
                                     </a>

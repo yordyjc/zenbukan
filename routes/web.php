@@ -35,6 +35,7 @@ Route::get('login', function(){
         Route::resource('/inscritos','Admin\InscritosController');
         Route::get('/fichas','Admin\FichasController@listaFichas');
         Route::get('/ver-ficha/{correlativo}','Admin\FichasController@verFicha');
+        // Route::get('/ver-datos-historicos/{correlativo}','Admin\FichasController@verHistorial');
         Route::get('/crear-periodo/{correlativo}','Admin\PeriodosController@formCrear');
         Route::resource('/periodos','Admin\PeriodosController');
     });

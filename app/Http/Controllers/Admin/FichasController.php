@@ -66,4 +66,11 @@ class FichasController extends Controller
         return view('admin.fichas.ver')
             ->with('ficha',$ficha);
     }
+
+    // public function verHistorial($correlativo)
+    // {
+    //     $ficha = Ficha::where('correlativo',$correlativo)->with('periodos')->first();
+    //     return view('admin.fichas.historial-periodos')
+    //         ->with('ficha',$ficha);
+    // }
 }
