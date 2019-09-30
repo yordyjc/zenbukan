@@ -25,7 +25,7 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-sm-12">
-					<form class="md-float-material form-material" {{-- action="{{ route('login') }}" --}} method="POST">
+					<form class="md-float-material form-material" action="{{ route('login') }}" method="POST">
 						@csrf
 						<div class="text-center">
 							<a href="{{ url('/') }}">
@@ -93,8 +93,7 @@
 
 								<div class="row m-t-30">
 									<div class="col-md-12">
-										{{-- <button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Iniciar sesión</button> --}}
-                                        <a href="{{ url('/admin') }}" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Iniciar sesión</a>
+										<button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Iniciar sesión</button>
 									</div>
 								</div>
 
