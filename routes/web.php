@@ -36,6 +36,7 @@ Route::middleware(['auth'])->group(function () {
             // Route::get('/ver-datos-historicos/{correlativo}','Admin\FichasController@verHistorial');
             Route::get('/crear-periodo/{correlativo}','Admin\PeriodosController@formCrear');
             Route::resource('/periodos','Admin\PeriodosController');
+            Route::get('/simulacion/{correlativo}','Admin\SimulacionController@ver');
         });
     });
 });
