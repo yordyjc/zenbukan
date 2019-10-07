@@ -56,32 +56,22 @@
                         <span class="pcoded-mtext">Reportes</span>
                     </a>
                     <ul class="pcoded-submenu">
-                        <li class="@yield('reporte-mensual')">
-                            <a href="{{ url('/admin/reporte-mensual') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Reporte inscritos mensual</span>
+                        <li class="@yield('reporte-fechas')">
+                            <a href="{{ url('/admin/reporte-fechas') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Reporte por fecha</span>
                             </a>
                         </li>
                         <li class="@yield('reporte-sexo')">
                             <a href="{{ url('/admin/reporte-sexo') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Reporte histórico por sexo</span>
-                            </a>
-                        </li>
-                        <li class="@yield('reporte-edad')">
-                            <a href="{{ url('/admin/reporte-edad') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Reporte histórico por edad</span>
+                                <span class="pcoded-mtext">Reporte por sexo</span>
                             </a>
                         </li>
                         <li class="@yield('reporte-objetivo')">
                             <a href="{{ url('/admin/reporte-objetivo') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Reporte histórico por objetivo</span>
+                                <span class="pcoded-mtext">Reporte por objetivo</span>
                             </a>
                         </li>
-                        <li class="@yield('reporte-personal')">
-                            <a href="{{ url('/admin/reporte-personal') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Reporte personal</span>
-                            </a>
-                        </li>
-                        <li class="@yield('reporte-personal')">
+                        <li class="@yield('cumpleanos-mes')">
                             <a href="{{ url('/admin/cumpleanos-mes') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">Reporte cumpleaños del mes</span>
                             </a>

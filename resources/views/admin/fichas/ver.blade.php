@@ -107,16 +107,16 @@ function concatenar($numero){
 
                             @if ($ficha->usuario->direccion)
                             <dt class="col-sm-3">Dirección</dt>
-                            <dd class="col-sm-9">{{ $ficha->usuario->direcion }}</dd>
+                            <dd class="col-sm-9">{{ $ficha->usuario->direccion }}</dd>
                             @endif
 
                             @if ($ficha->usuario->nacimiento)
                             <dt class="col-sm-3">Cumpleaños</dt>
                             <dd class="col-sm-9">{{ Carbon::parse($ficha->usuario->nacimiento)->format('d \d\e M. \d\e Y') }}</dd>
-                            <dd class="col-sm-9 offset-sm-3 text-muted">(Nació {{ Carbon::parse($ficha->usuario->nacimiento)->diffForHumans(null, false, false, 1) }})</dd>
+                            <dd class="col-sm-9 offset-sm-3 text-muted">(Tiene {{ Carbon::parse($ficha->usuario->nacimiento)->age }} años)</dd>
                             @elseif($ficha->usuario->edad)
                             <dt class="col-sm-3">Edad</dt>
-                            <dd class="col-sm-9">{{ Carbon::parse($ficha->usuario->edad)->format('d \d\e M. \d\e Y') }}</dd>
+                            <dd class="col-sm-9">{{ $ficha->usuario->edad }} años</dd>
                             @endif
 
                             @if ($ficha->usuario->enfermedad)

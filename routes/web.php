@@ -37,6 +37,16 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/crear-periodo/{correlativo}','Admin\PeriodosController@formCrear');
             Route::resource('/periodos','Admin\PeriodosController');
             Route::get('/simulacion/{correlativo}','Admin\SimulacionController@ver');
+
+            //reportes
+            Route::get('/reporte-fechas/','Admin\ReportesController@fechasGet');
+            Route::post('/reporte-fechas/','Admin\ReportesController@fechasPost');
+            Route::get('/reporte-sexo/','Admin\ReportesController@sexoGet');
+            Route::post('/reporte-sexo/','Admin\ReportesController@sexoPost');
+            Route::get('/reporte-objetivo/','Admin\ReportesController@objetivoGet');
+            Route::post('/reporte-objetivo/','Admin\ReportesController@objetivoPost');
+            Route::get('/cumpleanos-mes/','Admin\ReportesController@cumpleanosGet');
+            Route::post('/cumpleanos-mes/','Admin\ReportesController@cumpleanosPost');
         });
     });
 });
