@@ -16,57 +16,72 @@
 	<script>
 	  	//variables
 	  	var camera, scene, light, render, controls;
-	  	function init()
-	  	{
-	  		scene = new THREE.Scene();
-	    	light = new THREE.DirectionalLight('#ffffff', 0.9);
-	    	light.position.set(0, 1, 1.5);
-	    	scene.add(light);
-	    	camera = new THREE.PerspectiveCamera(75,
-		    window.innerWidth/window.innerHeight, 0.1, 1000);
+	  	var mesh;
+	  	var delta = 0;
+    	var prevTime = Date.now();
+	  	//funcion de valorres inicales y carga del modelo
+	  	function init(){
+	  		scene = new THREE.Scene(); //creacion de esecena
+	    	light = new THREE.AmbientLight(0xffffff, 0.9);
+    scene.add(light);
 
+    var light2 = new THREE.PointLight(0xffffff, 0.6);
+    scene.add(light2);
 
-		    // camera.position.z = 1.5;
-		    // camera.position.y = 1;
-		    // camera.position.x = 0;
+	    	var canva = document.getElementById("canvas"); // identificacion del canvas para adaptar las medidas a el
+	    	camera = new THREE.PerspectiveCamera(35,
+		    canva.clientWidth/canva.clientHeight, 0.1, 1000);//camara relativa tal tamaño de contenedor con id=canvas
 		    renderer = new THREE.WebGLRenderer({alpha: true});
-		    var canva = document.getElementById("canvas");; // tamaño del canvas
-		    renderer.setSize(canva.clientWidth, 260);
-		    // document.body.appendChild(renderer.domElement);
-		    document.getElementById("canvas").appendChild(renderer.domElement)
+		    renderer.setSize(canva.clientWidth, canva.clientHeight);//render relativo al tamaño del contendor
+		    document.getElementById("canvas").appendChild(renderer.domElement);
 		    controls = new THREE.OrbitControls( camera, renderer.domElement );
 		    controls.target.set(0, 0.95, 0);
-		    // controls.center.set( 0, 3000, 0);
-		    //camera.position.set( 0, 5, 5 );
-		    camera.position.set(0, 1.1, 1.25);
+		    camera.position.set(0, 2, 3);//uibacion de la camara
 			controls.update();
 		    var loader = new THREE.GLTFLoader();
 			// Load a glTF resource
-			loader.load('/resources/admin/assets/blender-files/varon/untitled.json',
-			  	function ( gltf ) {
-				    scene.add( gltf.scene );
-				    gltf.animations; // Array<THREE.AnimationClip>
-				    gltf.scene; // THREE.Scene
-				    gltf.scenes; // Array<THREE.Scene>
-				    gltf.cameras; // Array<THREE.Camera>
-				    gltf.asset; // Object
-				    gltf.position.y=10000;
+			// loader.load('/resources/admin/assets/blender-files/varon/untitled.json',
+			//   	function ( gltf ) {
+			//   		mesh=gltf.scene.children[0];
+			//   		scene.add(mesh);
+			// 	    scene.add( gltf.scene );
+			// 	    gltf.animations; // Array<THREE.AnimationClip>
+			// 	    gltf.scene; // THREE.Scene
+			// 	    gltf.scenes; // Array<THREE.Scene>
+			// 	    gltf.cameras; // Array<THREE.Camera>
+			// 	    gltf.asset; // Object
+			// 	    mesh.position.z=500;
 
-			  	},
+			//   	},
 
-			  	function ( xhr ) {
-			    	console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
-			  	},
-			  // called when loading has errors
-			  	function ( error ) {
-			    console.log( 'An error happened' );
-			  	}
-			);
+			//   	function ( xhr ) {
+			//     	console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+			//   	},
+			//   // called when loading has errors
+			//   	function ( error ) {
+			//     console.log( 'An error happened' );
+			//   	}
+			// );
+			loader.load('/resources/admin/assets/blender-files/varon/untitled.json', handle_load);
+
+		    function handle_load(gltf) {
+		        console.log(gltf);
+		        mesh = gltf.scene;
+		        console.log(mesh.children[0]);
+		        mesh.children[0].material = new THREE.MeshLambertMaterial();
+				scene.add( mesh );
+		    }
 	  	}
+
 	    function render() {
+	    	delta += 0.1;
+	        if (mesh) {
+	            mesh.rotation.y += 0.01;
+	        }
 		    requestAnimationFrame(render);
 		    controls.update();
 		    renderer.render(scene, camera);
+
 	    }
 	    function start(){
 	    	init();
@@ -75,67 +90,66 @@
 	</script>
 	<script>
 
-    //////////////////////////////////////////////////////////
-    //PESO
-    //////////////////////////////////////////////////////////
-    google.charts.load('current', { packages: ['corechart', 'bar'] });
-    google.charts.setOnLoadCallback(drawPeso);
+	    //////////////////////////////////////////////////////////
+	    //PESO
+	    //////////////////////////////////////////////////////////
+	    google.charts.load('current', { packages: ['corechart', 'bar'] });
+	    google.charts.setOnLoadCallback(drawPeso);
 
-    function drawPeso() {
-        var data = google.visualization.arrayToDataTable([
-            ['Fecha', 'IMC'],
-            @foreach ($ficha->periodos as $periodo)
-                ['{{ Carbon::parse($periodo->fecha)->format('d-m-Y') }}',  {{ $periodo->peso }}],
-            @endforeach
-        ]);
+	    function drawPeso() {
+	        var data = google.visualization.arrayToDataTable([
+	            ['Fecha', 'IMC'],
+	            @foreach ($ficha->periodos as $periodo)
+	                ['{{ Carbon::parse($periodo->fecha)->format('d-m-Y') }}',  {{ $periodo->peso }}],
+	            @endforeach
+	        ]);
 
-        var options = {
-            // title: 'Peso',
-            chartArea: { width: '65%' },
-            hAxis: {
-                title: 'Peso en Kg.',
-                legend: { position: 'top', maxLines: 1 },
-                minValue: 0,
-            },
-            vAxis: {
-                title: 'Periodos'
-            },
-            colors: ['#01579b']
-        };
-        var chart = new google.visualization.BarChart(document.getElementById('chart_imc'));
-        chart.draw(data, options);
-    }
+	        var options = {
+	            // title: 'Peso',
+	            chartArea: { width: '65%' },
+	            hAxis: {
+	                title: 'Peso en Kg.',
+	                legend: { position: 'top', maxLines: 1 },
+	                minValue: 0,
+	            },
+	            vAxis: {
+	                title: 'Periodos'
+	            },
+	            colors: ['#01579b']
+	        };
+	        var chart = new google.visualization.BarChart(document.getElementById('chart_imc'));
+	        chart.draw(data, options);
+	    }
 
-    //////////////////////////////////////////////////////////
-    //GRASA
-    //////////////////////////////////////////////////////////
-    google.charts.load('current', { packages: ['corechart', 'bar'] });
-    google.charts.setOnLoadCallback(drawGrasa);
+	    //////////////////////////////////////////////////////////
+	    //GRASA
+	    //////////////////////////////////////////////////////////
+	    google.charts.load('current', { packages: ['corechart', 'bar'] });
+	    google.charts.setOnLoadCallback(drawGrasa);
 
-    function drawGrasa() {
-        var data = google.visualization.arrayToDataTable([
-            ['Fecha', 'Grasa'],
-            @foreach ($ficha->periodos as $periodo)
-                ['{{ Carbon::parse($periodo->fecha)->format('d-m-Y') }}',  {{ $periodo->grasa }}],
-            @endforeach
-        ]);
+	    function drawGrasa() {
+	        var data = google.visualization.arrayToDataTable([
+	            ['Fecha', 'Grasa'],
+	            @foreach ($ficha->periodos as $periodo)
+	                ['{{ Carbon::parse($periodo->fecha)->format('d-m-Y') }}',  {{ $periodo->grasa }}],
+	            @endforeach
+	        ]);
 
-        var options = {
-            chartArea: { width: '65%' },
-            hAxis: {
-                title: 'Grasa en %.',
-                legend: { position: 'top', maxLines: 1 },
-                minValue: 0,
-            },
-            vAxis: {
-                title: 'Periodos'
-            },
-            colors: ['#0277bd']
-        };
-        var chart = new google.visualization.BarChart(document.getElementById('chart_grasa'));
-        chart.draw(data, options);
-    }
-
+	        var options = {
+	            chartArea: { width: '65%' },
+	            hAxis: {
+	                title: 'Grasa en %.',
+	                legend: { position: 'top', maxLines: 1 },
+	                minValue: 0,
+	            },
+	            vAxis: {
+	                title: 'Periodos'
+	            },
+	            colors: ['#0277bd']
+	        };
+	        var chart = new google.visualization.BarChart(document.getElementById('chart_grasa'));
+	        chart.draw(data, options);
+	    }
 	</script>
 </head>
 
@@ -189,6 +203,8 @@
 			</div>
 		</nav>
 	</div>
+</br>
+</br>
 	<div class="container">
 		<div class="row">
 			<div class="col-6 col-md-6 col-lg-6">
@@ -205,13 +221,14 @@
 				</div>
 			</div>
 			<div class="col-6 col-md-6 col-lg-6">
-				<div class="card">
-					<div class="card-header text-center">
+				@if($ficha->usuario)
+				<div id="canvas" style="height: 500px;">
+					<!-- <div class="card-header text-center">
 						<h3>Situación Actual</h3>
-					</div>
-					@if($ficha->usuario)
-					<div class="card-body">
-						<div class="card-block" id="canvas">
+					</div> -->
+
+<!-- 					<div class="card-body" id="canvas" >
+						<div class="card-block">
 						</div>
 						<div class="card-block">
 							<h5 class="card-title text-center">Datos</h5>
@@ -252,8 +269,8 @@
 								</dd>
 							</dl>
 						</div>
-					</div>
-					@endif
+					</div> -->
+				@endif
 				</div>
 			</div>
 		</div>
