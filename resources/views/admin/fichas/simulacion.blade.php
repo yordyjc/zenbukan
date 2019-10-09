@@ -15,18 +15,29 @@
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<script>
 	  	//variables
-	  	var camera, scene, light, render, controls;
+	  	var camera, scene, light, render, controls, sexo;
 	  	var mesh;
 	  	var delta = 0;
     	var prevTime = Date.now();
 	  	//funcion de valorres inicales y carga del modelo
 	  	function init(){
 	  		scene = new THREE.Scene(); //creacion de esecena
+	  		/****************************
+	  		 DECLARACION DE LUZ PRINCIPAL
+	  		*****************************/
 	    	light = new THREE.AmbientLight(0xffffff, 0.9);
-    scene.add(light);
+		    scene.add(light);
+		    /****************************
+	  		 DECLARACION DE LUZ SECUNDARIA
+	  		*****************************/
+		    var light2 = new THREE.PointLight(0xffffff, 0.35);
+		    scene.add(light2);
+		    light2.position.y=30;
+		    light2.position.set(0,2,3);
 
-    var light2 = new THREE.PointLight(0xffffff, 0.6);
-    scene.add(light2);
+		    /*******************************************
+	  		 DECLARACION DE LUZ ESCENA, CAMARA Y RENDER
+	  		*******************************************/
 
 	    	var canva = document.getElementById("canvas"); // identificacion del canvas para adaptar las medidas a el
 	    	camera = new THREE.PerspectiveCamera(35,
@@ -34,6 +45,9 @@
 		    renderer = new THREE.WebGLRenderer({alpha: true});
 		    renderer.setSize(canva.clientWidth, canva.clientHeight);//render relativo al tamaño del contendor
 		    document.getElementById("canvas").appendChild(renderer.domElement);
+		    /****************************
+	  		 DECLARACION DE LOS CONTROLES
+	  		*****************************/
 		    controls = new THREE.OrbitControls( camera, renderer.domElement );
 		    controls.target.set(0, 0.95, 0);
 		    camera.position.set(0, 2, 3);//uibacion de la camara
@@ -62,7 +76,16 @@
 			//     console.log( 'An error happened' );
 			//   	}
 			// );
-			loader.load('/resources/admin/assets/blender-files/varon/untitled.json', handle_load);
+			/****************************
+	  		 CARGA DEL MODELO
+	  		*****************************/
+	  		 var sexos='<?php echo $ficha->usuario->sexo;?>'
+	  		if (sexos==1) {
+	  			loader.load('/resources/admin/assets/blender-files/varon/untitled.json', handle_load);
+	  		}
+	  		else{
+	  			loader.load('/resources/admin/assets/blender-files/dama/damagltf.json', handle_load);
+	  		}
 
 		    function handle_load(gltf) {
 		        console.log(gltf);
@@ -275,10 +298,6 @@
 			</div>
 		</div>
 	</div>
-
 	@include('admin.include.threejs')
-
-
 </body>
-<!-- @section('js') -->
 </html>
