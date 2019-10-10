@@ -133,19 +133,15 @@ document.addEventListener('DOMContentLoaded',function(){
     ******************************************************/
     new Chartist.Line('#peso', {
         labels: [
-        @if (count($ficha->periodos)>0)
-        @foreach ($ficha->periodos as $periodo)
+        @foreach ($periodos->reverse() as $periodo)
             "{{ Carbon::parse($periodo->fecha)->format('M/y') }}",
         @endforeach
-        @endif
         ],
 
         series: [[
-        @if (count($ficha->periodos)>0)
-        @foreach ($ficha->periodos as $periodo)
+        @foreach ($periodos->reverse() as $periodo)
             {{ $periodo->peso }},
         @endforeach
-        @endif
         ]]
     }, {
         low: 0,

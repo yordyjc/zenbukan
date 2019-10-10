@@ -23,7 +23,9 @@ class SimulacionController extends Controller
     public function ver($correlativo)
     {
     	$ficha = Ficha::where('correlativo',$correlativo)->with('periodos')->first();
+        $periodos = Periodo::where('ficha_id',$ficha->id)->orderBy('id','desc')->take(5)->get();
         return view('admin.fichas.alt-simulacion')
-            ->with('ficha',$ficha);
+            ->with('ficha',$ficha)
+            ->with('periodos',$periodos);
     }
 }
