@@ -15,11 +15,6 @@ Route::get('/', function () {
     return redirect('login');
 });
 
-// Route::get('login', function(){
-//     return view('auth.login');
-// });
-
-
 Route::middleware(['auth'])->group(function () {
     Route::prefix('admin')->group(function(){
         Route::get('/sin-permiso', function (){

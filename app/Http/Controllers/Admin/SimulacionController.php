@@ -23,7 +23,7 @@ class SimulacionController extends Controller
     public function ver($correlativo)
     {
     	$ficha = Ficha::where('correlativo',$correlativo)->with('periodos')->first();
-        return view('admin.fichas.simulacion')
+        return view('admin.fichas.alt-simulacion')
             ->with('ficha',$ficha);
     }
 }
