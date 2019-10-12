@@ -57,8 +57,112 @@
         .ct-line.ct-threshold-2, .ct-point.ct-threshold-2, .ct-bar.ct-threshold-2 { stroke: #FD8A17; }
         .ct-line.ct-threshold-3, .ct-point.ct-threshold-3, .ct-bar.ct-threshold-3 { stroke: #DD2912; }
     </style>
+    <script type="text/javascript" src="/resources/admin/assets/js/threejs-loader/three.min.js"></script>
+	<script type="text/javascript" src="/resources/admin/assets/js/threejs-loader/three.js"></script>
+	<script type="text/javascript" src="/resources/admin/assets/js/threejs-loader/Orbit.js"></script>
+	<script type="text/javascript" src="/resources/admin/assets/js/threejs-loader/GLTFLoader.js"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script>
+	  	//variables
+	  	var camera, scene, light, render, controls, sexo;
+	  	var mesh;
+	  	var delta = 0;
+    	var prevTime = Date.now();
+	  	//funcion de valorres inicales y carga del modelo
+	  	function init(){
+	  		scene = new THREE.Scene(); //creacion de esecena
+	  		/****************************
+	  		 DECLARACION DE LUZ PRINCIPAL
+	  		*****************************/
+	    	light = new THREE.AmbientLight(0xffffff, 0.9);
+		    scene.add(light);
+		    /****************************
+	  		 DECLARACION DE LUZ SECUNDARIA
+	  		*****************************/
+		    var light2 = new THREE.PointLight(0xffffff, 0.35);
+		    scene.add(light2);
+		    light2.position.y=30;
+		    light2.position.set(0,2,3);
+
+		    /*******************************************
+	  		 DECLARACION DE LUZ ESCENA, CAMARA Y RENDER
+	  		*******************************************/
+
+	    	var canva = document.getElementById("canvas"); // identificacion del canvas para adaptar las medidas a el
+	    	camera = new THREE.PerspectiveCamera(35,
+		    canva.clientWidth/canva.clientHeight, 0.1, 1000);//camara relativa tal tamaño de contenedor con id=canvas
+		    renderer = new THREE.WebGLRenderer({alpha: true});
+		    renderer.setSize(canva.clientWidth, canva.clientHeight);//render relativo al tamaño del contendor
+		    document.getElementById("canvas").appendChild(renderer.domElement);
+		    /****************************
+	  		 DECLARACION DE LOS CONTROLES
+	  		*****************************/
+		    controls = new THREE.OrbitControls( camera, renderer.domElement );
+		    controls.target.set(0, 0.95, 0);
+		    camera.position.set(0, 2, 3);//uibacion de la camara
+			controls.update();
+		    var loader = new THREE.GLTFLoader();
+			// Load a glTF resource
+			// loader.load('/resources/admin/assets/blender-files/varon/untitled.json',
+			//   	function ( gltf ) {
+			//   		mesh=gltf.scene.children[0];
+			//   		scene.add(mesh);
+			// 	    scene.add( gltf.scene );
+			// 	    gltf.animations; // Array<THREE.AnimationClip>
+			// 	    gltf.scene; // THREE.Scene
+			// 	    gltf.scenes; // Array<THREE.Scene>
+			// 	    gltf.cameras; // Array<THREE.Camera>
+			// 	    gltf.asset; // Object
+			// 	    mesh.position.z=500;
+
+			//   	},
+
+			//   	function ( xhr ) {
+			//     	console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+			//   	},
+			//   // called when loading has errors
+			//   	function ( error ) {
+			//     console.log( 'An error happened' );
+			//   	}
+			// );
+			/****************************
+	  		 CARGA DEL MODELO
+	  		*****************************/
+	  		 var sexos='<?php echo $ficha->usuario->sexo;?>'
+	  		if (sexos==1) {
+	  			loader.load('/resources/admin/assets/blender-files/varon/prueba/varon10.json', handle_load);
+	  		}
+	  		else{
+	  			loader.load('/resources/admin/assets/blender-files/dama/damagltf.json', handle_load);
+	  		}
+
+		    function handle_load(gltf) {
+		        console.log(gltf);
+		        mesh = gltf.scene;
+		        console.log(mesh.children[0]);
+		        mesh.children[0].material = new THREE.MeshLambertMaterial();
+				scene.add( mesh );
+		    }
+	  	}
+
+	    function render() {
+	    	delta += 0.1;
+	        if (mesh) {
+	            mesh.rotation.y += 0.01;
+	        }
+		    requestAnimationFrame(render);
+		    controls.update();
+		    renderer.render(scene, camera);
+
+	    }
+	    function start(){
+	    	init();
+	  		render();
+	    }
+	</script>
+
 </head>
-<body class="principal">
+<body class="principal" onload="start();">
 @php
 use Carbon\Carbon;
 setlocale(LC_TIME, 'es_ES.UTF-8');
@@ -78,7 +182,10 @@ Carbon::setLocale('es');
     <div class="container">
 
         <div class="row">
-            <div class="col-md-6">hola</div>
+            <div class="col-md-6">
+            	<div id="canvas" style="height: 500px;">
+            	</div>
+            </div>
             <div class="col-md-6">
                 <div class="owl-carousel">
                     <div>

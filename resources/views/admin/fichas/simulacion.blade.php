@@ -81,7 +81,7 @@
 	  		*****************************/
 	  		 var sexos='<?php echo $ficha->usuario->sexo;?>'
 	  		if (sexos==1) {
-	  			loader.load('/resources/admin/assets/blender-files/varon/untitled.json', handle_load);
+	  			loader.load('/resources/admin/assets/blender-files/nueva_carpeta/untitled.json', handle_load);
 	  		}
 	  		else{
 	  			loader.load('/resources/admin/assets/blender-files/dama/damagltf.json', handle_load);
