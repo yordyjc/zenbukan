@@ -71,8 +71,11 @@ function concatenar($numero){
                                     @foreach ($inscrito->fichas as $ficha)
                                         Nro. {{ concatenar($ficha->correlativo) }}
                                         <a href="{{ url('/admin/ver-ficha/'.$ficha->correlativo) }}">
-                                        <i class="icon feather icon-external-link f-w-600 f-16 m-r-15 text-c-green" data-toggle="tooltip" data-placement="left" data-original-title="Ver ficha de evaluación"></i>
-                                    </a>
+                                            <i class="icon feather icon-external-link f-w-600 f-16 m-r-5 text-c-green" data-toggle="tooltip" data-placement="left" data-original-title="Ver ficha de evaluación"></i>
+                                        </a>
+                                        <a href="{{ url('/admin/simulacion/'.$ficha->correlativo) }}">
+                                            <i class="icon feather icon-activity f-w-600 f-16 m-r-5 text-c-red" data-toggle="tooltip" data-placement="left" data-original-title="Ver situación actual"></i>
+                                        </a>
                                     @endforeach
                                 </td>
                                 <td>

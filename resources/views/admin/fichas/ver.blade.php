@@ -195,9 +195,14 @@ function concatenar($numero){
                         </table>
 
                         <div class="form-group row">
-                            <div class="col-md-6 offset-md-3">
+                            <div class="col-md-6">
                                 <a href="{{ url('/admin/crear-periodo/'.$ficha->correlativo) }}" class="btn waves-effect waves-light btn-primary btn-outline-primary btn-block mt-2">
                                     <i class="icofont icofont-plus"></i> Agregar periodo
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                <a href="{{ url('/admin/simulacion/'.$ficha->correlativo) }}" class="btn waves-effect waves-light btn-danger btn-outline-danger btn-block mt-2">
+                                    <i class="icon feather icon-activity"></i> Ver situación actual
                                 </a>
                             </div>
                         </div>
