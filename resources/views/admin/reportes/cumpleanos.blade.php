@@ -48,7 +48,7 @@ function concatenar($numero){
             <div class="card-block">
 
                 <div class="col-sm-10 offset-sm-1">
-                    <form action="{{ url('/admin/cumpleanos-mes') }}" method="post" class="form-inline">
+                    <form action="{{ url('/admin/cumpleanos-mes') }}" method="post" class="form-inline" id="form-reporte">
                         @csrf
                         @method('POST')
                         <div class="row">
@@ -86,12 +86,13 @@ function concatenar($numero){
                 </div>
                 <br />
                 <div class="alert alert-info background-info">
-                    <h5>Hay {{ count($inscritos) }} registros en este reporte</h5>
+                    <h5>Hay {{ count($inscritos) }} que cumplen años en este mes</h5>
                 </div>
                 <div class="table-responsive">
                     <table id="fitnessTable" class="table table-striped table-hover" style="width:100%">
                         <thead class="text-center">
                             <tr>
+                                <th>#</th>
                                 <th>Ficha de evaluación</th>
                                 <th>Nombres y Apellidos</th>
                                 <th>Cumpleaños</th>
@@ -100,10 +101,16 @@ function concatenar($numero){
                             </tr>
                         </thead>
                         <tbody>
-
                             @if (count($inscritos)>0)
+                            @php
+                                $num = 1;
+                            @endphp
                             @foreach ($inscritos as $inscrito)
                             <tr>
+                                <td>{{ $num }}</td>
+                                @php
+                                    $num++;
+                                @endphp
                                 <td>
                                     @foreach ($inscrito->fichas as $ficha)
                                         Nro. {{ concatenar($ficha->correlativo) }}
@@ -138,6 +145,13 @@ function concatenar($numero){
 @endsection
 
 @section('js')
+<script type="text/javascript">
+    $(document).ready( function () {
+        var formData=$("#form-reporte").serialize();
+        var excel=URLs+'/admin/reporte-cumpleanos-excel?'+formData;
+        $(".descarga").attr('href', excel);
+    });
+</script>
 <script>
     $(document).ready( function () {
         $('#fitnessTable').DataTable({
@@ -160,11 +174,5 @@ function concatenar($numero){
             "order":[]
         });
     });
-    function eliminarModal(id){
-        var formModal=$("#form-modal");
-        var url=location.origin;
-        var path=location.pathname
-        formModal.attr('action',url+path+'/'+id);
-    }
 </script>
 @endsection

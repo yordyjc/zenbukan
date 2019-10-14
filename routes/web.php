@@ -36,12 +36,19 @@ Route::middleware(['auth'])->group(function () {
             //reportes
             Route::get('/reporte-fechas/','Admin\ReportesController@fechasGet');
             Route::post('/reporte-fechas/','Admin\ReportesController@fechasPost');
+            Route::get('/reporte-fechas-excel','Admin\ReportesController@fechasExcel');
+
             Route::get('/reporte-sexo/','Admin\ReportesController@sexoGet');
             Route::post('/reporte-sexo/','Admin\ReportesController@sexoPost');
+            Route::get('/reporte-sexo-excel','Admin\ReportesController@sexoExcel');
+
             Route::get('/reporte-objetivo/','Admin\ReportesController@objetivoGet');
             Route::post('/reporte-objetivo/','Admin\ReportesController@objetivoPost');
+            Route::get('/reporte-objetivo-excel','Admin\ReportesController@objetivoExcel');
+
             Route::get('/cumpleanos-mes/','Admin\ReportesController@cumpleanosGet');
             Route::post('/cumpleanos-mes/','Admin\ReportesController@cumpleanosPost');
+            Route::get('/reporte-cumpleanos-excel','Admin\ReportesController@cumpleanosExcel');
         });
     });
 });

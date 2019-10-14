@@ -48,20 +48,30 @@ function concatenar($numero){
             <div class="card-block">
 
                 <div class="col-sm-10 offset-sm-1">
-                    <form action="{{ url('/admin/reporte-fechas') }}" method="post" class="form-inline">
+                    <form action="{{ url('/admin/reporte-fechas') }}" method="post" class="form-inline" id="form-reporte">
                         @csrf
                         @method('POST')
                         <div class="row">
-                            <div class="col-sm-4">
-                                <div class="form-group mb-2">
+                            <div class="col-sm-3">
+                                <div class="form-group mb-2 {{ $errors->has('desde') ? ' has-danger' : '' }}">
                                     <label for="desde" class="col-form-label">Desde: </label>
-                                    <input type="date" name="desde" id="desde" class="form-control input-sm" value="{{ $desde }}" />
+                                    <input type="date" name="desde" id="desde" class="form-control input-sm {{ $errors->has('desde') ? ' form-control-danger' : '' }}" value="{{ $desde }}" />
+                                    @if ($errors->has('desde'))
+                                    <div class="col-form-label">
+                                        {{ $errors->first('desde') }}
+                                    </div>
+                                    @endif
                                 </div>
                             </div>
-                            <div class="col-sm-4">
-                                <div class="form-group mb-2">
+                            <div class="col-sm-3">
+                                <div class="form-group mb-2 {{ $errors->has('hasta') ? ' has-danger' : '' }}">
                                     <label for="hasta" class="col-form-label">Hasta: </label>
-                                    <input type="date" name="hasta" id="hasta" class="form-control input-sm" value="{{ $hasta }}" />
+                                    <input type="date" name="hasta" id="hasta" class="form-control input-sm {{ $errors->has('hasta') ? ' form-control-danger' : '' }}" value="{{ $hasta }}" />
+                                    @if ($errors->has('hasta'))
+                                    <div class="col-form-label">
+                                        {{ $errors->first('hasta') }}
+                                    </div>
+                                    @endif
                                 </div>
                             </div>
 
@@ -84,19 +94,26 @@ function concatenar($numero){
                     <table id="fitnessTable" class="table table-striped table-hover" style="width:100%">
                         <thead>
                             <tr>
+                                <th>#</th>
                                 <th>Ficha de evaluación</th>
                                 <th>Nombres y Apellidos</th>
                                 <th>Contacto</th>
                                 <th>Sector</th>
-                                <th>Tipo</th>
+                                <th>Situación</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-
                             @if (count($inscritos)>0)
+                            @php
+                                $num = 1;
+                            @endphp
                             @foreach ($inscritos as $inscrito)
                             <tr>
+                                <td>{{ $num }}</td>
+                                @php
+                                    $num++;
+                                @endphp
                                 <td>
                                     @foreach ($inscrito->fichas as $ficha)
                                         Nro. {{ concatenar($ficha->correlativo) }}
@@ -184,6 +201,13 @@ function concatenar($numero){
 @endsection
 
 @section('js')
+<script type="text/javascript">
+    $(document).ready( function () {
+        var formData=$("#form-reporte").serialize();
+        var excel=URLs+'/admin/reporte-fechas-excel?'+formData;
+        $(".descarga").attr('href', excel);
+    });
+</script>
 <script>
     $(document).ready( function () {
         $('#fitnessTable').DataTable({

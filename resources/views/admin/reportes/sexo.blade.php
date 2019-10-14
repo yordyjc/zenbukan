@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('title')
-Reporte de inscritos por fecha
+Reporte de inscritos por sexo
 @endsection
 
 @section('reportes')
@@ -48,27 +48,37 @@ function concatenar($numero){
             <div class="card-block">
 
                 <div class="col-sm-10 offset-sm-1">
-                    <form action="{{ url('/admin/reporte-sexo') }}" method="post" class="form-inline">
+                    <form action="{{ url('/admin/reporte-sexo') }}" method="post" class="form-inline" id="form-reporte">
                         @csrf
                         @method('POST')
                         <div class="row">
                             <div class="col-sm-3">
-                                <div class="form-group mb-2">
+                                <div class="form-group mb-2 {{ $errors->has('desde') ? ' has-danger' : '' }}">
                                     <label for="desde" class="col-form-label">Desde: </label>
-                                    <input type="date" name="desde" id="desde" class="form-control input-sm" value="{{ $desde }}" />
+                                    <input type="date" name="desde" id="desde" class="form-control input-sm {{ $errors->has('desde') ? ' form-control-danger' : '' }}" value="{{ $desde }}" />
+                                    @if ($errors->has('desde'))
+                                    <div class="col-form-label">
+                                        {{ $errors->first('desde') }}
+                                    </div>
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-sm-3">
-                                <div class="form-group mb-2">
+                                <div class="form-group mb-2 {{ $errors->has('hasta') ? ' has-danger' : '' }}">
                                     <label for="hasta" class="col-form-label">Hasta: </label>
-                                    <input type="date" name="hasta" id="hasta" class="form-control input-sm" value="{{ $hasta }}" />
+                                    <input type="date" name="hasta" id="hasta" class="form-control input-sm {{ $errors->has('hasta') ? ' form-control-danger' : '' }}" value="{{ $hasta }}" />
+                                    @if ($errors->has('hasta'))
+                                    <div class="col-form-label">
+                                        {{ $errors->first('hasta') }}
+                                    </div>
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-sm-3">
                                 <div class="form-group mb-2">
                                     <label for="sexo" class="col-form-label">Seleccione sexo: </label>
                                     <select name="sexo" class="form-control input-sm">
-                                        <option value="">Seleccione</option>
+                                        <option value="">Todos</option>
                                         <option value="1" {{ $sexo == '1' ? 'selected' : '' }}>Hombre</option>
                                         <option value="0" {{ $sexo == '0' ? 'selected' : '' }}>Mujer</option>
                                     </select>
@@ -94,6 +104,7 @@ function concatenar($numero){
                     <table id="fitnessTable" class="table table-striped table-hover" style="width:100%">
                         <thead class="text-center">
                             <tr>
+                                <th>#</th>
                                 <th>Ficha de evaluación</th>
                                 <th>Nombres y Apellidos</th>
                                 <th>Sexo</th>
@@ -102,10 +113,16 @@ function concatenar($numero){
                             </tr>
                         </thead>
                         <tbody>
-
                             @if (count($inscritos)>0)
+                            @php
+                                $num = 1;
+                            @endphp
                             @foreach ($inscritos as $inscrito)
                             <tr>
+                                <td>{{ $num }}</td>
+                                @php
+                                    $num++;
+                                @endphp
                                 <td>
                                     @foreach ($inscrito->fichas as $ficha)
                                         Nro. {{ concatenar($ficha->correlativo) }}
@@ -144,6 +161,13 @@ function concatenar($numero){
 @endsection
 
 @section('js')
+<script type="text/javascript">
+    $(document).ready( function () {
+        var formData=$("#form-reporte").serialize();
+        var excel=URLs+'/admin/reporte-sexo-excel?'+formData;
+        $(".descarga").attr('href', excel);
+    });
+</script>
 <script>
     $(document).ready( function () {
         $('#fitnessTable').DataTable({
@@ -166,11 +190,5 @@ function concatenar($numero){
             "order":[]
         });
     });
-    function eliminarModal(id){
-        var formModal=$("#form-modal");
-        var url=location.origin;
-        var path=location.pathname
-        formModal.attr('action',url+path+'/'+id);
-    }
 </script>
 @endsection

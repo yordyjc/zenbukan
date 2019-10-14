@@ -22,8 +22,11 @@
 	{!! Html::script('resources/admin/bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') !!}
 	{!! Html::script('resources/admin/bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') !!}
 
-
     <script>
+        $(function() {
+            URLs="{{ url('/') }}";
+        });
+
         function sendRequest(url,data,method,cb) {
             $.ajaxSetup({
                 headers: {
