@@ -24,8 +24,11 @@ class SimulacionController extends Controller
     {
     	$ficha = Ficha::where('correlativo',$correlativo)->with('periodos')->first();
         $periodos = Periodo::where('ficha_id',$ficha->id)->orderBy('id','desc')->take(5)->get();
+        $data=$periodos->first();
+        $imc=round($data->peso/($data->talla*$data->talla),2);
         return view('admin.fichas.alt-simulacion')
             ->with('ficha',$ficha)
-            ->with('periodos',$periodos);
+            ->with('periodos',$periodos)
+            ->with('imc',$imc);
     }
 }

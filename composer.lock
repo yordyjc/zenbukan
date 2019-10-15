@@ -236,28 +236,30 @@
         },
         {
             "name": "doctrine/lexer",
-            "version": "1.0.2",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/lexer.git",
-                "reference": "1febd6c3ef84253d7c815bed85fc622ad207a9f8"
+                "reference": "e17f069ede36f7534b95adec71910ed1b49c74ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/lexer/zipball/1febd6c3ef84253d7c815bed85fc622ad207a9f8",
-                "reference": "1febd6c3ef84253d7c815bed85fc622ad207a9f8",
+                "url": "https://api.github.com/repos/doctrine/lexer/zipball/e17f069ede36f7534b95adec71910ed1b49c74ea",
+                "reference": "e17f069ede36f7534b95adec71910ed1b49c74ea",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.2"
+                "php": "^7.2"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.5"
+                "doctrine/coding-standard": "^6.0",
+                "phpstan/phpstan": "^0.11.8",
+                "phpunit/phpunit": "^8.2"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.1.x-dev"
                 }
             },
             "autoload": {
@@ -271,12 +273,12 @@
             ],
             "authors": [
                 {
-                    "name": "Roman Borschel",
-                    "email": "roman@code-factory.org"
-                },
-                {
                     "name": "Guilherme Blanco",
                     "email": "guilhermeblanco@gmail.com"
+                },
+                {
+                    "name": "Roman Borschel",
+                    "email": "roman@code-factory.org"
                 },
                 {
                     "name": "Johannes Schmitt",
@@ -292,7 +294,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2019-06-08T11:03:04+00:00"
+            "time": "2019-07-30T19:33:28+00:00"
         },
         {
             "name": "dragonmantank/cron-expression",
@@ -911,16 +913,16 @@
         },
         {
             "name": "laraveles/spanish",
-            "version": "1.4.1",
+            "version": "1.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Laraveles/spanish.git",
-                "reference": "de35164e3b9fa435ae1aefc66b6e2dc15c556d22"
+                "reference": "4168ca574d70824f1bb60842bb1788aad0b158a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Laraveles/spanish/zipball/de35164e3b9fa435ae1aefc66b6e2dc15c556d22",
-                "reference": "de35164e3b9fa435ae1aefc66b6e2dc15c556d22",
+                "url": "https://api.github.com/repos/Laraveles/spanish/zipball/4168ca574d70824f1bb60842bb1788aad0b158a7",
+                "reference": "4168ca574d70824f1bb60842bb1788aad0b158a7",
                 "shasum": ""
             },
             "require": {
@@ -969,7 +971,7 @@
                 "spanish",
                 "traduccion"
             ],
-            "time": "2019-10-11T16:09:56+00:00"
+            "time": "2019-10-14T08:31:46+00:00"
         },
         {
             "name": "league/flysystem",
@@ -1535,27 +1537,27 @@
         },
         {
             "name": "orangehill/iseed",
-            "version": "v2.6.1",
+            "version": "v2.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orangehill/iseed.git",
-                "reference": "360ba1314e1dc950438bbb8006fc220de47dca00"
+                "reference": "fe8fbf51ab57bcc28282c6b1109e610c4a44fad9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orangehill/iseed/zipball/360ba1314e1dc950438bbb8006fc220de47dca00",
-                "reference": "360ba1314e1dc950438bbb8006fc220de47dca00",
+                "url": "https://api.github.com/repos/orangehill/iseed/zipball/fe8fbf51ab57bcc28282c6b1109e610c4a44fad9",
+                "reference": "fe8fbf51ab57bcc28282c6b1109e610c4a44fad9",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "^5.3.8",
-                "php": ">=5.4.0"
+                "illuminate/support": "~5.5.0|~5.6.0|~5.7.0|~5.8.0|^6.0",
+                "php": "^7.2"
             },
             "require-dev": {
-                "illuminate/filesystem": "5.x",
-                "laravel/framework": "^5.3.8",
-                "mockery/mockery": "dev-master",
-                "phpunit/phpunit": "^5.7"
+                "illuminate/filesystem": "~5.5.0|~5.6.0|~5.7.0|~5.8.0|^6.0",
+                "laravel/framework": "~5.5.0|~5.6.0|~5.7.0|~5.8.0|^6.0",
+                "mockery/mockery": "^1.0.0",
+                "phpunit/phpunit": "^8.0"
             },
             "type": "library",
             "extra": {
@@ -1590,7 +1592,7 @@
                 "laravel",
                 "seed"
             ],
-            "time": "2018-12-07T08:06:29+00:00"
+            "time": "2019-09-09T13:18:41+00:00"
         },
         {
             "name": "paragonie/random_compat",

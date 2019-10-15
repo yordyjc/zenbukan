@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="{{ asset('/resources/admin/bower_components/font-awesome/css/font-awesome.min.css') }}" />
 
     {!! Html::style('resources/lib/chartist/chartist.min.css') !!}
+<?php
+	echo $imc;
+?>
 
     <style>
         .principal{
@@ -128,12 +131,19 @@
 			/****************************
 	  		 CARGA DEL MODELO
 	  		*****************************/
-	  		 var sexos='<?php echo $ficha->usuario->sexo;?>'
+	  		var sexos='<?php echo $ficha->usuario->sexo;?>';
+	  		$imc='<?php echo $imc?>';
+
+	  		if($imc<20) $idimc=1;
+	  		if($imc>20&&$imc<=24.9) $idimc=4;
+	  		if($imc>=25&&$imc<=29.9) $idimc=8;
+	  		if($imc>=30&&$imc<=40) $idimc=12;
+	  		if($imc>=40) $idimc=15;
 	  		if (sexos==1) {
-	  			loader.load('/resources/admin/assets/blender-files/varon/prueba/varon10.json', handle_load);
+	  			loader.load('/resources/admin/assets/blender-files/varon/varon2/varon'+$idimc+'.json', handle_load);
 	  		}
 	  		else{
-	  			loader.load('/resources/admin/assets/blender-files/dama/damagltf.json', handle_load);
+	  			loader.load('/resources/admin/assets/blender-files/dama/dama1/dama'+$idimc+'.json', handle_load);
 	  		}
 
 		    function handle_load(gltf) {
