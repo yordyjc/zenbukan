@@ -185,6 +185,12 @@ Carbon::setLocale('es');
                     <img src="{{ asset('resources/img/user/logo.png') }}" width="30" height="30" class="d-inline-block align-top bg-transparent" alt="">
                     Fitness10
                 </a>
+
+                <div>
+                    <a href="{{ url('/admin/ver-ficha/'.$ficha->correlativo) }}" class="btn waves-effect waves-light btn-primary btn-outline-primary btn-block mt-2">
+                        <i class="icon feather icon-activity"></i> Ver ficha del inscrito
+                    </a>
+                </div>
             </nav>
         </div>
     </header>

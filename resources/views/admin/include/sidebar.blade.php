@@ -80,7 +80,7 @@
                 </li>
 
                 <li class="@yield('backup')">
-                    <a href="{{ url('backup') }}" class="waves-effect waves-dark">
+                    <a href="{{ url('/admin/backup') }}" class="waves-effect waves-dark">
                         <span class="pcoded-micon"><i class="feather icon-download"></i></span>
                         <span class="pcoded-mtext">Generar backup</span>
                     </a>

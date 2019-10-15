@@ -49,6 +49,9 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/cumpleanos-mes/','Admin\ReportesController@cumpleanosGet');
             Route::post('/cumpleanos-mes/','Admin\ReportesController@cumpleanosPost');
             Route::get('/reporte-cumpleanos-excel','Admin\ReportesController@cumpleanosExcel');
+
+            Route::get('/backup','Admin\FichasController@backup');
+            Route::get('/generar-backup','Admin\FichasController@generarBackup');
         });
     });
 });
