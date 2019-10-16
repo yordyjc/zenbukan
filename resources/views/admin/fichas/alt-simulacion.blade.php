@@ -134,16 +134,31 @@
 	  		var sexos='<?php echo $ficha->usuario->sexo;?>';
 	  		$imc='<?php echo $imc?>';
 
-	  		if($imc<20) $idimc=1;
-	  		if($imc>20&&$imc<=24.9) $idimc=4;
-	  		if($imc>=25&&$imc<=29.9) $idimc=8;
-	  		if($imc>=30&&$imc<=40) $idimc=12;
-	  		if($imc>=40) $idimc=15;
+	  		if($imc<=20) $idimcv=1; $idimcm=1;
+	  		if($imc>20&&$imc<=20.9) $idimcv=4; $idimcm=1;
+	  		if($imc>21&&$imc<=21.9) $idimcv=4; $idimcm=2;
+	  		if($imc>22&&$imc<=22.9) $idimcv=4; $idimcm=2;
+	  		if($imc>23&&$imc<=23.9) $idimcv=4; $idimcm=3;
+	  		if($imc>24&&$imc<=24.9) $idimcv=4; $idimcm=4;
+	  		if($imc>25&&$imc<=25.9) $idimcv=4; $idimcm=5;
+	  		if($imc>26&&$imc<=26.9) $idimcv=4; $idimcm=5;
+	  		if($imc>27&&$imc<=27.9) $idimcv=4; $idimcm=6;
+	  		if($imc>28&&$imc<=28.9) $idimcv=4; $idimcm=7;
+	  		if($imc>29&&$imc<=29.9) $idimcv=4; $idimcm=7;
+	  		if($imc>30&&$imc<=30.9) $idimcv=4; $idimcm=8;
+	  		if($imc>=31&&$imc<=31.9) $idimcv=8; $idimcm=8;
+	  		if($imc>=32&&$imc<=32.9) $idimcv=12; $idimcm=9;
+	  		if($imc>=33&&$imc<=33.9) $idimcv=12; $idimcm=10;
+	  		if($imc>=34&&$imc<=34.9) $idimcv=12; $idimcm=11;
+	  		if($imc>=35&&$imc<=36.9) $idimcv=12; $idimcm=12;
+	  		if($imc>=37&&$imc<=37.9) $idimcv=12; $idimcm=13;
+	  		if($imc>=38&&$imc<=38.9) $idimcv=12; $idimcm=14;
+	  		if($imc>=39) $idimcv=15; $idimcm=15;
 	  		if (sexos==1) {
-	  			loader.load('/resources/admin/assets/blender-files/varon/varon2/varon'+$idimc+'.json', handle_load);
+	  			loader.load('/resources/admin/assets/blender-files/varon/varon2/varon'+$idimcv+'.json', handle_load);
 	  		}
 	  		else{
-	  			loader.load('/resources/admin/assets/blender-files/dama/dama1/dama'+$idimc+'.json', handle_load);
+	  			loader.load('/resources/admin/assets/blender-files/dama/dama1/dama'+$idimcm+'.json', handle_load);
 	  		}
 
 		    function handle_load(gltf) {
