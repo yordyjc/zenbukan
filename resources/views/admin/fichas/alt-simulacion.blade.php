@@ -133,27 +133,71 @@
 	  		*****************************/
 	  		var sexos='<?php echo $ficha->usuario->sexo;?>';
 	  		$imc='<?php echo $imc?>';
+	  		switch(true)
+	  		{
+	  			case $imc<=18.5:
+	  				$idimcv=1; $idimcm=1;
+	  				break;
+	  			case $imc>18.5&&$imc<=19.6:
+	  				$idimcv=5; $idimcm=3;
+	  				break;
+	  			case $imc>19.6&&$imc<=20.7:
+	  				$idimcv=5; $idimcm=4;
+	  				break;
+	  			case $imc>20.7&&$imc<=21.8:
+	  				$idimcv=7; $idimcm=5;
+	  				break;
+	  			case $imc>21.8&&$imc<=22.9:
+	  				$idimcv=9; $idimcm=6;
+	  				break;
+	  			case $imc>22.9&&$imc<=24:
+	  				$idimcv=10; $idimcm=7;
+	  				break;
+	  			case $imc>24&&$imc<=25.1:
+	  				$idimcv=11; $idimcm=10;
+	  				break;
+	  			case $imc>25.1&&$imc<=26.2:
+	  				$idimcv=11; $idimcm=11;
+	  				break;
+	  			case $imc>26.2&&$imc<=27.3:
+	  				$idimcv=12; $idimcm=11;
+	  				break;
+	  			case $imc>27.3&&$imc<=28.4:
+	  				$idimcv=12; $idimcm=12;
+	  				break;
+	  			case $imc>28.4&&$imc<=29.5:
+	  				$idimcv=13; $idimcm=12;
+	  				break;
+	  			case $imc>29.5&&$imc<=30.6:
+	  				$idimcv=14; $idimcm=13;
+	  				break;
+	  			case $imc>30.6&&$imc<=31.7:
+	  				$idimcv=15; $idimcm=13;
+	  				break;
+	  			case $imc>31.7&&$imc<=32.8:
+	  				$idimcv=16; $idimcm=14;
+	  				break;
+	  			case $imc>32.8&&$imc<=33.9:
+	  				$idimcv=17; $idimcm=14;
+	  				break;
+	  			case $imc>33.9&&$imc<=35:
+	  				$idimcv=17; $idimcm=14;
+	  				break;
+	  			case $imc>35&&$imc<=36.1:
+	  				$idimcv=18; $idimcm=15;
+	  				break;
+	  			case $imc>36.1&&$imc<=37.2:
+	  				$idimcv=18; $idimcm=15;
+	  				break;
+	  			case $imc>37.2&&$imc<=38.3:
+	  				$idimcv=19; $idimcm=15;
+	  				break;
+	  			case $imc>38.3&&$imc<=39.4:
+	  				$idimcv=19; $idimcm=15;
+	  				break;
+	  			default: $idimcv=20; $idimcm=15;
+	  		}
 
-	  		if($imc<=20) $idimcv=1; $idimcm=1;
-	  		if($imc>20&&$imc<=20.9) $idimcv=4; $idimcm=1;
-	  		if($imc>21&&$imc<=21.9) $idimcv=4; $idimcm=2;
-	  		if($imc>22&&$imc<=22.9) $idimcv=4; $idimcm=2;
-	  		if($imc>23&&$imc<=23.9) $idimcv=4; $idimcm=3;
-	  		if($imc>24&&$imc<=24.9) $idimcv=4; $idimcm=4;
-	  		if($imc>25&&$imc<=25.9) $idimcv=4; $idimcm=5;
-	  		if($imc>26&&$imc<=26.9) $idimcv=4; $idimcm=5;
-	  		if($imc>27&&$imc<=27.9) $idimcv=4; $idimcm=6;
-	  		if($imc>28&&$imc<=28.9) $idimcv=4; $idimcm=7;
-	  		if($imc>29&&$imc<=29.9) $idimcv=4; $idimcm=7;
-	  		if($imc>30&&$imc<=30.9) $idimcv=4; $idimcm=8;
-	  		if($imc>=31&&$imc<=31.9) $idimcv=8; $idimcm=8;
-	  		if($imc>=32&&$imc<=32.9) $idimcv=12; $idimcm=9;
-	  		if($imc>=33&&$imc<=33.9) $idimcv=12; $idimcm=10;
-	  		if($imc>=34&&$imc<=34.9) $idimcv=12; $idimcm=11;
-	  		if($imc>=35&&$imc<=36.9) $idimcv=12; $idimcm=12;
-	  		if($imc>=37&&$imc<=37.9) $idimcv=12; $idimcm=13;
-	  		if($imc>=38&&$imc<=38.9) $idimcv=12; $idimcm=14;
-	  		if($imc>=39) $idimcv=15; $idimcm=15;
 	  		if (sexos==1) {
 	  			loader.load('/resources/admin/assets/blender-files/varon/varon2/varon'+$idimcv+'.json', handle_load);
 	  		}
