@@ -83,17 +83,17 @@ class PeriodosController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'peso' => 'required|numeric|min:0',
-            // 'pecho' => 'numeric|min:0',
-            // 'espalda' => 'numeric|min:0',
-            // 'hombros' => 'numeric|min:0',
-            // 'biceps' => 'numeric|min:0',
-            // 'cintura' => 'numeric|min:0',
-            // 'gluteos' => 'numeric|min:0',
-            // 'pierna' => 'numeric|min:0',
-            // 'pantorrilla' => 'numeric|min:0',
-            // 'planchas' => 'numeric|integer|min:0',
-            // 'sentadillas' => 'numeric|integer|min:0',
-            // 'abdominales' => 'numeric|integer|min:0',
+            'pecho' => 'numeric|min:0',
+            'espalda' => 'numeric|min:0',
+            'hombros' => 'numeric|min:0',
+            'biceps' => 'numeric|min:0',
+            'cintura' => 'numeric|min:0',
+            'gluteos' => 'numeric|min:0',
+            'pierna' => 'numeric|min:0',
+            'pantorrilla' => 'numeric|min:0',
+            'planchas' => 'numeric|integer|min:0',
+            'sentadillas' => 'numeric|integer|min:0',
+            'abdominales' => 'numeric|integer|min:0',
         ]);
         if ($validator->fails()) {
             alert()->error('Ups!','La operación no pudo ser completada')->autoClose(4000)->showCloseButton();
@@ -101,6 +101,14 @@ class PeriodosController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         }
+
+        if ($request->planchas == NULL)
+            $request->planchas = 0;
+        if ($request->sentadillas == NULL)
+            $request->sentadillas = 0;
+        if ($request->abdominales == NULL)
+            $request->abdominales = 0;
+
 
         $ultimo_periodo = $this->ultimo_periodo($request->ficha);
         $ficha = Ficha::where('correlativo',$request->ficha)->first();

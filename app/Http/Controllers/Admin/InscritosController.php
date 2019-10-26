@@ -87,6 +87,7 @@ class InscritosController extends Controller
         $validator = Validator::make($request->all(), [
             'nombre' => 'required|string',
             'apellido' => 'required|string',
+            'telefono' => 'required',
             'email' => 'required|string|email|max:255|unique:users',
             'foto' => 'file|mimes:png,jpg,jpeg|max:5120',
             'talla' => 'numeric|min:0.60|max:2.20',
