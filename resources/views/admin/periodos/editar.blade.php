@@ -356,6 +356,90 @@ function concatenar($numero){
     <div class="col-sm-12">
         <div class="card">
             <div class="card-header">
+                <h5>ÍNDICE DE FAULKNER</h5>
+            </div>
+            <div class="card-block">
+                <div class="col-sm-10 offset-sm-1">
+
+                    <div class="row">
+
+                        <div class="col-sm-12 col-xl-3">
+                            <div class="form-group {{ $errors->has('triceps') ? ' has-danger' : '' }} row">
+                                <label class="col-md-12 col-form-label" for="triceps">
+                                    Tríceps
+                                </label>
+                                <div class="col-md-12">
+                                    <input type="number" class="form-control form-control-round {{ $errors->has('triceps') ? ' form-control-danger' : '' }}" id="triceps" name="triceps" value="{{ $periodo->triceps }}" step="0.01" min="0">
+                                    @if ($errors->has('triceps'))
+                                    <div class="col-form-label">
+                                        {{ $errors->first('triceps') }}
+                                    </div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-xl-3">
+                            <div class="form-group {{ $errors->has('subescapular') ? ' has-danger' : '' }} row">
+                                <label class="col-md-12 col-form-label" for="subescapular">
+                                    Subescapular
+                                </label>
+                                <div class="col-md-12">
+                                    <input type="number" class="form-control form-control-round {{ $errors->has('subescapular') ? ' form-control-danger' : '' }}" id="subescapular" name="subescapular" value="{{ $periodo->subescapular }}" step="0.01" min="0">
+                                    @if ($errors->has('subescapular'))
+                                    <div class="col-form-label">
+                                        {{ $errors->first('subescapular') }}
+                                    </div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-xl-3">
+                            <div class="form-group {{ $errors->has('suprailiaco') ? ' has-danger' : '' }} row">
+                                <label class="col-md-12 col-form-label" for="suprailiaco">
+                                    Suprailiaco
+                                </label>
+                                <div class="col-md-12">
+                                    <input type="number" class="form-control form-control-round {{ $errors->has('suprailiaco') ? ' form-control-danger' : '' }}" id="suprailiaco" name="suprailiaco" value="{{ $periodo->suprailiaco }}" step="0.01" min="0">
+                                    @if ($errors->has('suprailiaco'))
+                                    <div class="col-form-label">
+                                        {{ $errors->first('suprailiaco') }}
+                                    </div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-xl-3">
+                            <div class="form-group {{ $errors->has('abdominal') ? ' has-danger' : '' }} row">
+                                <label class="col-md-12 col-form-label" for="abdominal">
+                                    Abdominal
+                                </label>
+                                <div class="col-md-12">
+                                    <input type="number" class="form-control form-control-round {{ $errors->has('abdominal') ? ' form-control-danger' : '' }}" id="abdominal" name="abdominal" value="{{ $periodo->abdominal }}" step="0.01" min="0">
+                                    @if ($errors->has('abdominal'))
+                                    <div class="col-form-label">
+                                        {{ $errors->first('abdominal') }}
+                                    </div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
                 <h5>EXAMEN FÍSICO</h5>
             </div>
             <div class="card-block">

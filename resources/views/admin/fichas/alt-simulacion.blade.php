@@ -11,9 +11,6 @@
     <link rel="stylesheet" href="{{ asset('/resources/admin/bower_components/font-awesome/css/font-awesome.min.css') }}" />
 
     {!! Html::style('resources/lib/chartist/chartist.min.css') !!}
-<?php
-	echo $imc;
-?>
 
     <style>
         .principal{
@@ -390,6 +387,10 @@ Carbon::setLocale('es');
                         </table>
                     </div>
                     <div>
+                        <h5 class="sub-title text-center">Índice de Faulkner</h5>
+                        <div class="ct-chart ct-golden-section" id="faulkner"></div>
+                    </div>
+                    <div>
                         <h5 class="sub-title text-center">Nivel de proteína</h5>
                         <table class="table bordered table-light">
                             <thead>
@@ -593,6 +594,65 @@ document.addEventListener('DOMContentLoaded',function(){
             }),
             Chartist.plugins.ctMultiThreshold({
                 threshold: [18.50, 25, 30]
+            })
+        ]
+    });
+    /******************************************************
+    * FAULKNER
+    ******************************************************/
+    new Chartist.Line('#faulkner', {
+        labels: [
+        @foreach ($periodos->reverse() as $periodo)
+            "{{ Carbon::parse($periodo->fecha)->format('M/y') }}",
+        @endforeach
+        ],
+
+        series: [[
+        @foreach ($periodos->reverse() as $periodo)
+        @php
+            $faulkner = (($periodo->triceps + $periodo->subescapular + $periodo->suprailiaco + $periodo->abdominal)*0.153)+5.783;
+        @endphp
+            {{ $faulkner }},
+        @endforeach
+        ]]
+    }, {
+        low: 0,
+        showArea: false,
+        fullWidth: true,
+        chartPadding: {
+            top: 40,
+            bottom: 40,
+            left: 20,
+            right: 20,
+        },
+        lineSmooth: false,
+        axisY: {
+            onlyInteger: true
+        },
+        plugins: [
+            Chartist.plugins.ctPointLabels({
+                textAnchor: 'middle'
+            }),
+            Chartist.plugins.ctAxisTitle({
+                axisX: {
+                    axisTitle: 'Periodo',
+                    axisClass: 'ct-axis-title',
+                    offset: {
+                        x: 0,
+                        y: 40
+                    },
+                    textAnchor: 'middle',
+                },
+                axisY: {
+                    axisTitle: 'Ind. Faulkner',
+                    axisClass: 'ct-axis-title',
+                    offset: {
+                        x: 0,
+                        y: -10
+                    },
+                    textAnchor: 'middle',
+                    flipTitle: false
+                }
             })
         ]
     });

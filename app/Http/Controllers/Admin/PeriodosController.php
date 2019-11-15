@@ -94,6 +94,10 @@ class PeriodosController extends Controller
             'planchas' => 'numeric|integer|min:0',
             'sentadillas' => 'numeric|integer|min:0',
             'abdominales' => 'numeric|integer|min:0',
+            'triceps' => 'numeric|min:0',
+            'subescapular' => 'numeric|min:0',
+            'suprailiaco' => 'numeric|min:0',
+            'abdominal' => 'numeric|min:0',
         ]);
         if ($validator->fails()) {
             alert()->error('Ups!','La operación no pudo ser completada')->autoClose(4000)->showCloseButton();
@@ -145,6 +149,11 @@ class PeriodosController extends Controller
         $periodo->gluteos = $request->gluteos;
         $periodo->pierna = $request->pierna;
         $periodo->pantorrilla = $request->pantorrilla;
+
+        $periodo->triceps = $request->triceps;
+        $periodo->subescapular = $request->subescapular;
+        $periodo->suprailiaco = $request->suprailiaco;
+        $periodo->abdominal = $request->abdominal;
 
         $periodo->check_fisico = $check_fisico;
         $periodo->planchas = $request->planchas;
@@ -210,6 +219,10 @@ class PeriodosController extends Controller
             // 'planchas' => 'numeric|integer|min:0',
             // 'sentadillas' => 'numeric|integer|min:0',
             // 'abdominales' => 'numeric|integer|min:0',
+            // 'triceps' => 'numeric|min:0',
+            // 'subescapular' => 'numeric|min:0',
+            // 'suprailiaco' => 'numeric|min:0',
+            // 'abdominal' => 'numeric|min:0',
         ]);
         if ($validator->fails()) {
             alert()->error('Ups!','La operación no pudo ser completada')->autoClose(4000)->showCloseButton();
@@ -247,6 +260,11 @@ class PeriodosController extends Controller
         $periodo->gluteos = $request->gluteos;
         $periodo->pierna = $request->pierna;
         $periodo->pantorrilla = $request->pantorrilla;
+
+        $periodo->triceps = $request->triceps;
+        $periodo->subescapular = $request->subescapular;
+        $periodo->suprailiaco = $request->suprailiaco;
+        $periodo->abdominal = $request->abdominal;
 
         $periodo->check_fisico = $check_fisico;
         $periodo->planchas = $request->planchas;
