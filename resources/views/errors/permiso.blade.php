@@ -40,13 +40,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <title>@yield('title') | Panel de administración - Tacnatel</title>
-    <meta name="description" content="@yield('description','Panel de administración de Tacnatel, esta sección está disponible sólo para administradores')" />
-    <meta name="author" content="Tacnatel" />
+    <title>@yield('title') | Panel de administración</title>
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <link rel="icon" href="{{ url('/resources/admin/assets/images/favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ url('/resources/img/user/logo.png') }}" type="image/x-icon">
 
     @include('admin.include.css')
     @include('admin.include.data')

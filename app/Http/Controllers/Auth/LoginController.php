@@ -60,11 +60,11 @@ class LoginController extends Controller
         $credentials['activo']=1;
         if (Auth::attempt($credentials)) {
             if(Auth::user()->confirmado==1){
-                if (Auth::user()->tipo==1) {
+                if (Auth::user()->tipo==1  && Auth::user()->activo==1) {
                     return redirect('/admin/inscritos');
                 }
-                elseif (Auth::user()->tipo==2) {
-                    
+                elseif (Auth::user()->tipo==2 && Auth::user()->activo==1) {
+
                     return redirect('/user/mificha');
 
                 }

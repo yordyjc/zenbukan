@@ -129,7 +129,7 @@ function concatenar($numero){
                                             @csrf
                                             @method('DELETE')
                                             <div class="modal-body">
-                                                <p>Cuando un usuario deja de asistir ya no se pueden crear evaluaciones nuevas y su ficha no puede ser modificada hasta que vuelva a asistir.</p>
+                                                <p>Cuando un usuario deja de asistir ya no se pueden crear evaluaciones nuevas y su ficha no puede ser modificada hasta que vuelva a asistir. Tampoco podrá iniciar sesión</p>
                                                 <p>Esta acción no podrá deshacerse. ¿Quieres continuar?</p>
                                             </div>
                                             <div class="modal-footer">
