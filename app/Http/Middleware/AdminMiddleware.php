@@ -15,10 +15,10 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (auth()->user()->tipo==1) {
+        if (auth()->user()->tipo==1 && auth()->user()->activo==1) {
             return $next($request);
             // return view('errors.403_error');
         }
-        return redirect('/admin/usuario/sin-permiso');
+        return redirect('/admin/sin-permiso');
     }
 }

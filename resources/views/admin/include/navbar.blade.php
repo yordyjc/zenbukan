@@ -27,7 +27,7 @@
 							<i class="feather icon-chevron-down"></i>
 						</div>
 						<ul class="profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-							{{-- <li>
+							<li>
 								<a href="{{ url('/admin/perfil-admin') }}">
 									<i class="feather icon-user"></i> Mi perfil
 								</a>
@@ -37,7 +37,7 @@
 								<a href="{{ url('/admin/perfil-admin/modificar') }}">
 									<i class="feather icon-settings"></i> Editar perfil
 								</a>
-							</li> --}}
+							</li>
 
 							<form action="{{ url('/logout') }}" method="post" id="logout-form">
 								@csrf

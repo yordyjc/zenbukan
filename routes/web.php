@@ -33,6 +33,14 @@ Route::middleware(['auth'])->group(function () {
             Route::resource('/periodos','Admin\PeriodosController');
             Route::get('/simulacion/{correlativo}','Admin\SimulacionController@ver');
 
+            Route::resource('lista-administrador','Admin\AdministradoresController');
+            Route::get('/perfil-admin','Admin\AdministradoresController@perfil');
+            Route::post('/perfil-admin','Admin\AdministradoresController@modificarfoto');
+            Route::get('/perfil-admin/modificar','Admin\AdministradoresController@obtenerperfil');
+            Route::put('/perfil-admin/modificar','Admin\AdministradoresController@modificarperfil');
+            Route::get('/perfil/confirmpass','Admin\AdministradoresController@confirmpass');
+            Route::post('/perfil/changepass','Admin\AdministradoresController@changepass');
+
             //reportes
             Route::get('/reporte-fechas/','Admin\ReportesController@fechasGet');
             Route::post('/reporte-fechas/','Admin\ReportesController@fechasPost');
@@ -54,7 +62,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/generar-backup','Admin\FichasController@generarBackup');
         });
     });
-    
+
     Route::prefix('user')->group(function(){
         Route::get('/',function(){
             return redirect('/user/mificha');

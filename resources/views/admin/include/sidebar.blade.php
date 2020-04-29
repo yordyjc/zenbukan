@@ -16,6 +16,16 @@
 						<span class="pcoded-mtext">Configuración general</span>
 					</a>
 				<li> --}}
+            </ul>
+
+            <div class="pcoded-navigation-label">Gestión de usuarios</div>
+            <ul class="pcoded-item pcoded-left-item">
+                <li class="@yield('administradores')">
+                    <a href="{{ url('/admin/lista-administrador') }}" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="feather icon-user"></i></span>
+                        <span class="pcoded-mtext">Administradores</span>
+                    </a>
+                </li>
 
                 <li class="pcoded-hasmenu @yield('inscritos')">
                     <a href="javascript:void(0)" class="waves-effect waves-dark">
@@ -49,7 +59,10 @@
                         </li>
                     </ul>
                 </li>
+            </ul>
 
+            <div class="pcoded-navigation-label">Gestión de reportes</div>
+            <ul class="pcoded-item pcoded-left-item">
                 <li class="pcoded-hasmenu @yield('reportes')">
                     <a href="javascript:void(0)" class="waves-effect waves-dark">
                         <span class="pcoded-micon"><i class="feather icon-save"></i></span>
