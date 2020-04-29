@@ -85,9 +85,9 @@
 												<span class="text-inverse">Recordar</span>
 											</label>
 										</div>
-										{{-- <div class="forgot-phone text-right float-right">
+										<div class="forgot-phone text-right float-right">
 											<a href="{{ url('/password/reset') }}" class="text-right f-w-600"> ¿Olvidó su contraseña?</a>
-										</div> --}}
+										</div>
 									</div>
 								</div>
 

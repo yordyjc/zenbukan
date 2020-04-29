@@ -22,10 +22,10 @@ class RedirectIfAuthenticated
                 return redirect('/admin/inscritos');
             }
             else if(Auth::user()->tipo==2){
-                return redirect('/futuro-panel-usuario');
+                return redirect('/user/mificha');
             }
             else{
-                return redirect('/usuario-sin-permiso');
+                return redirect('/sin-permiso');
             }
         }
 
