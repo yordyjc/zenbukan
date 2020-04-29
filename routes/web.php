@@ -67,11 +67,11 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/',function(){
             return redirect('/user/mificha');
         });
-        Route::get('/actual','user\PerfilController@actual');
-        Route::get('/perfil','user\PerfilController@verperfil');
-        Route::get('/mificha','user\PerfilController@mificha');
-        Route::get('/reporte','user\PerfilController@reporte');
-        Route::get('/periodo/{id}','user\PerfilController@verperiodo');
+        Route::get('/actual','user\FichaController@actual');
+        Route::get('/perfil','user\FichaController@verperfil');
+        Route::get('/mificha','user\FichaController@mificha');
+        Route::get('/reporte','user\FichaController@reporte');
+        Route::get('/periodo/{id}','user\FichaController@verperiodo');
     });
 });
 
