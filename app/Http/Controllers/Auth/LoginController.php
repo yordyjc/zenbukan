@@ -64,8 +64,8 @@ class LoginController extends Controller
                     return redirect('/admin/inscritos');
                 }
                 elseif (Auth::user()->tipo==2) {
-                    Auth::logout();
-                    return redirect('/login');
+                    
+                    return redirect('/user/mificha');
 
                 }
                 else{

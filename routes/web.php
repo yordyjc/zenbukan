@@ -54,5 +54,16 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/generar-backup','Admin\FichasController@generarBackup');
         });
     });
+    
+    Route::prefix('user')->group(function(){
+        Route::get('/',function(){
+            return redirect('/user/mificha');
+        });
+        Route::get('/actual','user\PerfilController@actual');
+        Route::get('/perfil','user\PerfilController@verperfil');
+        Route::get('/mificha','user\PerfilController@mificha');
+        Route::get('/reporte','user\PerfilController@reporte');
+        Route::get('/periodo/{id}','user\PerfilController@verperiodo');
+    });
 });
 

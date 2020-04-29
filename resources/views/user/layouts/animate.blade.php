@@ -3,4 +3,5 @@
 {!! Html::script('resources/admin/assets/js/threejs-loader/Orbit.js') !!}
 {!! Html::script('resources/admin/assets/js/threejs-loader/GLTFLoader.js') !!}
 {!! Html::script('resources/admin/assets/js/threejs-loader/data.gui.js') !!}
-@yield('js')
+
+
