@@ -73,7 +73,7 @@ jQuery(document).ready(function ($) {
 	}
 
 	/*==========================================================
-		2. BMI form label animation
+		2. IMC form label animation
 	============================================================*/
 	if ($('.xs-form').length > 0) {
 		$('.xs-form .form-control').on('focus', function (e) {
@@ -259,7 +259,7 @@ jQuery(document).ready(function ($) {
 			offset: '50%'
 		});
 	}
-	 
+
 	/*=============================================================
 		8. Modal Popup
 	=========================================================================*/
@@ -408,7 +408,7 @@ jQuery(document).ready(function ($) {
 		}
 	});
 
-	
+
 	if ($(window).width() > 991) {
 
 		$('.parallaxie').parallaxie();
@@ -423,9 +423,9 @@ jQuery(document).ready(function ($) {
 		 });
 
 	 }
-	 
-	 
-	 
+
+
+
 
 	 $( '.elementskit-navbar, .mobile-nav, .cta' ).find( 'a[href*="#"]:not([href="#"])' ).on('click', function () {
         if ( location.pathname.replace( /^\//, '' ) == this.pathname.replace( /^\//, '' ) && location.hostname == this.hostname ) {
@@ -443,6 +443,6 @@ jQuery(document).ready(function ($) {
         }
     } );
 
-	 
+
 
 }); // end ready function
