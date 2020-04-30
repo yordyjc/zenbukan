@@ -10,12 +10,12 @@
 					</a>
 				</li>
 
-				{{-- <li class="@yield('configuracion')">
+				<li class="@yield('configuracion')">
 					<a href="{{ url('/admin/configuracion-general') }}" class="waves-effect waves-dark">
 						<span class="pcoded-micon"><i class="feather icon-settings"></i></span>
 						<span class="pcoded-mtext">Configuración general</span>
 					</a>
-				<li> --}}
+				<li>
             </ul>
 
             <div class="pcoded-navigation-label">Gestión de usuarios</div>
@@ -100,6 +100,17 @@
                 </li>
 
 			</ul>
+
+            <div class="pcoded-navigation-label">Gestión de página web</div>
+            <ul class="pcoded-item pcoded-left-item">
+                <li class="@yield('fondos')">
+                    <a href="{{ url('/admin/fondos') }}" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="feather icon-image"></i></span>
+                        <span class="pcoded-mtext">Fondos</span>
+                    </a>
+                </li>
+            </ul>
+
 
 		</div>
 	</div>

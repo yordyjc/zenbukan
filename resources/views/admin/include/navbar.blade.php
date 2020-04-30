@@ -1,7 +1,9 @@
 <nav class="navbar header-navbar pcoded-header">
 	<div class="navbar-wrapper">
 		<div class="navbar-logo">
-			<h3 style="color:#fff;">Fitness 10</h3>
+			<a href="{{ url('/') }}">
+                <img class="img-fluid" src="{{ url('resources/img/logo.png') }}" alt="Fitness 10" title="Volver a Página Principal" width="50" />
+            </a>
 			<a class="mobile-menu" id="mobile-collapse" href="#!">
 				<i class="feather icon-menu icon-toggle-right"></i>
 			</a>
