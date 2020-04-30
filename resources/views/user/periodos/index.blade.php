@@ -181,7 +181,7 @@ function concatenar($numero){
                                             </td>
                                             <td>
                                                 <a href="{{ url('/user/periodo/'.$periodo->id) }}">
-                                                    <i class="icon feather icon-edit-2 f-w-500 f-20 m-l-5 text-c-blue" data-toggle="tooltip" data-placement="left" data-original-title="Editar"></i>
+                                                    <i class="icon feather icon-external-link f-w-600 f-16 m-r-5 text-c-green" data-toggle="tooltip" data-placement="left" data-original-title="Ver periodo"></i>
                                                 </a>
                                             </td>
                                         </tr>
