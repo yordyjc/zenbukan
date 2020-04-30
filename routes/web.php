@@ -29,6 +29,7 @@ Route::middleware(['auth'])->group(function () {
             Route::resource('/periodos','Admin\PeriodosController');
             Route::get('/simulacion/{correlativo}','Admin\SimulacionController@ver');
 
+            //administradores
             Route::resource('lista-administrador','Admin\AdministradoresController');
             Route::get('/perfil-admin','Admin\AdministradoresController@perfil');
             Route::post('/perfil-admin','Admin\AdministradoresController@modificarfoto');
@@ -36,6 +37,9 @@ Route::middleware(['auth'])->group(function () {
             Route::put('/perfil-admin/modificar','Admin\AdministradoresController@modificarperfil');
             Route::get('/perfil/confirmpass','Admin\AdministradoresController@confirmpass');
             Route::post('/perfil/changepass','Admin\AdministradoresController@changepass');
+
+            //pagina-web
+            Route::resource('/fondos','Admin\FondosController');
 
             //reportes
             Route::get('/reporte-fechas/','Admin\ReportesController@fechasGet');
