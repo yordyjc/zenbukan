@@ -23,16 +23,16 @@
                         </li>
 
                         <li class="elementskit-dropdown-has">
-                            <a href="{{ url('/nosotros') }}">Nosotros</a>
+                            <a href="{{ url('/nosotros') }}">Corporativo</a>
                             <ul class="elementskit-dropdown elementskit-submenu-panel">
                                 <li><a href="{{ url('/entrenadores') }}">Entrenadores</a></li>
                             </ul>
                         </li>
+                        <li><a href="{{ url('/imc') }}">Ev. Física Nutricional</a></li>
                         <li class="elementskit-dropdown-has">
                             <a href="{{ url('/productos') }}">Servicios</a>
                             <ul class="elementskit-dropdown elementskit-submenu-panel">
                                 <li><a href="{{ url('/productos') }}">Suplementos deportivos</a></li>
-                                <li><a href="{{ url('/imc') }}">Evaluación Física Nutricional</a></li>
                                 <li><a href="{{ url('/maternidad-fitness') }}">Maternidad Fitness</a></li>
                                 <li><a href="{{ url('/adulto-mayor-fitness') }}">Adulto Mayor Fitness</a></li>
                                 <li><a href="{{ url('/ninos-fitness') }}">Niños Fitness</a></li>
