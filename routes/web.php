@@ -39,6 +39,7 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/perfil/changepass','Admin\AdministradoresController@changepass');
 
             //pagina-web
+            Route::resource('configuracion-general','Admin\ConfiguracionesController');
             Route::resource('/fondos','Admin\FondosController');
 
             //reportes
