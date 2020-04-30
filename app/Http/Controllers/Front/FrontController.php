@@ -25,4 +25,12 @@ class FrontController extends Controller
         return view('front.index.index')
             ->with('configuracion',$configuracion);
     }
+
+    public function imc()
+    {
+        $configuracion=Configuracion::find(1);
+        return view('front.imc.index')
+            ->with('fondo',$fondo)
+            ->with('configuracion',$configuracion);
+    }
 }
