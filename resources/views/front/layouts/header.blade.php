@@ -41,9 +41,50 @@
                         <li>
                             <a href="{{ url('/contacto') }}">Contacto</a>
                         </li>
+                        @if (Auth::check())
+                            @if (Auth::user()->tipo==1) {{-- Admin --}}
+                            <li class="elementskit-dropdown-has">
+                                <a href="{{ url('/user/mificha') }}">Mi cuenta</a>
+                                <ul class="elementskit-dropdown elementskit-submenu-panel">
+                                    <li><a>Bienvenido, {{ Auth::user()->nombres }}</a></li>
+                                    <li><a href="{{ url('/admin/inscritos') }}">Administrar</a></li>
+                                    <li>
+                                        <form action="{{ url('/logout') }}" method="post">
+                                        <a href="">
+                                            @csrf
+                                            <button type="submit" class="btn btn-link" style="   padding-top: 15px;padding-left: 15px;padding-bottom: 15px;padding-right: 15px;color: #101010;font-weight: 700;font-size: 14px;text-transform: uppercase;letter-spacing: 1px;">
+                                                Cerrar sesión
+                                            </button>
+                                        </a>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            @else {{-- Usuario --}}
+                            <li class="elementskit-dropdown-has">
+                                <a href="{{ url('/user/mificha') }}">Mi cuenta</a>
+                                <ul class="elementskit-dropdown elementskit-submenu-panel">
+                                    <li><a>Bienvenido, {{ Auth::user()->nombres }}</a></li>
+                                    <li><a href="{{ url('user/mificha') }}">Panel de usuario</a></li>
+                                    <li>
+                                        <form action="{{ url('/logout') }}" method="post">
+                                        <a href="">
+                                            @csrf
+                                            <button type="submit" class="btn btn-link" style="   padding-top: 15px;padding-left: 15px;padding-bottom: 15px;padding-right: 15px;color: #101010;font-weight: 700;font-size: 14px;text-transform: uppercase;letter-spacing: 1px;">
+                                                Cerrar sesión
+                                            </button>
+                                        </a>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                            @endif
+                        @else
                         <li>
                             <a href="{{ url('/login') }}">Clientes</a>
                         </li>
+                        @endif
                     </ul>
 
                     <div class="elementskit-nav-identity-panel">

@@ -1,5 +1,9 @@
 @extends('front.layouts.app');
 
+@section('titulo')
+Inicio
+@endsection
+
 @section('contenido')
 <!-- Banner -->
 <section class="xs-bg-cover parallaxie " id="home" style="background-image: url(assets/images/banner/default-banner.jpg);">
