@@ -32,21 +32,25 @@ class FrontController extends Controller
         return $numero;
     }
 
+    public function fondo(){
+        $elegido = rand(1,$this->ultimo_fondo());
+        $fondo = Fondo::where('numero',$elegido)->first();
+        return $fondo->foto;
+    }
+
     public function index()
     {
         $configuracion=Configuracion::find(1);
         return view('front.index.index')
+            ->with('fondo',$this->fondo())
             ->with('configuracion',$configuracion);
     }
 
     public function imc()
     {
-        $elegido = rand(1,$this->ultimo_fondo());
-        $fondo = Fondo::where('numero',$elegido)->first();
-
         $configuracion=Configuracion::find(1);
         return view('front.imc.index')
-            ->with('fondo',$fondo->foto)
+            ->with('fondo',$this->fondo())
             ->with('configuracion',$configuracion);
     }
 }
