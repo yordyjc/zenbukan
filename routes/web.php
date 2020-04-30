@@ -11,10 +11,6 @@ Route::post('/logout','Auth\LoginController@logout')->name('logout');
 Route::post('/password/email','Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::post('/password/reset/{token}','Auth\ResetPasswordController@reset')->name('password.request');
 
-Route::get('/', function () {
-    return redirect('login');
-});
-
 Route::middleware(['auth'])->group(function () {
     Route::prefix('admin')->group(function(){
         Route::get('/sin-permiso', function (){
@@ -84,3 +80,5 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
+Route::get('/','Front\FrontController@index');
+Route::get('/imc','Front\FrontController@imc');

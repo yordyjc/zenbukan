@@ -99,7 +99,7 @@ class UsersTableSeeder extends Seeder
                 'nombres' => $faker->firstname,
                 'apellidos' => $faker->lastname.' '.$faker->lastname,
                 'email' => $faker->unique()->email,
-                'password' => '$2y$10$6edco69XWqwfvM7a19fTpe5R.ocKTb.CT8J8BG/RGy/Qns6azHoPa',
+                'password' => '$2y$10$A/KvMFYK0Reu/pid3LHQGuRWWSXP6fLlLCxiDl9yoe1xujW1M5JbW',
                 'telefono' => $faker->phoneNumber,
                 'sexo' => $faker->randomElement(['0', '1']),
                 'sector_id' => Sector::inRandomOrder()->value('id') ?: factory(Sector::class),
