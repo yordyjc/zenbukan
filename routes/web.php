@@ -42,6 +42,9 @@ Route::middleware(['auth'])->group(function () {
             Route::resource('configuracion-general','Admin\ConfiguracionesController');
             Route::resource('/fondos','Admin\FondosController');
 
+            //planes
+            Route::resource('planes','Admin\PlanesController');
+
             //reportes
             Route::get('/reporte-fechas/','Admin\ReportesController@fechasGet');
             Route::post('/reporte-fechas/','Admin\ReportesController@fechasPost');
