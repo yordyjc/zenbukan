@@ -23,11 +23,6 @@ class FichaController extends Controller
             ->with('periodos',$periodos)
             ->with('imc',$imc);
     }
-
-    public function verperfil()
-    {
-
-    }
     public function mificha()
     {
         $ficha = Ficha::where('user_id',Auth::user()->id)->with('periodos')->first();
@@ -48,10 +43,5 @@ class FichaController extends Controller
         else{
             return redirect('/admin/sin-permiso');
         }
-    }
-
-    public function reporte()
-    {
-        return view('user.reportes.reporte');
     }
 }

@@ -22,19 +22,19 @@
 					<div class="dropdown-primary dropdown">
 						<div class="dropdown-toggle" data-toggle="dropdown">
 							<span>¡Hola {{ Auth::user()->nombres }} !</span>
-							{{-- <img src="{{ Auth::user()->foto ? Auth::user()->foto : '/resources/img/user/default.png' }}" class="img-radius img-40" width="40px" height="40px" alt="{{ Auth::user()->email }}"> --}}
-                            <img src="/resources/img/user/default.png" class="img-radius img-40" width="40px" height="40px">
+							<img src="{{ Auth::user()->foto ? Auth::user()->foto : '/resources/img/user/default.png' }}" class="img-radius img-40" width="40px" height="40px" alt="{{ Auth::user()->email }}">
+                            
 							<i class="feather icon-chevron-down"></i>
 						</div>
 						<ul class="profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
 							<li>
-								<a href="#">
+								<a href="{{url('/user/perfil-user')}}">
 									<i class="feather icon-user"></i> Mi perfil
 								</a>
 							</li>
 
 							<li>
-								<a href="#">
+								<a href="{{url('/user/perfil-user/modificar')}}">
 									<i class="feather icon-settings"></i> Editar perfil
 								</a>
 							</li>

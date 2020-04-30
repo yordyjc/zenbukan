@@ -67,11 +67,20 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/',function(){
             return redirect('/user/mificha');
         });
+        //ficha
         Route::get('/actual','user\FichaController@actual');
         Route::get('/perfil','user\FichaController@verperfil');
         Route::get('/mificha','user\FichaController@mificha');
         Route::get('/reporte','user\FichaController@reporte');
         Route::get('/periodo/{id}','user\FichaController@verperiodo');
+
+        //perfil
+        Route::get('/perfil-user','user\PerfilController@perfil');
+        Route::post('/perfil-user','user\PerfilController@modificarfoto');
+        Route::get('/perfil-user/modificar','user\PerfilController@obtenerperfil');
+        Route::put('/perfil-user/modificar','user\PerfilController@modificarperfil');
+        Route::post('/perfil-user/changepass','user\PerfilController@changepass');
+        Route::get('/perfil-user/confirmpass','user\PerfilController@confirmpass');
     });
 });
 
