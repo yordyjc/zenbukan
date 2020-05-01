@@ -109,6 +109,12 @@
                         <span class="pcoded-mtext">Fondos</span>
                     </a>
                 </li>
+                <li class="@yield('productos')">
+                    <a href="{{ url('/admin/productos') }}" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="feather icon-package"></i></span>
+                        <span class="pcoded-mtext">Productos</span>
+                    </a>
+                </li>
 
             </ul>
 

@@ -2874,7 +2874,7 @@ button:focus {
   display: inline-block;
   margin: 5px 0 45px 180px;
   border-radius: 50%;
-  font-size: 20px;
+  /*font-size: 20px;*/
   font-weight: 700;
   text-align: center;
   line-height: 80px;

@@ -14,6 +14,7 @@ use Carbon\Carbon;
 use App\User;
 use App\Models\Configuracion;
 use App\Models\Fondo;
+use App\Models\Producto;
 
 use Auth;
 use Mail;
@@ -52,5 +53,32 @@ class FrontController extends Controller
         return view('front.imc.index')
             ->with('fondo',$this->fondo())
             ->with('configuracion',$configuracion);
+    }
+
+    public function listaProductos()
+    {
+        $productos=Producto::orderBy('oferta','desc')->get();
+        $configuracion=Configuracion::find(1);
+        return view('front.productos.index')
+            ->with('fondo',$this->fondo())
+            ->with('configuracion',$configuracion)
+            ->with('productos',$productos);
+    }
+
+    public function detalleProducto($slug)
+    {
+        $producto=Producto::where('slug',$slug)->first();
+        if ($producto) {
+            $configuracion=Configuracion::find(1);
+            return view('front.productos.detalle')
+            ->with('fondo',$this->fondo())
+            ->with('configuracion',$configuracion)
+            ->with('producto',$producto);
+        }
+        else{
+            return redirect('/productos');
+        }
+
+
     }
 }
