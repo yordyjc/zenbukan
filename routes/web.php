@@ -45,6 +45,9 @@ Route::middleware(['auth'])->group(function () {
             //planes
             Route::resource('planes','Admin\PlanesController');
 
+            //galeria de videos
+            Route::resource('galeria-videos','Admin\GaleriasController');
+
             //reportes
             Route::get('/reporte-fechas/','Admin\ReportesController@fechasGet');
             Route::post('/reporte-fechas/','Admin\ReportesController@fechasPost');

@@ -109,9 +109,33 @@
                         <span class="pcoded-mtext">Fondos</span>
                     </a>
                 </li>
-
             </ul>
 
+            <ul class="pcoded-item pcoded-left-item">
+                <li class="pcoded-hasmenu @yield('reportes')">
+                    <a href="javascript:void(0)" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="feather icon-save"></i></span>
+                        <span class="pcoded-mtext">Galeria de videos</span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li class="@yield('reporte-fechas')">
+                            <a href="{{ url('/admin/galeria-videos') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Lista de galerías</span>
+                            </a>
+                        </li>
+                        <li class="@yield('reporte-sexo')">
+                            <a href="{{ url('/admin/galeria-videos/create') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Nueva galería</span>
+                            </a>
+                        </li>
+                        <li class="@yield('reporte-objetivo')">
+                            <a href="{{ url('/admin/galeria-videos/subir-video') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Subir un video</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+			</ul>
 
 		</div>
 	</div>
