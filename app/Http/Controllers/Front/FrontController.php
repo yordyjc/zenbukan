@@ -15,6 +15,7 @@ use App\User;
 use App\Models\Configuracion;
 use App\Models\Fondo;
 use App\Models\Producto;
+use App\Models\Servicio;
 
 use Auth;
 use Mail;
@@ -78,7 +79,15 @@ class FrontController extends Controller
         else{
             return redirect('/productos');
         }
+    }
 
-
+    public function listaServicios()
+    {
+        $servicios=Servicio::orderBy('id','asc')->get();
+        $configuracion=Configuracion::find(1);
+        return view('front.servicios.index')
+            ->with('fondo',$this->fondo())
+            ->with('configuracion',$configuracion)
+            ->with('servicios',$servicios);
     }
 }

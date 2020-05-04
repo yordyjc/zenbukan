@@ -42,6 +42,7 @@ Route::middleware(['auth'])->group(function () {
             Route::resource('configuracion-general','Admin\ConfiguracionesController');
             Route::resource('/fondos','Admin\FondosController');
             Route::resource('/productos','Admin\ProductosController');
+            Route::resource('/servicios','Admin\ServiciosController');
 
             //planes
             Route::resource('planes','Admin\PlanesController');
@@ -93,3 +94,4 @@ Route::get('/','Front\FrontController@index');
 Route::get('/imc','Front\FrontController@imc');
 Route::get('/productos','Front\FrontController@listaProductos');
 Route::get('/productos/{slug}','Front\FrontController@detalleProducto');
+Route::get('/servicios','Front\FrontController@listaServicios');

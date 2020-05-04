@@ -115,6 +115,12 @@
                         <span class="pcoded-mtext">Productos</span>
                     </a>
                 </li>
+                <li class="@yield('servicios')">
+                    <a href="{{ url('/admin/servicios') }}" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="feather icon-star"></i></span>
+                        <span class="pcoded-mtext">Servicios</span>
+                    </a>
+                </li>
 
             </ul>
 

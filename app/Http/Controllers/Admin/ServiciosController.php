@@ -13,9 +13,9 @@ use File;
 use Carbon\Carbon;
 use Auth;
 
-use App\Models\Producto;
+use App\Models\Servicio;
 
-class ProductosController extends Controller
+class ServiciosController extends Controller
 {
     /**
      * Reemplaza todos los acentos por sus equivalentes sin ellos
@@ -76,8 +76,8 @@ class ProductosController extends Controller
      */
     public function index()
     {
-        $productos=Producto::all();
-        return view('admin.web.productos.index')->with('productos',$productos);
+        $servicios=Servicio::all();
+        return view('admin.web.servicios.index')->with('servicios',$servicios);
     }
 
     /**
@@ -87,7 +87,7 @@ class ProductosController extends Controller
      */
     public function create()
     {
-        return view('admin.web.productos.crear');
+        return view('admin.web.servicios.crear');
     }
 
     /**
@@ -102,33 +102,29 @@ class ProductosController extends Controller
             'nombre' => 'required',
             'foto' => 'required|file|mimes:png,jpg,jpeg|max:5120',
             'descripcion' => 'required',
-            'precio' => 'required',
         ]);
         if ($validator->fails()) {
             alert()->error('Ups!','La operación no pudo ser completada')->autoClose(4000)->showCloseButton();
-            return redirect('/admin/productos/create')
+            return redirect('/admin/servicios/create')
                 ->withErrors($validator)
                 ->withInput();
         }
 
-        $producto=new Producto();
-        $producto->nombre=$request->nombre;
-        $producto->descripcion=$request->descripcion;
+        $servicio=new Servicio();
+        $servicio->nombre=$request->nombre;
+        $servicio->descripcion=$request->descripcion;
         $foto  = Input::file('foto');
         if (!is_null($foto)) {
             $extension=$foto->getClientOriginalExtension();
             $name=str_replace(' ', '-', strtolower($this->sanear_string($request->nombre))).'.'.$extension;
-            $path=public_path().'/resources/img/productos/';
+            $path=public_path().'/resources/img/servicios/';
             $foto->move($path,$name);
-            $producto->foto='/resources/img/productos/'.$name;
+            $servicio->foto='/resources/img/servicios/'.$name;
         }
-        $producto->youtube=$request->youtube;
-        $producto->moneda=$request->moneda;
-        $producto->precio=$request->precio;
-        $producto->oferta=$request->oferta;
-        $producto->save();
+        $servicio->save();
         alert()->success('¡Yeah!','Operación realizada con éxito')->autoClose(3000)->showCloseButton();
-        return redirect('/admin/productos');
+        return redirect('/admin/servicios');
+
     }
 
     /**
@@ -150,10 +146,10 @@ class ProductosController extends Controller
      */
     public function edit($id)
     {
-        $producto=Producto::find($id);
-        if ($producto) {
-            return view('admin.web.productos.editar')
-                ->with('producto',$producto);
+        $servicio=Servicio::find($id);
+        if ($servicio) {
+            return view('admin.web.servicios.editar')
+                ->with('servicio',$servicio);
         }
         else{
             return redirect('/admin/sin-permiso');
@@ -172,34 +168,29 @@ class ProductosController extends Controller
         $validator = Validator::make($request->all(), [
             'nombre' => 'required',
             'descripcion' => 'required',
-            'precio' => 'required',
         ]);
         if ($validator->fails()) {
             alert()->error('Ups!','La operación no pudo ser completada')->autoClose(4000)->showCloseButton();
-            return redirect('/admin/productos/'.$id.'/edit')
+            return redirect('/admin/servicios/'.$id.'/edit')
                 ->withErrors($validator)
                 ->withInput();
         }
 
-        $producto=Producto::find($id);
-        $producto->nombre=$request->nombre;
-        $producto->descripcion=$request->descripcion;
+        $servicio=Servicio::find($id);
+        $servicio->nombre=$request->nombre;
+        $servicio->descripcion=$request->descripcion;
         $foto  = Input::file('foto');
         if (!is_null($foto)) {
-            File::delete(public_path().$producto->foto);
+            File::delete(public_path().$servicio->foto);
             $extension=$foto->getClientOriginalExtension();
             $name=str_replace(' ', '-', strtolower($this->sanear_string($request->nombre))).'.'.$extension;
-            $path=public_path().'/resources/img/productos/';
+            $path=public_path().'/resources/img/servicios/';
             $foto->move($path,$name);
-            $producto->foto='/resources/img/productos/'.$name;
+            $servicio->foto='/resources/img/servicios/'.$name;
         }
-        $producto->youtube=$request->youtube;
-        $producto->moneda=$request->moneda;
-        $producto->precio=$request->precio;
-        $producto->oferta=$request->oferta;
-        $producto->save();
+        $servicio->save();
         alert()->success('¡Yeah!','Operación realizada con éxito')->autoClose(3000)->showCloseButton();
-        return redirect('/admin/productos');
+        return redirect('/admin/servicios');
     }
 
     /**
@@ -210,11 +201,11 @@ class ProductosController extends Controller
      */
     public function destroy($id)
     {
-        $producto=Producto::find($id);
-        File::delete(public_path().$producto->foto);
-        $producto->delete();
+        $servicio=Servicio::find($id);
+        File::delete(public_path().$servicio->foto);
+        $servicio->delete();
 
         alert()->success('¡Yeah!','Operación realizada con éxito')->autoClose(3000)->showCloseButton();
-        return redirect('/admin/productos');
+        return redirect('/admin/servicios');
     }
 }

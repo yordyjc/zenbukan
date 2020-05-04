@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('title')
-Editar producto: {{ $producto->nombre }}
+Editar servicio: {{ $servicio->nombre }}
 @endsection
 
 @section('productos')
@@ -21,7 +21,7 @@ active
             </div>
             <div class="card-block">
 
-                <form action="{{ url('/admin/productos/'.$producto->id) }}" method="post" enctype="multipart/form-data">
+                <form action="{{ url('/admin/servicios/'.$servicio->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
@@ -31,7 +31,7 @@ active
                                 Nombre
                             </label>
                             <div class="col-md-10">
-                                <input type="text" class="form-control form-control-round {{ $errors->has('nombre') ? ' form-control-danger' : '' }}" id="nombre" name="nombre" value="{{ $producto->nombre }}">
+                                <input type="text" class="form-control form-control-round {{ $errors->has('nombre') ? ' form-control-danger' : '' }}" id="nombre" name="nombre" value="{{ $servicio->nombre }}">
                                 @if ($errors->has('nombre'))
                                 <div class="col-form-label">
                                     {{ $errors->first('nombre') }}
@@ -45,7 +45,7 @@ active
                                 Descripción
                             </label>
                             <div class="col-md-10">
-                                <textarea  rows="10" class="form-control {{ $errors->has('descripcion') ? ' form-control-danger' : '' }}" id="descripcion" name="descripcion">{{ $producto->descripcion }}</textarea>
+                                <textarea  rows="10" class="form-control {{ $errors->has('descripcion') ? ' form-control-danger' : '' }}" id="descripcion" name="descripcion">{{ $servicio->descripcion }}</textarea>
                                 @if ($errors->has('descripcion'))
                                 <div class="col-form-label">
                                     {{ $errors->first('descripcion') }}
@@ -65,61 +65,7 @@ active
                                     {{ $errors->first('foto') }}
                                 </div>
                                 @endif
-                                <h6>Previsualización:</h6><img id="img-foto" src="{{ $producto->foto ? $producto->foto : '/resources/img/default.jpg' }}" style="width:300px;" alt="Previsualización" class="img-fluid">
-                            </div>
-                        </div>
-
-                        <div class="form-group {{ $errors->has('youtube') ? ' has-danger' : '' }} row">
-                            <label class="col-md-2 col-form-label" for="youtube">
-                                ID de YouTube
-                            </label>
-                            <div class="col-md-10">
-                                <input type="text" class="form-control form-control-round {{ $errors->has('youtube') ? ' form-control-danger' : '' }}" id="youtube" name="youtube" value="{{ $producto->youtube }}">
-                                @if ($errors->has('youtube'))
-                                <div class="col-form-label">
-                                    {{ $errors->first('youtube') }}
-                                </div>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group {{ $errors->has('precio') ? ' has-danger' : '' }} row">
-                            <label class="col-md-2 col-form-label" for="precio">
-                                Precio
-                            </label>
-                            <div class="col-md-3">
-                                <select name="moneda" id="moneda" class="form-control form-control-round fill select2">
-                                    <option value="S/" {{ $producto->moneda == 'S/' ? 'selected' : '' }}>Soles (S/)</option>
-                                    <option value="US$" {{ $producto->moneda == 'US$' ? 'selected' : '' }}>Dólares (US$)</option>
-                                </select>
-                            </div>
-                            <div class="col-md-7">
-                                <input type="text" class="form-control form-control-round {{ $errors->has('precio') ? ' form-control-danger' : '' }}" id="precio" name="precio" value="{{ $producto->precio }}">
-                                @if ($errors->has('precio'))
-                                <div class="col-form-label">
-                                    {{ $errors->first('precio') }}
-                                </div>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-md-2 col-form-label" for="oferta">
-                                ¿Oferta?
-                            </label>
-                            <div class="col-md-10 form-radio">
-                                <div class="radio radio-inline">
-                                    <label>
-                                    <input type="radio" name="oferta" id="oferta" value="0" {{ $producto->oferta == '0' ? 'checked' : '' }}>
-                                    <i class="helper"></i> Sin oferta
-                                    </label>
-                                </div>
-                                <div class="radio radio-inline">
-                                    <label>
-                                    <input type="radio" name="oferta" id="oferta" value="1" {{ $producto->oferta == '1' ? 'checked' : '' }}>
-                                    <i class="helper"></i> Con oferta
-                                    </label>
-                                </div>
+                                <h6>Previsualización:</h6><img id="img-foto" src="{{ $servicio->foto ? $servicio->foto : '/resources/img/default.jpg' }}" style="width:300px;" alt="Previsualización" class="img-fluid">
                             </div>
                         </div>
 
