@@ -16,6 +16,8 @@ use App\Models\Configuracion;
 use App\Models\Fondo;
 use App\Models\Producto;
 use App\Models\Servicio;
+use App\Models\Plan;
+use App\Models\Preinscripcion;
 
 use Auth;
 use Mail;
@@ -89,5 +91,41 @@ class FrontController extends Controller
             ->with('fondo',$this->fondo())
             ->with('configuracion',$configuracion)
             ->with('servicios',$servicios);
+    }
+
+    public function listaPlanes()
+    {
+        $planes=Plan::orderBy('id','asc')->get();
+        $configuracion=Configuracion::find(1);
+        return view('front.planes.index')
+            ->with('fondo',$this->fondo())
+            ->with('configuracion',$configuracion)
+            ->with('planes',$planes);
+    }
+
+    public function formPreInscripcion()
+    {
+        $planes=Plan::orderBy('id','asc')->get();
+        $configuracion=Configuracion::find(1);
+        return view('front.planes.preinscripcion')
+            ->with('fondo',$this->fondo())
+            ->with('configuracion',$configuracion)
+            ->with('planes',$planes);
+    }
+
+    public function sendPreInscripcion(Request $request)
+    {
+        if ($request->ajax()) {
+            $preinscripcion = New Preinscripcion();
+            $preinscripcion->nombre = $request->nombre;
+            $preinscripcion->celular = $request->telefono;
+            $preinscripcion->email = $request->email;
+            $preinscripcion->plan = $request->plan;
+            $preinscripcion->save();
+            return 'ok';
+        }
+        else{
+
+        }
     }
 }

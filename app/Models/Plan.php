@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 
-class Servicio extends Model
+class Plan extends Model
 {
     use Sluggable;
 
-    protected $table = 'servicios';
+    protected $table = 'planes';
     protected $guarded = [];
 
     public function sluggable()

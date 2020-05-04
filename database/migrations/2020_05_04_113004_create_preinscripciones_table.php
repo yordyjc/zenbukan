@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateServiciosTable extends Migration
+class CreatePreinscripcionesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateServiciosTable extends Migration
      */
     public function up()
     {
-        Schema::create('servicios', function (Blueprint $table) {
+        Schema::create('preinscripciones', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre')->nullable();
-            $table->string('slug')->nullable();
-            $table->text('descripcion')->nullable();
-            $table->string('foto')->nullable();
+            $table->text('nombre')->nullable();
+            $table->text('celular')->nullable();
+            $table->text('email')->nullable();
+            $table->text('plan')->nullable();
+            $table->boolean('estado')->default(0); //1 atendido, 0 sin atender
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreateServiciosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('servicios');
+        Schema::dropIfExists('preinscripciones');
     }
 }

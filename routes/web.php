@@ -43,9 +43,9 @@ Route::middleware(['auth'])->group(function () {
             Route::resource('/fondos','Admin\FondosController');
             Route::resource('/productos','Admin\ProductosController');
             Route::resource('/servicios','Admin\ServiciosController');
-
-            //planes
-            Route::resource('planes','Admin\PlanesController');
+            Route::resource('/planes','Admin\PlanesController');
+            Route::resource('/pre-inscritos','Admin\PreInscritosController');
+            Route::resource('/pre-inscritos-contactados','Admin\PreInscritosContactadosController');
 
             //reportes
             Route::get('/reporte-fechas/','Admin\ReportesController@fechasGet');
@@ -95,3 +95,8 @@ Route::get('/imc','Front\FrontController@imc');
 Route::get('/productos','Front\FrontController@listaProductos');
 Route::get('/productos/{slug}','Front\FrontController@detalleProducto');
 Route::get('/servicios','Front\FrontController@listaServicios');
+Route::get('/planes','Front\FrontController@listaPlanes');
+Route::get('/pre-inscripcion','Front\FrontController@formPreInscripcion');
+Route::post('/pre-inscripcion','Front\FrontController@sendPreInscripcion');
+Route::get('/contacto', 'Front\FrontController@formContacto');
+Route::post('/contacto', 'Front\FrontController@sendContacto');
