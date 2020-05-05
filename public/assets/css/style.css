@@ -139,7 +139,7 @@ button:focus {
 }
 
 .xs-section-heading h2 span, .xs-section-heading2 h2 span {
-  color: #f63c25;
+  color: #0082AC;
 }
 
 .xs-section-heading p, .xs-section-heading2 p {
@@ -156,7 +156,7 @@ button:focus {
 }
 
 .xs-colummn-heading h2 span, .xs-colummn-heading2 h2 span {
-  color: #f63c25;
+  color: #0082AC;
 }
 
 .xs-colummn-heading2 h2,
@@ -190,7 +190,7 @@ button:focus {
   height: 4px;
   width: 45px;
   content: "";
-  background-color: #f63c25;
+  background-color: #0082AC;
 }
 
 .xs-water-mark {
@@ -517,7 +517,7 @@ button:focus {
 }
 
 .sideabr-list-widget li i {
-  color: #f63c25;
+  color: #0082AC;
   margin-right: 15px;
 }
 
@@ -600,7 +600,7 @@ button:focus {
 }
 
 .xs-instra-feed .text-primary {
-  color: #f63c25 !important;
+  color: #0082AC !important;
 }
 
 .xs-instra-feed ul {
@@ -689,7 +689,7 @@ button:focus {
 }
 
 .close-side-widget {
-  color: #f63c25;
+  color: #0082AC;
   font-size: 0.9375rem;
   display: block;
 }
@@ -837,7 +837,7 @@ button:focus {
 
 .elementskit-navbar-nav li:hover > a,
 .elementskit-navbar-nav > li > a:hover {
-  color: #f63c25;
+  color: #0082AC;
   background: rgba(255, 255, 255, 0);
   background: -webkit-gradient(linear, left bottom, left top, from(rgba(255, 255, 255, 0)), to(rgba(255, 255, 255, 0)));
   background: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 100%);
@@ -847,7 +847,7 @@ button:focus {
 
 .elementskit-submenu-panel > li:hover > a,
 .elementskit-submenu-panel > li > a:hover {
-  color: #f63c25;
+  color: #0082AC;
   background: rgba(255, 255, 255, 0.5);
   background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0.5)), to(rgba(255, 255, 255, 0.5)));
   background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.5) 100%);
@@ -927,7 +927,7 @@ button:focus {
 }
 
 .elementskit-dropdown-has:hover > a::after {
-  border-color: transparent #f63c25 #f63c25 transparent;
+  border-color: transparent #0082AC #0082AC transparent;
 }
 
 .elementskit-dropdown-has > a {
@@ -938,7 +938,7 @@ button:focus {
 }
 
 .elementskit-dropdown-has > a:hover::after {
-  border-color: transparent #f63c25 #f63c25 transparent;
+  border-color: transparent #0082AC #0082AC transparent;
 }
 
 .elementskit-dropdown-has > a::after {
@@ -956,11 +956,11 @@ button:focus {
 }
 
 .elementskit-submenu-panel .elementskit-dropdown-has:hover > a::after {
-  border-color: transparent #f63c25 #f63c25 transparent;
+  border-color: transparent #0082AC #0082AC transparent;
 }
 
 .elementskit-submenu-panel .elementskit-dropdown-has > a:hover::after {
-  border-color: transparent #f63c25 #f63c25 transparent;
+  border-color: transparent #0082AC #0082AC transparent;
 }
 
 @media (min-width: 992px) {
@@ -1102,10 +1102,10 @@ button:focus {
     padding-bottom: 15px;
   }
   .elementskit-navbar-nav > li > a:hover {
-    color: #f63c25;
+    color: #0082AC;
   }
   .elementskit-navbar-nav > li:hover > a {
-    color: #f63c25;
+    color: #0082AC;
   }
   .elementskit-submenu-panel > li > a {
     color: #101010;
@@ -1177,9 +1177,9 @@ button:focus {
   -webkit-transform: skew(-22deg);
   -ms-transform: skew(-22deg);
   transform: skew(-22deg);
-  background-image: -moz-linear-gradient(0deg, #c41330 0%, #f63c25 100%);
-  background-image: -webkit-linear-gradient(0deg, #c41330 0%, #f63c25 100%);
-  background-image: -ms-linear-gradient(0deg, #c41330 0%, #f63c25 100%);
+  background-image: -moz-linear-gradient(0deg, #00506B 0%, #0082AC 100%);
+  background-image: -webkit-linear-gradient(0deg, #00506B 0%, #0082AC 100%);
+  background-image: -ms-linear-gradient(0deg, #00506B 0%, #0082AC 100%);
 }
 
 .xs-header-dark nav {
@@ -1291,7 +1291,7 @@ button:focus {
 }
 
 .xs-header-dark .xs-login-nav li a.xs-login:before {
-  background: #f63c25;
+  background: #0082AC;
 }
 
 .xs-menu-tools li a {
@@ -1303,7 +1303,7 @@ button:focus {
 }
 
 .xs-menu-tools li a:hover {
-  color: #f63c25;
+  color: #0082AC;
 }
 
 .xs-menu-tools li a span {
@@ -1315,7 +1315,7 @@ button:focus {
   line-height: 12px;
   text-align: center;
   color: #FFFFFF;
-  background: #f63c25;
+  background: #0082AC;
   width: 14px;
   height: 14px;
 }
@@ -1360,7 +1360,7 @@ button:focus {
 }
 
 .xs-banner-title span {
-  color: #f63c25;
+  color: #0082AC;
   text-indent: -5px;
 }
 
@@ -1457,7 +1457,7 @@ button:focus {
   top: 197px;
   font-size: 15.625rem;
   line-height: 15.625rem;
-  color: #ee0c08;
+  color: #00506B;
   font-family: "Montserrat", sans-serif;
   font-weight: 800;
 }
@@ -1473,7 +1473,7 @@ button:focus {
 
 .xs-slider-light-owl .xs-before-text {
   left: calc(50% - 517px);
-  background-image: -webkit-linear-gradient(left, #c41330 0%, #f63c25 70%);
+  background-image: -webkit-linear-gradient(left, #00506B 0%, #0082AC 70%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -1484,7 +1484,7 @@ button:focus {
 
 .xs-slider-light-owl .xs-after-text {
   left: calc(50% + 80px);
-  background-image: -webkit-linear-gradient(left, #f63c25 0%, #ff7640 100%);
+  background-image: -webkit-linear-gradient(left, #0082AC 0%, #ff7640 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -1587,7 +1587,7 @@ button:focus {
 
 .xs-about-us i {
   font-size: 3.75rem;
-  color: #f63c25;
+  color: #0082AC;
 }
 
 .xs-about-us-about .xs-overlay {
@@ -1814,7 +1814,7 @@ button:focus {
   width: 95px;
   font-size: 30px;
   line-height: 30px;
-  background-color: #f63c25;
+  background-color: #0082AC;
 }
 
 .xs-schedule-table .table thead th span, .xs-schedule-table-dark .table thead th span, .xs-schedule-table-light .table thead th span {
@@ -1888,7 +1888,7 @@ button:focus {
   z-index: 999;
   -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.08);
   box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.08);
-  background-color: #f63c25;
+  background-color: #0082AC;
 }
 
 .xs-schedule-table .table tbody td .xs-schedule-info:hover, .xs-schedule-table-dark .table tbody td .xs-schedule-info:hover, .xs-schedule-table-light .table tbody td .xs-schedule-info:hover,
@@ -1919,7 +1919,7 @@ button:focus {
 }
 
 .xs-schedule-table .table tbody td .xs-schedule-info:hover span, .xs-schedule-table-dark .table tbody td .xs-schedule-info:hover span, .xs-schedule-table-light .table tbody td .xs-schedule-info:hover span {
-  color: #f63c25;
+  color: #0082AC;
   background-color: #fff;
 }
 
@@ -1931,7 +1931,7 @@ button:focus {
 .xs-schedule-table .table tbody td span, .xs-schedule-table-dark .table tbody td span, .xs-schedule-table-light .table tbody td span {
   display: block;
   width: 100%;
-  background: #f63c25;
+  background: #0082AC;
   color: #fff;
   font-size: 13px;
   line-height: 24px;
@@ -1975,11 +1975,11 @@ button:focus {
 }
 
 .xs-schedule-table-dark .table tbody td .xs-schedule-info:hover h4, .xs-schedule-table-light .table tbody td .xs-schedule-info:hover h4 {
-  color: #f63c25 !important;
+  color: #0082AC !important;
 }
 
 .xs-schedule-table-dark .table tbody td .xs-schedule-info:hover span, .xs-schedule-table-light .table tbody td .xs-schedule-info:hover span {
-  background-color: #f63c25 !important;
+  background-color: #0082AC !important;
   color: #fff !important;
 }
 
@@ -2112,7 +2112,7 @@ button:focus {
 }
 
 .xs-team:hover h3 a {
-  color: #f63c25;
+  color: #0082AC;
 }
 
 .xs-team-thumb {
@@ -2143,7 +2143,7 @@ button:focus {
   top: 0;
   right: -100px;
   height: 100%;
-  background-color: #f63c25;
+  background-color: #0082AC;
   -webkit-transition: all 0.4s ease;
   -o-transition: all 0.4s ease;
   transition: all 0.4s ease;
@@ -2357,7 +2357,7 @@ button:focus {
 
 .xs-testimonial-grid .owl-dots .owl-dot.active span,
 .xs-testimonial-owl .owl-dots .owl-dot.active span {
-  background-color: #f63c25;
+  background-color: #0082AC;
   width: 22px;
   border-radius: 2px;
 }
@@ -2450,14 +2450,14 @@ button:focus {
 
 .xs-pricing p span {
   font-weight: 700;
-  color: #f63c25;
+  color: #0082AC;
 }
 
 .xs-pricing p sup {
   top: -40px;
   left: 15px;
   font-size: 1.75rem;
-  color: #f63c25;
+  color: #0082AC;
 }
 
 .xs-pricing p sub {
@@ -2479,7 +2479,7 @@ button:focus {
 .xs-pricing:hover .btn-primary:not(:disabled):not(.disabled):active,
 .xs-pricing:hover .btn-primary:focus,
 .xs-pricing:hover .btn-primary {
-  background-color: #f63c25;
+  background-color: #0082AC;
 }
 
 .xs-pricing-white .xs-pricing .xs-line:before,
@@ -2537,11 +2537,11 @@ button:focus {
 }
 
 .xs-pricing-dark .xs-pricing .btn-primary {
-  background-color: #f63c25;
+  background-color: #0082AC;
 }
 
 .xs-pricing-dark .xs-pricing:hover, .xs-pricing-dark .xs-pricing.isActive {
-  background-color: #f63c25;
+  background-color: #0082AC;
 }
 
 .xs-pricing-dark .xs-pricing:hover .xs-line:before,
@@ -2568,7 +2568,7 @@ button:focus {
 }
 
 .xs-pricing-white .xs-pricing .btn-primary, .xs-pricing-white .xs-pricing:hover {
-  background-color: #f63c25;
+  background-color: #0082AC;
 }
 
 .xs-pricing-white .xs-pricing:hover,
@@ -2703,7 +2703,7 @@ button:focus {
   position: relative;
   float: right;
   font-size: 20px;
-  color: #f63c25;
+  color: #0082AC;
   cursor: pointer;
 }
 
@@ -2790,7 +2790,7 @@ button:focus {
 }
 
 .xs-blog-data a {
-  color: #f63c25;
+  color: #0082AC;
 }
 
 .xs-blog-data a:not(:first-child) {
@@ -2805,33 +2805,33 @@ button:focus {
 }
 
 .xs-health .twentytwenty-horizontal .twentytwenty-handle {
-  background-image: -moz-linear-gradient(90deg, #c41330 0%, #f63c25 100%);
-  background-image: -webkit-linear-gradient(90deg, #c41330 0%, #f63c25 100%);
-  background-image: -ms-linear-gradient(90deg, #c41330 0%, #f63c25 100%);
-  background: -webkit-gradient(linear, left top, right top, from(#c41330), to(#f63c25));
-  background: -webkit-linear-gradient(left, #c41330, #f63c25);
-  background: -o-linear-gradient(left, #c41330, #f63c25);
-  background: linear-gradient(90deg, #c41330, #f63c25);
+  background-image: -moz-linear-gradient(90deg, #00506B 0%, #0082AC 100%);
+  background-image: -webkit-linear-gradient(90deg, #00506B 0%, #0082AC 100%);
+  background-image: -ms-linear-gradient(90deg, #00506B 0%, #0082AC 100%);
+  background: -webkit-gradient(linear, left top, right top, from(#00506B), to(#0082AC));
+  background: -webkit-linear-gradient(left, #00506B, #0082AC);
+  background: -o-linear-gradient(left, #00506B, #0082AC);
+  background: linear-gradient(90deg, #00506B, #0082AC);
 }
 
 .xs-health .twentytwenty-horizontal .twentytwenty-handle:before {
-  background-image: -moz-linear-gradient(#f63c25, #e32f2d);
-  background-image: -webkit-linear-gradient(#f63c25, #e32f2d);
-  background-image: -ms-linear-gradient(#f63c25, #e32f2d);
-  background: -webkit-gradient(linear, left top, left bottom, from(#f63c25), to(#e32f2d));
-  background: -webkit-linear-gradient(#f63c25, #e32f2d);
-  background: -o-linear-gradient(#f63c25, #e32f2d);
-  background: linear-gradient(#f63c25, #e32f2d);
+  background-image: -moz-linear-gradient(#0082AC, #e32f2d);
+  background-image: -webkit-linear-gradient(#0082AC, #e32f2d);
+  background-image: -ms-linear-gradient(#0082AC, #e32f2d);
+  background: -webkit-gradient(linear, left top, left bottom, from(#0082AC), to(#e32f2d));
+  background: -webkit-linear-gradient(#0082AC, #e32f2d);
+  background: -o-linear-gradient(#0082AC, #e32f2d);
+  background: linear-gradient(#0082AC, #e32f2d);
 }
 
 .xs-health .twentytwenty-horizontal .twentytwenty-handle:after {
-  background-image: -moz-linear-gradient(#e32f2d, #c41330);
-  background-image: -webkit-linear-gradient(#e32f2d, #c41330);
-  background-image: -ms-linear-gradient(#e32f2d, #c41330);
-  background: -webkit-gradient(linear, left top, left bottom, from(#e32f2d), to(#c41330));
-  background: -webkit-linear-gradient(#e32f2d, #c41330);
-  background: -o-linear-gradient(#e32f2d, #c41330);
-  background: linear-gradient(#e32f2d, #c41330);
+  background-image: -moz-linear-gradient(#e32f2d, #00506B);
+  background-image: -webkit-linear-gradient(#e32f2d, #00506B);
+  background-image: -ms-linear-gradient(#e32f2d, #00506B);
+  background: -webkit-gradient(linear, left top, left bottom, from(#e32f2d), to(#00506B));
+  background: -webkit-linear-gradient(#e32f2d, #00506B);
+  background: -o-linear-gradient(#e32f2d, #00506B);
+  background: linear-gradient(#e32f2d, #00506B);
 }
 
 /*=================================================
@@ -2878,10 +2878,10 @@ button:focus {
   font-weight: 700;
   text-align: center;
   line-height: 80px;
-  background: #c41330;
-  background: -webkit-linear-gradient(299deg, #c41330 35%, #f63c25 100%);
-  background: -o-linear-gradient(299deg, #c41330 35%, #f63c25 100%);
-  background: linear-gradient(151deg, #c41330 35%, #f63c25 100%);
+  background: #00506B;
+  background: -webkit-linear-gradient(299deg, #00506B 35%, #0082AC 100%);
+  background: -o-linear-gradient(299deg, #00506B 35%, #0082AC 100%);
+  background: linear-gradient(151deg, #00506B 35%, #0082AC 100%);
   -webkit-box-shadow: 0px 10px 40px 0px rgba(0, 0, 0, 0.43);
   box-shadow: 0px 10px 40px 0px rgba(0, 0, 0, 0.43);
   color: #FFFFFF;
@@ -2919,7 +2919,7 @@ button:focus {
 }
 
 .xs-shop:hover h3 a {
-  color: #f63c25;
+  color: #0082AC;
 }
 
 .xs-shop-dark .xs-shop h3 {
@@ -2935,7 +2935,7 @@ button:focus {
 }
 
 .xs-shop-dark .xs-shop:hover h3 a {
-  color: #f63c25;
+  color: #0082AC;
 }
 
 /*=================================================
@@ -2979,7 +2979,7 @@ button:focus {
 }
 
 .xs-contact-info ul li > a.active, .xs-contact-info ul li > a:hover {
-  background-color: #f63c25;
+  background-color: #0082AC;
 }
 
 /*=================================================
@@ -3139,9 +3139,9 @@ button:focus {
 
 .xs-trainer-details .xs-trainer-skills .progress .progress-bar {
   border-radius: 6px;
-  background-image: -moz-linear-gradient(0deg, #c41330 0%, #f63c25 100%);
-  background-image: -webkit-linear-gradient(0deg, #c41330 0%, #f63c25 100%);
-  background-image: -ms-linear-gradient(0deg, #c41330 0%, #f63c25 100%);
+  background-image: -moz-linear-gradient(0deg, #00506B 0%, #0082AC 100%);
+  background-image: -webkit-linear-gradient(0deg, #00506B 0%, #0082AC 100%);
+  background-image: -ms-linear-gradient(0deg, #00506B 0%, #0082AC 100%);
 }
 
 /*=================================================
@@ -3189,7 +3189,7 @@ button:focus {
 .xs-team-carousel .owl-nav button.owl-next:hover,
 .xs-team-carousel .owl-nav button.owl-prev:hover {
   color: #fff;
-  background-color: #f63c25;
+  background-color: #0082AC;
 }
 
 .xs-team-carousel .owl-nav button.owl-next span,
@@ -3211,8 +3211,8 @@ button:focus {
 
 .xs-contact-list i {
   margin-right: 5px;
-  color: #ee0c08;
-  background-image: -webkit-linear-gradient(-45deg, #ee0c08 0%, #fc6942 100%);
+  color: #00506B;
+  background-image: -webkit-linear-gradient(-45deg, #00506B 0%, #0082AC 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -3225,7 +3225,7 @@ button:focus {
 }
 
 .xs-contact-list > P > a:hover {
-  color: #f63c25;
+  color: #0082AC;
 }
 
 .xs-contact-list ul li {
@@ -3255,7 +3255,7 @@ button:focus {
 }
 
 .xs-contact-list ul li a:hover {
-  color: #f63c25;
+  color: #0082AC;
 }
 
 .map-tab {
@@ -3353,7 +3353,7 @@ button:focus {
 }
 
 .xs-form .custom-radio .custom-control-input:checked ~ .custom-control-label::before {
-  background-color: #f63c25;
+  background-color: #0082AC;
 }
 
 .xs-form .custom-radio .custom-control-input:checked ~ .custom-control-label::after {
@@ -3421,7 +3421,7 @@ button:focus {
 }
 
 .xs-footer-subscribe .xs-subscribe-form .form-control.error {
-  border: 1px solid #f63c25;
+  border: 1px solid #0082AC;
 }
 
 .xs-footer-subscribe .xs-subscribe-form input::-webkit-input-placeholder {
@@ -3463,8 +3463,8 @@ button:focus {
 }
 
 .xs-footer-subscribe .xs-subscribe-form button:hover, .xs-footer-subscribe .xs-subscribe-form button:focus {
-  background-color: #f63c25;
-  border-color: #f63c25;
+  background-color: #0082AC;
+  border-color: #0082AC;
 }
 
 .footer-widget ul li {
@@ -3488,7 +3488,7 @@ button:focus {
   float: left;
   font-size: 20px;
   line-height: 26px;
-  color: #f63c25;
+  color: #0082AC;
 }
 
 .footer-widget .xs-footer-contact-info p {
@@ -3559,11 +3559,11 @@ button:focus {
 }
 
 .xs-footer-bottom ul li a:hover {
-  color: #f63c25;
+  color: #0082AC;
 }
 
 .xs-footer-bottom ul li a:hover:after {
-  color: #f63c25;
+  color: #0082AC;
 }
 
 /*=================================================
@@ -3604,7 +3604,7 @@ button:focus {
   line-height: 1.5rem;
   text-transform: uppercase;
   color: #FFFFFF;
-  background-color: #f63c25;
+  background-color: #0082AC;
   -webkit-transition: all 0.4s ease;
   -o-transition: all 0.4s ease;
   transition: all 0.4s ease;
@@ -3632,7 +3632,7 @@ button:focus {
   color: #FFFFFF;
   -webkit-box-shadow: 0 0 0 0;
   box-shadow: 0 0 0 0;
-  background-color: #c41330;
+  background-color: #00506B;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active i, .btn-primary:not(:disabled):not(.disabled):active:focus i, .btn-primary:hover i, .btn-primary:focus i, .btn-primary:active i {
@@ -3650,12 +3650,12 @@ button:focus {
   font-size: 25px;
   text-align: center;
   line-height: 75px;
-  background-image: -moz-linear-gradient(-45deg, #fc6942 0%, #ee0c08 100%);
-  background-image: -webkit-linear-gradient(-45deg, #fc6942 0%, #ee0c08 100%);
-  background-image: -ms-linear-gradient(-45deg, #fc6942 0%, #ee0c08 100%);
-  background: -webkit-linear-gradient(135deg, #fc6942 0%, #ee0c08 100%);
-  background: -o-linear-gradient(135deg, #fc6942 0%, #ee0c08 100%);
-  background: linear-gradient(-45deg, #fc6942 0%, #ee0c08 100%);
+  background-image: -moz-linear-gradient(-45deg, #0082AC 0%, #00506B 100%);
+  background-image: -webkit-linear-gradient(-45deg, #0082AC 0%, #00506B 100%);
+  background-image: -ms-linear-gradient(-45deg, #0082AC 0%, #00506B 100%);
+  background: -webkit-linear-gradient(135deg, #0082AC 0%, #00506B 100%);
+  background: -o-linear-gradient(135deg, #0082AC 0%, #00506B 100%);
+  background: linear-gradient(-45deg, #0082AC 0%, #00506B 100%);
   -webkit-box-shadow: 0px 5px 10px 0px rgba(246, 60, 37, 0.35);
   box-shadow: 0px 5px 10px 0px rgba(246, 60, 37, 0.35);
   width: 75px;
@@ -4017,12 +4017,12 @@ button:focus {
 
 /* color */
 .xs-red-color {
-  color: #f63c25;
+  color: #0082AC;
 }
 
 /* background color */
 .xs-red-bg {
-  background-color: #f63c25;
+  background-color: #0082AC;
 }
 
 /* color */
@@ -4047,12 +4047,12 @@ button:focus {
 
 /* color */
 .xs-dark-red-color {
-  color: #c41330;
+  color: #00506B;
 }
 
 /* background color */
 .xs-dark-red-bg {
-  background-color: #c41330;
+  background-color: #00506B;
 }
 
 /* color */
