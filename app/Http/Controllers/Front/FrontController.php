@@ -18,6 +18,7 @@ use App\Models\Producto;
 use App\Models\Servicio;
 use App\Models\Plan;
 use App\Models\Preinscripcion;
+use App\Models\Suscriptor;
 
 use Auth;
 use Mail;
@@ -122,6 +123,20 @@ class FrontController extends Controller
             $preinscripcion->email = $request->email;
             $preinscripcion->plan = $request->plan;
             $preinscripcion->save();
+            return 'ok';
+        }
+        else{
+
+        }
+    }
+
+    public function sendSuscripcion(Request $request)
+    {
+        if ($request->ajax()) {
+            $suscriptor = New Suscriptor();
+            $suscriptor->nombre = $request->nombre;
+            $suscriptor->email = $request->email;
+            $suscriptor->save();
             return 'ok';
         }
         else{

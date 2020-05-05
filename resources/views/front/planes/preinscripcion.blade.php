@@ -4,36 +4,6 @@
 Pre-Inscripción
 @endsection
 
-@section('css')
-<style>
-#sendmessage {
-    color: #007bff;
-    border: 1px solid #007bff;
-    display: none;
-    text-align: center;
-    padding: 15px;
-    font-weight: 600;
-    margin-bottom: 15px;
-}
-
-#errormessage {
-    color: red;
-    display: none;
-    border: 1px solid red;
-    text-align: center;
-    padding: 15px;
-    font-weight: 600;
-    margin-bottom: 15px;
-}
-
-#sendmessage.show,
-#errormessage.show,
-.show {
-    display: block;
-}
-</style>
-@endsection
-
 @section('contenido')
 <section class="xs-bg-cover" style="background: url({{ $fondo ? $fondo : '/resources/img/fondos/default.jpg' }}) center; background-size: cover;">
     <div class="container">
@@ -88,8 +58,8 @@ Pre-Inscripción
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group xs-mt-60">
-                            <div id="sendmessage"></div>
-                            <div id="errormessage"></div>
+                            <div class="sendmessage"></div>
+                            <div class="errormessage"></div>
                         </div>
                         <div class="form-group xs-mt-60">
                             <center><button type="submit" id="submit" class="btn btn-primary">Pre-Inscribirse</button></center>
@@ -103,22 +73,6 @@ Pre-Inscripción
 @endsection
 
 @section('js')
-<script type="text/javascript">
-    function sendRequest(url,data,method,cb) {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        opts={};
-        opts.url=url;
-        if (data) opts.data=data;
-        opts.method=method;
-        opts.complete=cb;
-        $.ajax(opts);
-    }
-</script>
-
 <script>
     $(document).ready(function() {
             $("#form-contacto").submit(function(e) {
@@ -130,12 +84,12 @@ Pre-Inscripción
                     $("#form-contacto")[0].reset();
                     $("#submit").html('Pre-Inscribirse');
                     if (data.status==200) {
-                        $("#sendmessage").addClass("show");
-                        $("#sendmessage").html("Su mensaje se envió correctamente, pronto nos pondremos en contacto con Usted");
+                        $(".sendmessage").addClass("show");
+                        $(".sendmessage").html("Su mensaje se envió correctamente, pronto nos pondremos en contacto con Usted");
                     }
                     else{
-                        $("#errormessage").addClass("show");
-                        $("#errormessage").html("¡Error! Por favor, intente nuevamente");
+                        $(".errormessage").addClass("show");
+                        $(".errormessage").html("¡Error! Por favor, intente nuevamente");
                     }
                 })
                 e.preventDefault();

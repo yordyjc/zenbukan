@@ -214,15 +214,6 @@ jQuery(document).ready(function ($) {
 	}
 
 	/*==========================================================
-		4. Subscribe form
-	============================================================*/
-	if ($('.xs-subscribe-form').length > 0) {
-		$('.xs-subscribe-form').ajaxChimp({
-			url: 'https://facebook.us8.list-manage.com/subscribe/post?u=85f515a08b87483d03fee7755&amp;id=66389dc38b'
-		});
-	}
-
-	/*==========================================================
 		5. Health Comparison
 	============================================================*/
 	if ($('.xs-image-comparison').length > 0) {

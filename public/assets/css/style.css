@@ -4158,4 +4158,36 @@ input[type=number] {
   cursor: e-resize;
 }
 
-/*# sourceMappingURL=style.css.map */
+.sendmessage,
+.sendmessage-subscribe,
+.sendmessage-contacto {
+    color: #007bff;
+    border: 1px solid #007bff;
+    display: none;
+    text-align: center;
+    padding: 15px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.errormessage,
+.errormessage-subscribe,
+.errormessage-contacto {
+    color: red;
+    display: none;
+    border: 1px solid red;
+    text-align: center;
+    padding: 15px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.sendmessage.show,
+.errormessage.show,
+.sendmessage-subscribe.show,
+.errormessage-subscribe.show,
+.sendmessage-contacto.show,
+.errormessage-contacto.show,
+.show {
+    display: block;
+}
