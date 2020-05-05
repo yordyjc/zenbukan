@@ -6,7 +6,7 @@ Inicio
 
 @section('contenido')
 <!-- Banner -->
-<section class="xs-bg-cover parallaxie " id="home" style="background: url({{ $fondo ? $fondo : '/resources/img/fondos/default.jpg' }}) center; background-size: cover;">
+<section class="xs-bg-cover" id="home" style="background: url({{ $fondo ? $fondo : '/resources/img/fondos/default.jpg' }}) center; background-size: cover;">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">

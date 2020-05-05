@@ -19,6 +19,7 @@ use App\Models\Servicio;
 use App\Models\Plan;
 use App\Models\Preinscripcion;
 use App\Models\Suscriptor;
+use App\Models\Contacto;
 
 use Auth;
 use Mail;
@@ -137,6 +138,30 @@ class FrontController extends Controller
             $suscriptor->nombre = $request->nombre;
             $suscriptor->email = $request->email;
             $suscriptor->save();
+            return 'ok';
+        }
+        else{
+
+        }
+    }
+
+    public function formContacto()
+    {
+        $configuracion=Configuracion::find(1);
+        return view('front.contacto.index')
+            ->with('fondo',$this->fondo())
+            ->with('configuracion',$configuracion);
+    }
+
+    public function sendContacto(Request $request)
+    {
+        if ($request->ajax()) {
+            $contacto = New Contacto();
+            $contacto->nombre = $request->nombre;
+            $contacto->celular = $request->telefono;
+            $contacto->email = $request->email;
+            $contacto->mensaje = $request->mensaje;
+            $contacto->save();
             return 'ok';
         }
         else{

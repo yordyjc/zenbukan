@@ -15,10 +15,10 @@ class CreatePreinscripcionesTable extends Migration
     {
         Schema::create('preinscripciones', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('nombre')->nullable();
-            $table->text('celular')->nullable();
-            $table->text('email')->nullable();
-            $table->text('plan')->nullable();
+            $table->string('nombre')->nullable();
+            $table->string('celular')->nullable();
+            $table->string('email')->nullable();
+            $table->string('plan')->nullable();
             $table->boolean('estado')->default(0); //1 atendido, 0 sin atender
             $table->timestamps();
         });

@@ -20,7 +20,7 @@
                             @if ($configuracion->telefono)
                             <li>
                                 <i class="icon icon-phone"></i>
-                                <p><a class="xs-phone-number" href="tel:{{ $configuracion->telefono }}">{{ $configuracion->telefono }}</a></p>
+                                <p>{{ $configuracion->telefono }}</p>
                             </li>
                             @endif
                         </ul>

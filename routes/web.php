@@ -47,6 +47,7 @@ Route::middleware(['auth'])->group(function () {
             Route::resource('/pre-inscritos','Admin\PreInscritosController');
             Route::resource('/pre-inscritos-contactados','Admin\PreInscritosContactadosController');
             Route::resource('/suscriptores','Admin\SuscriptoresController');
+            Route::resource('/contacto','Admin\ContactoController');
 
             //reportes
             Route::get('/reporte-fechas/','Admin\ReportesController@fechasGet');
