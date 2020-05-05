@@ -101,12 +101,40 @@
 
 			</ul>
 
+            <div class="pcoded-navigation-label">Gestión de inscripciones</div>
+            <ul class="pcoded-item pcoded-left-item">
+                <li class="@yield('preinscripciones')">
+                    <a href="{{ url('/admin/pre-inscritos') }}" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="feather icon-info"></i></span>
+                        <span class="pcoded-mtext">Pre-Inscripciones</span>
+                    </a>
+                </li>
+            </ul>
+
             <div class="pcoded-navigation-label">Gestión de página web</div>
             <ul class="pcoded-item pcoded-left-item">
+                <li class="@yield('servicios')">
+                    <a href="{{ url('/admin/servicios') }}" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="feather icon-star"></i></span>
+                        <span class="pcoded-mtext">Servicios</span>
+                    </a>
+                </li>
+                <li class="@yield('planes')">
+                    <a href="{{ url('/admin/planes') }}" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="feather icon-award"></i></span>
+                        <span class="pcoded-mtext">Planes</span>
+                    </a>
+                </li>
                 <li class="@yield('fondos')">
                     <a href="{{ url('/admin/fondos') }}" class="waves-effect waves-dark">
                         <span class="pcoded-micon"><i class="feather icon-image"></i></span>
                         <span class="pcoded-mtext">Fondos</span>
+                    </a>
+                </li>
+                <li class="@yield('productos')">
+                    <a href="{{ url('/admin/productos') }}" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="feather icon-package"></i></span>
+                        <span class="pcoded-mtext">Productos</span>
                     </a>
                 </li>
             </ul>

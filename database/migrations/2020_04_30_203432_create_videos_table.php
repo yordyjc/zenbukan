@@ -20,6 +20,10 @@ class CreateVideosTable extends Migration
             $table->string('descripcion');
             $table->string('url');
             $table->boolean('estado')->default(true);
+            $table->unsignedInteger('galerias_id');
+            $table->foreign('galerias_id')
+                    ->references('id')->on('galerias')
+                    ->onDelete('cascade');
         });
     }
 

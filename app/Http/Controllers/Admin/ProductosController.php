@@ -4,17 +4,28 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Galeria;
+
 use Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Input;
 use Response;
+use Illuminate\Support\Facades\Input;
 use File;
 use Carbon\Carbon;
 use Auth;
 
-class GaleriasController extends Controller
+use App\Models\Producto;
+
+class ProductosController extends Controller
 {
+    /**
+     * Reemplaza todos los acentos por sus equivalentes sin ellos
+     *
+     * @param $string
+     *  string la cadena a sanear
+     *
+     * @return $string
+     *  string saneada
+     */
     function sanear_string($string)
     {
 
@@ -57,6 +68,7 @@ class GaleriasController extends Controller
         );
         return $string;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -64,8 +76,8 @@ class GaleriasController extends Controller
      */
     public function index()
     {
-        $galerias= Galeria::all();
-        return view('admin.galerias-video.index')->with('galerias',$galerias);
+        $productos=Producto::all();
+        return view('admin.web.productos.index')->with('productos',$productos);
     }
 
     /**
@@ -75,7 +87,7 @@ class GaleriasController extends Controller
      */
     public function create()
     {
-        return view('admin.galerias-video.crear');
+        return view('admin.web.productos.crear');
     }
 
     /**
@@ -86,38 +98,37 @@ class GaleriasController extends Controller
      */
     public function store(Request $request)
     {
-        $validator=Validator::make($request->all(),[
-            'nombre'=>'required',
-            'descripcion'=>'required',
-            'foto'=>'required|file|mimes:png,jpg,jpeg|max:5120',
-            'estado'=>'required'
+        $validator = Validator::make($request->all(), [
+            'nombre' => 'required',
+            'foto' => 'required|file|mimes:png,jpg,jpeg|max:5120',
+            'descripcion' => 'required',
+            'precio' => 'required',
         ]);
-        if($validator->fails())
-        {
-            alert()->error('Ups!','La operacion no pudo ser completada')->autoClose(4000)->showCloseButton();
-            return redirect('/admin/galeria-videos/create')
-            ->withErrors($validator)
-            ->withInput();
+        if ($validator->fails()) {
+            alert()->error('Ups!','La operación no pudo ser completada')->autoClose(4000)->showCloseButton();
+            return redirect('/admin/productos/create')
+                ->withErrors($validator)
+                ->withInput();
         }
-        $galeria = new Galeria();
-        $galeria->nombre =$request->nombre;
-        $galeria->descripcion = $request->descripcion;
-        $foto=Input::file('foto');
-        if(!is_null($foto))
-        {
+
+        $producto=new Producto();
+        $producto->nombre=$request->nombre;
+        $producto->descripcion=$request->descripcion;
+        $foto  = Input::file('foto');
+        if (!is_null($foto)) {
             $extension=$foto->getClientOriginalExtension();
-            $name=str_replace(' ','-',strtolower($this->sanear_string($request->nombre))).'.'.$extension;
-            $path=public_path().'/resources/img/videos';
+            $name=str_replace(' ', '-', strtolower($this->sanear_string($request->nombre))).'.'.$extension;
+            $path=public_path().'/resources/img/productos/';
             $foto->move($path,$name);
-            $galeria->foto='/resources/img/videos/'.$name;
+            $producto->foto='/resources/img/productos/'.$name;
         }
-        if($request->estado==0)
-        {
-            $galeria->estado=false;
-        }
-        $galeria->save();
+        $producto->youtube=$request->youtube;
+        $producto->moneda=$request->moneda;
+        $producto->precio=$request->precio;
+        $producto->oferta=$request->oferta;
+        $producto->save();
         alert()->success('¡Yeah!','Operación realizada con éxito')->autoClose(3000)->showCloseButton();
-        return redirect('/admin/galeria-videos');
+        return redirect('/admin/productos');
     }
 
     /**
@@ -139,16 +150,14 @@ class GaleriasController extends Controller
      */
     public function edit($id)
     {
-        $galeria=Galeria::find($id);
-        if($galeria)
-        {
-            return view('admin.galerias-video.editar')->with('galeria',$galeria);
+        $producto=Producto::find($id);
+        if ($producto) {
+            return view('admin.web.productos.editar')
+                ->with('producto',$producto);
         }
-        else
-        {
+        else{
             return redirect('/admin/sin-permiso');
         }
-        
     }
 
     /**
@@ -160,42 +169,37 @@ class GaleriasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validator=Validator::make($request->all(),[
-            'nombre'=>'required',
-            'descripcion'=>'required',
-            'foto'=>'required|file|mimes:png,jpg,jpeg|max:5120',
-            'estado'=>'required'
+        $validator = Validator::make($request->all(), [
+            'nombre' => 'required',
+            'descripcion' => 'required',
+            'precio' => 'required',
         ]);
-        if($validator->fails())
-        {
-            alert()->error('Ups!','La operacion no pudo ser completada')->autoClose(4000)->showCloseButton();
-            return redirect('/admin/galeria-videos/create')
-            ->withErrors($validator)
-            ->withInput();
+        if ($validator->fails()) {
+            alert()->error('Ups!','La operación no pudo ser completada')->autoClose(4000)->showCloseButton();
+            return redirect('/admin/productos/'.$id.'/edit')
+                ->withErrors($validator)
+                ->withInput();
         }
 
-        $galeria=Galeria::find($id);
-        $galeria->nombre=$request->nombre;
-        $galeria->descripcion=$request->descripcion;
+        $producto=Producto::find($id);
+        $producto->nombre=$request->nombre;
+        $producto->descripcion=$request->descripcion;
         $foto  = Input::file('foto');
         if (!is_null($foto)) {
-            File::delete(public_path().$galeria->foto);
+            File::delete(public_path().$producto->foto);
             $extension=$foto->getClientOriginalExtension();
             $name=str_replace(' ', '-', strtolower($this->sanear_string($request->nombre))).'.'.$extension;
-            $path=public_path().'/resources/img/videos/';
+            $path=public_path().'/resources/img/productos/';
             $foto->move($path,$name);
-            $galeria->foto='/resources/img/videos/'.$name;
+            $producto->foto='/resources/img/productos/'.$name;
         }
-        if($request->estado==0)
-        {
-            $galeria->estado=false;
-        }
-        else{
-            $galeria->estado=true;
-        }
-        $galeria->save();
+        $producto->youtube=$request->youtube;
+        $producto->moneda=$request->moneda;
+        $producto->precio=$request->precio;
+        $producto->oferta=$request->oferta;
+        $producto->save();
         alert()->success('¡Yeah!','Operación realizada con éxito')->autoClose(3000)->showCloseButton();
-        return redirect('/admin/galeria-videos');
+        return redirect('/admin/productos');
     }
 
     /**
@@ -206,13 +210,11 @@ class GaleriasController extends Controller
      */
     public function destroy($id)
     {
-        {
-            $galeria=Galeria::find($id);
-            File::delete(public_path().$galeria->foto);
-            $galeria->delete();
-    
-            alert()->success('¡Yeah!','Operación realizada con éxito')->autoClose(3000)->showCloseButton();
-            return redirect('/admin/galeria-videos');
-        }
+        $producto=Producto::find($id);
+        File::delete(public_path().$producto->foto);
+        $producto->delete();
+
+        alert()->success('¡Yeah!','Operación realizada con éxito')->autoClose(3000)->showCloseButton();
+        return redirect('/admin/productos');
     }
 }

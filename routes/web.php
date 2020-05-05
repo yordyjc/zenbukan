@@ -41,9 +41,11 @@ Route::middleware(['auth'])->group(function () {
             //pagina-web
             Route::resource('configuracion-general','Admin\ConfiguracionesController');
             Route::resource('/fondos','Admin\FondosController');
-
-            //planes
-            Route::resource('planes','Admin\PlanesController');
+            Route::resource('/productos','Admin\ProductosController');
+            Route::resource('/servicios','Admin\ServiciosController');
+            Route::resource('/planes','Admin\PlanesController');
+            Route::resource('/pre-inscritos','Admin\PreInscritosController');
+            Route::resource('/pre-inscritos-contactados','Admin\PreInscritosContactadosController');
 
             //galeria de videos
             Route::resource('galeria-videos','Admin\GaleriasController');
@@ -93,3 +95,11 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/','Front\FrontController@index');
 Route::get('/imc','Front\FrontController@imc');
+Route::get('/productos','Front\FrontController@listaProductos');
+Route::get('/productos/{slug}','Front\FrontController@detalleProducto');
+Route::get('/servicios','Front\FrontController@listaServicios');
+Route::get('/planes','Front\FrontController@listaPlanes');
+Route::get('/pre-inscripcion','Front\FrontController@formPreInscripcion');
+Route::post('/pre-inscripcion','Front\FrontController@sendPreInscripcion');
+Route::get('/contacto', 'Front\FrontController@formContacto');
+Route::post('/contacto', 'Front\FrontController@sendContacto');

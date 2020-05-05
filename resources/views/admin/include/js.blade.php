@@ -8,7 +8,8 @@
 	{!! Html::script('resources/admin/bower_components/jquery-slimscroll/js/jquery.slimscroll.js') !!}
 	{!! Html::script('resources/admin/assets/js/pcoded.min.js') !!}
 
-	{!! Html::script('resources/admin/assets/js/vertical/vertical-layout.min.js') !!}
+	{{-- {!! Html::script('resources/admin/assets/js/vertical/vertical-layout.min.js') !!} --}}
+    {!! Html::script('resources/admin/assets/js/vertical/menu/menu-static.js') !!}
 	{!! Html::script('resources/admin/assets/js/script.min.js') !!}
 
 	{!! Html::script('resources/admin/bower_components/datatables.net/js/jquery.dataTables.min.js') !!}

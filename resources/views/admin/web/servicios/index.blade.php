@@ -1,10 +1,10 @@
 @extends('admin.layouts.app')
 
 @section('title')
-Planes
+Servicios
 @endsection
 
-@section('planes')
+@section('servicios')
 active
 @endsection
 
@@ -19,7 +19,7 @@ use Carbon\Carbon;
             <div class="card-header">
                 <h5>@yield('title')</h5>
                 <div class="card-header-right">
-                    <a href="{{ url('/admin/planes/create') }}" class="btn waves-effect waves-light btn-primary btn-outline-primary btn-sm"> <i class="icofont icofont-ui-add" style="color:#4680ff;"></i> Agregar plan</a>
+                    <a href="{{ url('/admin/servicios/create') }}" class="btn waves-effect waves-light btn-primary btn-outline-primary btn-sm"> <i class="icofont icofont-ui-add" style="color:#4680ff;"></i> Agregar servicio</a>
                 </div>
             </div>
             <div class="card-block">
@@ -28,34 +28,30 @@ use Carbon\Carbon;
                     <table id="fitnessTable" class="table table-striped table-hover" style="width:100%">
                         <thead>
                             <tr>
-                                <th class="text-center">Plan</th>
+                                <th class="text-center">Servicio</th>
+                                <th class="text-center">Imagen</th>
                                 <th class="text-center">Descripción</th>
-                                <th class="text-center">Precio</th>
                                 <th class="text-center">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @if (count($planes)>0)
-                            @foreach ($planes as $plan)
+                            @if (count($servicios)>0)
+                            @foreach ($servicios as $servicio)
                             <tr>
                                 <td class="text-center">
-                                    {{ $plan->nombre }}
+                                    {{ $servicio->nombre }}
                                 </td>
                                 <td class="text-center">
-                                    <span data-toggle="tooltip" data-placement="left" data-original-title="{{ $plan->descripcion }}" class="label label-info">Ver descripción</span>
+                                    <img src="{{ $servicio->foto }}" width="150" />
                                 </td>
                                 <td class="text-center">
-                                    @if ($plan->precio)
-                                    {{ $plan->moneda }} {{ $plan->precio }}
-                                    @else
-                                    No definido
-                                    @endif
+                                    <span data-toggle="tooltip" data-placement="left" data-original-title="{{ $servicio->descripcion }}" class="label label-info">Ver descripción</span>
                                 </td>
                                 <td class="text-center">
-                                    <a href="{{ url('/admin/planes/'.$plan->id.'/edit') }}">
+                                    <a href="{{ url('/admin/servicios/'.$servicio->id.'/edit') }}">
                                         <i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-blue" data-toggle="tooltip" data-placement="left" data-original-title="Editar"></i>
                                     </a>
-                                    <a href="#" onclick="eliminarModal({{ $plan->id }})" data-toggle="modal" data-target="#eliminarModal">
+                                    <a href="#" onclick="eliminarModal({{ $servicio->id }})" data-toggle="modal" data-target="#eliminarModal">
                                         <i class="feather icon-trash-2 f-w-600 f-16 text-c-red" data-toggle="tooltip" data-placement="left" data-original-title="Eliminar"></i>
                                     </a>
                                 </td>

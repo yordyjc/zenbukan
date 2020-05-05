@@ -1,61 +1,61 @@
 @extends('admin.layouts.app')
 
 @section('title')
-Planes
+Pre-inscritos contactados
 @endsection
 
-@section('planes')
+@section('preinscripciones')
 active
 @endsection
 
 @section('content')
 @php
-use Carbon\Carbon;
+    use Carbon\Carbon;
+    setlocale(LC_TIME, 'es_ES.UTF-8');
+    Carbon::setLocale('es');
 @endphp
-
 <div class="row">
     <div class="col-sm-12">
         <div class="card">
             <div class="card-header">
                 <h5>@yield('title')</h5>
                 <div class="card-header-right">
-                    <a href="{{ url('/admin/planes/create') }}" class="btn waves-effect waves-light btn-primary btn-outline-primary btn-sm"> <i class="icofont icofont-ui-add" style="color:#4680ff;"></i> Agregar plan</a>
+                    <a href="{{ url('/admin/pre-inscritos') }}" class="btn waves-effect waves-light btn-primary btn-outline-primary btn-sm"> <i class="icofont icofont-ui-add" style="color:#4680ff;"></i> Volver a Pre-Inscritos</a>
                 </div>
             </div>
             <div class="card-block">
+
+                @if (count($preinscritos)>0)
 
                 <div class="table-responsive">
                     <table id="fitnessTable" class="table table-striped table-hover" style="width:100%">
                         <thead>
                             <tr>
+                                <th>Nombre</th>
+                                <th class="text-center">Celular/E-mail</th>
                                 <th class="text-center">Plan</th>
-                                <th class="text-center">Descripción</th>
-                                <th class="text-center">Precio</th>
+                                <th class="text-center">Fechas</th>
                                 <th class="text-center">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @if (count($planes)>0)
-                            @foreach ($planes as $plan)
+                            @foreach ($preinscritos as $preinscrito)
+
                             <tr>
+                                <td>{{ $preinscrito->nombre }}</td>
                                 <td class="text-center">
-                                    {{ $plan->nombre }}
+                                    {{ $preinscrito->celular }}
+                                    <br />
+                                    {{ $preinscrito->email }}
+                                </td>
+                                <td class="text-center">{{ $preinscrito->plan }}</td>
+                                <td class="text-center">
+                                    Solicitud: {{ Carbon::parse($preinscrito->created_at)->format('d \d\e M, Y') }}
+                                    <br />
+                                    Contacto: {{ Carbon::parse($preinscrito->updated_at)->format('d \d\e M, Y') }}
                                 </td>
                                 <td class="text-center">
-                                    <span data-toggle="tooltip" data-placement="left" data-original-title="{{ $plan->descripcion }}" class="label label-info">Ver descripción</span>
-                                </td>
-                                <td class="text-center">
-                                    @if ($plan->precio)
-                                    {{ $plan->moneda }} {{ $plan->precio }}
-                                    @else
-                                    No definido
-                                    @endif
-                                </td>
-                                <td class="text-center">
-                                    <a href="{{ url('/admin/planes/'.$plan->id.'/edit') }}">
-                                        <i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-blue" data-toggle="tooltip" data-placement="left" data-original-title="Editar"></i>
-                                    </a>
-                                    <a href="#" onclick="eliminarModal({{ $plan->id }})" data-toggle="modal" data-target="#eliminarModal">
+                                    <a href="#" onclick="eliminarModal({{ $preinscrito->id }})" data-toggle="modal" data-target="#eliminarModal">
                                         <i class="feather icon-trash-2 f-w-600 f-16 text-c-red" data-toggle="tooltip" data-placement="left" data-original-title="Eliminar"></i>
                                     </a>
                                 </td>
@@ -88,10 +88,12 @@ use Carbon\Carbon;
                                     </div>
                                 </div>
                             </div>
-                            @endif
                         </tbody>
                     </table>
                 </div>
+                @else
+                <h3>No hay más personas que hayan sido contactadas</h3>
+                @endif
 
             </div>
         </div>
@@ -103,9 +105,10 @@ use Carbon\Carbon;
 <script>
     $(document).ready( function () {
         $('#fitnessTable').DataTable({
-            "paging":    false,
+            // "paging":    false,
             "info":      false,
             // "searching": false,
+            "lengthMenu": [[50, 75, 100, -1], [50, 75, 100, "Todos"]],
             "language": {
                 "lengthMenu": "Mostrar  _MENU_  registros por página",
                 "zeroRecords": "Ningún registro encontrado",

@@ -15,14 +15,12 @@ class CreatePlanesTable extends Migration
     {
         Schema::create('planes', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nombre')->nullable();
+            $table->string('slug')->nullable();
+            $table->text('descripcion')->nullable();
+            $table->string('moneda')->nullable(); // S/. o US$
+            $table->float('precio')->nullable();
             $table->timestamps();
-            $table->string('nombre');
-            $table->string('foto');
-            $table->text('descripcion');
-            $table->integer('precio');
-            $table->string('portada')->nullable();
-            $table->text('contenido')->nullable();
-            $table->boolean('estado')->default(true);
         });
     }
 
