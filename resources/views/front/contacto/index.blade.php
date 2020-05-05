@@ -1,7 +1,7 @@
 @extends('front.layouts.app')
 
 @section('titulo')
-Pre-Inscripción
+Contacta con nosotros
 @endsection
 
 @section('contenido')
@@ -17,13 +17,40 @@ Pre-Inscripción
     </div>
 </section>
 
+<section class="xs-section-padding xs-pb-sm">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 offset-md-2">
+                <div class="xs-contact-list">
+                    <h3><i class="icon icon-location"></i> Fitness 10</h3>
+                    <p>{{ $configuracion->direccion }}</p>
+                    <ul>
+                        <li><span>Teléfono:</span> {{ $configuracion->telefono }}</li>
+                        <li><span>E-mail:</span> <p><a href="mailto:{{ $configuracion->email }}">{{ $configuracion->email }}</a></p></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="xs-contact-list">
+                    <h3>Horario de atención</h3>
+                    <ul>
+                        <li><span>Lun-Vie:</span> <p>06:00 am a 10:00 pm (corrido)</p></li>
+                        <li><span>Sáb:</span> <p>07:00 am a 09:00 pm</p></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="xs-map" class="xs-map-contact"></div>
+
 <section class="xs-pb-sm">
     <div class="container">
         <div class="xs-contact-form">
             <div class="row">
                 <div class="col-lg-10 mx-auto">
                     <div class="xs-section-heading text-center">
-                        <h2><span>Por favor, complete el formulario</span></h2>
                         <p>Completa el formulario y uno de nuestros asesores se comunicará contigo para brindarte información detallada y resolver todas tus dudas.</p>
                     </div>
                 </div>
@@ -46,56 +73,52 @@ Pre-Inscripción
                     </div>
                     <div class="col-md-6">
                         <div class="form-group xs-form-anim xs-message-box">
-                            <label>Elegir plan</label>
-                            <br />
-                            @foreach ($planes as $plan)
-                            <input type="radio" id="{{ $plan->id }}" name="plan" value="{{ $plan->nombre }}" required>
-                            <label for="{{ $plan->id }}">{{ $plan->nombre }}</label><br>
-                            @endforeach
+                            <label class="input-label" for="mensaje">Su mensaje</label>
+                            <textarea id="mensaje" name="mensaje" class="form-control"></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group xs-mt-60">
-                            <div class="sendmessage"></div>
-                            <div class="errormessage"></div>
+                            <div class="sendmessage-contacto"></div>
+                            <div class="errormessage-contacto"></div>
                         </div>
                         <div class="form-group xs-mt-60">
-                            <center><button type="submit" id="submit" class="btn btn-primary">Pre-Inscribirse</button></center>
+                            <center><button type="submit" id="submit-contacto" class="btn btn-primary">Enviar</button></center>
                         </div>
                     </div>
                 </div>
             </form>
-        </div><!-- .xs-contact-form END -->
-    </div><!-- .container END -->
+        </div>
+    </div>
 </section>
 @endsection
 
 @section('js')
 <script>
     $(document).ready(function() {
-            $("#form-contacto").submit(function(e) {
-                $("#submit").html("Enviando...");
-                $("#submit").addClass("disabled");
-                var formData=$(this).serialize();
-                var route='/pre-inscripcion';
-                sendRequest(route,formData,'POST',function (data,textStatus) {
-                    $("#form-contacto")[0].reset();
-                    $("#submit").html('Pre-Inscribirse');
-                    if (data.status==200) {
-                        $(".sendmessage").addClass("show");
-                        $(".sendmessage").html("Su mensaje se envió correctamente, pronto nos pondremos en contacto con Usted");
-                    }
-                    else{
-                        $(".errormessage").addClass("show");
-                        $(".errormessage").html("¡Error! Por favor, intente nuevamente");
-                    }
-                })
-                e.preventDefault();
-                return false;
-            });
+        $("#form-contacto").submit(function(e) {
+            $("#submit-contacto").html("Enviando...");
+            $("#submit-contacto").addClass("disabled");
+            var formData=$(this).serialize();
+            var route='/contacto';
+            sendRequest(route,formData,'POST',function (data,textStatus) {
+                $("#form-contacto")[0].reset();
+                $("#submit-contacto").html('Enviar');
+                if (data.status==200) {
+                    $(".sendmessage-contacto").addClass("show");
+                    $(".sendmessage-contacto").html("Su mensaje se envió correctamente, pronto nos pondremos en contacto con Usted");
+                }
+                else{
+                    $(".errormessage-contacto").addClass("show");
+                    $(".errormessage-contacto").html("¡Error! Por favor, intente nuevamente");
+                }
+            })
+            e.preventDefault();
+            return false;
         });
+    });
 </script>
 @endsection
 

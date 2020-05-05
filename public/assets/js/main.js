@@ -214,15 +214,6 @@ jQuery(document).ready(function ($) {
 	}
 
 	/*==========================================================
-		4. Subscribe form
-	============================================================*/
-	if ($('.xs-subscribe-form').length > 0) {
-		$('.xs-subscribe-form').ajaxChimp({
-			url: 'https://facebook.us8.list-manage.com/subscribe/post?u=85f515a08b87483d03fee7755&amp;id=66389dc38b'
-		});
-	}
-
-	/*==========================================================
 		5. Health Comparison
 	============================================================*/
 	if ($('.xs-image-comparison').length > 0) {
@@ -286,10 +277,10 @@ jQuery(document).ready(function ($) {
 			// Basic options for a simple Google Map
 			var mapOptions = {
 				// How zoomed in you want the map to start at (always required)
-				zoom: 11,
+				zoom: 17,
 
 				// The latitude and longitude to center the map (always required)
-				center: new google.maps.LatLng(40.6700, -73.9400), // New York
+				center: new google.maps.LatLng(-18.0029744, -70.2458833),
 
 				// How you would like to style the map.
 				// This is where you would paste any style found on Snazzy Maps.
@@ -307,107 +298,16 @@ jQuery(document).ready(function ($) {
 
 			// Let's also add a marker while we're at it
 			var marker = new google.maps.Marker({
-				position: new google.maps.LatLng(40.6700, -73.9400),
+				position: new google.maps.LatLng(-18.0029744, -70.2458833),
 				icon: mapPin,
 				map: map,
-				title: 'Gym!'
+				title: 'Fitness 10!'
 			});
 		};
 
 		// When the window has finished loading create our google map below
 		google.maps.event.addDomListener(window, 'load', init);
 	}
-	function email_pattern(email) {
-		var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-		return regex.test(email);
-	}
-	$('#xs-contact-form').on('submit', function (event) {
-		event.preventDefault();
-
-		var xs_contact_name = $('#xs-name'),
-			xs_contact_number = $('#xs-phone'),
-			xs_contact_email = $('#xs-email'),
-			x_contact_massage = $('#xs-message'),
-			xs_contact_submit = $('#xs_contact_submit'),
-			xs_contact_error = false;
-
-		$('.xpeedStudio_success_message').remove();
-
-		if (xs_contact_name.length > 0) {
-			if (xs_contact_name.val().trim() === '') {
-				xs_contact_name.addClass('invaild');
-				xs_contact_error = true;
-				xs_contact_name.focus();
-				return false;
-			} else {
-				xs_contact_name.removeClass('invaild');
-			}
-		}
-
-		if (xs_contact_email.length > 0) {
-			if (xs_contact_email.val().trim() === '') {
-				xs_contact_email.addClass('invaild');
-				xs_contact_error = true;
-				xs_contact_email.focus();
-				return false;
-			} else if (!email_pattern(xs_contact_email.val().toLowerCase())) {
-				xs_contact_email.addClass('invaild');
-				xs_contact_error = true;
-				xs_contact_email.focus();
-				return false;
-			} else {
-				xs_contact_email.removeClass('invaild');
-			}
-		}
-
-		if (xs_contact_number.length > 0) {
-			if (xs_contact_number.val().trim() === '') {
-				xs_contact_number.addClass('invaild');
-				xs_contact_error = true;
-				xs_contact_number.focus();
-				return false;
-			} else {
-				xs_contact_number.removeClass('invaild');
-			}
-		}
-
-		if (x_contact_massage.length > 0) {
-			if (x_contact_massage.val().trim() === '') {
-				x_contact_massage.addClass('invaild');
-				xs_contact_error = true;
-				x_contact_massage.focus();
-				return false;
-			} else {
-				x_contact_massage.removeClass('invaild');
-			}
-		}
-
-		if (xs_contact_error === false) {
-			xs_contact_submit.before().hide().fadeIn();
-			$.ajax({
-				type: "POST",
-				url: "assets/php/contact-form.php",
-				data: {
-					'xs_contact_name': xs_contact_name.val(),
-					'xs_contact_number': xs_contact_number.val(),
-					'xs_contact_email': xs_contact_email.val(),
-					'x_contact_massage': x_contact_massage.val(),
-				},
-				success: function (result) {
-					xs_contact_submit.after('<p class="xpeedStudio_success_message">' + result + '</p>').hide().fadeIn();
-
-					setTimeout(() => {
-						$(".xpeedStudio_success_message").fadeOut(1000, function () {
-							$(this).remove();
-						});
-					}, 5000);
-
-					$('#xs-contact-form')[0].reset();
-				}
-			});
-		}
-	});
-
 
 	if ($(window).width() > 991) {
 

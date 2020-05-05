@@ -46,6 +46,8 @@ Route::middleware(['auth'])->group(function () {
             Route::resource('/planes','Admin\PlanesController');
             Route::resource('/pre-inscritos','Admin\PreInscritosController');
             Route::resource('/pre-inscritos-contactados','Admin\PreInscritosContactadosController');
+            Route::resource('/suscriptores','Admin\SuscriptoresController');
+            Route::resource('/contacto','Admin\ContactoController');
 
             //galeria de videos
             Route::resource('galeria-videos','Admin\GaleriasController');
@@ -101,5 +103,6 @@ Route::get('/servicios','Front\FrontController@listaServicios');
 Route::get('/planes','Front\FrontController@listaPlanes');
 Route::get('/pre-inscripcion','Front\FrontController@formPreInscripcion');
 Route::post('/pre-inscripcion','Front\FrontController@sendPreInscripcion');
+Route::post('/suscribirse','Front\FrontController@sendSuscripcion');
 Route::get('/contacto', 'Front\FrontController@formContacto');
 Route::post('/contacto', 'Front\FrontController@sendContacto');

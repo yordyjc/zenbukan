@@ -109,6 +109,18 @@
                         <span class="pcoded-mtext">Pre-Inscripciones</span>
                     </a>
                 </li>
+                <li class="@yield('contacto')">
+                    <a href="{{ url('/admin/contacto') }}" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="feather icon-mail"></i></span>
+                        <span class="pcoded-mtext">Mensajes de contacto</span>
+                    </a>
+                </li>
+                <li class="@yield('suscripciones')">
+                    <a href="{{ url('/admin/suscriptores') }}" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="feather icon-at-sign"></i></span>
+                        <span class="pcoded-mtext">Suscripciones</span>
+                    </a>
+                </li>
             </ul>
 
             <div class="pcoded-navigation-label">Gestión de página web</div>

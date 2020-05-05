@@ -20,7 +20,7 @@
                             @if ($configuracion->telefono)
                             <li>
                                 <i class="icon icon-phone"></i>
-                                <p><a class="xs-phone-number" href="tel:{{ $configuracion->telefono }}">{{ $configuracion->telefono }}</a></p>
+                                <p>{{ $configuracion->telefono }}</p>
                             </li>
                             @endif
                         </ul>
@@ -52,14 +52,20 @@
                     <div class="footer-widget xs-footer-subscribe">
                         <h3 class="widget-title">Boletín Gratuito</h3>
                         <p>Suscríbete a nuestro boletín para recibir información de entrenamientos, nutrición y promociones.</p>
-                        <form action="#" method="POST" class="xs-subscribe-form">
+                        <form action="#" class="xs-subscribe-form" id="form-subscribe">
                             <div class="form-group">
-                                <input type="email" name="email" id="sub-input2" class="form-control" placeholder="Ingrese su e-mail">
+                                <input type="text" name="nombre" class="form-control" placeholder="Ingrese su nombre">
                             </div>
-                            <label for="sub-input2"></label>
                             <div class="form-group">
-
-                            <button type="submit">Suscribirse</button>
+                                <input type="email" name="email" class="form-control" placeholder="Ingrese su e-mail">
+                            </div>
+                            <div class="form-group">
+                                <label for="submit"></label>
+                                <div class="sendmessage-subscribe"></div>
+                                <div class="errormessage-subscribe"></div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" id="submit-subscribe">Suscribirse</button>
                             </div>
                         </form>
                     </div>
