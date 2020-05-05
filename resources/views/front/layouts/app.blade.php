@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="es" style="margin-top:-25px;">
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -29,3 +29,4 @@
     @include('front.include.js')
 </body>
 </html>
+

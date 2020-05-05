@@ -1,4 +1,4 @@
-@extends('front.layouts.app');
+@extends('front.layouts.app')
 
 @section('titulo')
 Nuestros planes
