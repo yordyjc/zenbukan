@@ -8,6 +8,6 @@ class Galeria extends Model
 {
     public function videos()
     {
-        return $this->hasMany('App\Video');
+        return $this->hasMany('App\Models\Video');
     }
 }

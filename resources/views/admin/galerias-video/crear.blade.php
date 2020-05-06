@@ -18,13 +18,13 @@ active
                     <form action="{{url('admin/galeria-videos')}}" method="post" enctype="multipart/form-data">
                         @csrf  
                         <div class="col-sm-10 offset-sm-1">
-                            <div class="form-group {{ $errors->has('nombre') ? ' has-danger' : '' }} row">
-                                <label class="col-md-2 col-form-label" for="nombre">Nombre</label>
+                            <div class="form-group {{ $errors->has('galeria') ? ' has-danger' : '' }} row">
+                                <label class="col-md-2 col-form-label" for="galeria">Nombre</label>
                                 <div class="col-md-10">
-                                <input type="text" class="form-control form-control-round {{ $errors->has('nombre') ? ' form-control-danger' : '' }}" id="nombre" name="nombre" value="{{ old('nombre') }}">
-                                    @if($errors->has('nombre'))
+                                <input type="text" class="form-control form-control-round {{ $errors->has('galeria') ? ' form-control-danger' : '' }}" id="galeria" name="galeria" value="{{ old('galeria') }}">
+                                    @if($errors->has('galeria'))
                                         <div class="col-form-label">
-                                            {{$errors->first('nombre')}}
+                                            {{$errors->first('galeria')}}
                                         </div>
                                     @endif
                                 </div>

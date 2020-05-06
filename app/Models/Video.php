@@ -8,6 +8,6 @@ class Video extends Model
 {
     public function galeria()
     {
-        return $this->belongsTo('App\Video');
+        return $this->belongsTo('App\Models\Galeria');
     }
 }

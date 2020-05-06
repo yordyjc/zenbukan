@@ -1,11 +1,15 @@
 @extends('admin.layouts.app')
 
 @section('title')
-    Lista de galerias
+    Lista de videos
 @endsection
 @php
-    Use App\Models\Video;
+
+Use App\Models\Video;
+Use App\Models\Galeria;
+
 @endphp
+
 @section('content')
     <div class="row">
         <div class="col-sm-12">
@@ -13,7 +17,7 @@
                 <div class="card-header">
                     <h5>@yield('title')</h5>
                     <div class="card-header-right">
-                        <a href="{{url('admin/galeria-videos/create')}}" class="btn waves-effect waves-light btn-primary btn-outline-primary btn-sm"><i class="icofont icofont-ui-add" style="color:#4680ff;"></i> Agregar galeria</a>
+                        <a href="{{url('admin/galeria-videos/videos/subir')}}" class="btn waves-effect waves-light btn-primary btn-outline-primary btn-sm"><i class="icofont icofont-ui-add" style="color:#4680ff;"></i> Agregar Video</a>
                     </div>
                 </div>
                 <div class="card-block">
@@ -22,31 +26,23 @@
                             <thead>
                                 <tr>
                                     <th>Nombre</th>
-                                    <th>Numero de videos</th>
-                                    <th>Estado</th>
+                                    <th>Galeria</th>
+                                    <th>Descripcion</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @if($galerias)
-                                    @foreach($galerias as $galeria)
+                                @if($videos)
+                                    @foreach($videos as $video)
                                         <tr>
-                                            <td>{{$galeria->galeria}}</td>
-                                            <td>{{$galeria->videos()->count()}}</td>
-                                            <td class="text-center">
-                                                @if($galeria->estado==1)
-                                                    <span class="label label-success" data-toggle="tooltip" data-placement="left" data-original-title="Categoria de videos activa">Activo</span>
-                                                @else
-                                                    <span class="label label-danger" data-toggle="tooltip" data-placement="left" data-original-title="Categoria de videos inactiva">Inactivo</span>
-                                                @endif
-                                            </td>
+                                            <td>{{$video->nombre}}</td>
+                                            <td>{{$video->galeria->galeria}}</td>
+                                            <td>{{$video->descripcion}}</td>
                                             <td class="text-center">
                                                 @if(Auth::user()->id==1||Auth::user()->id==2)
-                                                    <a href="{{url('/admin/galeria-videos/'.$galeria->id.'/edit')}}">
-                                                        <i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-blue" data-toggle="tooltip" data-placement="left" data-original-title="Editar"></i>
-                                                    </a>
+                                                   
                                                     @if(Auth::user()->activo==1||Auth::user()->id!=2)
-                                                        <a href="#" onclick="eliminarModal({{$galeria->id}})" data-toggle="modal" data-target="#eliminarModal">
+                                                        <a href="#" onclick="eliminarModal({{$video->id}})" data-toggle="modal" data-target="#eliminarModal">
                                                             <i class="feather icon-trash-2 f-w-600 f-16 text-c-red" data-toggle="tooltip" data-placement="left" data-original-title="Desabilitar galeria"></i>
                                                         </a>
                                                     @endif

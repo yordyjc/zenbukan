@@ -51,6 +51,10 @@ Route::middleware(['auth'])->group(function () {
 
             //galeria de videos
             Route::resource('galeria-videos','Admin\GaleriasController');
+            Route::get('galeria-videos/video/lista','Admin\GaleriasController@listaVideos');
+            Route::get('galeria-videos/videos/subir','Admin\GaleriasController@subirVideo');
+            Route::post('galeria-videos/videos/guardar','Admin\GaleriasController@guardarVideo');
+            Route::delete('galeria-videos/video/lista/{id}','Admin\GaleriasController@eliminarVideo');
 
             //reportes
             Route::get('/reporte-fechas/','Admin\ReportesController@fechasGet');

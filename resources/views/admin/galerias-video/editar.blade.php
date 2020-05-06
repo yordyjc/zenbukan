@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('title')
-    Editando galeria {{$galeria->nombre}}
+    Editando galeria {{$galeria->galeria}}
 @endsection
 @section('galerias')
 active
@@ -19,13 +19,13 @@ active
                         @csrf  
                         @method('PUT')
                         <div class="col-sm-10 offset-sm-1">
-                            <div class="form-group {{ $errors->has('nombre') ? ' has-danger' : '' }} row">
-                                <label class="col-md-2 col-form-label" for="nombre">Nombre</label>
+                            <div class="form-group {{ $errors->has('galeria') ? ' has-danger' : '' }} row">
+                                <label class="col-md-2 col-form-label" for="galeria">Nombre</label>
                                 <div class="col-md-10">
-                                <input type="text" class="form-control form-control-round {{ $errors->has('nombre') ? ' form-control-danger' : '' }}" id="nombre" name="nombre" value="{{ $galeria->nombre }}">
-                                    @if($errors->has('nombre'))
+                                <input type="text" class="form-control form-control-round {{ $errors->has('galeria') ? ' form-control-danger' : '' }}" id="galeria" name="galeria" value="{{ $galeria->galeria }}">
+                                    @if($errors->has('galeria'))
                                         <div class="col-form-label">
-                                            {{$errors->first('nombre')}}
+                                            {{$errors->first('galeria')}}
                                         </div>
                                     @endif
                                 </div>

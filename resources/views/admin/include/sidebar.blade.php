@@ -169,7 +169,7 @@
                             </a>
                         </li>
                         <li class="@yield('reporte-objetivo')">
-                            <a href="{{ url('/admin/galeria-videos/subir-video') }}" class="waves-effect waves-dark">
+                            <a href="{{ url('/admin/galeria-videos/video/lista') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">Subir un video</span>
                             </a>
                         </li>

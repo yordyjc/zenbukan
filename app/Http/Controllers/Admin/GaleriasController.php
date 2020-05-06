@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Galeria;
+use App\Models\Video;
 use Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
@@ -87,7 +88,7 @@ class GaleriasController extends Controller
     public function store(Request $request)
     {
         $validator=Validator::make($request->all(),[
-            'nombre'=>'required',
+            'galeria'=>'required',
             'descripcion'=>'required',
             'foto'=>'required|file|mimes:png,jpg,jpeg|max:5120',
             'estado'=>'required'
@@ -100,13 +101,13 @@ class GaleriasController extends Controller
             ->withInput();
         }
         $galeria = new Galeria();
-        $galeria->nombre =$request->nombre;
+        $galeria->galeria =$request->galeria;
         $galeria->descripcion = $request->descripcion;
         $foto=Input::file('foto');
         if(!is_null($foto))
         {
             $extension=$foto->getClientOriginalExtension();
-            $name=str_replace(' ','-',strtolower($this->sanear_string($request->nombre))).'.'.$extension;
+            $name=str_replace(' ','-',strtolower($this->sanear_string($request->galeria))).'.'.$extension;
             $path=public_path().'/resources/img/videos';
             $foto->move($path,$name);
             $galeria->foto='/resources/img/videos/'.$name;
@@ -161,7 +162,7 @@ class GaleriasController extends Controller
     public function update(Request $request, $id)
     {
         $validator=Validator::make($request->all(),[
-            'nombre'=>'required',
+            'galeria'=>'required',
             'descripcion'=>'required',
             'foto'=>'required|file|mimes:png,jpg,jpeg|max:5120',
             'estado'=>'required'
@@ -175,13 +176,13 @@ class GaleriasController extends Controller
         }
 
         $galeria=Galeria::find($id);
-        $galeria->nombre=$request->nombre;
+        $galeria->galeria=$request->galeria;
         $galeria->descripcion=$request->descripcion;
         $foto  = Input::file('foto');
         if (!is_null($foto)) {
             File::delete(public_path().$galeria->foto);
             $extension=$foto->getClientOriginalExtension();
-            $name=str_replace(' ', '-', strtolower($this->sanear_string($request->nombre))).'.'.$extension;
+            $name=str_replace(' ', '-', strtolower($this->sanear_string($request->galeria))).'.'.$extension;
             $path=public_path().'/resources/img/videos/';
             $foto->move($path,$name);
             $galeria->foto='/resources/img/videos/'.$name;
@@ -206,13 +207,69 @@ class GaleriasController extends Controller
      */
     public function destroy($id)
     {
-        {
+
             $galeria=Galeria::find($id);
+            if($galeria->videos->count() !=0)
+            {
+                alert()->error('Espere!','La galeria contiene videos')->autoClose(3000)->showCloseButton();
+                return redirect('/admin/galeria-videos');
+            }
             File::delete(public_path().$galeria->foto);
             $galeria->delete();
     
             alert()->success('¡Yeah!','Operación realizada con éxito')->autoClose(3000)->showCloseButton();
             return redirect('/admin/galeria-videos');
+    }
+
+    //Metodos para los videos
+
+    public function listaVideos()
+    {
+        $videos=Video::with('galeria')->orderBy('id','desc')->get();
+        return view('admin.galerias-video.lista-videos')->with('videos',$videos);
+    }
+
+    public function subirVideo()
+    {
+        $galerias=Galeria::all()->pluck('galeria','id');
+        
+        return view('admin.galerias-video.subir-video')->with('galerias',$galerias);
+    }
+
+    public function guardarVideo(Request $request)
+    {
+        $validator=Validator::make($request->all(),[
+            'galeria'=>'required',
+            'nombre'=>'required',
+            'descripcion'=>'required',
+            'url'=>'required'
+        ]);
+
+        if($validator->fails())
+        {
+            alert()->error('Ups!','La operacion no pudo ser completada')->autoClose(4000)->showCloseButton();
+            return redirect('admin/galeria-videos/videos/subir')
+            ->withErrors($validator)
+            ->withInput();
         }
+
+        $video = new Video();
+        $video->nombre = $request->nombre;
+        $video->descripcion = $request->descripcion;
+        $video->url = $request->url;
+        $video->galeria_id = $request->galeria;
+        $video->save();
+        alert()->success('¡Yeah!','Operación realizada con éxito')->autoClose(3000)->showCloseButton();
+        return redirect('/admin/galeria-videos/video/lista');
+    }
+
+    public function eliminarVideo($id)
+    {
+        $video=Video::find($id);
+        $video->delete();
+
+        alert()->success('¡Yeah!','Operación realizada con éxito')->autoClose(3000)->showCloseButton();
+        return redirect('/admin/galeria-videos/video/lista');
+
     }
 }
