@@ -29,21 +29,24 @@ Galeria de videos
         </div><!-- .row END -->
         <div class="row">
             
-                @if($galerias)
+                @if($galerias->count()>0)
                     @foreach($galerias as $galeria)
+                    @if($galeria->estado==true)
                         <div class="col-lg-3 col-md-6">
-                            <div class="xs-team">
-                                <div class="xs-team-thumb">
-                                    <img src="{{$galeria->foto}}" alt="Jhon Statham">
+                            <div class="xs-team" style="margin-bottom: 20px;">
+                                <div class="xs-team-thumb" style="height:15em; background: url('{{$galeria->foto}}') center no-repeat; background-size:cover;">
                                 </div>
                                 <div class="xs-team-content">
                                     <h3>
-                                        <a href="trainer-details.html">{{$galeria->galeria}}</a>
+                                        <a href="{{url('/galerias-videos/'.$galeria->id)}}">{{$galeria->galeria}}</a>
                                     </h3>
                                     <p>{{$galeria->descripcion}}</p>
                                 </div>
                             </div>
                         </div>
+                    @endif
+                    @else
+                    <center><h2>Muy pronto podra encontrar nuevas galerias de videos</h2></center> 
                     @endforeach
 
                 @endif

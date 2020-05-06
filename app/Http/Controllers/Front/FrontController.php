@@ -186,8 +186,11 @@ class FrontController extends Controller
     {
         $videos=Video::where('galeria_id',$id)->orderBy('id','desc')->get();
         $configuracion=Configuracion::find(1);
+        $galeria=Galeria::find($id);
         return view('front.galerias-videos.videos')
             ->with('fondo',$this->fondo())
-            ->with('configuracion',$configuracion);
+            ->with('configuracion',$configuracion)
+            ->with('videos',$videos)
+            ->with('galeria',$galeria);
     }
 }
