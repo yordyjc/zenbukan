@@ -113,6 +113,6 @@ active
         }
         document.getElementById('foto').addEventListener('change', archivoFile, false);
 
-        var editor = textboxio.replace('#descripcion');
+        
     </script>
 @endsection

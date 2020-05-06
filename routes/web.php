@@ -110,3 +110,5 @@ Route::post('/pre-inscripcion','Front\FrontController@sendPreInscripcion');
 Route::post('/suscribirse','Front\FrontController@sendSuscripcion');
 Route::get('/contacto', 'Front\FrontController@formContacto');
 Route::post('/contacto', 'Front\FrontController@sendContacto');
+Route::get('/galerias-videos','Front\FrontController@galeriasVideos');
+Route::get('/galerias-videos/{id}','Front\FrontController@videos');
