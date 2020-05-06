@@ -8,7 +8,6 @@ use Cviebrock\EloquentSluggable\Sluggable;
 class Plan extends Model
 {
     use Sluggable;
-
     protected $table = 'planes';
     protected $guarded = [];
 

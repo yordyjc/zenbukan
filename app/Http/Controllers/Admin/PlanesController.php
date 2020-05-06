@@ -25,7 +25,8 @@ class PlanesController extends Controller
     public function index()
     {
         $planes=Plan::all();
-        return view('admin.web.planes.index')->with('planes',$planes);
+        return view('admin.web.planes.index')
+            ->with('planes',$planes);
     }
 
     /**
