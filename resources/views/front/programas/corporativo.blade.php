@@ -24,7 +24,7 @@ Corporativo
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="xs-video-wraper">
-                            <img src="assets/images/corporativo/corporativo.png" alt="" />
+                            <img src="resources/img/index/corporativo/corporativo.png" alt="" />
                             
                         </div>
                     </div>
@@ -50,7 +50,7 @@ Corporativo
 </section>
 <section
     class="xs-section-padding-lg xs-bg-cover parallaxie"
-    style=" background-image: url('assets/images/corporativo/corporativo-frase.png'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed; background-position: center 77.32px;"
+    style=" background-image: url('resources/img/index/corporativo/corporativo-frase.png'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed; background-position: center 77.32px;"
 >
     <div class="container">
         <div class="xs-help xs-help-light">
@@ -104,12 +104,12 @@ Corporativo
             </div>
             <div class="owl-item" style="width: 257.4px;">
                 <div class="item"style="height=200px;">
-                    <img src="assets/images/corporativo/co2.png" alt="" />
+                    <img src="resources/img/index/corporativo/co2.png" alt="" />
                 </div>
             </div>
             <div class="owl-item" style="width: 257.4px;">
                 <div class="item"style="height=200px;">
-                    <img src="assets/images/corporativo/co3.png" alt="" />
+                    <img src="resources/img/index/corporativo/co3.png" alt="" />
                 </div>
             </div>
             

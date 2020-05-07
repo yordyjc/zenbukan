@@ -18,9 +18,6 @@
                         <li>
                             <a href="{{ url('/planes') }}">Planes</a>
                         </li>
-                        <li>
-                            <a href="{{ url('/clases') }}">Clases</a>
-                        </li>
                         <li class="elementskit-dropdown-has">
                             <a href="{{ url('/nosotros') }}">Nosotros</a>
                             <ul class="elementskit-dropdown elementskit-submenu-panel">

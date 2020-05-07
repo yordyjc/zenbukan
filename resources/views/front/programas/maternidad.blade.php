@@ -25,7 +25,7 @@ Maternidad fitness
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="xs-video-wraper">
-                            <img src="assets/images/madres/foto.png" alt="" />
+                            <img src="resources/img/index/maternidad/foto.png" alt="" />
                             
                         </div>
                     </div>
@@ -51,7 +51,7 @@ Maternidad fitness
 </section>
 <section
     class="xs-section-padding-lg xs-bg-cover parallaxie"
-    style=" background-image: url('assets/images/maternidad-frase.png'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed; background-position: center 77.32px;"
+    style=" background-image: url('resources/img/index/maternidad/maternidad-frase.png'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed; background-position: center 77.32px;"
 >
     <div class="container">
         <div class="xs-help xs-help-light">
@@ -92,27 +92,27 @@ Maternidad fitness
         <div class="owl-stage" style="transform: translate3d(-1801px, 0px, 0px); transition: all 0.25s ease 0s; width: 3089px;">
             <div class="owl-item" style="width: 257.4px;">
                 <div class="item"style="height=200px;">
-                    <img src="assets/images/madres/ma1.png" alt="" />
+                    <img src="resources/img/index/maternidad/ma1.png" alt="" />
                 </div>
             </div>
             <div class="owl-item" style="width: 257.4px;">
                 <div class="item"style="height=200px;">
-                    <img src="assets/images/madres/ma2.png" alt="" />
+                    <img src="resources/img/index/maternidad/ma2.png" alt="" />
                 </div>
             </div>
             <div class="owl-item" style="width: 257.4px;">
                 <div class="item"style="height=200px;">
-                    <img src="assets/images/madres/ma3.png" alt="" />
+                    <img src="resources/img/index/maternidad/ma3.png" alt="" />
                 </div>
             </div>
             <div class="owl-item" style="width: 257.4px;">
                 <div class="item"style="height=200px;">
-                    <img src="assets/images/madres/ma5.png" alt="" />
+                    <img src="resources/img/index/maternidad/ma5.png" alt="" />
                 </div>
             </div>
             <div class="owl-item" style="width: 257.4px;">
                 <div class="item"style="height=200px;">
-                    <img src="assets/images/madres/ma6.png" alt="" />
+                    <img src="resources/img/index/maternidad/ma6.png" alt="" />
                 </div>
             </div>
             

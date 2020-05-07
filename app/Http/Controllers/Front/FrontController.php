@@ -49,10 +49,12 @@ class FrontController extends Controller
 
     public function index()
     {
+        $planes=Plan::orderBy('id','asc')->get();
         $configuracion=Configuracion::find(1);
         return view('front.index.index')
             ->with('fondo',$this->fondo())
-            ->with('configuracion',$configuracion);
+            ->with('configuracion',$configuracion)
+            ->with('planes',$planes);
     }
 
     public function imc()
