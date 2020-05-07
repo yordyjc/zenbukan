@@ -29,20 +29,6 @@
                         </li>
                     </ul>
                 </li>
-
-                <li class="pcoded-hasmenu @yield('reportes')">
-                    <a href="javascript:void(0)" class="waves-effect waves-dark">
-                        <span class="pcoded-micon"><i class="feather icon-save"></i></span>
-                        <span class="pcoded-mtext">Reportes</span>
-                    </a>
-                    <ul class="pcoded-submenu">
-                        <li class="@yield('reporte-fechas')">
-                            <a href="{{ url('/user/reporte') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Reporte por fecha</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
 			</ul>
 
 		</div>
