@@ -16,6 +16,8 @@
 {!! Html::script("assets/js/vivus.min.js") !!}
 {!! Html::script("assets/js/main.js") !!}
 
+{{ Html::script("assets/js/floating-wpp.min.js") }}
+
 <script type="text/javascript">
     function sendRequest(url,data,method,cb) {
         $.ajaxSetup({
@@ -57,4 +59,19 @@
     });
 </script>
 
+<script type="text/javascript">
+   $(function () {
+       $('#WAButton').floatingWhatsApp({
+           phone: '+51931816266',
+           headerTitle: 'Atención al cliente Online!',
+           popupMessage: 'Charla con nosotros por WhatsApp',
+           showPopup: true,
+           buttonImage: '<img src="assets/images/whatsapp.svg" />',
+           //headerColor: 'crimson', //Custom header color
+           //backgroundColor: 'crimson', //Custom background button color
+           position: "right"
+
+       });
+   });
+</script>
 @yield('js')

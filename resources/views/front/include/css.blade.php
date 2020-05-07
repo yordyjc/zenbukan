@@ -14,4 +14,6 @@
 {!! Html::style("assets/css/style.css") !!}
 {!! Html::style("assets/css/responsive.css") !!}
 
+{!! Html::style("assets/css/floating-wpp.min.css") !!}
+
 @yield('css')
