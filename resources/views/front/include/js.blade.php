@@ -62,11 +62,11 @@
 <script type="text/javascript">
    $(function () {
        $('#WAButton').floatingWhatsApp({
-           phone: '+51931816266',
-           headerTitle: 'Atención al cliente Online!',
+           phone: '+51952686236',
+           headerTitle: 'Atención al cliente',
            popupMessage: 'Charla con nosotros por WhatsApp',
            showPopup: true,
-           buttonImage: '<img src="assets/images/whatsapp.svg" />',
+           buttonImage: '<img src="resources/img/whatsapp.svg" />',
            //headerColor: 'crimson', //Custom header color
            //backgroundColor: 'crimson', //Custom background button color
            position: "right"
