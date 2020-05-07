@@ -25,24 +25,21 @@ Maternidad fitness
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="xs-video-wraper">
-                            <img src="assets/images/video/video-2.jpg" alt="" />
-                            <div class="xs-overlay"></div>
-                            <a href="https://www.youtube.com/watch?v=X_9VoqR5ojM" class="xs-video-btn">
-                                <i class="icon icon-play"></i>
-                            </a>
-                            <div class="xs-video-shape" data-scrollax="properties: { translateY: '250px' }" style="background-image: url('assets/images/shape/help-shape.png'); transform: translateZ(0px) translateY(-81.2334px);"></div>
+                            <img src="assets/images/madres/foto.png" alt="" />
+                            
                         </div>
                     </div>
                     <div class="col-lg-6">
+                        </br>
+                        </br>
+                        </br>
                         <div class="xs-pl-15 xs-pr-15">
                             <div class="xs-section-heading text-left">
-                                <h2>
-                                    Gesta
-                                    <span>vida</span>
+                                <h2 style="color:#FF66FF;">
+                                    Gesta vida
                                 </h2>
                             </div>
-                            <p>Maternidad fitness.</p>
-                            <p>Programa especializado</p>
+                                <p>Este espacio ha sido creado para ti, que estás en la dulce espera de un bebe, te brindamos sesiones educativas teóricas prácticas, preparándote hacia un parto seguro para ti y tu bebe.</p>
                         </div>
                     </div>
                 </div>
@@ -95,37 +92,27 @@ Maternidad fitness
         <div class="owl-stage" style="transform: translate3d(-1801px, 0px, 0px); transition: all 0.25s ease 0s; width: 3089px;">
             <div class="owl-item" style="width: 257.4px;">
                 <div class="item"style="height=200px;">
-                    <img src="assets/images/madres/madre1.png" alt="" />
+                    <img src="assets/images/madres/ma1.png" alt="" />
                 </div>
             </div>
             <div class="owl-item" style="width: 257.4px;">
                 <div class="item"style="height=200px;">
-                    <img src="assets/images/madres/madre2.png" alt="" />
+                    <img src="assets/images/madres/ma2.png" alt="" />
                 </div>
             </div>
             <div class="owl-item" style="width: 257.4px;">
                 <div class="item"style="height=200px;">
-                    <img src="assets/images/madres/madre3.png" alt="" />
+                    <img src="assets/images/madres/ma3.png" alt="" />
                 </div>
             </div>
             <div class="owl-item" style="width: 257.4px;">
                 <div class="item"style="height=200px;">
-                    <img src="assets/images/madres/madre4.png" alt="" />
+                    <img src="assets/images/madres/ma5.png" alt="" />
                 </div>
             </div>
             <div class="owl-item" style="width: 257.4px;">
                 <div class="item"style="height=200px;">
-                    <img src="assets/images/madres/madre5.png" alt="" />
-                </div>
-            </div>
-            <div class="owl-item" style="width: 257.4px;">
-                <div class="item"style="height=200px;">
-                    <img src="assets/images/madres/madre6.png" alt="" />
-                </div>
-            </div>
-            <div class="owl-item" style="width: 257.4px;">
-                <div class="item" style="height=200px;">
-                    <img src="assets/images/madres/madre7.png" alt="" />
+                    <img src="assets/images/madres/ma6.png" alt="" />
                 </div>
             </div>
             
