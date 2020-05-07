@@ -5,6 +5,7 @@ Inicio
 @endsection
 
 @section('contenido')
+<audio src="/resources/audio/hearts-on-fire.mp3" autoplay loop></audio>
 <!-- Banner -->
 <section class="xs-bg-cover" id="home" style="background: url({{ $fondo ? $fondo : '/resources/img/fondos/default.jpg' }}) center; background-size: cover;">
     <div class="container">
