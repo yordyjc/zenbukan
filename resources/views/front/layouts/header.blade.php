@@ -26,6 +26,7 @@
                             <a href="{{ url('/nosotros') }}">Corporativo</a>
                             <ul class="elementskit-dropdown elementskit-submenu-panel">
                                 <li><a href="{{ url('/entrenadores') }}">Entrenadores</a></li>
+                                <li><a href="{{url('/galerias-videos')}}">Galegía de videos</a></li>
                             </ul>
                         </li>
                         <li><a href="{{ url('/imc') }}">Ev. Física Nutricional</a></li>

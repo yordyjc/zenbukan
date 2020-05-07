@@ -20,6 +20,8 @@ use App\Models\Plan;
 use App\Models\Preinscripcion;
 use App\Models\Suscriptor;
 use App\Models\Contacto;
+use App\Models\Galeria;
+use App\Models\Video;
 
 use Auth;
 use Mail;
@@ -167,5 +169,28 @@ class FrontController extends Controller
         else{
 
         }
+    }
+
+    //Galeria de videos
+    public function galeriasVideos()
+    {
+        $galerias=Galeria::orderBy('id','desc')->get();
+        $configuracion=Configuracion::find(1);
+        return view('front.galerias-videos.index')
+            ->with('galerias',$galerias)
+            ->with('fondo',$this->fondo())
+            ->with('configuracion',$configuracion);
+    }
+
+    public function videos($id)
+    {
+        $videos=Video::where('galeria_id',$id)->orderBy('id','desc')->get();
+        $configuracion=Configuracion::find(1);
+        $galeria=Galeria::find($id);
+        return view('front.galerias-videos.videos')
+            ->with('fondo',$this->fondo())
+            ->with('configuracion',$configuracion)
+            ->with('videos',$videos)
+            ->with('galeria',$galeria);
     }
 }
