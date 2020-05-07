@@ -174,6 +174,7 @@ jQuery(document).ready(function ($) {
 			nav: false,
 			autoplay: true,
 			dots: false,
+			responsiveClass:true,
 			responsive: {
 				0: {
 					items: 1
