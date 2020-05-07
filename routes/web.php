@@ -48,6 +48,7 @@ Route::middleware(['auth'])->group(function () {
             Route::resource('/pre-inscritos-contactados','Admin\PreInscritosContactadosController');
             Route::resource('/suscriptores','Admin\SuscriptoresController');
             Route::resource('/contacto','Admin\ContactoController');
+            Route::resource('/pases-gratis','Admin\PasesController');
 
             //galeria de videos
             Route::resource('galeria-videos','Admin\GaleriasController');
@@ -112,3 +113,5 @@ Route::get('/contacto', 'Front\FrontController@formContacto');
 Route::post('/contacto', 'Front\FrontController@sendContacto');
 Route::get('/galerias-videos','Front\FrontController@galeriasVideos');
 Route::get('/galerias-videos/{id}','Front\FrontController@videos');
+Route::get('/pase-gratis','Front\FrontController@formPase');
+Route::post('/pase-gratis','Front\FrontController@sendPase');

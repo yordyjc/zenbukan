@@ -54,10 +54,10 @@
                         <p>Suscríbete a nuestro boletín para recibir información de entrenamientos, nutrición y promociones.</p>
                         <form action="#" class="xs-subscribe-form" id="form-subscribe">
                             <div class="form-group">
-                                <input type="text" name="nombre" class="form-control" placeholder="Ingrese su nombre">
+                                <input type="text" name="nombre" class="form-control" placeholder="Ingrese su nombre" required>
                             </div>
                             <div class="form-group">
-                                <input type="email" name="email" class="form-control" placeholder="Ingrese su e-mail">
+                                <input type="email" name="email" class="form-control" placeholder="Ingrese su e-mail" required>
                             </div>
                             <div class="form-group">
                                 <label for="submit"></label>

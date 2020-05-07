@@ -21,12 +21,11 @@
                         <li>
                             <a href="{{ url('/clases') }}">Clases</a>
                         </li>
-
                         <li class="elementskit-dropdown-has">
                             <a href="{{ url('/nosotros') }}">Corporativo</a>
                             <ul class="elementskit-dropdown elementskit-submenu-panel">
-                                <li><a href="{{ url('/entrenadores') }}">Entrenadores</a></li>
-                                <li><a href="{{url('/galerias-videos')}}">Galegía de videos</a></li>
+                                <li><a href="{{url('/nosotros')}}">Nosotros</a></li>
+                                <li><a href="{{url('/galerias-videos')}}">Galería de videos</a></li>
                             </ul>
                         </li>
                         <li><a href="{{ url('/imc') }}">Ev. Física Nutricional</a></li>
@@ -41,6 +40,9 @@
                         </li>
                         <li>
                             <a href="{{ url('/contacto') }}">Contacto</a>
+                        </li>
+                        <li>
+                            <a href="{{ url('/pase-gratis') }}" style="color: red;">Pase Gratis</a>
                         </li>
                         @if (Auth::check())
                             @if (Auth::user()->tipo==1) {{-- Admin --}}

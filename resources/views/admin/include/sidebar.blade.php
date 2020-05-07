@@ -103,6 +103,12 @@
 
             <div class="pcoded-navigation-label">Gestión de inscripciones</div>
             <ul class="pcoded-item pcoded-left-item">
+                <li class="@yield('pases-gratis')">
+                    <a href="{{ url('/admin/pases-gratis') }}" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="feather icon-calendar"></i></span>
+                        <span class="pcoded-mtext">Pases Gratis</span>
+                    </a>
+                </li>
                 <li class="@yield('preinscripciones')">
                     <a href="{{ url('/admin/pre-inscritos') }}" class="waves-effect waves-dark">
                         <span class="pcoded-micon"><i class="feather icon-info"></i></span>

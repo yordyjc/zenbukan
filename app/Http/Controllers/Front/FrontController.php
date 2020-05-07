@@ -22,6 +22,7 @@ use App\Models\Suscriptor;
 use App\Models\Contacto;
 use App\Models\Galeria;
 use App\Models\Video;
+use App\Models\Pase;
 
 use Auth;
 use Mail;
@@ -135,7 +136,7 @@ class FrontController extends Controller
 
     public function sendSuscripcion(Request $request)
     {
-        if ($request->ajax()) {
+        if ($request->ajax() && $request->nombre!=NULL && $request->email!=NULL) {
             $suscriptor = New Suscriptor();
             $suscriptor->nombre = $request->nombre;
             $suscriptor->email = $request->email;
@@ -167,6 +168,36 @@ class FrontController extends Controller
             return 'ok';
         }
         else{
+
+        }
+    }
+
+    public function formPase()
+    {
+        $configuracion=Configuracion::find(1);
+        $servicios=Servicio::orderBy('id','asc')->get();
+        return view('front.pase-gratis.index')
+            ->with('fondo',$this->fondo())
+            ->with('configuracion',$configuracion)
+            ->with('servicios',$servicios);
+    }
+
+    public function sendPase(Request $request)
+    {
+        $check=Pase::where('dni',$request->dni)->first();
+        if ($check) {
+
+        }
+        else{
+            if ($request->ajax()) {
+                $pase = New Pase();
+                $pase->nombre = $request->nombre;
+                $pase->dni = $request->dni;
+                $pase->celular = $request->telefono;
+                $pase->email = $request->email;
+                $pase->save();
+                return 'ok';
+            }
 
         }
     }

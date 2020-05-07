@@ -4160,7 +4160,8 @@ input[type=number] {
 
 .sendmessage,
 .sendmessage-subscribe,
-.sendmessage-contacto {
+.sendmessage-contacto,
+.sendmessage-pase {
     color: #007bff;
     border: 1px solid #007bff;
     display: none;
@@ -4172,7 +4173,8 @@ input[type=number] {
 
 .errormessage,
 .errormessage-subscribe,
-.errormessage-contacto {
+.errormessage-contacto,
+.errormessage-pase {
     color: red;
     display: none;
     border: 1px solid red;
@@ -4188,6 +4190,8 @@ input[type=number] {
 .errormessage-subscribe.show,
 .sendmessage-contacto.show,
 .errormessage-contacto.show,
+.sendmessage-pase.show,
+.errormessage-pase.show,
 .show {
     display: block;
 }
