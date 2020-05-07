@@ -112,3 +112,10 @@ Route::get('/contacto', 'Front\FrontController@formContacto');
 Route::post('/contacto', 'Front\FrontController@sendContacto');
 Route::get('/galerias-videos','Front\FrontController@galeriasVideos');
 Route::get('/galerias-videos/{id}','Front\FrontController@videos');
+
+Route::get('/mision-vision','Front\FrontController@misionVision');
+Route::get('/horarios','Front\FrontController@horarios');
+Route::get('/entrenamiento-kids','Front\FrontController@entrenamientoKids');
+Route::get('/maternidad-fitness','Front\FrontController@maternidad');
+Route::get('/corporativo','Front\FrontController@corporativo');
+

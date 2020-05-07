@@ -23,10 +23,12 @@
                         </li>
 
                         <li class="elementskit-dropdown-has">
-                            <a href="{{ url('/nosotros') }}">Corporativo</a>
+                            <a href="{{ url('/nosotros') }}">Nosotros</a>
                             <ul class="elementskit-dropdown elementskit-submenu-panel">
-                                <li><a href="{{ url('/entrenadores') }}">Entrenadores</a></li>
+                                <li><a href="{{ url('/mision-vision') }}">Misión y vision</a></li>
+                                <li><a href="{{ url('/servicios') }}">Beneficios y clases</a></li>
                                 <li><a href="{{url('/galerias-videos')}}">Galegía de videos</a></li>
+                                <li><a href="{{url('/horarios')}}">Horarios</a></li>
                             </ul>
                         </li>
                         <li><a href="{{ url('/imc') }}">Ev. Física Nutricional</a></li>
@@ -34,9 +36,9 @@
                             <a href="{{ url('/servicios') }}">Servicios</a>
                             <ul class="elementskit-dropdown elementskit-submenu-panel">
                                 <li><a href="{{ url('/productos') }}">Suplementos deportivos</a></li>
-                                <li><a href="{{ url('/maternidad-fitness') }}">Maternidad Fitness</a></li>
-                                <li><a href="{{ url('/adulto-mayor-fitness') }}">Adulto Mayor Fitness</a></li>
-                                <li><a href="{{ url('/ninos-fitness') }}">Niños Fitness</a></li>
+                                <li><a href="{{ url('/maternidad-fitness') }}">Maternidad fitness</a></li>
+                                <li><a href="{{ url('/entrenamiento-kids') }}">Entrenamiento kids</a></li>
+                                <li><a href="{{ url('/corporativo') }}">Corporativo</a></li>
                             </ul>
                         </li>
                         <li>

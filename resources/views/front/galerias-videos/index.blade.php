@@ -45,10 +45,9 @@ Galeria de videos
                             </div>
                         </div>
                     @endif
-                    @else
-                    <center><h2>Muy pronto podra encontrar nuevas galerias de videos</h2></center> 
                     @endforeach
-
+                @else
+                    <center><h2>Muy pronto podra encontrar nuevas galerias de videos</h2></center> 
                 @endif
         </div>
     </div>

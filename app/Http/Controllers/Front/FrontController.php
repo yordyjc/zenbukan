@@ -193,4 +193,45 @@ class FrontController extends Controller
             ->with('videos',$videos)
             ->with('galeria',$galeria);
     }
+
+    public function misionVision()
+    {
+        $configuracion=Configuracion::first();
+        return view('front.mision-vision.index')
+                ->with('configuracion',$configuracion)
+                ->with('fondo',$this->fondo());
+
+    }
+
+    public function horarios()
+    {
+        $configuracion=Configuracion::first();
+        return view('front.horarios.index')
+                ->with('configuracion',$configuracion)
+                ->with('fondo',$this->fondo());
+    }
+
+    public function entrenamientoKids()
+    {
+        $configuracion=Configuracion::first();
+        return view('front.programas.ninos')
+                ->with('configuracion',$configuracion)
+                ->with('fondo',$this->fondo());
+    }
+
+    public function maternidad()
+    {
+        $configuracion=Configuracion::first();
+        return view('front.programas.maternidad')
+                ->with('configuracion',$configuracion)
+                ->with('fondo',$this->fondo());
+    }
+
+    public function corporativo()
+    {
+        $configuracion=Configuracion::first();
+        return view('front.programas.corporativo')
+                ->with('configuracion',$configuracion)
+                ->with('fondo',$this->fondo());
+    }
 }
