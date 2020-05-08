@@ -29,7 +29,7 @@ use Carbon\Carbon;
                         <thead>
                             <tr>
                                 <th class="text-center">Plan</th>
-                                <th class="text-center">Descripción</th>
+                                {{-- <th class="text-center">Descripción</th> --}}
                                 <th class="text-center">Precio</th>
                                 <th class="text-center">Acciones</th>
                             </tr>
@@ -41,9 +41,9 @@ use Carbon\Carbon;
                                 <td class="text-center">
                                     {{ $plan->nombre }}
                                 </td>
-                                <td class="text-center">
+                                {{-- <td class="text-center">
                                     <span data-toggle="tooltip" data-placement="left" data-original-title="{{ $plan->descripcion }}" class="label label-info">Ver descripción</span>
-                                </td>
+                                </td> --}}
                                 <td class="text-center">
                                     @if ($plan->precio)
                                     {{ $plan->moneda }} {{ $plan->precio }}
