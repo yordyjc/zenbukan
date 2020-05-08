@@ -5,6 +5,7 @@ Maternidad fitness
 @endsection
 
 @section('contenido')
+<audio src="/resources/audio/bebes.mp3" autoplay loop></audio>
 <section class="xs-bg-cover" style="background: url({{ $fondo ? $fondo : '/resources/img/fondos/default.jpg' }}) center; background-size: cover;">
     <div class="container">
         <div class="row">
@@ -26,7 +27,7 @@ Maternidad fitness
                     <div class="col-lg-6">
                         <div class="xs-video-wraper">
                             <img src="resources/img/index/maternidad/foto.png" alt="" />
-                            
+
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -64,7 +65,7 @@ Maternidad fitness
                         </h2>
                     </div>
                     <p>Este espacio ha sido creado para ti, que estás en la dulce espera de un bebe, te brindamos sesiones educativas teóricas prácticas, preparándote hacia un parto seguro para ti y tu bebe. </p>
-                    
+
                 </div>
             </div>
         </div>
@@ -115,7 +116,7 @@ Maternidad fitness
                     <img src="resources/img/index/maternidad/ma6.png" alt="" />
                 </div>
             </div>
-            
+
         </div>
     </div>
     <div class="owl-nav disabled">
