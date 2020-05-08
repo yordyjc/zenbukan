@@ -34,8 +34,8 @@
                                 <ul class="list-unstyled">
                                     <li><a href="{{ url('/') }}">Inicio</a></li>
                                     <li><a href="{{ url('/planes') }}">Planes</a></li>
-                                    <li><a href="{{ url('/clases') }}">Clases</a></li>
-                                    <li><a href="{{ url('/nosotros') }}">Nosotros</a></li>
+                                    <li><a href="{{ url('servicios') }}">Beneficios</a></li>
+                                    <li><a href="{{ url('/horarios') }}">Horario</a></li>
                                 </ul>
                             </div>
                             <div class="media-body">
