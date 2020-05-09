@@ -6,7 +6,7 @@ Maternidad fitness
 
 @section('contenido')
 <audio src="/resources/audio/bebes.mp3" autoplay loop></audio>
-<section class="xs-bg-cover" style="background: url({{ $fondo ? $fondo : '/resources/img/fondos/default.jpg' }}) center; background-size: cover;">
+<section class="xs-bg-cover" style="background: url('/resources/img/index/maternidad/header.png') center; background-size: cover;">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -49,6 +49,25 @@ Maternidad fitness
         </div>
         <!-- .container END -->
     </section>
+</section>
+<section class="xs-pt-xs xs-pb-sm">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="xs-team">
+                    <div class="xs-team-thumb">
+                        <img src="resources/img/index/maternidad/foto.png" alt="" />
+                    </div>
+                    <div class="xs-team-content">
+                                <h5 style="color:#FF66FF;">
+                                    Gesta vida
+                                </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </section>
 <section
     class="xs-section-padding-lg xs-bg-cover parallaxie"
