@@ -39,56 +39,54 @@ Inicio
 
     <div class="container">
         <div class="row">
-            <div class="col-lg-6">
-                <div class="xs-blog" style="margin-bottom:30px;">
-                    <div class="xs-blog-img">
-                        <img src="resources/img/index/beneficios/beneficios.png" alt="testimonial">
-                    </div>
-                    <div class="xs-blog-content" style="padding-bottom:90px; padding-top:90px;padding-left:90px; padding-right:90px;">
-
-                        <h3><a href="{{url('/servicios')}}">Conoce nuestros beneficios</a></h3>
-                        <p>No esperes mas.Ven y descubre todo lo que Fitness 10 tiene para ti.</p>
-                    </div>
-                </div><!-- .xs-blog -->
-            </div><!-- .col-lg-4 -->
-            <div class="col-lg-6">
-                <div class="xs-blog"style="margin-bottom:30px;">
-                    <div class="xs-blog-img">
-                        <img src="resources/img/index/beneficios/imc.png" alt="testimonial">
-                    </div>
-                    <div class="xs-blog-content"style="padding-bottom:90px; padding-top:90px;padding-left:90px; padding-right:90px;">
-
-                        <h3><a href="{{url('/imc')}}">Evaluación de IMC gratuito</a></h3>
-                        <p>Calcula el indice de masa corporal y conoce tu estado de salud.</p>
-                    </div>
-                </div><!-- .xs-blog -->
-            </div><!-- .col-lg-4 -->
-            <div class="col-lg-6"style="">
-                <div class="xs-blog">
-                    <div class="xs-blog-img">
-                        <img src="resources/img/index/beneficios/suplementos.png" alt="testimonial">
-                    </div>
-                    <div class="xs-blog-content"style="padding-bottom:90px; padding-top:90px;padding-left:90px; padding-right:90px;">
-
-                        <h3><a href="{{url('/productos')}}">Suplementos deportivos</a></h3>
-                        <p>Contamos con una ran variedad de productos que contribuiran a tu rutina de ejercicios.</p>
-                    </div>
-                </div><!-- .xs-blog -->
-            </div><!-- .col-lg-4 -->
-            <div class="col-lg-6"style="">
-                <div class="xs-blog">
-                    <div class="xs-blog-img">
-                        <img src="resources/img/index/beneficios/baile.png" alt="testimonial">
-                    </div>
-                    <div class="xs-blog-content"style="padding-bottom:90px; padding-top:90px;padding-left:90px; padding-right:90px;">
-
-                        <h3><a href="#">Clases virtuales</a></h3>
-                        <p>Entrena desde casa! Inscribe y accede a nuestra plataforma de clases en linea.</p>
-                    </div>
-                </div><!-- .xs-blog -->
-            </div><!-- .col-lg-4 -->
-        </div><!-- .row END -->
-    </div><!-- .container END -->
+            <div class="col-md-6">
+                <div class="xs-team-bene">
+                    <a href="/servicios">
+                        <img src="/resources/img/index/beneficios/bene.png" alt="beneficios">
+                    </a>
+                    
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="xs-team-bene">
+                    <a href="/imc">
+                        <img src="/resources/img/index/beneficios/imc.png" alt="beneficios">
+                    </a>
+                    
+                </div>
+            </div>
+        
+            <div class="col-md-6">
+                <div class="xs-team-bene">
+                    <a href="/productos">
+                        <img src="/resources/img/index/beneficios/suple.png" alt="beneficios">
+                    </a>
+                    
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="xs-team-bene">
+                    <a href="#">
+                        <img src="/resources/img/index/beneficios/clases.png" alt="beneficios">
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="xs-team-bene">
+                    <a href="maternidad-fitness">
+                        <img src="/resources/img/index/beneficios/madres.png" alt="beneficios">
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="xs-team-bene">
+                    <a href="corporativo">
+                        <img src="/resources/img/index/beneficios/corpo.png" alt="beneficios">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </section><!-- Blog end -->
 
 
