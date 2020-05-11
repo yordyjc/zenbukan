@@ -52,8 +52,8 @@ class GaleriasController extends Controller
         );
 
         $string = str_replace(
-            array('ñ', 'Ñ', 'ç', 'Ç'),
-            array('n', 'N', 'c', 'C',),
+            array('ñ', 'Ñ', 'ç', 'Ç', ':'),
+            array('n', 'N', 'c', 'C', ''),
             $string
         );
         return $string;
@@ -149,7 +149,7 @@ class GaleriasController extends Controller
         {
             return redirect('/admin/sin-permiso');
         }
-        
+
     }
 
     /**
@@ -216,7 +216,7 @@ class GaleriasController extends Controller
             }
             File::delete(public_path().$galeria->foto);
             $galeria->delete();
-    
+
             alert()->success('¡Yeah!','Operación realizada con éxito')->autoClose(3000)->showCloseButton();
             return redirect('/admin/galeria-videos');
     }
@@ -232,7 +232,7 @@ class GaleriasController extends Controller
     public function subirVideo()
     {
         $galerias=Galeria::all()->pluck('galeria','id');
-        
+
         return view('admin.galerias-video.subir-video')->with('galerias',$galerias);
     }
 

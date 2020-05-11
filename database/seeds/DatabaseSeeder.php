@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ConfiguracionTableSeeder::class);
         $this->call(FondosTableSeeder::class);
         $this->call(PlanesTableSeeder::class);
+        $this->call(ServiciosTableSeeder::class);
     }
 }

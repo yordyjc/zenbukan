@@ -62,8 +62,8 @@ class ServiciosController extends Controller
         );
 
         $string = str_replace(
-            array('ñ', 'Ñ', 'ç', 'Ç'),
-            array('n', 'N', 'c', 'C',),
+            array('ñ', 'Ñ', 'ç', 'Ç', ':'),
+            array('n', 'N', 'c', 'C', ''),
             $string
         );
         return $string;
