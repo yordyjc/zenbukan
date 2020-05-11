@@ -108,50 +108,35 @@ Solicita tu pase gratis
         @php
             $contador=1;
         @endphp
-        @foreach ($servicios as $servicio)
-
-        @if ($contador % 2 == 0)
-        <div class="xs-help xs-strength xs-section-padding-xs">
-            <div class="row">
+        <div class="row">
+            @foreach ($servicios as $servicio)
+            @if ($contador % 2 != 0)
                 <div class="col-lg-6">
-                    <div class="xs-video-wraper">
-                        <img class="img-fluid" src="{{ $servicio->foto }}" alt="{{ $servicio->nombre }}">
-                        <div class="xs-video-shape" style="background-image: url(&quot;assets/images/shape/help-shape.png&quot;);"></div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="xs-pl-15 xs-pr-15">
-                        <div class="xs-section-heading">
-                            <h2><span>{{ $servicio->nombre }}</span></h2>
+                    <div class="xs-help xs-strength">
+                        <h5 class="text-center text-info"><span>{{ $servicio->nombre }}</span></h5>
+                        <div class="xs-video-wraper">
+                            <img class="img-fluid" src="{{ $servicio->foto }}" alt="{{ $servicio->nombre }}">
+                            <div class="xs-video-shape" style="background-image: url(&quot;assets/images/shape/help-shape.png&quot;);"></div>
                         </div>
-                        {!! $servicio->descripcion !!}
                     </div>
                 </div>
-            </div>
-        </div>
-        @else
-        <div class="xs-help xs-section-padding-xs">
-            <div class="row">
+            @else
                 <div class="col-lg-6">
-                    <div class="xs-section-heading">
-                        <h2><span>{{ $servicio->nombre }}</span></h2>
-                    </div>
-                    {!! $servicio->descripcion !!}
-                </div>
-                <div class="col-lg-6">
-                    <div class="xs-video-wraper">
-                        <img class="img-fluid" src="{{ $servicio->foto }}" alt="{{ $servicio->nombre }}">
-                        <div class="xs-video-shape" style="background-image: url(&quot;assets/images/shape/help-shape.png&quot;);"></div>
+                    <div class="xs-help" style="margin-bottom: 40px;">
+                        <h5 class="text-center text-info"><span>{{ $servicio->nombre }}</span></h5>
+                        <div class="xs-video-wraper">
+                            <img class="img-fluid" src="{{ $servicio->foto }}" alt="{{ $servicio->nombre }}">
+                            <div class="xs-video-shape" style="background-image: url(&quot;assets/images/shape/help-shape.png&quot;);"></div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        @endif
+            @endif
 
-        @php
-            $contador=$contador+1;
-        @endphp
+            @php
+                $contador=$contador+1;
+            @endphp
         @endforeach
+        </div>
         @else
         <center><h2>Pronto encontrarás nuestros servicios en esta sección</h2></center>
         @endif

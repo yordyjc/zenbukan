@@ -93,6 +93,50 @@ Contacta con nosotros
         </div>
     </div>
 </section>
+
+<section class="xs-pb-sm">
+    <div class="container">
+        <h2 class="text-center">Beneficios del Gym</h2>
+
+        @if (count($servicios)>0)
+        @php
+            $contador=1;
+        @endphp
+        <div class="row">
+            @foreach ($servicios as $servicio)
+            @if ($contador % 2 != 0)
+                <div class="col-lg-6">
+                    <div class="xs-help xs-strength">
+                        <h5 class="text-center text-info"><span>{{ $servicio->nombre }}</span></h5>
+                        <div class="xs-video-wraper">
+                            <img class="img-fluid" src="{{ $servicio->foto }}" alt="{{ $servicio->nombre }}">
+                            <div class="xs-video-shape" style="background-image: url(&quot;assets/images/shape/help-shape.png&quot;);"></div>
+                        </div>
+                    </div>
+                </div>
+            @else
+                <div class="col-lg-6">
+                    <div class="xs-help" style="margin-bottom: 40px;">
+                        <h5 class="text-center text-info"><span>{{ $servicio->nombre }}</span></h5>
+                        <div class="xs-video-wraper">
+                            <img class="img-fluid" src="{{ $servicio->foto }}" alt="{{ $servicio->nombre }}">
+                            <div class="xs-video-shape" style="background-image: url(&quot;assets/images/shape/help-shape.png&quot;);"></div>
+                        </div>
+                    </div>
+                </div>
+            @endif
+
+            @php
+                $contador=$contador+1;
+            @endphp
+        @endforeach
+        </div>
+        @else
+        <center><h2>Pronto encontrarás nuestros servicios en esta sección</h2></center>
+        @endif
+
+    </div>
+</section>
 @endsection
 
 @section('js')

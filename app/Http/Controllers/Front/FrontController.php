@@ -153,9 +153,11 @@ class FrontController extends Controller
     public function formContacto()
     {
         $configuracion=Configuracion::find(1);
+        $servicios=Servicio::orderBy('id','asc')->get();
         return view('front.contacto.index')
             ->with('fondo',$this->fondo())
-            ->with('configuracion',$configuracion);
+            ->with('configuracion',$configuracion)
+            ->with('servicios',$servicios);
     }
 
     public function sendContacto(Request $request)
