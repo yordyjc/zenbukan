@@ -40,7 +40,7 @@
                             </div>
                             <div class="media-body">
                                 <ul class="list-unstyled">
-                                    <li><a href="{{ url('/imc') }}">Calcula tu IMC</a></li>
+                                    <li><a href="{{ url('/imc') }}">Calcula tu Índice de Masa Corporal Online</a></li>
                                     <li><a href="{{ url('/productos') }}">Suplementos deportivos</a></li>
                                     <li><a href="{{ url('/contacto') }}">Contacto</a></li>
                                 </ul>

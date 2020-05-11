@@ -23,7 +23,7 @@ Evaluación Física Nutricional
             <div class="row">
                 <div class="col-lg-6 col-md-12">
                     <div class="xs-colummn-heading">
-                        <h2>Calcula tu <span>IMC</span></h2>
+                        <h2>Calcula tu <span>Índice de Masa Corporal</span> online</h2>
                         <p>Ingresa tus datos para calcular tu IMC de forma inmediata.</p>
                     </div>
                     <form action="#" class="xs-form">
