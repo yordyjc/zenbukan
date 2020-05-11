@@ -27,7 +27,7 @@
                                 <li><a href="{{url('/horarios')}}">Horarios</a></li>
                             </ul>
                         </li>
-                        <li><a href="{{ url('/imc') }}">Ev. Física Nutricional</a></li>
+                        <li><a href="{{ url('/imc') }}">Evaluación Física<br />Gratuita en Línea</a></li>
                         <li class="elementskit-dropdown-has">
                             <a href="{{ url('/servicios') }}">Servicios</a>
                             <ul class="elementskit-dropdown elementskit-submenu-panel">
