@@ -44,7 +44,7 @@ Inicio
                     <a href="/servicios">
                         <img src="/resources/img/index/beneficios/bene.png" alt="beneficios">
                     </a>
-                    
+
                 </div>
             </div>
             <div class="col-md-6">
@@ -52,16 +52,16 @@ Inicio
                     <a href="/imc">
                         <img src="/resources/img/index/beneficios/imc.png" alt="beneficios">
                     </a>
-                    
+
                 </div>
             </div>
-        
+
             <div class="col-md-6">
                 <div class="xs-team-bene">
                     <a href="/productos">
                         <img src="/resources/img/index/beneficios/suple.png" alt="beneficios">
                     </a>
-                    
+
                 </div>
             </div>
             <div class="col-md-6">
@@ -109,10 +109,10 @@ Inicio
                 @if (count($planes)>0)
                 @foreach ($planes as $plan)
                 <div class="col-lg-3 col-md-6">
-                    <div class="xs-pricing">
-                        <h3 class="xs-line">{{ $plan->nombre }}</h3>
+                    <div class="xs-pricing" style="background-color: {{ $plan->color }}; {{ $plan->color == '#000000' ? 'color: #ffffff' : '' }}">
+                        <h3 class="xs-line" style="{{ $plan->color == '#000000' ? 'color: #ffffff' : '' }}">{{ $plan->nombre }}</h3>
                         @if ($plan->precio)
-                        <p>
+                        <p style="{{ $plan->color == '#000000' ? 'color: #ffffff' : '' }}">
                             <sup>{{ $plan->moneda }}</sup>
                             <span>{{ $plan->precio }}</span>
                             <sub>/mes</sub>

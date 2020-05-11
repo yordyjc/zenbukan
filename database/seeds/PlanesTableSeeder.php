@@ -12,12 +12,12 @@ class PlanesTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('planes')->delete();
-        
+
         \DB::table('planes')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'nombre' => 'Plan Virtual',
@@ -38,10 +38,11 @@ class PlanesTableSeeder extends Seeder
 </ul>',
                 'moneda' => 'S/',
                 'precio' => NULL,
+                'color' => '#FE2B2C',
                 'created_at' => '2020-05-04 01:47:48',
                 'updated_at' => '2020-05-04 01:47:48',
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'nombre' => 'Plan Fitness',
@@ -59,10 +60,11 @@ class PlanesTableSeeder extends Seeder
 </ul>',
                 'moneda' => 'S/',
                 'precio' => NULL,
+                'color' => '#009FD5',
                 'created_at' => '2020-05-04 01:50:53',
                 'updated_at' => '2020-05-04 01:50:53',
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'nombre' => 'Plan Black',
@@ -75,10 +77,11 @@ class PlanesTableSeeder extends Seeder
 </ul>',
                 'moneda' => 'S/',
                 'precio' => NULL,
+                'color' => '#000000',
                 'created_at' => '2020-05-04 01:51:18',
                 'updated_at' => '2020-05-04 01:51:18',
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 4,
                 'nombre' => 'Plan Premium',
@@ -96,11 +99,12 @@ class PlanesTableSeeder extends Seeder
 </ul>',
                 'moneda' => 'S/',
                 'precio' => NULL,
+                'color' => '#FFC000',
                 'created_at' => '2020-05-04 01:51:44',
                 'updated_at' => '2020-05-04 01:51:44',
             ),
         ));
-        
-        
+
+
     }
 }

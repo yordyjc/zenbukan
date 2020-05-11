@@ -63,6 +63,7 @@ class PlanesController extends Controller
         $plan->descripcion=$request->descripcion;
         $plan->moneda=$request->moneda;
         $plan->precio=$request->precio;
+        $plan->color=$request->color;
         $plan->save();
         alert()->success('¡Yeah!','Operación realizada con éxito')->autoClose(3000)->showCloseButton();
         return redirect('/admin/planes');
@@ -122,6 +123,7 @@ class PlanesController extends Controller
         $plan->descripcion=$request->descripcion;
         $plan->moneda=$request->moneda;
         $plan->precio=$request->precio;
+        $plan->color=$request->color;
         $plan->save();
         alert()->success('¡Yeah!','Operación realizada con éxito')->autoClose(3000)->showCloseButton();
         return redirect('/admin/planes');

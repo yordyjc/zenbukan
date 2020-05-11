@@ -73,6 +73,20 @@ active
                             </div>
                         </div>
 
+                        <div class="form-group {{ $errors->has('color') ? ' has-danger' : '' }} row">
+                            <label class="col-md-2 col-form-label" for="color">
+                                Color de fondo
+                            </label>
+                            <div class="col-md-10">
+                                <input class="jscolor {hash:true} form-control form-control-round {{ $errors->has('color') ? ' form-control-danger' : '' }}" id="color" name="color" value="{{ old('color') }}">
+                                @if ($errors->has('color'))
+                                <div class="col-form-label">
+                                    {{ $errors->first('color') }}
+                                </div>
+                                @endif
+                            </div>
+                        </div>
+
                     </div>
 
                     <div class="col-sm-10 offset-sm-1">
@@ -98,6 +112,7 @@ active
 @endsection
 
 @section('js')
+{!! Html::script("resources/admin/assets/js/jscolor.js") !!}
 <script src="/resources/lib/textboxio/textboxio.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 

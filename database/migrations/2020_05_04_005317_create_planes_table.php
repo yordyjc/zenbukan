@@ -20,6 +20,7 @@ class CreatePlanesTable extends Migration
             $table->text('descripcion')->nullable();
             $table->string('moneda')->nullable(); // S/. o US$
             $table->float('precio')->nullable();
+            $table->string('color')->nullable();
             $table->timestamps();
         });
     }

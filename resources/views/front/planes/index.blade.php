@@ -34,10 +34,10 @@ Nuestros planes
                 @if (count($planes)>0)
                 @foreach ($planes as $plan)
                 <div class="col-lg-3 col-md-6">
-                    <div class="xs-pricing">
-                        <h3 class="xs-line">{{ $plan->nombre }}</h3>
+                    <div class="xs-pricing" style="background-color: {{ $plan->color }}; {{ $plan->color == '#000000' ? 'color: #ffffff' : '' }}">
+                        <h3 class="xs-line" style="{{ $plan->color == '#000000' ? 'color: #ffffff' : '' }}">{{ $plan->nombre }}</h3>
                         @if ($plan->precio)
-                        <p>
+                        <p style="{{ $plan->color == '#000000' ? 'color: #ffffff' : '' }}">
                             <sup>{{ $plan->moneda }}</sup>
                             <span>{{ $plan->precio }}</span>
                             <sub>/mes</sub>
