@@ -2,7 +2,7 @@
     <div class="xs-container">
         <div class="xs-navbar">
             <a class="xs-navbar-brand" href="{{ url('/') }}">
-                <img src="{{ $configuracion->logo }}" width="60px;" alt="{{ $configuracion->titulo }}">
+                <img src="{{ $configuracion->logo }}" width="60px;" alt="{{ $configuracion->titulo }}"> <span style="color: #0084B0; font-size: 28px; font-weight: 700; vertical-align: middle;">Fitness 10</span>
             </a>
             <nav class="elementskit-navbar ml-auto">
 
@@ -92,7 +92,7 @@
                     <div class="elementskit-nav-identity-panel">
                         <h1 class="elementskit-site-title">
                             <a class="elementskit-nav-logo" href="{{ url('/') }}">
-                                <img src="{{ $configuracion->logo }}" width="60px;" alt="{{ $configuracion->titulo }}">
+                                <img src="{{ $configuracion->logo }}" width="60px;" alt="{{ $configuracion->titulo }}"> <span style="color: #0084B0; font-size: 28px; font-weight: 700; vertical-align: middle;">Fitness 10</span>
                             </a>
                         </h1>
                         <button class="elementskit-menu-close elementskit-menu-toggler" type="button">
