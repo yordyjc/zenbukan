@@ -29,7 +29,7 @@ class ConfiguracionTableSeeder extends Seeder
                 'logo' => '/resources/img/logo.png',
                 'mision' => 'Ayudar a nuestros socios a alcanzar sus metas de salud integral, ofreciendo un servicio de calidad y una experiencia completa de entrenamiento.',
                 'vision' => 'Ser reconocidos como la cadena de gimnasios que busca generar el máximo bienestar a nuestros socios, mediante la innovación y las últimas tendencias de la industria, a través del compromiso y dedicación de nuestro equipo de profesionales.',
-                'facebook' => NULL,
+                'facebook' => 'https://www.facebook.com/Fitness-10-gimnasio-305262453403751',
                 'twitter' => NULL,
                 'instagram' => NULL,
                 'youtube' => NULL,
@@ -39,7 +39,7 @@ class ConfiguracionTableSeeder extends Seeder
                 'gwmt' => NULL,
                 'gmaps' => NULL,
                 'created_at' => NULL,
-                'updated_at' => '2020-05-05 00:36:10',
+                'updated_at' => '2020-05-10 22:20:48',
             ),
         ));
         
