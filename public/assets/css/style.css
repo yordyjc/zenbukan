@@ -2139,7 +2139,7 @@ button:focus {
   overflow: hidden;
   margin-bottom: 30px;
   box-shadow: 0px 2px 12px -3px rgba(0, 0, 0, 0.8);
-  
+
 }
 
 .xs-team-bene:hover {
@@ -3331,7 +3331,7 @@ button:focus {
   font-size: 1rem;
 }
 
-.xs-contact-form .xs-form, .xs-dark-shadow .xs-form {
+/*.xs-contact-form .xs-form, .xs-dark-shadow .xs-form {
   margin-top: 30px;
 }
 
@@ -3352,9 +3352,9 @@ button:focus {
   top: 13px;
   bottom: inherit;
 }
-
+*/
 .xs-contact-form .xs-form .xs-message-box textarea, .xs-dark-shadow .xs-form .xs-message-box textarea {
-  height: 206px;
+  height: 230px;
   padding-top: 12px;
   resize: none;
 }
@@ -4128,15 +4128,16 @@ button:focus {
   bottom: 35px;
 }
 
-.xs-form .xs-form-anim.active input {
+.xs-form .xs-form-anim.active input,
+.xs-form .xs-form-anim.active textarea {
   border-color: #444;
 }
 
 .xs-form .form-control {
-  margin-top: 10px;
-  border: 0;
-  border-radius: 0;
-  border-bottom: 1px solid #e5e5e5;
+  /*margin-top: 10px;*/
+  /*border: 0;*/
+  border-radius: 8px;
+  border: 1px solid #c5c5c5;
   color: #101010;
   background-color: transparent;
   -webkit-transition: all 0.4s ease;
@@ -4145,8 +4146,8 @@ button:focus {
 }
 
 .xs-form .input-label {
-  position: absolute;
-  bottom: 13px;
+  /*position: absolute;*/
+  /*bottom: 13px;*/
   color: #666565;
   -webkit-transition: all 0.4s ease;
   -o-transition: all 0.4s ease;

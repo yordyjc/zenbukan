@@ -30,7 +30,9 @@ Solicita tu pase gratis
         </div>
         <div class="row">
             <div class="col-md-6">
-                <img src="{{ url('resources/img/ejercicios-en-el-gimnasio.jpg') }}" class="img-fluid" />
+                <div style="margin-top: 45px;">
+                    <img src="{{ url('resources/img/ejercicios-en-el-gimnasio.jpg') }}" class="img-fluid" />
+                </div>
             </div>
             <div class="col-md-6">
                 <form action="#" class="xs-form" id="form-pase">
