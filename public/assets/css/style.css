@@ -2918,9 +2918,9 @@ button:focus {
   text-align: center;
   line-height: 80px;
   background: #00506B;
-  background: -webkit-linear-gradient(299deg, #00506B 35%, #0082AC 100%);
-  background: -o-linear-gradient(299deg, #00506B 35%, #0082AC 100%);
-  background: linear-gradient(151deg, #00506B 35%, #0082AC 100%);
+  background: -webkit-linear-gradient(299deg, #1f8cb1  35%, #046989 100%);
+  background: -o-linear-gradient(299deg, #1f8cb1 35%, #046989 100%);
+  background: linear-gradient(151deg, #1f8cb1 35%, #046989 100%);
   -webkit-box-shadow: 0px 10px 40px 0px rgba(0, 0, 0, 0.43);
   box-shadow: 0px 10px 40px 0px rgba(0, 0, 0, 0.43);
   color: #FFFFFF;
