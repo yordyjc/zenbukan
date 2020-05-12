@@ -1,7 +1,8 @@
 <header class="elementskit-header xs-header">
-    <div class="xs-container">
-        <div class="xs-navbar">
-            <a class="xs-navbar-brand" href="{{ url('/') }}">
+        <div class="xs-navbar fixed-top">
+            <div class="container">
+                <div class="row">
+                <a class="xs-navbar-brand" href="{{ url('/') }}">
                 <img src="{{ $configuracion->logo }}" width="60px;" alt="{{ $configuracion->titulo }}"> <span style="color: #0084B0; font-size: 28px; font-weight: 700; vertical-align: middle;"></span>
             </a>
             <nav class="elementskit-navbar ml-auto">
@@ -106,6 +107,7 @@
                 </div>
 
             </nav>
+                </div>
+            </div>
         </div>
-    </div>
 </header>

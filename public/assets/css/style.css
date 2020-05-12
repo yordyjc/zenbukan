@@ -235,7 +235,7 @@ button:focus {
 }
 
 .xs-navbar {
-  position: relative;
+  position: fixed;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -248,11 +248,14 @@ button:focus {
   -ms-flex-pack: justify;
   justify-content: space-between;
   z-index: 9;
+  background-color: #ffffff;
 }
 
 .xs-navbar-brand {
   text-decoration: none;
   color: #000000;
+  margin-top: 1%;
+  
 }
 
 .xs-navbar-brand > h2 {
@@ -876,19 +879,25 @@ button:focus {
 
 .elementskit-overlay {
   display: none;
+  
 }
 
 .elementskit-nav-identity-panel {
   display: none;
+  
 }
 
 .elementskit-menu-hamburger {
   border: 1px solid rgba(16, 16, 16, 0.2);
   float: right;
+  margin-top: 40%;
+  
+
 }
 
 .elementskit-menu-hamburger .elementskit-menu-hamburger-icon {
   background-color: rgba(16, 16, 16, 0.5);
+  
 }
 
 .elementskit-menu-hamburger,
@@ -909,11 +918,14 @@ button:focus {
   width: 100%;
   display: block;
   margin-bottom: 4px;
+  
 }
 
 .elementskit-menu-hamburger .elementskit-menu-hamburger-icon:last-child,
 .elementskit-menu-close .elementskit-menu-hamburger-icon:last-child {
   margin-bottom: 0;
+  
+  
 }
 
 .elementskit-menu-close {
