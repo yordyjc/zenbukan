@@ -7,10 +7,32 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Auth;
+
 use App\User;
+use App\Models\Configuracion;
+use App\Models\Fondo;
+use App\Models\Servicio;
 
 class LoginController extends Controller
 {
+    public function ultimo_fondo()
+    {
+        $ultimo=Fondo::orderBy('numero','desc')->first();
+        if ($ultimo) {
+            $numero=$ultimo->numero;
+        }
+        else{
+            $numero=1;
+        }
+        return $numero;
+    }
+
+    public function fondo(){
+        $elegido = rand(1,$this->ultimo_fondo());
+        $fondo = Fondo::where('numero',$elegido)->first();
+        return $fondo->foto;
+    }
+
     /*
     |--------------------------------------------------------------------------
     | Login Controller
@@ -42,7 +64,13 @@ class LoginController extends Controller
     //     $this->middleware('guest')->except('logout');
     // }
     public function ShowLoginForm(){
-        return view('auth.login');
+
+        $configuracion=Configuracion::find(1);
+        $servicios=Servicio::orderBy('id','asc')->get();
+        return view('auth.login')
+            ->with('fondo',$this->fondo())
+            ->with('configuracion',$configuracion)
+            ->with('servicios',$servicios);
     }
 
     public function login(Request $request)
