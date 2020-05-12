@@ -89,7 +89,7 @@ Nuestro horario
                                         <p>Sala de maquinas</p>
                                     </div>
                                 </td>
-                                
+
                             </tr>
                             <tr>
                                 <th scope="row">7:30 - 8:00</th>
@@ -360,7 +360,7 @@ Nuestro horario
                                         <p>Salón de baile</p>
                                     </div>
                                 </td>
-                                
+
                             </tr>
                             <tr>
                                 <th scope="row">19:00 - 20:00</th>
@@ -498,4 +498,7 @@ Nuestro horario
         </div><!-- .row END -->
     </div><!-- .container END -->
 </section><!-- Class Schedule end -->
+
+@include('front.include.call-login')
+
 @endsection

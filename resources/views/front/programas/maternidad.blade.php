@@ -152,5 +152,6 @@ Maternidad fitness
     </div>
 </section>
 
+@include('front.include.call-login')
 
 @endsection

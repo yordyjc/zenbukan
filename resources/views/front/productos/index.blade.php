@@ -51,5 +51,7 @@ Productos: Suplementos deportivos
     </div>
 </section>
 
+@include('front.include.call-login')
+
 @endsection
 

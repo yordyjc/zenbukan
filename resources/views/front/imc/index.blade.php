@@ -132,7 +132,7 @@ Evaluación Física Nutricional
         <div class="row">
             <div class="col-lg-8 mx-auto">
                 <div class="xs-section-heading text-center">
-                    <h2><span>Transformaciones</span></h2>    
+                    <h2><span>Transformaciones</span></h2>
                 </div>
             </div>
         </div>
@@ -157,7 +157,7 @@ Evaluación Física Nutricional
         <div class="row">
             <div class="col-lg-8 mx-auto">
                 <div class="xs-section-heading text-center">
-                    <h2><span>Sistema muscular hombres</span></h2>    
+                    <h2><span>Sistema muscular hombres</span></h2>
                 </div>
             </div>
         </div>
@@ -179,7 +179,7 @@ Evaluación Física Nutricional
         <div class="row">
             <div class="col-lg-8 mx-auto">
                 <div class="xs-section-heading text-center">
-                    <h2><span>Etapas de una transformación</span></h2>    
+                    <h2><span>Etapas de una transformación</span></h2>
                 </div>
             </div>
         </div>
@@ -217,6 +217,9 @@ Evaluación Física Nutricional
         </div>
     </div>
 </section>
+
+@include('front.include.call-login')
+
 @endsection
 
 @section('js')

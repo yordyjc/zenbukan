@@ -101,7 +101,7 @@ Entrenamiento kids
                     <img src="resources/img/index/ninos/ni4.png" alt="" />
                 </div>
             </div>
-            
+
         </div>
     </div>
     <div class="owl-nav disabled">
@@ -109,4 +109,6 @@ Entrenamiento kids
     </div>
     <div class="owl-dots disabled"></div>
 </div>
+
+@include('front.include.call-login')
 @endsection

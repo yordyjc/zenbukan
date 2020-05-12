@@ -28,7 +28,7 @@ Galeria de videos
             </div>
         </div><!-- .row END -->
         <div class="row">
-            
+
                 @if($galerias->count()>0)
                     @foreach($galerias as $galeria)
                     @if($galeria->estado==true)
@@ -47,11 +47,14 @@ Galeria de videos
                     @endif
                     @endforeach
                 @else
-                    <center><h2>Muy pronto podra encontrar nuevas galerias de videos</h2></center> 
+                    <center><h2>Muy pronto podra encontrar nuevas galerias de videos</h2></center>
                 @endif
         </div>
     </div>
 </section>
+
+@include('front.include.call-login')
+
 @endsection
 
 @section('js')

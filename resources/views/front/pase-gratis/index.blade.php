@@ -143,6 +143,9 @@ Solicita tu pase gratis
 
     </div>
 </section>
+
+@include('front.include.call-login')
+
 @endsection
 
 @section('js')

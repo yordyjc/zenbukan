@@ -22,7 +22,7 @@ Corporativo
                     </div>
                     <div class="xs-team-content">
                         <h5>
-                            CLASES CORPORATIVAS 
+                            CLASES CORPORATIVAS
                         </h5>
                     </div>
                 </div>
@@ -34,7 +34,7 @@ Corporativo
                     </div>
                     <div class="xs-team-content">
                         <h5>
-                            INTEGRACIÓN DE EQUIPOS - JORNADAS DE ENTRENAMIENTO 
+                            INTEGRACIÓN DE EQUIPOS - JORNADAS DE ENTRENAMIENTO
                         </h5>
                     </div>
                 </div>
@@ -95,5 +95,7 @@ Corporativo
 </section>
 
 <!-- .container END -->
+
+@include('front.include.call-login')
 
 @endsection
