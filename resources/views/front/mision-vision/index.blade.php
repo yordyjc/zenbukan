@@ -43,7 +43,7 @@ fitness 10
                                         </div>
                                     </div>
                                     <div class="owl-item" style="width: 690px; margin-right: 10px;">
-                                        
+
                                         <div class="item">
                                             <h3>visión</h3>
                                             <i class="icon icon-quote"></i>
@@ -70,5 +70,8 @@ fitness 10
         @else
         <center><h2>Aun no registro información</h2></center>
         @endif
+
+@include('front.include.call-login')
+
 @endsection
 

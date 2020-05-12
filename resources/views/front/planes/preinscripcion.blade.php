@@ -70,6 +70,9 @@ Pre-Inscripción
         </div><!-- .xs-contact-form END -->
     </div><!-- .container END -->
 </section>
+
+@include('front.include.call-login')
+
 @endsection
 
 @section('js')

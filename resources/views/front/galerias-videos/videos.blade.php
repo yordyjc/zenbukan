@@ -28,7 +28,7 @@
             </div>
         </div><!-- .row END -->
         <div class="row">
-            
+
                 @if($videos->count()>0)
                     @foreach($videos as $video)
                         <div class="col-lg-3 col-md-6">
@@ -46,11 +46,14 @@
                     @endforeach
 
                 @else
-                    <center><h2>Muy pronto podra encontrar nuevos videos en esta galeria</h2></center> 
+                    <center><h2>Muy pronto podra encontrar nuevos videos en esta galeria</h2></center>
                 @endif
         </div>
     </div>
 </section>
+
+@include('front.include.call-login')
+
 @endsection
 
 @section('js')
