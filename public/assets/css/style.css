@@ -2147,6 +2147,17 @@ button:focus {
   box-shadow: 0px 2px 17px -3px rgba(0, 0, 0, 0.8);
 }
 
+.portada{
+  background: url('/resources/img/index/maternidad/fondo.png') no-repeat fixed center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
+  width: 100% ;
+  text-align: center;
+}
+
 .xs-team-bene img {
   width: 100%;
   -webkit-transition: all 0.43s ease;
