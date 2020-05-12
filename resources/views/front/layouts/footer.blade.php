@@ -27,26 +27,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="footer-widget">
-                        <h3 class="widget-title">Páginas</h3>
-                        <div class="media">
-                            <div class="media-body">
-                                <ul class="list-unstyled">
-                                    <li><a href="{{ url('/') }}">Inicio</a></li>
-                                    <li><a href="{{ url('/planes') }}">Planes</a></li>
-                                    <li><a href="{{ url('servicios') }}">Beneficios</a></li>
-                                    <li><a href="{{ url('/horarios') }}">Horario</a></li>
-                                </ul>
-                            </div>
-                            <div class="media-body">
-                                <ul class="list-unstyled">
-                                    <li><a href="{{ url('/imc') }}">Calcula tu Índice de Masa Corporal Online</a></li>
-                                    <li><a href="{{ url('/productos') }}">Suplementos deportivos</a></li>
-                                    <li><a href="{{ url('/contacto') }}">Contacto</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                        <div id="xs-map" class="xs-map-contact"></div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="footer-widget xs-footer-subscribe">
