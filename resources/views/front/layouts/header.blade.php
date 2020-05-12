@@ -2,7 +2,7 @@
     <div class="xs-container">
         <div class="xs-navbar">
             <a class="xs-navbar-brand" href="{{ url('/') }}">
-                <img src="{{ $configuracion->logo }}" width="60px;" alt="{{ $configuracion->titulo }}"> <span style="color: #0084B0; font-size: 28px; font-weight: 700; vertical-align: middle;">Fitness 10</span>
+                <img src="{{ $configuracion->logo }}" width="60px;" alt="{{ $configuracion->titulo }}"> <span style="color: #0084B0; font-size: 28px; font-weight: 700; vertical-align: middle;"></span>
             </a>
             <nav class="elementskit-navbar ml-auto">
 
@@ -27,11 +27,12 @@
                                 <li><a href="{{url('/horarios')}}">Horarios</a></li>
                             </ul>
                         </li>
-                        <li><a href="{{ url('/imc') }}">Evaluación Física<br />Gratuita en Línea</a></li>
+                        <li><a href="{{ url('/imc') }}">Evaluación Física<br />Online</a></li>
+                        <li><a href="{{ url('/productos') }}">Suplementos </br> deportivos</a></li>
                         <li class="elementskit-dropdown-has">
                             <a href="{{ url('/servicios') }}">Servicios</a>
                             <ul class="elementskit-dropdown elementskit-submenu-panel">
-                                <li><a href="{{ url('/productos') }}">Suplementos deportivos</a></li>
+                                
                                 <li><a href="{{ url('/maternidad-fitness') }}">Maternidad fitness</a></li>
                                 <li><a href="{{ url('/entrenamiento-kids') }}">Entrenamiento kids</a></li>
                                 <li><a href="{{ url('/corporativo') }}">Corporativo</a></li>
