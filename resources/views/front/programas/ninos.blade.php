@@ -40,14 +40,14 @@ Entrenamiento kids
             <div class="col-md-6">
                 <div class="xs-team">
                     <div>
-                        <img src="resources/img/index/maternidad/madre2.png" alt="" />
+                        <img src="resources/img/index/ninos/ni1.png" alt="" />
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="xs-team">
                     <div>
-                        <img src="resources/img/index/maternidad/mama2.png" alt="" />
+                        <img src="resources/img/index/ninos/ni2.png" alt="" />
                     </div>
                 </div>
             </div>
