@@ -127,6 +127,96 @@ Evaluación Física Nutricional
         </div>
     </div>
 </section>
+<section class="xs-black-white xs-section-padding-xs">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="xs-section-heading text-center">
+                    <h2><span>Transformaciones</span></h2>    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="/resources/img/index/imc/tra1.png" alt="">
+            </div>
+            <div class="col-md-4">
+                <img src="/resources/img/index/imc/tra2.png" alt="">
+            </div>
+            <div class="col-md-4">
+                <img src="/resources/img/index/imc/tra3.png" alt="">
+            </div>
+
+        </div>
+    </div>
+</section>
+<section class="xs-black-white xs-section-padding-xs">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="xs-section-heading text-center">
+                    <h2><span>Sistema muscular hombres</span></h2>    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="/resources/img/index/imc/mus1.png" alt="">
+            </div>
+            <div class="col-md-6">
+                <img src="/resources/img/index/imc/mus2.png" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="xs-black-white xs-section-padding-xs">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="xs-section-heading text-center">
+                    <h2><span>Etapas de una transformación</span></h2>    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <img src="/resources/img/index/imc/fase1.png" alt="">
+                <div class="text-center" >
+                    </br>
+                    <h6>Fase 1: Evaluación</h6>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <img src="/resources/img/index/imc/fase2.png" alt="">
+                <div class="text-center" >
+                    </br>
+                    <h6>Fase 2: Dieta</h6>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <img src="/resources/img/index/imc/fase3.png" alt="">
+                <div class="text-center" >
+                    </br>
+                    <h6>Fase 3: Entrenamiento</h6>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <img src="/resources/img/index/imc/fase4.png" alt="">
+                <div class="text-center" >
+                    </br>
+                    <h6>Fase 4: Seguimiento</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 @endsection
 
 @section('js')
