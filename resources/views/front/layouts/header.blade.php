@@ -16,35 +16,6 @@
                 <div class="elementskit-menu-container elementskit-menu-offcanvas-elements">
                     <ul class="elementskit-navbar-nav nav-alignment-dynamic">
 
-                        <li>
-                            <a href="{{ url('/planes') }}">Planes</a>
-                        </li>
-                        <li class="elementskit-dropdown-has">
-                            <a href="{{ url('/nosotros') }}">Nosotros</a>
-                            <ul class="elementskit-dropdown elementskit-submenu-panel">
-                                <li><a href="{{ url('/mision-vision') }}">Misión y vision</a></li>
-                                <li><a href="{{ url('/servicios') }}">Beneficios y clases</a></li>
-                                <li><a href="{{url('/galerias-videos')}}">Galería de videos</a></li>
-                                <li><a href="{{url('/horarios')}}">Horarios</a></li>
-                            </ul>
-                        </li>
-                        <li class="text-center"><a href="{{ url('/imc') }}">Evaluación Física<br />Online</a></li>
-                        <li class="text-center"><a href="{{ url('/productos') }}">Suplementos</br>deportivos</a></li>
-                        <li class="elementskit-dropdown-has">
-                            <a href="{{ url('/servicios') }}">Servicios</a>
-                            <ul class="elementskit-dropdown elementskit-submenu-panel">
-
-                                <li><a href="{{ url('/maternidad-fitness') }}">Maternidad fitness</a></li>
-                                <li><a href="{{ url('/entrenamiento-kids') }}">Entrenamiento kids</a></li>
-                                <li><a href="{{ url('/corporativo') }}">Corporativo</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="{{ url('/contacto') }}">Contacto</a>
-                        </li>
-                        <li>
-                            <a href="{{ url('/pase-gratis') }}" style="color: red;">Pase Gratis</a>
-                        </li>
                         @if (Auth::check())
                             @if (Auth::user()->tipo==1) {{-- Admin --}}
                             <li class="elementskit-dropdown-has">

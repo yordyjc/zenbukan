@@ -2285,7 +2285,7 @@ table thead .border-bottom-info th {
     color: #536dfe
 }
 .pcoded[nav-type=st1] .pcoded-item>li:nth-child(1)>a>.pcoded-micon {
-    color: #42a5f5
+    color: #ffff00
 }
 .pcoded[nav-type=st1] .pcoded-item>li:nth-child(2)>a>.pcoded-micon {
     color: #ff5370
@@ -2300,7 +2300,7 @@ table thead .border-bottom-info th {
     color: #b388ff
 }
 .pcoded[nav-type=st1] .pcoded-item>li:nth-child(6)>a>.pcoded-micon {
-    color: #42a5f5
+    color: #ffff00
 }
 .pcoded[nav-type=st1] .pcoded-item>li:nth-child(7)>a>.pcoded-micon {
     color: #ff5370
@@ -2475,7 +2475,7 @@ table thead .border-bottom-info th {
     display: none
 }
 .header-navbar .navbar-wrapper .navbar-logo[logo-theme=theme1] {
-    background: #42a5f5
+    background: #ffff00
 }
 .header-navbar .navbar-wrapper .navbar-logo[logo-theme=theme2] {
     background: #ff5370
@@ -3702,7 +3702,7 @@ table thead .border-bottom-info th {
     transform: rotate(180deg)
 }
 body[themebg-pattern=theme1] {
-    background-color: #42a5f5
+    background-color: #ffff00
 }
 body[themebg-pattern=theme2] {
     background-color: #ff5370
@@ -3922,20 +3922,20 @@ background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBo
     border-left-color: #fff
 }
 .pcoded[theme-layout=vertical] .pcoded-navbar[active-item-theme=theme1] .pcoded-item li .pcoded-submenu {
-    border-left-color: #42a5f5
+    border-left-color: #ffff00
 }
 .pcoded[theme-layout=vertical] .pcoded-navbar[active-item-theme=theme1] .pcoded-item li .pcoded-submenu li.active>a,
 .pcoded[theme-layout=vertical] .pcoded-navbar[active-item-theme=theme1] .pcoded-item li .pcoded-submenu li:hover>a {
-    color: #42a5f5
+    color: #ffff00
 }
 .pcoded[theme-layout=vertical] .pcoded-navbar[active-item-theme=theme1] .pcoded-item li .pcoded-submenu li.active>a {
     font-weight: 500
 }
 .pcoded[theme-layout=vertical] .pcoded-navbar[active-item-theme=theme1] .pcoded-item li:hover>a {
-    color: #42a5f5
+    color: #ffff00
 }
 .pcoded[theme-layout=vertical] .pcoded-navbar[active-item-theme=theme1] .pcoded-item li:hover>a .pcoded-micon {
-    color: #42a5f5
+    color: #ffff00
 }
 .pcoded[theme-layout=vertical] .pcoded-navbar[active-item-theme=theme1] .pcoded-item li:hover>a:before {
     border-left-color: transparent
@@ -3952,7 +3952,7 @@ background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBo
 .pcoded[theme-layout=vertical] .pcoded-navbar[active-item-theme=theme1] .pcoded-item>li.active:hover>a,
 .pcoded[theme-layout=vertical] .pcoded-navbar[active-item-theme=theme1] .pcoded-item>li.pcoded-trigger>a,
 .pcoded[theme-layout=vertical] .pcoded-navbar[active-item-theme=theme1] .pcoded-item>li.pcoded-trigger:hover>a {
-    border-left-color: #42a5f5
+    border-left-color: #ffff00
 }
 .pcoded[theme-layout=vertical] .pcoded-navbar[active-item-theme=theme2] .pcoded-item li .pcoded-submenu {
     border-left-color: #ff5370
@@ -5043,11 +5043,11 @@ background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBo
 }
 .pcoded[theme-layout=horizontal] .pcoded-navbar[active-item-theme=theme1] .pcoded-item li.pcoded-hasmenu .pcoded-submenu li.active>a,
 .pcoded[theme-layout=horizontal] .pcoded-navbar[active-item-theme=theme1] .pcoded-item li.pcoded-hasmenu .pcoded-submenu li:hover>a {
-    color: #42a5f5
+    color: #ffff00
 }
 .pcoded[theme-layout=horizontal] .pcoded-navbar[active-item-theme=theme1] .pcoded-item li.pcoded-hasmenu .pcoded-submenu li.active>a .pcoded-micon,
 .pcoded[theme-layout=horizontal] .pcoded-navbar[active-item-theme=theme1] .pcoded-item li.pcoded-hasmenu .pcoded-submenu li:hover>a .pcoded-micon {
-    color: #42a5f5
+    color: #ffff00
 }
 .pcoded[theme-layout=horizontal] .pcoded-navbar[active-item-theme=theme1] .pcoded-item li.pcoded-hasmenu .pcoded-submenu li.active>a:before,
 .pcoded[theme-layout=horizontal] .pcoded-navbar[active-item-theme=theme1] .pcoded-item li.pcoded-hasmenu .pcoded-submenu li:hover>a:before {
@@ -5055,15 +5055,15 @@ background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBo
 }
 .pcoded[theme-layout=horizontal] .pcoded-navbar[active-item-theme=theme1] .pcoded-item li.pcoded-hasmenu .pcoded-submenu li.active>a:after,
 .pcoded[theme-layout=horizontal] .pcoded-navbar[active-item-theme=theme1] .pcoded-item li.pcoded-hasmenu .pcoded-submenu li:hover>a:after {
-    color: #42a5f5
+    color: #ffff00
 }
 .pcoded[theme-layout=horizontal] .pcoded-navbar[active-item-theme=theme1] .pcoded-item li.active>a,
 .pcoded[theme-layout=horizontal] .pcoded-navbar[active-item-theme=theme1] .pcoded-item li:hover>a {
-    color: #42a5f5
+    color: #ffff00
 }
 .pcoded[theme-layout=horizontal] .pcoded-navbar[active-item-theme=theme1] .pcoded-item li.active>a .pcoded-micon,
 .pcoded[theme-layout=horizontal] .pcoded-navbar[active-item-theme=theme1] .pcoded-item li:hover>a .pcoded-micon {
-    color: #42a5f5
+    color: #ffff00
 }
 .pcoded[theme-layout=horizontal] .pcoded-navbar[active-item-theme=theme1] .pcoded-item li.active>a:before,
 .pcoded[theme-layout=horizontal] .pcoded-navbar[active-item-theme=theme1] .pcoded-item li:hover>a:before {
@@ -5071,7 +5071,7 @@ background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBo
 }
 .pcoded[theme-layout=horizontal] .pcoded-navbar[active-item-theme=theme1] .pcoded-item li.active>a:after,
 .pcoded[theme-layout=horizontal] .pcoded-navbar[active-item-theme=theme1] .pcoded-item li:hover>a:after {
-    color: #42a5f5
+    color: #ffff00
 }
 .pcoded[theme-layout=horizontal] .pcoded-navbar[active-item-theme=theme1] .pcoded-item>li.active>a,
 .pcoded[theme-layout=horizontal] .pcoded-navbar[active-item-theme=theme1] .pcoded-item>li.active:hover>a,
@@ -5079,7 +5079,7 @@ background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBo
 .pcoded[theme-layout=horizontal] .pcoded-navbar[active-item-theme=theme1] .pcoded-item>li.pcoded-trigger:hover>a,
 .pcoded[theme-layout=horizontal] .pcoded-navbar[active-item-theme=theme1] .pcoded-item>li:hover>a,
 .pcoded[theme-layout=horizontal] .pcoded-navbar[active-item-theme=theme1] .pcoded-item>li:hover:hover>a {
-    color: #42a5f5
+    color: #ffff00
 }
 .pcoded[theme-layout=horizontal] .pcoded-navbar[active-item-theme=theme1] .pcoded-item>li.active>a .pcoded-micon,
 .pcoded[theme-layout=horizontal] .pcoded-navbar[active-item-theme=theme1] .pcoded-item>li.active:hover>a .pcoded-micon,
@@ -5087,7 +5087,7 @@ background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBo
 .pcoded[theme-layout=horizontal] .pcoded-navbar[active-item-theme=theme1] .pcoded-item>li.pcoded-trigger:hover>a .pcoded-micon,
 .pcoded[theme-layout=horizontal] .pcoded-navbar[active-item-theme=theme1] .pcoded-item>li:hover>a .pcoded-micon,
 .pcoded[theme-layout=horizontal] .pcoded-navbar[active-item-theme=theme1] .pcoded-item>li:hover:hover>a .pcoded-micon {
-    color: #42a5f5
+    color: #ffff00
 }
 .pcoded[theme-layout=horizontal] .pcoded-navbar[active-item-theme=theme1] .pcoded-item>li.active>a:before,
 .pcoded[theme-layout=horizontal] .pcoded-navbar[active-item-theme=theme1] .pcoded-item>li.active:hover>a:before,
@@ -5984,7 +5984,7 @@ background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBo
     background: 0 0
 }
 .theme-color a[header-theme=theme1] .head:before {
-    background: #42a5f5
+    background: #ffff00
 }
 .theme-color a[header-theme=theme2] .head {
     background: 0 0
@@ -6017,7 +6017,7 @@ background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBo
     background: #263544
 }
 .theme-color a.header-theme-full[header-theme=theme1] .head {
-    background: #42a5f5
+    background: #ffff00
 }
 .theme-color a.header-theme-full[header-theme=theme1] .head:after,
 .theme-color a.header-theme-full[header-theme=theme1] .head:before {

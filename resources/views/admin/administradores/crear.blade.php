@@ -112,15 +112,40 @@ active
 
                         <div class="form-group {{ $errors->has('sector') ? ' has-danger' : '' }} row">
                             <label class="col-md-2 col-form-label" for="sector">
-                                Sector
+                                País
                             </label>
                             <div class="col-md-10">
-                                {!! Form::select('sector',$sectores,old('sector'),["class"=>"sector form-control form-control-round fill select2 ",'placeholder' => '-- Sector --',"required"=>"","id"=>"sector"]) !!}
+                                {!! Form::select('sector',$sectores,old('sector'),["class"=>"sector form-control form-control-round fill select2 ",'placeholder' => '-- Pais --',"required"=>"","id"=>"sector"]) !!}
                                 @if ($errors->has('sector'))
                                     <div class="col-form-label">
                                         {{ $errors->first('sector') }}
                                     </div>
                                 @endif
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label" for="tipo">
+                                Tipo
+                            </label>
+                            <div class="col-md-10 form-radio">
+                                <div class="radio radio-inline">
+                                    <label>
+                                    <input type="radio" name="tipo" id="tipo" value="1" checked="checked">
+                                    <i class="helper"></i>Admiinstrador
+                                    </label>
+                                </div>
+                                <div class="radio radio-inline">
+                                    <label>
+                                    <input type="radio" name="tipo" id="tipo" value="2" >
+                                    <i class="helper"></i>Inscripciones
+                                    </label>
+                                </div>
+                                <div class="radio radio-inline">
+                                    <label>
+                                    <input type="radio" name="tipo" id="tipo" value="3" >
+                                    <i class="helper"></i>Juez
+                                    </label>
+                                </div>
                             </div>
                         </div>
 

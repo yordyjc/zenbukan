@@ -15,6 +15,8 @@ use Auth;
 
 use App\User;
 use App\Models\Sector;
+use App\Models\Torneo;
+use App\Models\club;
 use App\Models\Ficha;
 
 class InscritosController extends Controller
@@ -59,7 +61,7 @@ class InscritosController extends Controller
      */
     public function index()
     {
-        $inscritos = User::where('tipo',2)->orderBy('id','desc')->get();
+        $inscritos = User::where('tipo',4)->orderBy('id','desc')->get();
         return view('admin.inscritos.index')
             ->with('inscritos',$inscritos);
     }
@@ -71,9 +73,11 @@ class InscritosController extends Controller
      */
     public function create()
     {
+        $torneos= Torneo::all()->pluck('nombre','id');
+        $clubes= Club::all()->pluck('nombre', 'id');
         $sectores = Sector::all()->pluck('sector','id');
         return view('admin.inscritos.crear')
-            ->with('sectores',$sectores);
+            ->with('sectores',$sectores)->with('torneos',$torneos)->with('clubes',$clubes);
     }
 
     /**
@@ -108,6 +112,9 @@ class InscritosController extends Controller
         $inscrito->sexo = $request->sexo;
         $inscrito->sector_id = $request->sector;
         $inscrito->interes = $request->interes;
+        $inscrito->anfitrion_id = Auth::user()->id;
+        $inscrito->club_id = $request->club;
+
         if ($request->nacimiento) {
             $inscrito->nacimiento = $request->nacimiento;
         }
@@ -139,6 +146,8 @@ class InscritosController extends Controller
         $ficha->talla = $request->talla;
         $ficha->fecha = Carbon::now();
         $ficha->save();
+
+        
 
         alert()->success('¡Yeah!',$inscrito->nombres.' '.$inscrito->apellidos.' fue registrado con éxito')->autoClose(5000)->showCloseButton();
         return redirect('/admin/inscritos');

@@ -57,8 +57,8 @@ function concatenar($numero){
                                 <th>Ficha de evaluación</th>
                                 <th>Nombres y Apellidos</th>
                                 <th>Contacto</th>
-                                <th>Sector</th>
-                                <th>Tipo</th>
+                                <th>Categoria</th>
+                                <th>Estado</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -70,12 +70,6 @@ function concatenar($numero){
                                 <td>
                                     @foreach ($inscrito->fichas as $ficha)
                                         Nro. {{ concatenar($ficha->correlativo) }}
-                                        <a href="{{ url('/admin/ver-ficha/'.$ficha->correlativo) }}">
-                                            <i class="icon feather icon-external-link f-w-600 f-16 m-r-5 text-c-green" data-toggle="tooltip" data-placement="left" data-original-title="Ver ficha de evaluación"></i>
-                                        </a>
-                                        <a href="{{ url('/admin/simulacion/'.$ficha->correlativo) }}">
-                                            <i class="icon feather icon-activity f-w-600 f-16 m-r-5 text-c-red" data-toggle="tooltip" data-placement="left" data-original-title="Ver situación actual"></i>
-                                        </a>
                                     @endforeach
                                 </td>
                                 <td>
@@ -93,12 +87,12 @@ function concatenar($numero){
                                     <br />
                                     {{ $inscrito->email }}
                                 </td>
-                                <td>{{ $inscrito->sector->sector }}</td>
+                                <td>AI</td>
                                 <td>
                                     @if ($inscrito->activo == 1)
-                                        <span class="label label-success" data-toggle="tooltip" data-placement="left" data-original-title="Asiste con normalidad">Asiste</span>
+                                        <span class="label label-success" data-toggle="tooltip" data-placement="left" data-original-title="Asiste con normalidad">Inscrito</span>
                                     @else
-                                        <span class="label label-danger" data-toggle="tooltip" data-placement="left" data-original-title="Dejo de asistir">No asiste</span>
+                                        <span class="label label-danger" data-toggle="tooltip" data-placement="left" data-original-title="Dejo de asistir">pendiente</span>
                                     @endif
                                 </td>
                                 <td class="text-center">

@@ -20,7 +20,7 @@ use Carbon\Carbon;
                 <h5>@yield('title')</h5>
                 @if (Auth::user()->id==1||Auth::user()->id==2)
                 <div class="card-header-right">
-                    <a href="{{ url('/admin/lista-administrador/create') }}" class="btn waves-effect waves-light btn-primary btn-outline-primary btn-sm"> <i class="icofont icofont-ui-add" style="color:#4680ff;"></i> Agregar administrador</a>
+                    <a href="{{ url('/admin/lista-administrador/create') }}" class="btn waves-effect waves-light btn-primary btn-outline-primary btn-sm"> <i class="icofont icofont-ui-add" style="color:#4680ff;"></i> Agregar Usuario</a>
                 </div>
                 @endif
             </div>
@@ -35,6 +35,7 @@ use Carbon\Carbon;
                                 <th>Teléfono</th>
                                 <th>Ubicación</th>
                                 <th>Estado</th>
+                                <th>Tipo</th>
                                 @if (Auth::user()->id==1||Auth::user()->id==2)
                                 <th>Acciones</th>
                                 @endif
@@ -57,6 +58,15 @@ use Carbon\Carbon;
                                     <span class="label label-danger" data-toggle="tooltip" data-placement="left" data-original-title="Cuenta suspendida indefinidamente">Bloqueado</span>
                                     @else
                                     <span class="label label-success" data-toggle="tooltip" data-placement="left" data-original-title="Administrador con permisos regulares">Activo</span>
+                                    @endif
+                                </td>
+                                <td class="text-center">
+                                    @if ($user->tipo==1)
+                                    <span class="label label-success" data-toggle="tooltip" data-placement="left" data-original-title="Cuenta suspendida indefinidamente">Administrador</span>
+                                    @elseif($user->tipo==2)
+                                    <span class="label label-info" data-toggle="tooltip" data-placement="left" data-original-title="Administrador con permisos regulares">Incripciones</span>
+                                    @else
+                                    <span class="label label-warning" data-toggle="tooltip" data-placement="left" data-original-title="Administrador con permisos regulares">Juez</span>
                                     @endif
                                 </td>
                                 @if (Auth::user()->id==1||Auth::user()->id==2)

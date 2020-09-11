@@ -17,18 +17,18 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('nombres')->nullable();
             $table->string('apellidos')->nullable();
-            $table->string('email')->unique();
+            $table->string('email')->unique()->nullable();
             $table->string('password');
-            $table->string('telefono');
+            $table->string('telefono')->nullable();
             $table->boolean('sexo');//0 mujer, 1 hombre
-            $table->integer('sector_id')->unsigned();
+            //$table->integer('sector_id')->unsigned();
             $table->string('direccion')->nullable();
             //1 perder peso, 2 tonificar, 3 musculación, 4 competencia, 5 otro
-            $table->integer('interes')->default(0);
+            $table->integer('interes')->default(0)->nullable();
             $table->date('nacimiento')->nullable();
             $table->integer('edad')->nullable();
             $table->text('enfermedad')->nullable();
-            $table->integer('tipo')->default(2);//1->admin | 2->usuario
+            $table->integer('tipo')->default(4);//1->admin | 2->inscripciones | 3->Juez | 4->usuario
             $table->string('foto')->nullable();
             $table->text('observaciones')->nullable();
 
@@ -39,9 +39,9 @@ class CreateUsersTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('users', function($table) {
-            $table->foreign('sector_id')->references('id')->on('sectores');
-        });
+        // Schema::table('users', function($table) {
+        //     $table->foreign('sector_id')->references('id')->on('sectores');
+        // });
     }
 
     /**

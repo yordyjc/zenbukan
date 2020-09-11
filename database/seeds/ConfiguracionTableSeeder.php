@@ -20,11 +20,11 @@ class ConfiguracionTableSeeder extends Seeder
             0 => 
             array (
                 'id' => 1,
-                'titulo' => 'Fitness 10',
-                'descripcion' => 'El ejercicio es sinónimo de salud',
-                'email' => 'contacto@fitness10salud.com',
-                'telefono' => '952 686 236 - 995 716 391',
-            'direccion' => 'Av. Vigil 1070 (puerta de salida de Tupac Amaru)',
+                'titulo' => 'Zenbukan',
+                'descripcion' => 'Artes marciales & Fitness',
+                'email' => 'contacto@zenbukanperu.com',
+                'telefono' => '999 999999',
+            'direccion' => 'Av. 2 de mayo 889 (La Cascada Plaza - 4to piso)',
                 'favicon' => '/resources/img/favicon.ico',
                 'logo' => '/resources/img/logo.png',
                 'mision' => 'Ayudar a nuestros socios a alcanzar sus metas de salud integral, ofreciendo un servicio de calidad y una experiencia completa de entrenamiento.',

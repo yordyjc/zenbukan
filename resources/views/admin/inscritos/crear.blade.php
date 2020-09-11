@@ -29,6 +29,19 @@ active
                     @csrf
 
                     <div class="col-sm-10 offset-sm-1">
+                        <div class="form-group {{ $errors->has('torneo') ? ' has-danger' : '' }} row">
+                            <label class="col-md-2 col-form-label" for="torneo">
+                                Torneo
+                            </label>
+                            <div class="col-md-10">
+                                {!! Form::select('nombre',$torneos,old('torneo'),["class"=>"sector form-control form-control-round fill select2 ",'placeholder' => '-- Torneos --',"required"=>"","id"=>"torneo"]) !!}
+                                @if ($errors->has('torneos'))
+                                    <div class="col-form-label">
+                                        {{ $errors->first('torneos') }}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
 
                         <div class="form-group {{ $errors->has('nombre') ? ' has-danger' : '' }} row">
                             <label class="col-md-2 col-form-label" for="nombre">
@@ -78,6 +91,63 @@ active
                             </div>
                         </div>
 
+                        <div class="form-group {{ $errors->has('nacimiento') ? ' has-danger' : '' }} row">
+                            <label class="col-md-2 col-form-label" for="nacimiento">
+                                Fecha de Nac.
+                            </label>
+                            <div class="col-md-4">
+                                <input type="date" class="form-control form-control-round {{ $errors->has('nacimiento') ? ' form-control-danger' : '' }}" id="nacimiento" name="nacimiento" value="{{ old('nacimiento') }}">
+                                @if ($errors->has('nacimiento'))
+                                <div class="col-form-label">
+                                    {{ $errors->first('nacimiento') }}
+                                </div>
+                                @endif
+                            </div>
+                            <label class="col-md-2 col-form-label" for="edad">
+                                o edad
+                            </label>
+                            <div class="col-md-4">
+                                <input type="number" class="form-control form-control-round {{ $errors->has('edad') ? ' form-control-danger' : '' }}" id="edad" name="edad" value="{{ old('edad') }}">
+                            </div>
+                        </div>
+                        @if(Auth::user()->tipo==1)
+                        <div class="form-group {{ $errors->has('club') ? ' has-danger' : '' }} row">
+                            <label class="col-md-2 col-form-label" for="club">
+                                Club
+                            </label>
+                            <div class="col-md-10">
+                                {!! Form::select('club',$clubes,old('club'),["class"=>"sector form-control form-control-round fill select2 ",'placeholder' => '-- Clubes --',"required"=>"","id"=>"club"]) !!}
+                                @if ($errors->has('club'))
+                                    <div class="col-form-label">
+                                        {{ $errors->first('club') }}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                        @endif
+
+                        <div class="form-group row {{ $errors->has('kumite') || $errors->has('kata') ? 'has-danger' : ''}}">
+                            <label class="col-md-2 col-form-label" for="modalidad">
+                                Modalidad
+                            </label>
+                            <div class="col-md-10">
+                                <div class="form-check form-check-inline {{ $errors->has('kata') ? 'form-control-danger' : ''}}">
+                                    <input class="form-check-input {{ $errors->has('kata') ? 'is-invalid' : ''}}" type="checkbox" id="kata" value="1" name="kata">
+                                    <label class="form-check-label" for="kata">Kata</label>
+                                </div>
+                                 <div class="form-check form-check-inline {{ $errors->has('kumite') ? 'form-control-danger' : ''}}">
+                                    <input class="form-check-input {{ $errors->has('kumite') ? 'is-invalid' : ''}}" type="checkbox" id="kumite" value="1" name= "kumite">
+                                    <label class="form-check-label" for="kumite">Kumite</label>
+                                </div>
+                                @if ($errors->has('kumite') || $errors->has('kata'))
+                                <div class="col-form-label">
+                                    {{ $errors->first('kumite') }}
+                                    {{ $errors->first('kata') }}
+                                </div>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group {{ $errors->has('email') ? ' has-danger' : '' }} row">
                             <label class="col-md-2 col-form-label" for="email">
                                 E-mail
@@ -120,64 +190,6 @@ active
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label class="col-md-2 col-form-label" for="interes">
-                                Interesado en
-                            </label>
-                            <div class="col-md-10 form-radio">
-                                <div class="radio radio-inline">
-                                    <label>
-                                    <input type="radio" name="interes" id="interes" value="1" checked="checked">
-                                    <i class="helper"></i>Perder peso
-                                    </label>
-                                </div>
-                                <div class="radio radio-inline">
-                                    <label>
-                                    <input type="radio" name="interes" id="interes" value="2" >
-                                    <i class="helper"></i>Tonificar
-                                    </label>
-                                </div>
-                                <div class="radio radio-inline">
-                                    <label>
-                                    <input type="radio" name="interes" id="interes" value="3" >
-                                    <i class="helper"></i>Musculación
-                                    </label>
-                                </div>
-                                <div class="radio radio-inline">
-                                    <label>
-                                    <input type="radio" name="interes" id="interes" value="4" >
-                                    <i class="helper"></i>Competencia
-                                    </label>
-                                </div>
-                                <div class="radio radio-inline">
-                                    <label>
-                                    <input type="radio" name="interes" id="interes" value="5" >
-                                    <i class="helper"></i>Otro
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group {{ $errors->has('nacimiento') ? ' has-danger' : '' }} row">
-                            <label class="col-md-2 col-form-label" for="nacimiento">
-                                Fecha de Nac.
-                            </label>
-                            <div class="col-md-4">
-                                <input type="date" class="form-control form-control-round {{ $errors->has('nacimiento') ? ' form-control-danger' : '' }}" id="nacimiento" name="nacimiento" value="{{ old('nacimiento') }}">
-                                @if ($errors->has('nacimiento'))
-                                <div class="col-form-label">
-                                    {{ $errors->first('nacimiento') }}
-                                </div>
-                                @endif
-                            </div>
-                            <label class="col-md-2 col-form-label" for="edad">
-                                o edad
-                            </label>
-                            <div class="col-md-4">
-                                <input type="number" class="form-control form-control-round {{ $errors->has('edad') ? ' form-control-danger' : '' }}" id="edad" name="edad" value="{{ old('edad') }}">
-                            </div>
-                        </div>
-
                         <div class="form-group {{ $errors->has('talla') ? ' has-danger' : '' }} row">
                             <label class="col-md-2 col-form-label" for="talla">
                                 Talla
@@ -197,20 +209,6 @@ active
                             </div>
                         </div>
 
-                        <div class="form-group {{ $errors->has('enfermedad') ? ' has-danger' : '' }} row">
-                            <label class="col-md-2 col-form-label" for="enfermedad">
-                                Enfermedad o lesión
-                            </label>
-                            <div class="col-md-10">
-                                <input type="text" class="form-control form-control-round {{ $errors->has('enfermedad') ? ' form-control-danger' : '' }}" id="enfermedad" name="enfermedad" value="{{ old('enfermedad') }}">
-                                @if ($errors->has('enfermedad'))
-                                <div class="col-form-label">
-                                    {{ $errors->first('enfermedad') }}
-                                </div>
-                                @endif
-                            </div>
-                        </div>
-
                         <div class="form-group {{ $errors->has('observaciones') ? ' has-danger' : '' }} row">
                             <label class="col-md-2 col-form-label" for="observaciones">
                                 Observaciones
@@ -224,6 +222,7 @@ active
                                 @endif
                             </div>
                         </div>
+
 
                         <div class="form-group {{ $errors->has('foto') ? ' has-danger' : '' }} row">
                             <label class="col-md-2 col-form-label" for="foto">

@@ -55,7 +55,7 @@ class FichasController extends Controller
 
     public function listaFichas()
     {
-        $inscritos = User::where('tipo',2)->where('activo',1)->orderBy('id','desc')->get();
+        $inscritos = User::where('tipo',4)->where('activo',1)->orderBy('id','desc')->get();
         return view('admin.fichas.index')
             ->with('inscritos',$inscritos);
     }

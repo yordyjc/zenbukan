@@ -31,7 +31,7 @@ class AdministradoresController extends Controller
 
     public function index()
     {
-        $users=User::where('tipo',1)->where('id','!=',1)->orderBy('id','asc')->get();
+        $users=User::where('tipo','!=',4)->where('id','!=',1)->orderBy('id','asc')->get();
         return view('admin.administradores.index')->with('users',$users);
     }
 
@@ -192,9 +192,11 @@ class AdministradoresController extends Controller
         $user->telefono=$request->telefono;
         $user->sexo=1;
         $user->sector_id=$request->sector;
-        $user->tipo=1;
+        $user->tipo=$request->tipo;
         $user->foto='/resources/img/user/default.png';
         $user->confirmado=true;
+        $user->club_id=1;
+        $user->anfitrion_id = Auth::user()->id;
         $user->save();
         alert()->success('¡Yeah!','Operación realizada con éxito')->autoClose(3000)->showCloseButton();
         return redirect('/admin/lista-administrador');

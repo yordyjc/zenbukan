@@ -23,6 +23,7 @@ use App\Models\Contacto;
 use App\Models\Galeria;
 use App\Models\Video;
 use App\Models\Pase;
+use App\Models\Torneo;
 
 use Auth;
 use Mail;
@@ -49,12 +50,14 @@ class FrontController extends Controller
 
     public function index()
     {
+        $torneo= Torneo::orderBy('id','desc')->first();
         $planes=Plan::orderBy('id','asc')->get();
         $configuracion=Configuracion::find(1);
         return view('front.index.index')
             ->with('fondo',$this->fondo())
             ->with('configuracion',$configuracion)
-            ->with('planes',$planes);
+            ->with('planes',$planes)
+            ->with('torneo',$torneo);
     }
 
     public function imc()
@@ -268,5 +271,24 @@ class FrontController extends Controller
         return view('front.programas.corporativo')
                 ->with('configuracion',$configuracion)
                 ->with('fondo',$this->fondo());
+    }
+
+    public function listaTorneos()
+    {
+        $configuracion=Configuracion::first();
+        $torneos = Torneo::where('estado','1')->orderBY('id','desc')->get();
+        return view('front.torneos.index')
+        ->with('configuracion',$configuracion)
+        ->with('fondo',$this->fondo())
+        ->with('torneos',$torneos);
+    }
+
+    public function torneo($id)
+    {
+        $configuracion=Configuracion::find(1);
+        $torneo = Torneo::find($id);
+        return view('front.torneos.ver')
+            ->with('torneo',$torneo)
+            ->with('configuracion',$configuracion);
     }
 }

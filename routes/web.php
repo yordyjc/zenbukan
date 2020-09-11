@@ -76,6 +76,15 @@ Route::middleware(['auth'])->group(function () {
 
             Route::get('/backup','Admin\FichasController@backup');
             Route::get('/generar-backup','Admin\FichasController@generarBackup');
+
+             //Zenbukan
+             Route::resource('torneos','Admin\TorneosController');
+             Route::resource('clubes','Admin\ClubesController');
+             //competidores
+             Route::resource('/inscripciones', 'Admin\InscripcionesController');
+             Route::get('inscripciones/nuevo/{id}','Admin\InscripcionesController@frmCrear');
+             Route::get('inscripciones/editar/{id}','Admin\InscripcionesController@frmEditar');
+
         });
     });
 
@@ -120,3 +129,7 @@ Route::get('/horarios','Front\FrontController@horarios');
 Route::get('/entrenamiento-kids','Front\FrontController@entrenamientoKids');
 Route::get('/maternidad-fitness','Front\FrontController@maternidad');
 Route::get('/corporativo','Front\FrontController@corporativo');
+
+//Zenbukan
+Route::get('/torneos','Front\FrontController@listaTorneos');
+Route::get('/torneos/{id}','Front\FrontController@torneo');

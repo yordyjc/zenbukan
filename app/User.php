@@ -51,6 +51,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Ficha','user_id')->with('periodos');
     }
 
+    public function inscripciones()
+    {
+        return $this->hasMany('App\Models\Inscripcion','competidor_id');
+    }
+
     public function getNameAndSurnameAttribute()
     {
         return $this->nombres.' '.$this->apellidos;

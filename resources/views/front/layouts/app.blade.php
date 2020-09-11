@@ -26,7 +26,7 @@
 
     @include('front.layouts.footer')
 
-    <div id="WAButton"></div>
+    
 
     @include('front.include.js')
 </body>
