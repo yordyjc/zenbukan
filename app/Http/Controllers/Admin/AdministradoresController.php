@@ -174,7 +174,6 @@ class AdministradoresController extends Controller
             'apellidos' => 'required|string',
             'telefono' => 'required',
             'email' => 'required|string|email|max:255|unique:users',
-            'sector' => 'required',
             'password' => 'required|string|min:6|confirmed',
             'password_confirmation' => 'required|string|min:6',
         ]);
@@ -191,7 +190,6 @@ class AdministradoresController extends Controller
         $user->password=bcrypt($request->password);
         $user->telefono=$request->telefono;
         $user->sexo=1;
-        $user->sector_id=$request->sector;
         $user->tipo=$request->tipo;
         $user->foto='/resources/img/user/default.png';
         $user->confirmado=true;

@@ -84,6 +84,10 @@ Route::middleware(['auth'])->group(function () {
              Route::resource('/inscripciones', 'Admin\InscripcionesController');
              Route::get('inscripciones/nuevo/{id}','Admin\InscripcionesController@frmCrear');
              Route::get('inscripciones/editar/{id}','Admin\InscripcionesController@frmEditar');
+             Route::post('inscripciones/categoria', 'Admin\InscripcionesController@obtenerCategoria');
+             //reportes
+             Route::get('/sorteo','Admin\ReportesController@frmSorteo');
+             Route::post('/sorteo','Admin\ReportesController@generarSorteo');
 
         });
     });

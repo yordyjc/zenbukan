@@ -33,7 +33,6 @@ use Carbon\Carbon;
                                 <th>Nombres y Apellidos</th>
                                 <th>Correo electrónico</th>
                                 <th>Teléfono</th>
-                                <th>Ubicación</th>
                                 <th>Estado</th>
                                 <th>Tipo</th>
                                 @if (Auth::user()->id==1||Auth::user()->id==2)
@@ -52,7 +51,6 @@ use Carbon\Carbon;
                                 <td>
                                     {{ $user->telefono }}
                                 </td>
-                                <td>{{ $user->sector->sector }}</td>
                                 <td class="text-center">
                                     @if ($user->activo==0)
                                     <span class="label label-danger" data-toggle="tooltip" data-placement="left" data-original-title="Cuenta suspendida indefinidamente">Bloqueado</span>

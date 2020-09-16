@@ -25,6 +25,8 @@ use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Events\BeforeExport;
 use Maatwebsite\Excel\Events\AfterSheet;
+use App\Models\Torneo;
+use App\Models\Categoria;
 
 class ReportesController extends Controller
 {
@@ -548,6 +550,12 @@ class cumpleanosExcelExport implements FromView, ShouldAutoSize, WithEvents
                 $event->sheet->setTitle("REP. CUMPLEANOS");
             },
         ];
+    }
+
+    //zenbukan
+    public function frmSorteo()
+    {
+        $torneos= Torneo::all()->pluck('nombre','id');
     }
 }
 

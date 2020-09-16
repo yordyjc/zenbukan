@@ -110,19 +110,7 @@ active
                             </div>
                         </div>
 
-                        <div class="form-group {{ $errors->has('sector') ? ' has-danger' : '' }} row">
-                            <label class="col-md-2 col-form-label" for="sector">
-                                País
-                            </label>
-                            <div class="col-md-10">
-                                {!! Form::select('sector',$sectores,old('sector'),["class"=>"sector form-control form-control-round fill select2 ",'placeholder' => '-- Pais --',"required"=>"","id"=>"sector"]) !!}
-                                @if ($errors->has('sector'))
-                                    <div class="col-form-label">
-                                        {{ $errors->first('sector') }}
-                                    </div>
-                                @endif
-                            </div>
-                        </div>
+
                         <div class="form-group row">
                             <label class="col-md-2 col-form-label" for="tipo">
                                 Tipo

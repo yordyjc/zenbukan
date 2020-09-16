@@ -38,7 +38,7 @@
                         </li>
                     </ul>
                 </li>
-                
+
                 <li class="pcoded-hasmenu @yield('torneos')">
                     <a href="javascript:void(0)" class="waves-effect waves-dark">
                         <span class="pcoded-micon"><i class="feather icon-file-text"></i></span>
@@ -86,7 +86,7 @@
                     </a>
                     <ul class="pcoded-submenu">
                         <li class="@yield('reporte-fechas')">
-                            <a href="#" class="waves-effect waves-dark">
+                            <a href="{{url('admin/sorteo')}}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">Reporte por fecha</span>
                             </a>
                         </li>
@@ -94,15 +94,5 @@
                 </li>
 
 			</ul>
-
-            <div class="pcoded-navigation-label">Gestión de inscripciones</div>
-            <ul class="pcoded-item pcoded-left-item">
-                <li class="@yield('pases-gratis')">
-                    <a href="#" class="waves-effect waves-dark">
-                        <span class="pcoded-micon"><i class="feather icon-calendar"></i></span>
-                        <span class="pcoded-mtext">Inscripciones</span>
-                    </a>
-                </li>
-            </ul>
 	</div>
 </nav>
