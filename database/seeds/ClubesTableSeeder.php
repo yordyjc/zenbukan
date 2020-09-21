@@ -24,9 +24,35 @@ class ClubesTableSeeder extends Seeder
             2 => array(
                 'id' => 3,
                 'nombre' => 'Kamino'
+            ),
+            3 => array(
+                'id' => 4,
+                'nombre' => 'UNTAC'
+            ),
+            4 => array(
+                'id' => 5,
+                'nombre' => 'SEIBUKAN'
+            ),
+            5 => array(
+                'id' => 6,
+                'nombre' => 'SAKURA'
+            ),
+            6 => array(
+                'id' => 7,
+                'nombre' => 'NANTO'
+            ),
+            7 => array(
+                'id' => 8,
+                'nombre' => 'IPPON'
+            ),
+            8 => array(
+                'id' => 9,
+                'nombre' => 'SSS'
+            ),
+            8 => array(
+                'id' => 10,
+                'nombre' => 'KOBUKAN'
             )
-
-
         ));
     }
 }

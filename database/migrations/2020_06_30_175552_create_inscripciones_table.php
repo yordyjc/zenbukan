@@ -18,6 +18,8 @@ class CreateInscripcionesTable extends Migration
             $table->integer('modalidad_id')->unsigned();
             $table->integer('competidor_id')->unsigned();
             $table->boolean('cabeza_serie')->nullable()->default(0);
+            $table->boolean('kata')->default(0);
+            $table->boolean('kumite')->default(0);
             $table->integer('edad')->nullable();
             $table->integer('grado')->nullable();
             $table->timestamps();

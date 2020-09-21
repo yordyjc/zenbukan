@@ -26,7 +26,8 @@ use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Events\BeforeExport;
 use Maatwebsite\Excel\Events\AfterSheet;
 use App\Models\Torneo;
-use App\Models\Categoria;
+use App\Models\Modalidad;
+use App\Models\Inscripcion;
 
 class ReportesController extends Controller
 {
@@ -358,6 +359,37 @@ class ReportesController extends Controller
         $archivo = 'REPORTE_CUMPLEANOS_MES_'.$mesformat.'-FITNESS10_CREADO_'.date('d-m-Y').'-'.date('h_i_s_a').'.xlsx';
         return Excel::download(new cumpleanosExcelExport($mes,$mesformat), $archivo);
     }
+
+    /*******************************
+     * REPORTE SORTEO PRO CATEGORIA*
+     *******************************/
+    //zenbukan
+    public function frmSorteo()
+    {
+        $torneos= Torneo::all()->pluck('nombre','id');
+        $categorias = Modalidad::all()->pluck('kumite','id');
+        return view('admin.reportes.sorteo')->with('torneos',$torneos)->with('categorias',$categorias);
+
+    }
+
+    public function getCategorias($id)
+    {
+        $modalidades = Modalidad::where('torneo_id', $id)->get();
+        return $modalidades;
+    }
+
+    public function generarSorteo(Request $request)
+    {
+        if($request->ajax())
+        {
+            $inscripciones = Inscripcion::where('modalidad_id', $request->categoria)->with('competidor')->get();
+            $datos = $inscripciones->where('competidor.club_id',2);
+            $agrupados = $inscripciones->groupBy('competidor.club_id');
+            $total = $agrupados->count();
+            return $agrupados;
+            //return response()->json($inscripcionarray);
+        }
+    }
 }
 
 class fechasExcelExport implements FromView, ShouldAutoSize, WithEvents
@@ -550,12 +582,6 @@ class cumpleanosExcelExport implements FromView, ShouldAutoSize, WithEvents
                 $event->sheet->setTitle("REP. CUMPLEANOS");
             },
         ];
-    }
-
-    //zenbukan
-    public function frmSorteo()
-    {
-        $torneos= Torneo::all()->pluck('nombre','id');
     }
 }
 

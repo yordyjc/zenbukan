@@ -126,6 +126,14 @@ class InscripcionesController extends Controller
         $inscripcion = New Inscripcion();
         $ultimocompetidor = User::orderBy('id','desc')->first();
 
+        if($request->kumite)
+        {
+            $inscripcion->kumite = $request->kumite;
+        }
+        if($request->kata)
+        {
+            $inscripcion->kata = $request->kata;
+        }
         $inscripcion->modalidad_id =1;
         $inscripcion->competidor_id = $ultimocompetidor->id;
         $inscripcion->cabeza_serie = $request->cabeza_serie;

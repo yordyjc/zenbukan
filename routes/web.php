@@ -88,6 +88,7 @@ Route::middleware(['auth'])->group(function () {
              //reportes
              Route::get('/sorteo','Admin\ReportesController@frmSorteo');
              Route::post('/sorteo','Admin\ReportesController@generarSorteo');
+             Route::get('/sorteo/{id}','Admin\ReportesController@getCategorias');
 
         });
     });

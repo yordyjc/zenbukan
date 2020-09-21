@@ -113,7 +113,7 @@ class UsersTableSeeder extends Seeder
                 'foto' => '/resources/img/user/default.png',
                 'observaciones' => NULL,
                 'confirmado' => 1,
-                'club_id' => rand(1,3),
+                'club_id' => rand(1,10),
                 'anfitrion_id'=> 1,
                 'confirmacion_code' => NULL,
                 'activo' => 1,
@@ -130,6 +130,15 @@ class UsersTableSeeder extends Seeder
                 'activo' => 1,
                 'created_at' => $creado,
                 'updated_at' => $creado,
+            ]);
+            \DB::table('inscripciones')->insert([
+                'modalidad_id' => rand(30,33),
+                'competidor_id' => $orden,
+                'cabeza_serie' => 0,
+                'kata' => 1,
+                'kumite' => 1,
+                'edad' => rand(16,18),
+                'grado' => NULL
             ]);
 
             $orden=$orden+1;

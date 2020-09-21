@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateClubesTable extends Migration
+class CreateSorteosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,14 @@ class CreateClubesTable extends Migration
      */
     public function up()
     {
-        Schema::create('clubes', function (Blueprint $table) {
+        Schema::create('sorteos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre');
-            $table->string('bandera')->nullable();
+            $table->integer('inscripcion_id')->unsigned();
+            $table->integer('posicion');
             $table->timestamps();
+        });
+        Schema::table('sorteos', function($table){
+            $table->foreign('inscripcion_id')->references('id')->on('inscripciones');
         });
     }
 
@@ -28,6 +31,6 @@ class CreateClubesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clubes');
+        Schema::dropIfExists('sorteos');
     }
 }

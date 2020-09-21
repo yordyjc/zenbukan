@@ -12,6 +12,10 @@ active pcoded-trigger
 active
 @endsection
 
+@section('css')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+@endsection
+
 @section('content')
 @php
 use Carbon\Carbon;
@@ -48,14 +52,14 @@ function concatenar($numero){
             <div class="card-block">
 
                 <div class="col-sm-10 offset-sm-1">
-                    <form action="{{ url('/admin/sorteo') }}" method="post" class="form-inline" id="form-reporte">
+                    <form action="{{ url('/admin/sorteo') }}" method="post" class="form-inline" id="form-sorteo" onsubmit="return false;">
                         @csrf
                         @method('POST')
                         <div class="row">
-                            <div class="col-sm-3">
-                                <div class="form-group mb-2 {{ $errors->has('desde') ? ' has-danger' : '' }}">
-                                    <label for="desde" class="col-form-label">Desde: </label>
-                                    {!! Form::select('nombre',$torneos,old('torneo'),["class"=>"sector form-control form-control-round fill select2 ",'placeholder' => '-- Torneos --',"required"=>"","id"=>"torneo"]) !!}
+                            <div class="col-sm-4">
+                                <div class="form-group mb-2 {{ $errors->has('torneos') ? ' has-danger' : '' }}">
+                                    <label for="torneos" class="col-form-label">Torneos </label>
+                                    {!! Form::select('nombre',$torneos,old('torneos'),["class"=>"sector form-control input-sm form-control-round fill select2 ",'placeholder' => '-- Torneos --',"required"=>"","id"=>"torneos"]) !!}
                                     @if ($errors->has('torneos'))
                                         <div class="col-form-label">
                                             {{ $errors->first('torneos') }}
@@ -65,20 +69,20 @@ function concatenar($numero){
 
                             </div>
                             <div class="col-sm-3">
-                                <div class="form-group mb-2 {{ $errors->has('hasta') ? ' has-danger' : '' }}">
-                                    <label for="hasta" class="col-form-label">Hasta: </label>
-                                    <input type="date" name="hasta" id="hasta" class="form-control input-sm {{ $errors->has('hasta') ? ' form-control-danger' : '' }}" value="{{ $hasta }}" />
-                                    @if ($errors->has('hasta'))
-                                    <div class="col-form-label">
-                                        {{ $errors->first('hasta') }}
-                                    </div>
+                                <div class="form-group mb-2 {{ $errors->has('categorias') ? ' has-danger' : '' }}">
+                                    <label for="desde" class="col-form-label">Categorias </label>
+                                    {!! Form::select('categoria',$categorias,old('categorias'),["class"=>"sector form-control input-sm form-control-round fill select2 ",'placeholder' => '-- Categorias --',"required"=>"","id"=>"categorias"]) !!}
+                                    @if ($errors->has('categorias'))
+                                        <div class="col-form-label">
+                                            {{ $errors->first('categorias') }}
+                                        </div>
                                     @endif
                                 </div>
                             </div>
 
-                            <div class="col-sm-4">
+                            <div class="col-sm-3">
                                 <div class="form-group" style="margin-top: 36px;">
-                                    <button id="button-submit" class="btn btn-primary btn-sm">
+                                    <button type="submit" id="button-submit" class="btn btn-primary btn-sm">
                                         Generar
                                     </button>
                                     <a href="" class="descarga btn btn-success btn-sm ml-2">Excel</a>
@@ -89,108 +93,17 @@ function concatenar($numero){
                 </div>
                 <br />
                 <div class="alert alert-info background-info">
-                    <h5>Hay 100 registros en este reporte</h5>
+                    <h5>Sorteo</h5>
                 </div>
                 <div class="table-responsive">
-                    <table id="fitnessTable" class="table table-striped table-hover" style="width:100%">
+                    <table>
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Ficha de evaluación</th>
-                                <th>Nombres y Apellidos</th>
-                                <th>Contacto</th>
-                                <th>Sector</th>
-                                <th>Situación</th>
-                                <th>Acciones</th>
+                                <th>Nº</th>
+                                <th>Nombre</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            @if (count($inscritos)>0)
-                            @php
-                                $num = 1;
-                            @endphp
-                            @foreach ($inscritos as $inscrito)
-                            <tr>
-                                <td>{{ $num }}</td>
-                                @php
-                                    $num++;
-                                @endphp
-                                <td>
-                                    @foreach ($inscrito->fichas as $ficha)
-                                        Nro. {{ concatenar($ficha->correlativo) }}
-                                        <a href="{{ url('/admin/ver-ficha/'.$ficha->correlativo) }}">
-                                        <i class="icon feather icon-external-link f-w-600 f-16 m-r-15 text-c-green" data-toggle="tooltip" data-placement="left" data-original-title="Ver ficha de evaluación"></i>
-                                    </a>
-                                    @endforeach
-                                </td>
-                                <td>
-                                    <div class="d-inline-block align-middle">
-                                        <div class="d-inline-block">
-                                            <h6>
-                                                {{ $inscrito->nombres }} {{ $inscrito->apellidos }}
-                                            </h6>
-                                            <p class="text-muted m-b-0">Inscrito el {{ Carbon::parse($inscrito->created_at)->format('d/m/Y h:i a') }}</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    {{ $inscrito->telefono }}
-                                    <br />
-                                    {{ $inscrito->email }}
-                                </td>
-                                <td>{{ $inscrito->sector->sector }}</td>
-                                <td>
-                                    @if ($inscrito->activo == 1)
-                                        <span class="label label-success" data-toggle="tooltip" data-placement="left" data-original-title="Asiste con normalidad">Asiste</span>
-                                    @else
-                                        <span class="label label-danger" data-toggle="tooltip" data-placement="left" data-original-title="Dejo de asistir">No asiste</span>
-                                    @endif
-                                </td>
-                                <td class="text-center">
-
-                                    <a href="{{ url('/admin/inscritos/'.$inscrito->id.'/edit') }}">
-                                        <i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-blue" data-toggle="tooltip" data-placement="left" data-original-title="Editar información"></i>
-                                    </a>
-                                    @if ($inscrito->activo==1)
-                                    <a href="#" onclick="eliminarModal({{ $inscrito->id }})" data-toggle="modal" data-target="#eliminarModal">
-                                        <i class="feather icon-trash-2 f-w-600 f-16 text-c-red" data-toggle="tooltip" data-placement="left" data-original-title="¿Deja de asistir?"></i>
-                                    </a>
-                                    @endif
-
-                                </td>
-                            </tr>
-                            @endforeach
-
-                            <div class="modal fade" id="eliminarModal" tabindex="-1" role="dialog">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title">¡Alto!</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <form action="" method="POST" id="form-modal">
-                                            @csrf
-                                            @method('DELETE')
-                                            <div class="modal-body">
-                                                <p>Cuando un usuario deja de asistir ya no se pueden crear evaluaciones nuevas y su ficha no puede ser modificada hasta que vuelva a asistir.</p>
-                                                <p>Esta acción no podrá deshacerse. ¿Quieres continuar?</p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="submit" class="btn btn-danger btn-round">
-                                                    <i class="icofont icofont-ui-delete"></i> Sí, el usuario ya no asiste
-                                                </button>
-                                                <button class="btn btn-outline-primary btn-round" data-dismiss="modal">
-                                                    <i class="icofont icofont-circled-left"></i> Cancelar
-                                                </button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            @endif
-
+                        <tbody id="sorteo">
                         </tbody>
                     </table>
                 </div>
@@ -202,6 +115,16 @@ function concatenar($numero){
 @endsection
 
 @section('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.select2').select2();
+    });
+
+    $( ".select2" ).select2({
+        theme: "bootstrap4"
+    });
+</script>
 <script type="text/javascript">
     $(document).ready( function () {
         var formData=$("#form-reporte").serialize();
@@ -237,5 +160,48 @@ function concatenar($numero){
         var path=location.pathname
         formModal.attr('action',url+path+'/'+id);
     }
+</script>
+<script>
+    //Llenado del listado de categorias segun el torneo seleccionado
+    $(document).ready(function(){
+        $('#torneos').on('change',function(){
+            var torneo_id = $(this).val();
+            var route = URLs+'/admin/sorteo/'+torneo_id;
+            if($.trim(torneo_id) != '')
+            {
+               //alert(route);
+                $.get(route, function(data){
+                    $('#categorias').empty();
+                    var html_select = '<option value = "">--Categorias--</option>';
+                    for(var i=0; i<data.length; ++i)
+                    {
+                        html_select += '<option value ="'+ data[i].id +'">'+data[i].kumite+'</option>'
+                    }
+                    $('#categorias').html(html_select);
+                });
+            }
+        });
+    });
+    //Calculo del sorteo
+    $('#form-sorteo').submit(function(e){
+        e.preventDefault();
+        var route = $('#form-sorteo').attr('action');
+        var method = $('#form-sorteo').attr('method');
+        var frmData = $('#form-sorteo').serialize();
+        //alert('holi');
+        $("#button-submit").attr('disabled', 'disabled');
+        sendRequest(route,frmData,method, function(data, textStatus){
+            $("#button-submit").removeAttr('disabled');
+            if(data.status == 200)
+            {
+                $('#sorteo').empty();
+                data=data.responseJSON;
+                $.each(data, function(index, value){
+                    $('#sorteo').append('<tr> <td>'+index+'</td> <td>'+value.competidor.nombres+'</td> </tr>');
+                });
+            }
+        });
+    });
+
 </script>
 @endsection
