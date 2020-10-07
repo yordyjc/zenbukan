@@ -197,7 +197,7 @@ function concatenar($numero){
                 $('#sorteo').empty();
                 data=data.responseJSON;
                 $.each(data, function(index, value){
-                    $('#sorteo').append('<tr> <td>'+index+'</td> <td>'+value.competidor.nombres+'</td> </tr>');
+                    $('#sorteo').append('<tr> <td>'+index+'</td> <td>'+value+'</td> </tr>');
                 });
             }
         });

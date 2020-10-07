@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Support\Collection;
+use Illuminate\Support\Collectioncollectstrtoupper;
 use Hash;
 use Illuminate\Support\Facades\Validator;
 use Response;
@@ -383,11 +384,66 @@ class ReportesController extends Controller
         if($request->ajax())
         {
             $inscripciones = Inscripcion::where('modalidad_id', $request->categoria)->with('competidor')->get();
-            $datos = $inscripciones->where('competidor.club_id',2);
-            $agrupados = $inscripciones->groupBy('competidor.club_id');
-            $total = $agrupados->count();
-            return $agrupados;
-            //return response()->json($inscripcionarray);
+            //agrupamos por club
+            $agrupados= $inscripciones->groupBy('competidor.club_id');
+
+            //contamos por agrupacion
+            $conteo = $agrupados->map(function($item, $key){
+                return collect($item)->count();
+            });
+            $ordenado=$conteo->sort();
+
+            //retornamos las claves de los clubes
+            $mynombre = Array();
+            foreach($ordenado as $key =>$value){
+                $mykey[] = $key;
+                //$mynombre[] = $inscripciones->where('competidor.club_id',$key);
+                $array = $inscripciones->where('competidor.club_id',$key)->toArray();
+                $mynombre = array_merge($mynombre,$array);
+            }
+            $mycolect= $mynombre;
+
+            /*************************************
+             * ALGORITMO DE SORTEO DE COMPETIDORES
+             *************************************/
+
+            $c = $inscripciones->count(); // numero de inscripciones de la cateogria
+            $n = 1;
+            while($c >= pow(2,$n)){
+                $n++;
+            }
+            $n_encuentros = pow(2,$n-1);
+            $preliminares = $c - $n_encuentros;
+            $pasan = pow(2,$n) - $c;
+            //posicionamos los participantes que pasan directo
+            $sorteados = array();
+            for($i=1; $i<=$pasan;$i++){
+                $r1= $i%2;
+                $r2= ($i+1) % 2;
+                $posicion = pow(2,$n)/($r1+1) - $i+$r2+1;
+                if($i<=3){
+                    $sorteados[$posicion] = $mynombre[0];//asignamos el primer elemento de $mynombre a $sorteados en la posicion correspondiente
+                    unset($mynombre[0]); //eliminamos el elemento de $mynombre
+                    $mynombre = array_values($mynombre); //reindexamos
+                }
+                else{
+                    reset($mynombre);
+                    end($sorteados);
+                    prev($sorteados);
+                    while($mynombre[key($mynombre)]["competidor"]["club_id"] == $sorteados[key($sorteados)]["competidor"]["club_id"]){
+                        next($mynombre);
+                        //si el puntero del array llega al final, entonces recorremos desde el principio
+                        if(key($mynombre) == end($mynombre)){
+                            reset($mynombre);
+                        }
+
+                    }
+                    $sorteados[$posicion] = current($mynombre);
+                    unset($mynombre[key($mynombre)]);
+                    $mynombre = array_values($mynombre); //reindexamos
+                }
+            }
+            return $mynombre;
         }
     }
 }
