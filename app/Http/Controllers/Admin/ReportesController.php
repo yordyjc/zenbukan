@@ -379,6 +379,13 @@ class ReportesController extends Controller
         return $modalidades;
     }
 
+    //Funcion para calcular la posicion del algoritomo de sorteo
+    public function posicion($n,$i){
+        $r1= $i%2;
+        $r2= ($i+1) % 2;
+        $p = pow(2,$n)/($r1+1) - $i+$r2+1;
+        return $p;
+    }
     public function generarSorteo(Request $request)
     {
         if($request->ajax())
@@ -415,12 +422,11 @@ class ReportesController extends Controller
             $n_encuentros = pow(2,$n-1);
             $preliminares = $c - $n_encuentros;
             $pasan = pow(2,$n) - $c;
+
             //posicionamos los participantes que pasan directo
             $sorteados = array();
             for($i=1; $i<=$pasan;$i++){
-                $r1= $i%2;
-                $r2= ($i+1) % 2;
-                $posicion = pow(2,$n)/($r1+1) - $i+$r2+1;
+                $posicion =$this->posicion($n,$i);
                 if($i<=3){
                     $sorteados[$posicion] = $mynombre[0];//asignamos el primer elemento de $mynombre a $sorteados en la posicion correspondiente
                     unset($mynombre[0]); //eliminamos el elemento de $mynombre
@@ -432,10 +438,6 @@ class ReportesController extends Controller
                     prev($sorteados);
                     while($mynombre[key($mynombre)]["competidor"]["club_id"] == $sorteados[key($sorteados)]["competidor"]["club_id"]){
                         next($mynombre);
-                        //si el puntero del array llega al final, entonces recorremos desde el principio
-                        if(key($mynombre) == end($mynombre)){
-                            reset($mynombre);
-                        }
 
                     }
                     $sorteados[$posicion] = current($mynombre);
@@ -443,7 +445,185 @@ class ReportesController extends Controller
                     $mynombre = array_values($mynombre); //reindexamos
                 }
             }
-            return $mynombre;
+
+            //posicionamos el resto de participante en el mismo arreglo $sorteados
+            $topeinicial_1 =1;
+            $topeinicial_2 = pow(2,$n)/2 +1;
+            $topeinicial_4=0;
+            $topeinicial_3=0;
+            if($posicion < $n/2){
+                $topeinicial_3 = $posicion-1;
+                $topeinicial_4= $this->posicion($n,$pasan-1)-2;
+            }
+            else{
+                $topeinicial_4=$posicion-1;
+                $topeinicial_3=$this->posicion($n,$pasan-1)-2;
+            }
+            $tope_1 =$topeinicial_1;
+            $tope_2 =$topeinicial_2;
+            $tope_3 =$topeinicial_3;
+            $tope_4 =$topeinicial_4;
+            $orden=1;
+            // while(empty($mynombre)!=1){
+            //     if($tope_1!=$topeinicial_1){
+            //         $topeinicial_1++;
+            //     }
+            //     if($tope_2!=$topeinicial_2){
+            //         $topeinicial_2++;
+            //     }
+            //     if($tope_3!=$topeinicial_3){
+            //         $topeinicial_3++;
+            //     }
+            //     if($tope_4!=$topeinicial_4){
+            //         $topeinicial_4++;
+            //     }
+            //     $tope_1 =$topeinicial_1;
+            //     $tope_2 =$topeinicial_2;
+            //     $tope_3 =$topeinicial_3;
+            //     $tope_4 =$topeinicial_4;
+
+            //     //ubicamos los competidores que son del mismo club
+            //     end($mynombre);//ubicamos el puntero de array sorteados al ultimo elemento
+            //     $club=$mynombre[key($mynombre)]["competidor"]["club_id"];
+            //     while($mynombre[key($mynombre)]["competidor"]["club_id"]==$club){
+            //         switch($orden){
+            //             case 1:
+            //                 $sorteados[$tope_1] = $mynombre[key($mynombre)];
+            //                 unset($mynombre[key($mynombre)]);//eliminamos el elemento extraido del array $mynombre
+            //                 $mynombre = array_values($mynombre); //reindexamos
+            //                 end($mynombre);
+            //                 $tope_1 = $tope_1 +2;
+            //                 $orden++;
+            //                 break;
+
+            //         }
+            //     }
+            // }
+
+
+            //algoritmo para ingresmos los participantes de las preliminares
+            $i=2;
+            $grupo=1; //cantidad de ciclos en los que vuelve a tomar el arreglo combates
+            //ingresmos los valso de los extremos el array $combates
+            $combates = array();
+            $combates[1]=end($mynombre);
+            unset($mynombre[key($mynombre)]);
+            array_values($mynombre);
+            // reset($mynombre);
+            //$combates[2] = $mynombre[0];
+            // unset($mynombre[0]);
+            // array_values($mynombre);
+            $total = pow(2, $n);
+            $combates[$total]=end($mynombre);
+            unset($mynombre[key($mynombre)]);
+            array_values($mynombre);
+            // reset($mynombre);
+            // $combates[$total-1] = $mynombre[0];
+            // unset($mynombre[0]);
+            // array_values($mynombre);
+
+            //iniciamos el while principal que recorre hasta la cantidad de encuentros
+            while($i<$preliminares){
+
+                unset($aux);
+                foreach($combates as $key =>$value){
+                    //$arrayaux = $inscripciones->where('competidor.club_id',$key)->toArray();
+                    $aux[] = $key;
+                }
+                reset($combates);
+                unset($aux[0]);
+
+
+                unset($aux[1]);
+                array_values($aux);
+                asort($aux);
+                reset($aux);
+                $alternador=1;
+
+                $n_elementos=count($combates);
+                if($i==4) $nprimero=$n_elementos;
+                for($j=1; $j<=$n_elementos; $j++){
+
+                    if(key($combates)==1 && $i<=$preliminares){
+                        $m=$n-$grupo;
+                        $posicion = pow(2,$m);
+                        end($mynombre);
+                        $combates[$posicion] = $mynombre[key($mynombre)];
+                        unset($mynombre[key($mynombre)]);
+                        array_values($mynombre);
+                        // reset($mynombre);
+                        // $combates[$posicion-1] = $mynombre[key($mynombre)];
+                        // unset($mynombre[key($mynombre)]);
+                        // array_values($mynombre);
+                        next($combates);
+                        $i++;
+                    }
+                    else{
+                        if(key($combates)==pow(2,$n) && $i<=$preliminares){
+                            $m=$n-$grupo;
+                            $posicion = pow(2,$n) - pow(2,$m) + 1;
+                            end($mynombre);
+                            $combates[$posicion] = $mynombre[key($mynombre)];
+                            unset($mynombre[key($mynombre)]);
+                            array_values($mynombre);
+                            // reset($mynombre);
+                            // $combates[$posicion+1] = $mynombre[key($mynombre)];
+                            // unset($mynombre[key($mynombre)]);
+                            // array_values($mynombre);
+                            next($combates);
+                            $i++;
+                        }
+                        else{
+                            if($i<$preliminares){
+                                $alternador=$alternador*(-1);
+                                $m=$n-$grupo;
+                                $auxi= $aux[key($aux)];
+                                $posicion=$auxi + $alternador*pow(2,$m) + (-1)*$alternador;
+                                end($mynombre);
+                                $combates[$posicion] = $mynombre[key($mynombre)];
+                                unset($mynombre[key($mynombre)]);
+                                array_values($mynombre);
+                                // reset($mynombre);
+                                // $combates[$posicion+(-1)*$alternador] = $mynombre[key($mynombre)];
+                                // unset($mynombre[key($mynombre)]);
+                                // array_values($mynombre);
+                                next($combates);
+                                next($aux);
+                                $i++;
+                            }
+
+
+                        }
+                    }
+
+                }
+                $grupo++;
+            }
+            //posicionamos los ultimos elementos
+            end($mynombre);
+            $i=key($mynombre);
+            foreach($combates as $key=>$value){
+                if($key%2 == 0){
+                    $combates[$key-1] = $mynombre[$i];
+                    $i--;
+                }
+                else{
+                    $combates[$key+1] = $mynombre[$i];
+                    $i--;
+                }
+            }
+            reset($sorteados);
+            for($i=1; $i<=pow(2,$n); $i++){
+                if(isset($combates[$i])){
+
+                }
+                else{
+                    $combates[$i] = $sorteados[key($sorteados)];
+                    $combates[$i+1]="robot";
+                    next($sorteados);
+                }
+            }
+            return $combates;
         }
     }
 }
