@@ -57,7 +57,7 @@
                             @endif
                         @else
                         <li>
-                            <a href="{{ url('/login') }}">Clientes</a>
+                            <a href="{{ url('/login') }}">Inicia sesión</a>
                         </li>
                         @endif
                     </ul>

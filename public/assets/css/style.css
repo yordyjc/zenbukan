@@ -255,7 +255,7 @@ button:focus {
   text-decoration: none;
   color: #000000;
   margin-top: 1%;
-  
+
 }
 
 .xs-navbar-brand > h2 {
@@ -879,25 +879,25 @@ button:focus {
 
 .elementskit-overlay {
   display: none;
-  
+
 }
 
 .elementskit-nav-identity-panel {
   display: none;
-  
+
 }
 
 .elementskit-menu-hamburger {
   border: 1px solid rgba(16, 16, 16, 0.2);
   float: right;
   margin-top: 40%;
-  
+
 
 }
 
 .elementskit-menu-hamburger .elementskit-menu-hamburger-icon {
   background-color: rgba(16, 16, 16, 0.5);
-  
+
 }
 
 .elementskit-menu-hamburger,
@@ -918,14 +918,14 @@ button:focus {
   width: 100%;
   display: block;
   margin-bottom: 4px;
-  
+
 }
 
 .elementskit-menu-hamburger .elementskit-menu-hamburger-icon:last-child,
 .elementskit-menu-close .elementskit-menu-hamburger-icon:last-child {
   margin-bottom: 0;
-  
-  
+
+
 }
 
 .elementskit-menu-close {
@@ -4247,3 +4247,32 @@ input[type=number] {
 .show {
     display: block;
 }
+.accountbg {
+    background:url('/resources/img/bg-account.png');
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+  }
+.wrapper-page {
+    width: 90%;
+  }
+.wrapper-page {
+    margin: 7.5% auto;
+    max-width: 460px;
+    position: relative;
+  }
+.wrapper-page .card {
+    border-radius: 10px;
+  }
+.fixed-left {
+    bottom: 50px;
+    height: 100%;
+    margin-bottom: -70px;
+    margin-top: 0;
+    padding-bottom: 70px;
+    position: fixed;
+  }
+  .m-t-20 {
+    margin-top: 20px;
+  }
