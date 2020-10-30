@@ -50,14 +50,13 @@ class FrontController extends Controller
 
     public function index()
     {
-        $torneo= Torneo::orderBy('id','desc')->first();
-        $planes=Plan::orderBy('id','asc')->get();
+        //$planes=Plan::orderBy('id','asc')->get();
+        $torneos = Torneo::where('estado','1')->orderBY('id','desc')->get();
         $configuracion=Configuracion::find(1);
         return view('front.index.index')
+            ->with('torneos',$torneos)
             ->with('fondo',$this->fondo())
-            ->with('configuracion',$configuracion)
-            ->with('planes',$planes)
-            ->with('torneo',$torneo);
+            ->with('configuracion',$configuracion);
     }
 
     public function imc()

@@ -12,8 +12,8 @@ Inicio
         <div class="row">
             <div class="col-lg-12">
                 <div class="xs-banner text-center">
-                    <p class="xs-banner-subtitle">Inscripciones abiertas</p>
-                    <h1 class="xs-banner-title">{{$torneo->nombre}}</span></h1>
+                    <p class="xs-banner-subtitle">Bienvenido a la escuela de artes marciales</p>
+                    <h1 class="xs-banner-title">Zenbukan</span></h1>
                 </a>
                 </div>
             </div>
@@ -21,42 +21,50 @@ Inicio
     </div><!-- .container END -->
 </section><!-- Banner End -->
 
-<!-- Blog -->
-<section class="position-relative xs-section-padding" data-scrollax-parent="true">
+<section class="xs-section-padding">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mx-auto">
                 <div class="xs-section-heading text-center">
-                    <h2>Descripción</span></h2>
-                    <p>{!!$torneo->descripcion!!}</p>
+                    <h2>Proximos <span>Torneos</span></h2>
+                    <p>Zenbukan organiza tornos de alta competencia, incribete!!</p>
                 </div>
-            </div>
-        </div><!-- .row END -->
-    </div><!-- .container END -->
 
-    <div class="xs-blog-shape xs-bg-cover" data-scrollax="properties: { translateY: '-250px' }" style="background-image: url(assets/images/shape/news_bg.png);">
-    </div><!-- .xs-blog-shape END -->
-</section><!-- Blog end -->
-<section class="xs-section-padding-xs xs-bg-cover parallaxie" style="background-image: url(&quot;assets/images/bmi-bg.png&quot;); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;">
-    <div class="container">
-        <div class="xs-services-intro">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="xs-section-heading">
-                        <h2 style="color:#DED244">Descargar las bases aquí</h2>
-                    </div>
-                </div>
-                <div class="col-lg-4 align-self-center">
-                    <div class="xs-btn-wraper">
-                        <a href="{{ $torneo->bases }}" class="btn btn-primary"style="background-color:#DED244">Bases</a>
-                    </div>
-                </div>
             </div>
+        </div>
+        <div class="row">
+
+            @if (count($torneos)>0)
+            @foreach ($torneos as $torneo)
+
+            <div class="col-lg-4">
+                <div class="card xs-shop" style="border-color:#fff;">
+                    <div class="xs-shop-thumb">
+                        <img src="{{ $torneo->foto }}" alt="{{ $torneo->nombre }}" class="card-img-top">
+
+                    </div>
+                    <div class="xs-shop-inner">
+                        <a href="{{ url('/torneos/'.$torneo->id) }}" class="btn btn-primary">Ver detalles</a>
+                    </div>
+
+
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $torneo->nombre }}</h5>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+            @endforeach
+            @else
+            <center><h2>Pronto se lanzaran nuevos torneos, estate antento</h2></center>
+            @endif
+
         </div>
     </div>
 </section>
-
-
-
+<!-- Blog -->
 
 @endsection
