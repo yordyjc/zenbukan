@@ -80,6 +80,10 @@ Route::middleware(['auth'])->group(function () {
              //Zenbukan
              Route::resource('torneos','Admin\TorneosController');
              Route::resource('clubes','Admin\ClubesController');
+
+             Route::get('/agregar-modalidades/{id}', 'Admin\ModalidadesController@agregarModalidades');
+             Route::post('/agregar-modalidades', 'Admin\ModalidadesController@storeModalidades');
+
              //competidores
              Route::resource('/inscripciones', 'Admin\InscripcionesController');
              Route::get('inscripciones/nuevo/{id}','Admin\InscripcionesController@frmCrear');

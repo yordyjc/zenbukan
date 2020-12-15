@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Modalidad extends Model
 {
     protected $table='modalidades';
+    protected $fillable = ['torneo_id', 'nombre', 'edad_min', 'edad_max', 'grado_min', 'grado_max', 'sexo', 'kata', 'kumite'];
+
     protected $guarded = [];
     public function inscripciones()
     {

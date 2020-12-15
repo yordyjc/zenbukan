@@ -102,6 +102,10 @@ function concatenar($numero){
                                     </td>
                                     <td class="text-center">
 
+                                        <a href="{{ url('/admin/agregar-modalidades/'.$torneo->id) }}">
+                                            <i class="icon feather icon-tag f-w-600 f-16 m-r-15 text-c-yellow" data-toggle="tooltip" data-placement="left" data-original-title="Ver y/o Agregar modalidades"></i>
+                                        </a>
+
                                         <a href="{{ url('/admin/inscripciones/nuevo/'.$torneo->id) }}">
                                             <i class="icon feather icon-user-plus f-w-600 f-16 m-r-15 text-c-green" data-toggle="tooltip" data-placement="left" data-original-title="Agregar competidores"></i>
                                         </a>
