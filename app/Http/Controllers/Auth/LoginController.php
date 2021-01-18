@@ -66,11 +66,9 @@ class LoginController extends Controller
     public function ShowLoginForm(){
 
         $configuracion=Configuracion::find(1);
-        $servicios=Servicio::orderBy('id','asc')->get();
         return view('auth.login')
             ->with('fondo',$this->fondo())
-            ->with('configuracion',$configuracion)
-            ->with('servicios',$servicios);
+            ->with('configuracion',$configuracion);
     }
 
     public function login(Request $request)

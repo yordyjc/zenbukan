@@ -50,6 +50,27 @@ class InscripcionesController extends Controller
         //
     }
 
+    public function concatenar($numero)
+    {
+        $n=strlen($numero);
+        if ($n==1) {
+            $a='0000'.$numero;
+        }
+        else if ($n==2) {
+            $a='000'.$numero;
+        }
+        else if ($n==3) {
+            $a='00'.$numero;
+        }
+        else if ($n==4) {
+            $a='0'.$numero;
+        }
+        else{
+            $a=$numero;
+        }
+        return $a;
+    }
+
     /**
      * Store a newly created resource in storage.
      *

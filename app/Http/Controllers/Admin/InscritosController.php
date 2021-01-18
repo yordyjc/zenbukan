@@ -147,7 +147,7 @@ class InscritosController extends Controller
         $ficha->fecha = Carbon::now();
         $ficha->save();
 
-        
+
 
         alert()->success('¡Yeah!',$inscrito->nombres.' '.$inscrito->apellidos.' fue registrado con éxito')->autoClose(5000)->showCloseButton();
         return redirect('/admin/inscritos');
