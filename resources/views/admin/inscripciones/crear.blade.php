@@ -198,52 +198,6 @@ active
                                 @endif
                             </div>
                         </div>
-
-                        <div class="form-group {{ $errors->has('telefono') ? ' has-danger' : '' }} row">
-                            <label class="col-md-2 col-form-label" for="telefono">
-                                Celular
-                            </label>
-                            <div class="col-md-10">
-                                <input type="number" class="form-control form-control-round {{ $errors->has('telefono') ? ' form-control-danger' : '' }}" id="telefono" name="telefono" value="{{ old('telefono') }}">
-                                @if ($errors->has('telefono'))
-                                <div class="col-form-label">
-                                    {{ $errors->first('telefono') }}
-                                </div>
-                                @endif
-                            </div>
-                        </div>
-
-
-
-                        <div class="form-group {{ $errors->has('observaciones') ? ' has-danger' : '' }} row">
-                            <label class="col-md-2 col-form-label" for="observaciones">
-                                Observaciones
-                            </label>
-                            <div class="col-md-10">
-                                <textarea  rows="10" class="form-control {{ $errors->has('observaciones') ? ' form-control-danger' : '' }}" id="observaciones" name="observaciones">{{ old('observaciones') }}</textarea>
-                                @if ($errors->has('observaciones'))
-                                <div class="col-form-label">
-                                    {{ $errors->first('observaciones') }}
-                                </div>
-                                @endif
-                            </div>
-                        </div>
-
-
-                        <div class="form-group {{ $errors->has('foto') ? ' has-danger' : '' }} row">
-                            <label class="col-md-2 col-form-label" for="foto">
-                                Fotografía
-                            </label>
-                            <div class="col-md-10">
-                                <input type="file"id="foto" class="form-control form-control-round {{ $errors->has('foto') ? ' form-control-danger' : '' }}" name="foto"  accept=".png, .jpg, .jpeg">
-                                @if ($errors->has('foto'))
-                                <div class="col-form-label">
-                                    {{ $errors->first('foto') }}
-                                </div>
-                                @endif
-                                <h6>Previsualización:</h6><img id="img-foto" src="/resources/img/default.jpg" style="width:120px;height:120px;" alt="Previsualización" class="img-fluid">
-                            </div>
-                        </div>
                     </div>
 
                     <div class="col-sm-10 offset-sm-1">

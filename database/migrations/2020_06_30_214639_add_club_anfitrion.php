@@ -15,11 +15,9 @@ class AddClubAnfitrion extends Migration
     {
         schema::table('users',function(Blueprint $table){
             $table->integer('club_id')->unsigned()->after('id');
-            $table->integer('anfitrion_id')->unsigned()->after('club_id');
         });
         Schema::table('users', function($table) {
             $table->foreign('club_id')->references('id')->on('clubes');
-            $table->foreign('anfitrion_id')->references('id')->on('users');
         });
     }
 

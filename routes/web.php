@@ -85,7 +85,10 @@ Route::middleware(['auth'])->group(function () {
              Route::post('/agregar-modalidades', 'Admin\ModalidadesController@storeModalidades');
 
              //competidores
-             Route::resource('/inscripciones', 'Admin\InscripcionesController');
+             //Route::resource('/inscripciones', 'Admin\InscripcionesController');
+             Route::get('inscripciones/lista-inscritos','Admin\InscripcionesController@listaInscritos');
+             Route::get('inscripciones/torneos-vigentes/','Admin\InscripcionesController@torneosVigentes');
+             Route::get('inscripciones/inscritos/{id}','Admin\InscripcionesController@Inscritos');
              Route::get('inscripciones/nuevo/{id}','Admin\InscripcionesController@frmCrear');
              Route::get('inscripciones/editar/{id}','Admin\InscripcionesController@frmEditar');
              Route::post('inscripciones/categoria', 'Admin\InscripcionesController@obtenerCategoria');

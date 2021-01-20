@@ -156,9 +156,7 @@ class AdministradoresController extends Controller
      */
     public function create()
     {
-        $sectores=Sector::pluck('sector','id');
-        return view('admin.administradores.crear')
-                    ->with('sectores',$sectores);
+        return view('admin.administradores.crear');
     }
 
     /**

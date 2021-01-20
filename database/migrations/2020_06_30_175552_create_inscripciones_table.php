@@ -15,6 +15,7 @@ class CreateInscripcionesTable extends Migration
     {
         Schema::create('inscripciones', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('anfitrion_id')->unsigned();
             $table->integer('modalidad_id')->unsigned();
             $table->integer('competidor_id')->unsigned();
             $table->boolean('cabeza_serie')->nullable()->default(0);
@@ -26,8 +27,10 @@ class CreateInscripcionesTable extends Migration
         });
 
         Schema::table('inscripciones', function($table) {
+            $table->foreign('anfitrion_id')->references('id')->on('users');
             $table->foreign('modalidad_id')->references('id')->on('modalidades');
             $table->foreign('competidor_id')->references('id')->on('users');
+
         });
     }
 

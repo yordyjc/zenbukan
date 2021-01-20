@@ -23,17 +23,17 @@
                 <li class="pcoded-hasmenu @yield('inscritos')">
                     <a href="javascript:void(0)" class="waves-effect waves-dark">
                         <span class="pcoded-micon"><i class="feather icon-users"></i></span>
-                        <span class="pcoded-mtext">Inscritos</span>
+                        <span class="pcoded-mtext">Inscripciones</span>
                     </a>
                     <ul class="pcoded-submenu">
                         <li class="@yield('lista-inscritos')">
-                            <a href="{{ url('/admin/inscritos') }}" class="waves-effect waves-dark">
+                            <a href="{{ url('/admin/inscripciones/lista-inscritos') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">Lista de inscritos</span>
                             </a>
                         </li>
-                        <li class="@yield('agregar-inscrito')">
-                            <a href="{{ url('/admin/inscritos/create') }}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Agregar inscrito</span>
+                        <li class="@yield('lista-torneos-vigentes')">
+                            <a href="{{url('/admin/inscripciones/torneos-vigentes/')}}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Inscribir a torneo vigente</span>
                             </a>
                         </li>
                     </ul>

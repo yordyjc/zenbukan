@@ -29,9 +29,28 @@ class InscripcionesController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
+    public function listaInscritos()
+    {
+        $inscritos = User::where('tipo',4)->orderBy('id','desc')->get();
+        return view('admin.inscritos.index')
+            ->with('inscritos',$inscritos);
+    }
+
+    public function Inscritos($id){
+        //$modalidad= Modalidad::where('torneo.id',$id)->get();
+        $allinscritos = Inscripcion::orderBy('id','desc')->get();
+        $inscritos = $allinscritos->where('modalidad.torneo_id',$id);
+        return view('admin.inscripciones.inscritos')->with('inscritos',$inscritos);
+    }
+
+    public function torneosVigentes()
+    {
+        $torneos = Torneo::where('estado',1)->get();
+        return view('admin.inscripciones.torneos-vigentes')->with('torneos',$torneos);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -40,9 +59,9 @@ class InscripcionesController extends Controller
     public function frmCrear($id)
     {
         $clubes= Club::all()->pluck('nombre', 'id');
-        $sectores = Sector::all()->pluck('sector','id');
+        //$sectores = Sector::all()->pluck('sector','id');
         $torneo = Torneo::find($id);
-        return view('admin.inscripciones.crear')->with('torneo',$torneo)->with('clubes',$clubes)->with('sectores',$sectores);
+        return view('admin.inscripciones.crear')->with('torneo',$torneo)->with('clubes',$clubes);
     }
 
      public function create()
@@ -111,7 +130,6 @@ class InscripcionesController extends Controller
         $competidor->password = bcrypt('12345678');
         $competidor->telefono = $request->telefono;
         $competidor->sexo = $request->sexo;
-        $competidor->anfitrion_id = Auth::user()->id;
         if(Auth::user()->tipo==1)
         {
             $competidor->club_id = $request->club;
@@ -146,7 +164,7 @@ class InscripcionesController extends Controller
         //Agregando inscripcion
         $inscripcion = New Inscripcion();
         $ultimocompetidor = User::orderBy('id','desc')->first();
-
+        $competidor->anfitrion_id = Auth::user()->id;
         if($request->kumite)
         {
             $inscripcion->kumite = $request->kumite;
