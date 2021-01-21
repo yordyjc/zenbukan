@@ -68,9 +68,7 @@ function concatenar($numero){
                             @foreach ($inscritos as $inscrito)
                             <tr>
                                 <td>
-                                    @foreach ($inscrito->fichas as $ficha)
-                                        Nro. {{ concatenar($ficha->correlativo) }}
-                                    @endforeach
+                                        Nro. {{ concatenar($inscrito->id) }}
                                 </td>
                                 <td>
                                     <div class="d-inline-block align-middle">

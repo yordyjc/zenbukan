@@ -57,9 +57,7 @@ function concatenar($numero){
                                 <th>Ficha de evaluación</th>
                                 <th>Registrado por</th>
                                 <th>Nombres y Apellidos</th>
-                                <th>Contacto</th>
-                                <th>kata</th>
-                                <th>Kumite</th>
+                                <th>Categoria</th>
                                 <th>Estado</th>
                                 <th>Acciones</th>
                             </tr>
@@ -73,7 +71,7 @@ function concatenar($numero){
                                     Nro. {{ concatenar($inscrito->id) }}
                                 </td>
                                 <td>
-                                    {{$inscrito->competidor->anfitrion_id}}
+                                    {{$inscrito->anfitrion->nombres}} {{$inscrito->anfitrion->apellidos}}
                                 </td>
                                 <td>
                                     <div class="d-inline-block align-middle">
@@ -86,12 +84,8 @@ function concatenar($numero){
                                     </div>
                                 </td>
                                 <td>
-                                    {{ $inscrito->competidor->telefono }}
-                                    <br />
-                                    {{ $inscrito->competidor->email }}
+                                    {{$inscrito->modalidad->kata}} {{$inscrito->modalidad->kumite}}
                                 </td>
-                                <td>{{$inscrito->kata}}</td>
-                                <td>{{$inscrito->kumite}}</td>
                                 <td>
                                     @if ($inscrito->activo == 1)
                                         <span class="label label-success" data-toggle="tooltip" data-placement="left" data-original-title="Asiste con normalidad">Inscrito</span>

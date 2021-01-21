@@ -56,7 +56,7 @@ function concatenar($numero){
                             <tr>
                                 <th>Nº</th>
                                 <th>Nombre</th>
-                                <th>Fecha creación</th>
+                                <th>País</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -73,11 +73,12 @@ function concatenar($numero){
                                                 <h6>
                                                     {{ $club->nombre }}
                                                 </h6>
+                                                <p> Registrado el {{ Carbon::parse($club->created_at)->format('d/m/Y h:i a') }}</p>
                                             </div>
                                         </div>
                                     </td>
                                     <td>
-                                        {{ Carbon::parse($club->created_at)->format('d/m/Y h:i a') }}
+                                        {{$club->pais->nombre}}
                                     </td>
                                     <td class="text-center">
 

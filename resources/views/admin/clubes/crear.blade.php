@@ -40,14 +40,42 @@ active
 
                         <div class="form-group {{ $errors->has('sector') ? ' has-danger' : '' }} row">
                             <label class="col-md-2 col-form-label" for="sector">
-                                Vive en
+                                País
                             </label>
                             <div class="col-md-10">
-                                {!! Form::select('sector',$sectores,old('sector'),["class"=>"sector form-control form-control-round fill select2 ",'placeholder' => '-- Sector --',"required"=>"","id"=>"sector"]) !!}
-                                @if ($errors->has('sector'))
+                                {!! Form::select('pais',$pais,old('pais'),["class"=>"sector form-control form-control-round fill select2 ",'placeholder' => '-- Paises --',"required"=>"","id"=>"pais"]) !!}
+                                @if ($errors->has('pais'))
                                     <div class="col-form-label">
-                                        {{ $errors->first('sector') }}
+                                        {{ $errors->first('pais') }}
                                     </div>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group {{ $errors->has('nombre') ? ' has-danger' : '' }} row">
+                            <label class="col-md-2 col-form-label" for="nombre">
+                                Dirección
+                            </label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control form-control-round {{ $errors->has('direccion') ? ' form-control-danger' : '' }}" id="direccion" name="direccion" value="{{ old('direccion') }}">
+                                @if ($errors->has('direccion'))
+                                <div class="col-form-label">
+                                    {{ $errors->first('direccion') }}
+                                </div>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group {{ $errors->has('nombre') ? ' has-danger' : '' }} row">
+                            <label class="col-md-2 col-form-label" for="nombre">
+                                Foto
+                            </label>
+                            <div class="col-md-10">
+                                <input type="file" class="form-control form-control-round {{ $errors->has('foto') ? ' form-control-danger' : '' }}" id="foto" name="foto" value="{{ old('foto') }}" accept=".png, .jpg, .jpeg">
+                                @if ($errors->has('foto'))
+                                <div class="col-form-label">
+                                    {{ $errors->first('foto') }}
+                                </div>
                                 @endif
                             </div>
                         </div>

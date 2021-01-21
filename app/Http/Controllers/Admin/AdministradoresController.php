@@ -192,7 +192,6 @@ class AdministradoresController extends Controller
         $user->foto='/resources/img/user/default.png';
         $user->confirmado=true;
         $user->club_id=1;
-        $user->anfitrion_id = Auth::user()->id;
         $user->save();
         alert()->success('¡Yeah!','Operación realizada con éxito')->autoClose(3000)->showCloseButton();
         return redirect('/admin/lista-administrador');
@@ -218,10 +217,8 @@ class AdministradoresController extends Controller
     public function edit($id)
     {
         $user=User::find($id);
-        $sectores=Sector::pluck('sector','id');
         return view('admin.administradores.editar')
-                    ->with('user',$user)
-                    ->with('sectores',$sectores);
+                    ->with('user',$user);
     }
 
     /**
@@ -250,7 +247,6 @@ class AdministradoresController extends Controller
         $user->apellidos=$request->apellidos;
         $user->email=$request->email;
         $user->telefono=$request->telefono;
-        $user->sector_id=$request->sector;
         $user->activo=$request->suspendido;
 
         $user->save();

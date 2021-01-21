@@ -32,10 +32,15 @@ class InscripcionesController extends Controller
 
     }
 
+    public function inscritosAprobados()
+    {
+
+    }
+
     public function listaInscritos()
     {
-        $inscritos = User::where('tipo',4)->orderBy('id','desc')->get();
-        return view('admin.inscritos.index')
+        $inscritos = Inscripcion::orderBy('id','desc')->get();
+        return view('admin.inscripciones.inscritos')
             ->with('inscritos',$inscritos);
     }
 

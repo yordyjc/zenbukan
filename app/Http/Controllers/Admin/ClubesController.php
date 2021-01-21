@@ -4,9 +4,11 @@ namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Club;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
+use File;
+use Illuminate\Support\Facades\Validator;
+use App\Models\Club;
+use App\Models\Pais;
 
 class ClubesController extends Controller
 {
@@ -28,7 +30,9 @@ class ClubesController extends Controller
      */
     public function create()
     {
-        return view('admin.clubes.crear');
+        $pais = Pais::all()->pluck('nombre','id');
+        return view('admin.clubes.crear')
+            ->with('pais', $pais);
     }
 
     /**
@@ -40,7 +44,10 @@ class ClubesController extends Controller
     public function store(Request $request)
     {
         $validator= Validator::make($request->all(),[
-            'nombre' => 'required | string'
+            'nombre' => 'required | string',
+            'pais' => 'required',
+            'direccion' => 'string',
+            'foto' => 'file|mimes:png,jpg,jpeg|max:5120'
         ]);
 
         if($validator->fails())
@@ -53,6 +60,18 @@ class ClubesController extends Controller
 
         $club = new Club;
         $club->nombre = $request->nombre;
+        $club->pais = $request->pais;
+        $club->direccion = $request->direccion;
+        $foto = Input::file('foto');
+        if(!is_null($foto))
+        {
+            $name2 = str_replace(' ','_',strtolower($request->nombre));
+            $extension=$foto->getClientOriginalExtension();
+            $name=$name2.'.'.$extension;
+            $path=public_path().'/resources/img/clubes/';
+            $foto->move($path,$name);
+            $club->foto = '/resources/img/clubes/'.$name;
+        }
         $club->save();
         alert()->success('Yeah!', $club->nombre.' fue registrado con exito');
         return redirect('/admin/clubes');

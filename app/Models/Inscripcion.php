@@ -18,4 +18,9 @@ class Inscripcion extends Model
     {
         return $this->belongsTo('App\User','competidor_id');
     }
+
+    public function anfitrion()
+    {
+        return $this->belongsTo('App\User','anfitrion_id');
+    }
 }

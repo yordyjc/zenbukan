@@ -8,4 +8,9 @@ class Club extends Model
 {
     protected $table='clubes';
     protected $guarded = [];
+
+    public function pais()
+    {
+        return $this->belongsTo('App\Models\Pais','pais_id');
+    }
 }

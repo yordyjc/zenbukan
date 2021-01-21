@@ -16,42 +16,52 @@ class ClubesTableSeeder extends Seeder
             0 => array(
                 'id' => 1,
                 'nombre' => 'Zenbukan',
+                'pais_id' => '1'
             ),
             1 => array(
                 'id' => 2,
-                'nombre' => 'Kyo Han'
+                'nombre' => 'Kyo Han',
+                'pais_id' => '1'
             ),
             2 => array(
                 'id' => 3,
-                'nombre' => 'Kamino'
+                'nombre' => 'Kamino',
+                'pais_id' => '1'
             ),
             3 => array(
                 'id' => 4,
-                'nombre' => 'UNTAC'
+                'nombre' => 'UNTAC',
+                'pais_id' => '1'
             ),
             4 => array(
                 'id' => 5,
-                'nombre' => 'SEIBUKAN'
+                'nombre' => 'SEIBUKAN',
+                'pais_id' => '1'
             ),
             5 => array(
                 'id' => 6,
-                'nombre' => 'SAKURA'
+                'nombre' => 'SAKURA',
+                'pais_id' => '1'
             ),
             6 => array(
                 'id' => 7,
-                'nombre' => 'NANTO'
+                'nombre' => 'NANTO',
+                'pais_id' => '1'
             ),
             7 => array(
                 'id' => 8,
-                'nombre' => 'IPPON'
+                'nombre' => 'IPPON',
+                'pais_id' => '1'
             ),
             8 => array(
                 'id' => 9,
-                'nombre' => 'SSS'
+                'nombre' => 'SSS',
+                'pais_id' => '1'
             ),
             8 => array(
                 'id' => 10,
-                'nombre' => 'KOBUKAN'
+                'nombre' => 'KOBUKAN',
+                'pais_id' => '1'
             )
         ));
     }
