@@ -48,8 +48,10 @@ Carbon::setLocale('es');
                             <dd class="col-sm-9">
                                 @if (Auth::user()->tipo==1)
                                 <span class="label label-danger">Administrador</span>
+                                @elseif(Auth::user()->tipo==2)
+                                <span class="label label-warning">Inscripciones</span>
                                 @else
-                                <span class="label label-warning">Cliente</span>
+                                <span class="label label-warning">Juez</span>
                                 @endif
                             </dd>
 

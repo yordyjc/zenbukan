@@ -5,6 +5,10 @@ Agregar Torneo
 @endsection
 
 @section('torneos')
+active pcoded-trigger
+@endsection
+
+@section('nuevo-torneo')
 active
 @endsection
 
@@ -108,12 +112,26 @@ active
                             @endif
                         </div>
 
+                        <div class="form-group {{$errors->has('hora' ? 'has-danger' : '')}} row">
+                            <label for="hora" class="col-md-2 col-form-label">
+                                Hora de inicio
+                            </label>
+                            <div class="col-md-4">
+                                <input type="time" class="form-control form-control-round {{$errors->has('hora') ? 'form-control-danger' : ''}}" id="hora" name="hora" value="{{old('hora')}}">
+                            </div>
+                            @if ($errors->has('hora'))
+                            <label class="col-form-label">
+                                {{$errors->first('hora')}}
+                            </label>
+                            @endif
+                        </div>
+
                         <div class="form-group {{ $errors->has('precio') ? ' has-danger' : '' }} row">
                             <label class="col-md-2 col-form-label" for="precio">
-                                Precio
+                                Costo de inscripción
                             </label>
                             <div class="col-md-10">
-                                <input type="text" class="form-control form-control-round {{ $errors->has('precio') ? ' form-control-danger' : '' }}" id="precio" name="precio" value="{{ old('precio') }}">
+                                <input type="text" class="form-control form-control-round {{ $errors->has('precio') ? ' form-control-danger' : '' }}" id="precio" name="precio" value="{{ old('precio') }}" placeholder = 0>
                                 @if ($errors->has('precio'))
                                 <div class="col-form-label">
                                     {{ $errors->first('precio') }}
@@ -131,30 +149,6 @@ active
                                 @if ($errors->has('lugar'))
                                 <div class="col-form-label">
                                     {{ $errors->first('lugar') }}
-                                </div>
-                                @endif
-                            </div>
-                        </div>
-
-
-
-                        <div class="form-group row {{ $errors->has('kumite') || $errors->has('kata') ? 'has-danger' : ''}}">
-                            <label class="col-md-2 col-form-label" for="modalidad">
-                                Modalidad
-                            </label>
-                            <div class="col-md-10">
-                                <div class="form-check form-check-inline {{ $errors->has('kata') ? 'form-control-danger' : ''}}">
-                                    <input class="form-check-input {{ $errors->has('kata') ? 'is-invalid' : ''}}" type="checkbox" id="kata" value="1" name="kata">
-                                    <label class="form-check-label" for="kata">Kata</label>
-                                </div>
-                                 <div class="form-check form-check-inline {{ $errors->has('kumite') ? 'form-control-danger' : ''}}">
-                                    <input class="form-check-input {{ $errors->has('kumite') ? 'is-invalid' : ''}}" type="checkbox" id="kumite" value="1" name= "kumite">
-                                    <label class="form-check-label" for="kumite">Kumite</label>
-                                </div>
-                                @if ($errors->has('kumite') || $errors->has('kata'))
-                                <div class="col-form-label">
-                                    {{ $errors->first('kumite') }}
-                                    {{ $errors->first('kata') }}
                                 </div>
                                 @endif
                             </div>

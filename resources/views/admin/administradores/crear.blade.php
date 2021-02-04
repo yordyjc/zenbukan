@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('title')
-Agregar administrador
+Agregar usuario
 @endsection
 
 @section('administradores')
@@ -78,6 +78,20 @@ active
                                 <div class="col-form-label">
                                     {{ $errors->first('email') }}
                                 </div>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group {{ $errors->has('club') ? ' has-danger' : '' }} row">
+                            <label class="col-md-2 col-form-label" for="club">
+                                Club
+                            </label>
+                            <div class="col-md-10">
+                                {!! Form::select('club',$clubes,old('club'),["class"=>"sector form-control form-control-round fill select2 ",'placeholder' => '-- Clubes --',"required"=>"","id"=>"club"]) !!}
+                                @if ($errors->has('club'))
+                                    <div class="col-form-label">
+                                        {{ $errors->first('club') }}
+                                    </div>
                                 @endif
                             </div>
                         </div>

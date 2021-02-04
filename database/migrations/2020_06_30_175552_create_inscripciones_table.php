@@ -23,6 +23,7 @@ class CreateInscripcionesTable extends Migration
             $table->boolean('kumite')->default(0);
             $table->integer('edad')->nullable();
             $table->integer('grado')->nullable();
+            $table->boolean('estado')->default(false);
             $table->timestamps();
         });
 

@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('title')
-Administradores
+Usuarios
 @endsection
 
 @section('administradores')
@@ -33,6 +33,7 @@ use Carbon\Carbon;
                                 <th>Nombres y Apellidos</th>
                                 <th>Correo electrónico</th>
                                 <th>Teléfono</th>
+                                <th>Club</th>
                                 <th>Estado</th>
                                 <th>Tipo</th>
                                 @if (Auth::user()->id==1||Auth::user()->id==2)
@@ -50,6 +51,9 @@ use Carbon\Carbon;
                                 </td>
                                 <td>
                                     {{ $user->telefono }}
+                                </td>
+                                <td>
+                                    {{$user->club->nombre}}
                                 </td>
                                 <td class="text-center">
                                     @if ($user->activo==0)

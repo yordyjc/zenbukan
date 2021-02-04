@@ -51,7 +51,7 @@ class FrontController extends Controller
     public function index()
     {
         //$planes=Plan::orderBy('id','asc')->get();
-        $torneos = Torneo::where('estado','1')->orderBY('id','desc')->get();
+        $torneos = Torneo::where('estado',1)->orderBY('id','desc')->get();
         $configuracion=Configuracion::find(1);
         return view('front.index.index')
             ->with('torneos',$torneos)

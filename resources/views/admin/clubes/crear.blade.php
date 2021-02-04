@@ -5,6 +5,10 @@ Agregar Club
 @endsection
 
 @section('clubes')
+active pcoded-trigger
+@endsection
+
+@section('nuevo-club')
 active
 @endsection
 
@@ -105,18 +109,8 @@ active
 
 @section('js')
 <script src="/resources/lib/textboxio/textboxio.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-
 <script type="text/javascript">
     var editor = textboxio.replace('#observaciones');
-
-    $(document).ready(function() {
-        $('.select2').select2();
-    });
-
-    $( ".select2" ).select2({
-        theme: "bootstrap4"
-    });
     function archivoFile(evt) {
         var files = evt.target.files;
         var frame=$("#img-"+evt.target.name);
@@ -132,5 +126,15 @@ active
     document.getElementById('portada').addEventListener('change', archivoFile, false);
 
     var editor = textboxio.replace('#descripcion');
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.select2').select2();
+    });
+
+    $( ".select2" ).select2({
+        theme: "bootstrap4"
+    });
 </script>
 @endsection

@@ -17,12 +17,12 @@
                     <ul class="elementskit-navbar-nav nav-alignment-dynamic">
 
                         @if (Auth::check())
-                            @if (Auth::user()->tipo==1) {{-- Admin --}}
+                            @if (Auth::user()->tipo==1 || Auth::user()->tipo==2) {{-- Admin --}}
                             <li class="elementskit-dropdown-has">
                                 <a href="{{ url('/user/mificha') }}">Mi cuenta</a>
                                 <ul class="elementskit-dropdown elementskit-submenu-panel">
                                     <li><a>Bienvenido, {{ Auth::user()->nombres }}</a></li>
-                                    <li><a href="{{ url('/admin/inscritos') }}">Administrar</a></li>
+                                    <li><a href="{{ url('/admin/inscripciones/torneos-vigentes') }}">Administrar</a></li>
                                     <li>
                                         <form action="{{ url('/logout') }}" method="post">
                                         <a href="">

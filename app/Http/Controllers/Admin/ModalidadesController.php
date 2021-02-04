@@ -32,4 +32,11 @@ class ModalidadesController extends Controller
         alert()->success('Yeah!', 'Operación realizada con éxito');
         return redirect('/admin/agregar-modalidades/'.$request->torneo);
     }
+
+    public function modalidades($id)
+    {
+        $modalidades = Modalidad::where('torneo_id',$id)->get();
+        return view('admin.torneos.modalidades')
+            ->with('modalidades',$modalidades);
+    }
 }

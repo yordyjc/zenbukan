@@ -4,7 +4,7 @@
 Clubes
 @endsection
 
-@section('Clubes')
+@section('clubes')
 active pcoded-trigger
 @endsection
 
@@ -111,7 +111,7 @@ function concatenar($numero){
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="submit" class="btn btn-danger btn-round">
-                                                        <i class="icofont icofont-ui-delete"></i> Sí, el usuario ya no asiste
+                                                        <i class="icofont icofont-ui-delete"></i> Sí, eliminar club
                                                     </button>
                                                     <button class="btn btn-outline-primary btn-round" data-dismiss="modal">
                                                         <i class="icofont icofont-circled-left"></i> Cancelar

@@ -60,7 +60,7 @@ class ClubesController extends Controller
 
         $club = new Club;
         $club->nombre = $request->nombre;
-        $club->pais = $request->pais;
+        $club->pais_id = $request->pais;
         $club->direccion = $request->direccion;
         $foto = Input::file('foto');
         if(!is_null($foto))
@@ -120,6 +120,17 @@ class ClubesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $club = Club::find($id);
+        $competidores = count($club->competidores);
+        if($competidores == 0)
+        {
+            $club->delete();
+            return redirect('admin/clubes');
+        }
+        else
+        {
+            alert()->error('Ups!', 'El club '. $club->nombre.' tiene asociado '.$competidores.' competidores')->autoClose(4000)->showCloseButton();
+            return redirect('admin/clubes');
+        }
     }
 }

@@ -21,7 +21,8 @@ class TorneosController extends Controller
      */
     public function index()
     {
-        $torneos= Torneo::all();
+        $torneos= Torneo::all()
+                ->where('estado',1);
         return view('admin.torneos.index')->with('torneos',$torneos);
     }
 
@@ -43,22 +44,28 @@ class TorneosController extends Controller
      */
     public function store(Request $request)
     {
-        if(is_null($request->kata)) $b='required';
-        else $b='';
+        // if(is_null($request->kata)) $b='required';
+        // else $b='';
 
-        if(is_null($request->kumite)) $a= 'required';
-        else $a= '';
+        // if(is_null($request->kumite)) $a= 'required';
+        // else $a= '';
+        $a = '';
+        if($request->precio)
+        {
+            $a = 'numeric';
+        }
         $validator = Validator::make($request->all(),[
             'nombre' => 'required | string',
-            'descripcion' => 'required',
-            'portada' => 'required | file | max:5120',
+            'descripcion' => 'required | string',
+            'foto' => 'file | max:5120',
             'portada' => 'file | max:5120',
-            'bases' => 'required | file | max:5120',
+            'bases' => 'file | max:5120',
             'fecha' => 'required | date',
-            'precio' =>'required | numeric',
-            'lugar' => 'required | string',
-            'kata' => $a,
-            'kumite' => $b
+            'hora' => 'required',
+            'precio' => $a,
+            'lugar' => 'required | string'
+            // 'kata' => $a,
+            // 'kumite' => $b
         ]);
 
         if($validator->fails())
@@ -74,14 +81,18 @@ class TorneosController extends Controller
         $torneo->descripcion = $request->descripcion;
         $torneo->bases = $request->bases;
         $torneo->fecha = $request->fecha;
-        $torneo->precio = $request->precio;
+        $torneo->hora = $request->hora;
+        if($request->precio)
+        {
+            $torneo->precio = $request->precio;
+        }
         $torneo->lugar = $request->lugar;
         if(!is_null($request->kata)) $torneo->kata = $request->kata;
         if(!is_null($request->kumite)) $torneo->kumite = $request->kumite;
         $portada = Input::file('portada');
         $bases = Input::file('bases');
 
-        if(!is_null($portada) && !is_null($bases))
+        if(!is_null($portada))
         {
 
             $name2=str_replace(' ', '-', strtolower($request->nombre));
@@ -92,12 +103,17 @@ class TorneosController extends Controller
             $path=public_path().'/resources/img/torneos/';
             $portada->move($path,$name);
             $torneo->portada='/resources/img/torneos/'.$name;
-            $namebases = $name2.'.pdf';
+
+        }
+
+        if(!is_null($bases))
+        {
+            $namebases = time().'.pdf';
             $pathbases=public_path().'/resources/bases/';
             $bases->move($pathbases,$namebases);
             $torneo->bases = '/resources/bases/'.$namebases;
-
         }
+
         $foto = Input::file('foto');
         if( !is_null($foto))
         {
@@ -157,6 +173,9 @@ class TorneosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $torneo = Torneo::find($id);
+        $torneo->estado = 0;
+        $torneo->save();
+        return redirect('admin/torneos');
     }
 }

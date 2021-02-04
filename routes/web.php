@@ -19,15 +19,15 @@ Route::middleware(['auth'])->group(function () {
 
         Route::middleware(['admin'])->group(function () {
             Route::get('/', function () {
-                return redirect('/admin/inscritos');
+                return redirect('/admin/inscripciones/torneos-vigentes');
             });
-            Route::resource('/inscritos','Admin\InscritosController');
-            Route::get('/fichas','Admin\FichasController@listaFichas');
-            Route::get('/ver-ficha/{correlativo}','Admin\FichasController@verFicha');
+            //Route::resource('/inscritos','Admin\InscritosController');
+            // Route::get('/fichas','Admin\FichasController@listaFichas');
+            // Route::get('/ver-ficha/{correlativo}','Admin\FichasController@verFicha');
             // Route::get('/ver-datos-historicos/{correlativo}','Admin\FichasController@verHistorial');
-            Route::get('/crear-periodo/{correlativo}','Admin\PeriodosController@formCrear');
-            Route::resource('/periodos','Admin\PeriodosController');
-            Route::get('/simulacion/{correlativo}','Admin\SimulacionController@ver');
+            // Route::get('/crear-periodo/{correlativo}','Admin\PeriodosController@formCrear');
+            // Route::resource('/periodos','Admin\PeriodosController');
+            //Route::get('/simulacion/{correlativo}','Admin\SimulacionController@ver');
 
             //administradores
             Route::resource('lista-administrador','Admin\AdministradoresController');
@@ -41,57 +41,67 @@ Route::middleware(['auth'])->group(function () {
             //pagina-web
             Route::resource('configuracion-general','Admin\ConfiguracionesController');
             Route::resource('/fondos','Admin\FondosController');
-            Route::resource('/productos','Admin\ProductosController');
-            Route::resource('/servicios','Admin\ServiciosController');
-            Route::resource('/planes','Admin\PlanesController');
-            Route::resource('/pre-inscritos','Admin\PreInscritosController');
-            Route::resource('/pre-inscritos-contactados','Admin\PreInscritosContactadosController');
-            Route::resource('/suscriptores','Admin\SuscriptoresController');
-            Route::resource('/contacto','Admin\ContactoController');
-            Route::resource('/pases-gratis','Admin\PasesController');
+            // Route::resource('/productos','Admin\ProductosController');
+            // Route::resource('/servicios','Admin\ServiciosController');
+            // Route::resource('/planes','Admin\PlanesController');
+            // Route::resource('/pre-inscritos','Admin\PreInscritosController');
+            // Route::resource('/pre-inscritos-contactados','Admin\PreInscritosContactadosController');
+            // Route::resource('/suscriptores','Admin\SuscriptoresController');
+            // Route::resource('/contacto','Admin\ContactoController');
+            // Route::resource('/pases-gratis','Admin\PasesController');
 
             //galeria de videos
-            Route::resource('galeria-videos','Admin\GaleriasController');
-            Route::get('galeria-videos/video/lista','Admin\GaleriasController@listaVideos');
-            Route::get('galeria-videos/videos/subir','Admin\GaleriasController@subirVideo');
-            Route::post('galeria-videos/videos/guardar','Admin\GaleriasController@guardarVideo');
-            Route::delete('galeria-videos/video/lista/{id}','Admin\GaleriasController@eliminarVideo');
+            // Route::resource('galeria-videos','Admin\GaleriasController');
+            // Route::get('galeria-videos/video/lista','Admin\GaleriasController@listaVideos');
+            // Route::get('galeria-videos/videos/subir','Admin\GaleriasController@subirVideo');
+            // Route::post('galeria-videos/videos/guardar','Admin\GaleriasController@guardarVideo');
+            // Route::delete('galeria-videos/video/lista/{id}','Admin\GaleriasController@eliminarVideo');
 
             //reportes
-            Route::get('/reporte-fechas/','Admin\ReportesController@fechasGet');
-            Route::post('/reporte-fechas/','Admin\ReportesController@fechasPost');
-            Route::get('/reporte-fechas-excel','Admin\ReportesController@fechasExcel');
+            // Route::get('/reporte-fechas/','Admin\ReportesController@fechasGet');
+            // Route::post('/reporte-fechas/','Admin\ReportesController@fechasPost');
+            // Route::get('/reporte-fechas-excel','Admin\ReportesController@fechasExcel');
 
-            Route::get('/reporte-sexo/','Admin\ReportesController@sexoGet');
-            Route::post('/reporte-sexo/','Admin\ReportesController@sexoPost');
-            Route::get('/reporte-sexo-excel','Admin\ReportesController@sexoExcel');
+            // Route::get('/reporte-sexo/','Admin\ReportesController@sexoGet');
+            // Route::post('/reporte-sexo/','Admin\ReportesController@sexoPost');
+            // Route::get('/reporte-sexo-excel','Admin\ReportesController@sexoExcel');
 
-            Route::get('/reporte-objetivo/','Admin\ReportesController@objetivoGet');
-            Route::post('/reporte-objetivo/','Admin\ReportesController@objetivoPost');
-            Route::get('/reporte-objetivo-excel','Admin\ReportesController@objetivoExcel');
+            // Route::get('/reporte-objetivo/','Admin\ReportesController@objetivoGet');
+            // Route::post('/reporte-objetivo/','Admin\ReportesController@objetivoPost');
+            // Route::get('/reporte-objetivo-excel','Admin\ReportesController@objetivoExcel');
 
-            Route::get('/cumpleanos-mes/','Admin\ReportesController@cumpleanosGet');
-            Route::post('/cumpleanos-mes/','Admin\ReportesController@cumpleanosPost');
-            Route::get('/reporte-cumpleanos-excel','Admin\ReportesController@cumpleanosExcel');
+            // Route::get('/cumpleanos-mes/','Admin\ReportesController@cumpleanosGet');
+            // Route::post('/cumpleanos-mes/','Admin\ReportesController@cumpleanosPost');
+            // Route::get('/reporte-cumpleanos-excel','Admin\ReportesController@cumpleanosExcel');
 
-            Route::get('/backup','Admin\FichasController@backup');
-            Route::get('/generar-backup','Admin\FichasController@generarBackup');
+            // Route::get('/backup','Admin\FichasController@backup');
+            // Route::get('/generar-backup','Admin\FichasController@generarBackup');
 
-             //Zenbukan
-             Route::resource('torneos','Admin\TorneosController');
-             Route::resource('clubes','Admin\ClubesController');
+            //Zenbukan
+            Route::resource('torneos','Admin\TorneosController');
+            Route::resource('clubes','Admin\ClubesController');
 
-             Route::get('/agregar-modalidades/{id}', 'Admin\ModalidadesController@agregarModalidades');
-             Route::post('/agregar-modalidades', 'Admin\ModalidadesController@storeModalidades');
+            Route::get('/agregar-modalidades/{id}', 'Admin\ModalidadesController@agregarModalidades');
+            Route::get('/modalidades/{id}', 'Admin\ModalidadesController@modalidades');
+            Route::post('/agregar-modalidades', 'Admin\ModalidadesController@storeModalidades');
 
-             //competidores
-             //Route::resource('/inscripciones', 'Admin\InscripcionesController');
-             Route::get('inscripciones/lista-inscritos','Admin\InscripcionesController@listaInscritos');
-             Route::get('inscripciones/torneos-vigentes/','Admin\InscripcionesController@torneosVigentes');
-             Route::get('inscripciones/inscritos/{id}','Admin\InscripcionesController@Inscritos');
-             Route::get('inscripciones/nuevo/{id}','Admin\InscripcionesController@frmCrear');
-             Route::get('inscripciones/editar/{id}','Admin\InscripcionesController@frmEditar');
-             Route::post('inscripciones/categoria', 'Admin\InscripcionesController@obtenerCategoria');
+            //Inscripciones
+            //Route::resource('/inscripciones', 'Admin\InscripcionesController');
+            Route::get('inscripciones/lista-inscritos','Admin\InscripcionesController@listaInscritos');
+            Route::get('inscripciones/torneos-vigentes/','Admin\InscripcionesController@torneosVigentes');
+            Route::get('inscripciones/inscritos/{id}','Admin\InscripcionesController@Inscritos');
+            Route::get('inscripciones/nuevo/{id}','Admin\InscripcionesController@frmCrear');
+            Route::get('inscripciones/editar/{id}','Admin\InscripcionesController@frmEditar');
+            Route::post('inscripciones/categoria', 'Admin\InscripcionesController@obtenerCategoria');
+            Route::put('inscripciones/lista-inscritos/{id}','Admin\InscripcionesController@aprobarCompetencia');
+            Route::put('inscripciones/inscritos/{im}/{id}','Admin\InscripcionesController@aprobarPorTorneo');
+            Route::delete('inscripciones/inscritos/{im}/{id}','Admin\InscripcionesController@destroyInscripcion');
+
+             //jueces
+             Route::get('/agregar-jueces/{id}','Admin\JuecesController@agregarJueces');
+             Route::post('/agregar-juez','Admin\JuecesController@storeJueces');
+             Route::delete('/agregar-jueces/{im}/{id}','Admin\JuecesController@deleteJueces');
+
              //reportes
              Route::get('/sorteo','Admin\ReportesController@frmSorteo');
              Route::post('/sorteo','Admin\ReportesController@generarSorteo');

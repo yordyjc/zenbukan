@@ -231,7 +231,7 @@ class InscripcionesController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 
     //Funcion para obtener la categoria de un competidor
@@ -270,5 +270,31 @@ class InscripcionesController extends Controller
             // return response()->json($modalidades,200);
             return $resultado;
         }
+    }
+
+    public function aprobarCompetencia(Request $request, $id)
+    {
+        $inscripcion = Inscripcion::find($id);
+        //return $inscripcion;
+        $inscripcion->estado = $request->estado;
+        $inscripcion->save();
+        return redirect('admin/inscripciones/lista-inscritos');
+
+    }
+
+    public function aprobarPorTorneo($im, $id, Request $request)
+    {
+        $inscripcion = Inscripcion::find($id);
+        //return $inscripcion;
+        $inscripcion->estado = $request->estado;
+        $inscripcion->save();
+        return redirect('admin/inscripciones/inscritos/'.$im);
+    }
+
+    public function destroyInscripcion($im, $id)
+    {
+        $inscripcion = Inscripcion::find($id);
+        $inscripcion->delete();
+        return redirect('admin/inscripciones/inscritos/'.$im);
     }
 }

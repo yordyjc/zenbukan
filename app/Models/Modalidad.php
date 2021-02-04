@@ -19,4 +19,9 @@ class Modalidad extends Model
     {
         return $this->belongsTo('App\Models\Torneo','torneo_id');
     }
+
+    public function jueces()
+    {
+        return $this->belongsToMany('App\User');
+    }
 }

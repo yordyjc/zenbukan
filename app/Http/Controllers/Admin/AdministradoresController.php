@@ -14,7 +14,7 @@ use Carbon\Carbon;
 use Auth;
 
 use App\User;
-use App\Models\Sector;
+use App\Models\Club;
 
 class AdministradoresController extends Controller
 {
@@ -118,9 +118,7 @@ class AdministradoresController extends Controller
 
     public function obtenerperfil()
     {
-        $sectores=Sector::pluck('sector','id');
-        return view('admin.perfil.editar')
-                ->with('sectores',$sectores);
+        return view('admin.perfil.editar');
     }
 
     public function modificarperfil(Request $request)
@@ -156,7 +154,9 @@ class AdministradoresController extends Controller
      */
     public function create()
     {
-        return view('admin.administradores.crear');
+        $clubes= Club::all()->pluck('nombre', 'id');
+        return view('admin.administradores.crear')
+                ->with('clubes', $clubes);
     }
 
     /**
@@ -191,7 +191,7 @@ class AdministradoresController extends Controller
         $user->tipo=$request->tipo;
         $user->foto='/resources/img/user/default.png';
         $user->confirmado=true;
-        $user->club_id=1;
+        $user->club_id = $request->club;
         $user->save();
         alert()->success('¡Yeah!','Operación realizada con éxito')->autoClose(3000)->showCloseButton();
         return redirect('/admin/lista-administrador');
@@ -233,7 +233,6 @@ class AdministradoresController extends Controller
         $validator = Validator::make($request->all(), [
             'nombres' => 'required|string',
             'apellidos' => 'required|string',
-            'sector' => 'required',
             'email' => 'required|string|email|max:255|unique:users,email,'.$id
         ]);
         if ($validator->fails()) {

@@ -4,11 +4,11 @@
 Inscritos
 @endsection
 
-@section('torneos-vigentes')
+@section('inscritos')
 active pcoded-trigger
 @endsection
 
-@section('lista-torneos-vigentes')
+@section('lista-inscritos')
 active
 @endsection
 
@@ -45,7 +45,7 @@ function concatenar($numero){
             <div class="card-header">
                 <h5>@yield('title')</h5>
                 <div class="card-header-right">
-                    <a href="{{ url('/admin/inscritos/create') }}" class="btn waves-effect waves-light btn-primary btn-outline-primary btn-sm"> <i class="icofont icofont-ui-add" style="color:#4680ff;"></i> Agregar inscrito</a>
+
                 </div>
             </div>
             <div class="card-block">
@@ -87,19 +87,20 @@ function concatenar($numero){
                                     {{$inscrito->modalidad->kata}} {{$inscrito->modalidad->kumite}}
                                 </td>
                                 <td>
-                                    @if ($inscrito->activo == 1)
-                                        <span class="label label-success" data-toggle="tooltip" data-placement="left" data-original-title="Asiste con normalidad">Inscrito</span>
+                                    @if ($inscrito->estado == 1)
+                                        <span class="label label-success" data-toggle="tooltip" data-placement="left" data-original-title="Participante confirmado">Inscrito</span>
                                     @else
-                                        <span class="label label-danger" data-toggle="tooltip" data-placement="left" data-original-title="Dejo de asistir">pendiente</span>
+                                        <span class="label label-danger" data-toggle="tooltip" data-placement="left" data-original-title="Dejo de asistir">Pendiente</span>
                                     @endif
                                 </td>
                                 <td class="text-center">
-
-                                    <a href="{{ url('/admin/inscripciones/'.$inscrito->id.'/edit') }}">
-                                        <i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-blue" data-toggle="tooltip" data-placement="left" data-original-title="Editar información"></i>
+                                    @if(Auth::user()->tipo == 1)
+                                    <a href="#" onclick="aprobarModal({{ $inscrito->id }})" data-toggle="modal" data-target="#aprobarModal">
+                                        <i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-blue" data-toggle="tooltip" data-placement="left" data-original-title="Confirmar inscripción"></i>
                                     </a>
+                                    @endif
                                     <a href="#" onclick="eliminarModal({{ $inscrito->id }})" data-toggle="modal" data-target="#eliminarModal">
-                                        <i class="feather icon-trash-2 f-w-600 f-16 text-c-red" data-toggle="tooltip" data-placement="left" data-original-title="¿Deja de asistir?"></i>
+                                        <i class="feather icon-trash-2 f-w-600 f-16 text-c-red" data-toggle="tooltip" data-placement="left" data-original-title="Eliminar inscripción"></i>
                                     </a>
 
                                 </td>
@@ -119,12 +120,58 @@ function concatenar($numero){
                                             @csrf
                                             @method('DELETE')
                                             <div class="modal-body">
-                                                <p>Cuando un usuario deja de asistir ya no se pueden crear evaluaciones nuevas y su ficha no puede ser modificada hasta que vuelva a asistir. Tampoco podrá iniciar sesión</p>
+                                                <p>Cuando se elimina la inscripción se borra el registro definitivamente</p>
                                                 <p>Esta acción no podrá deshacerse. ¿Quieres continuar?</p>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="submit" class="btn btn-danger btn-round">
-                                                    <i class="icofont icofont-ui-delete"></i> Sí, el usuario ya no asiste
+                                                    <i class="icofont icofont-ui-delete"></i> Sí, eliminar inscripción
+                                                </button>
+                                                <button class="btn btn-outline-primary btn-round" data-dismiss="modal">
+                                                    <i class="icofont icofont-circled-left"></i> Cancelar
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal fade" id="aprobarModal" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">¿Confirmar?</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <form action="" method="POST" id="form-modal1">
+                                            @csrf
+                                            @method('PUT')
+                                            <div class="modal-body">
+                                                <p>Es necesario confirmar la inscripción para que pueda participar del torneo</p>
+                                                <div class="form-group row">
+                                                    <label class="col-md-4 col-form-label" for="estado">
+                                                        ¿Aprobar inscripción?
+                                                    </label>
+                                                    <div class="col-md-8 form-radio">
+                                                        <div class="radio radio-inline">
+                                                            <label>
+                                                            <input type="radio" name="estado" id="estado1" value="1" checked='checked'>
+                                                            <i class="helper"></i>Si
+                                                            </label>
+                                                        </div>
+                                                        <div class="radio radio-inline">
+                                                            <label>
+                                                            <input type="radio" name="estado" id="estado2" value="0">
+                                                            <i class="helper"></i>No
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-danger btn-round">
+                                                    <i class="icofont icofont-ui-delete"></i> Aceptar
                                                 </button>
                                                 <button class="btn btn-outline-primary btn-round" data-dismiss="modal">
                                                     <i class="icofont icofont-circled-left"></i> Cancelar
@@ -174,6 +221,15 @@ function concatenar($numero){
         var url=location.origin;
         var path=location.pathname
         formModal.attr('action',url+path+'/'+id);
+    }
+
+    function aprobarModal(id){
+        var formModal=$("#form-modal1");
+        var url=location.origin;
+        var path=location.pathname
+        formModal.attr('action',url+path+'/'+id);
+        var radiobutton1 = $('estado1');
+        var radiobutton2 = $('estado2');
     }
 </script>
 @endsection

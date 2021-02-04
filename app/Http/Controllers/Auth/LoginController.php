@@ -87,7 +87,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             if(Auth::user()->confirmado==1){
                 if (Auth::user()->tipo==1||Auth::user()->tipo==2  && Auth::user()->activo==1) {
-                    return redirect('/admin/inscritos');
+                    return redirect('/admin/inscripciones/torneos-vigentes');
                 }
                 elseif (Auth::user()->tipo==4 && Auth::user()->activo==1) {
 

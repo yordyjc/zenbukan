@@ -40,7 +40,7 @@ Inicio
             <div class="col-lg-4">
                 <div class="card xs-shop" style="border-color:#fff;">
                     <div class="xs-shop-thumb">
-                        <img src="{{ $torneo->foto }}" alt="{{ $torneo->nombre }}" class="card-img-top">
+                        <img src="{{ $torneo->foto ? $torneo->foto : 'resources/img/torneos/foto-default.png' }}" alt="{{ $torneo->nombre }}" class="card-img-top">
 
                     </div>
                     <div class="xs-shop-inner">

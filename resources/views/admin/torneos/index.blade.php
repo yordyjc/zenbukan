@@ -56,70 +56,62 @@ function concatenar($numero){
                             <tr>
                                 <th>Nº</th>
                                 <th>Nombre</th>
+                                <th>Lugar</th>
                                 <th>Fecha del torneo</th>
                                 <th>Inscripciones</th>
-                                <th>Modalidades</th>
-                                <th>Estado</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             @if (count($torneos)>0)
                                 @foreach ($torneos as $torneo)
-                                <tr>
-                                    <td>
-                                            Nro. {{ concatenar($torneo->id) }}
-                                    </td>
-                                    <td>
-                                        <div class="d-inline-block align-middle">
-                                            <div class="d-inline-block">
-                                                <h6>
-                                                    {{ $torneo->nombre }}
-                                                </h6>
-                                                <p class="text-muted m-b-0">creado el {{ Carbon::parse($torneo->created_at)->format('d/m/Y h:i a') }}</p>
+                                    <tr>
+                                        <td>
+                                                Nro. {{ concatenar($torneo->id) }}
+                                        </td>
+                                        <td>
+                                            <div class="d-inline-block align-middle">
+                                                <div class="d-inline-block">
+                                                    <h6>
+                                                        {{ $torneo->nombre }}
+                                                    </h6>
+                                                    <p class="text-muted m-b-0">creado el {{ Carbon::parse($torneo->created_at)->format('d/m/Y h:i a') }}</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        {{ $torneo->lugar }}
-                                    </td>
-                                    <td>{{ Carbon::parse($torneo->fecha)->format('d/m/Y h:i a') }}</td>
-                                    <td>
-                                        @if ($torneo->kata == 1)
-                                            <span class="label label-info" data-toggle="tooltip" data-placement="left" data-original-title="Asiste con normalidad">Kata</span>
-                                        @endif
-                                        @if ($torneo->kumite == 1)
-                                            <span class="label label-warning" data-toggle="tooltip" data-placement="left" data-original-title="Asiste con normalidad">kumite</span>
-                                        @endif
+                                        </td>
+                                        <td>
+                                            {{ $torneo->lugar }}
+                                        </td>
+                                        <td>{{ Carbon::parse($torneo->fecha)->format('d \d\e M. \d\e Y') }}
+                                        <p>{{ Carbon::parse($torneo->hora)->format('h:i a')}}</p>
+                                        </td>
+                                        <td>
+                                            @if ($torneo->inscripciones == 1)
+                                                <span class="label label-success" data-toggle="tooltip" data-placement="left" data-original-title="Inscripciones abiertas">Abiertas</span>
+                                            @else
+                                                <span class="label label-danger" data-toggle="tooltip" data-placement="left" data-original-title="Inscripciones cerradas">Cerradas</span>
+                                            @endif
+                                        </td>
+                                        <td class="text-center">
 
-                                    </td>
-                                    <td>
-                                        @if ($torneo->estado == 1)
-                                            <span class="label label-success" data-toggle="tooltip" data-placement="left" data-original-title="Asiste con normalidad">Asiste</span>
-                                        @else
-                                            <span class="label label-danger" data-toggle="tooltip" data-placement="left" data-original-title="Dejo de asistir">No asiste</span>
-                                        @endif
-                                    </td>
-                                    <td class="text-center">
+                                            <a href="{{ url('/admin/agregar-modalidades/'.$torneo->id) }}">
+                                                <i class="icon feather icon-tag f-w-600 f-16 m-r-15 text-c-yellow" data-toggle="tooltip" data-placement="left" data-original-title="Ver y/o Agregar modalidades"></i>
+                                            </a>
 
-                                        <a href="{{ url('/admin/agregar-modalidades/'.$torneo->id) }}">
-                                            <i class="icon feather icon-tag f-w-600 f-16 m-r-15 text-c-yellow" data-toggle="tooltip" data-placement="left" data-original-title="Ver y/o Agregar modalidades"></i>
-                                        </a>
+                                            <a href="{{ url('/admin/modalidades/'.$torneo->id) }}">
+                                                <i class="icon feather icon-user-plus f-w-600 f-16 m-r-15 text-c-green" data-toggle="tooltip" data-placement="left" data-original-title="Gestionar jueces"></i>
+                                            </a>
+                                            <a href="{{ url('/admin/torneos/'.$torneo->id.'/edit') }}">
+                                                <i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-blue" data-toggle="tooltip" data-placement="left" data-original-title="Editar información"></i>
+                                            </a>
+                                            @if ($torneo->estado==1)
+                                            <a href="#" onclick="eliminarModal({{ $torneo->id }})" data-toggle="modal" data-target="#eliminarModal">
+                                                <i class="feather icon-trash-2 f-w-600 f-16 text-c-red" data-toggle="tooltip" data-placement="left" data-original-title="¿Deja de asistir?"></i>
+                                            </a>
+                                            @endif
 
-                                        <a href="{{ url('/admin/inscripciones/nuevo/'.$torneo->id) }}">
-                                            <i class="icon feather icon-user-plus f-w-600 f-16 m-r-15 text-c-green" data-toggle="tooltip" data-placement="left" data-original-title="Agregar competidores"></i>
-                                        </a>
-                                        <a href="{{ url('/admin/torneos/'.$torneo->id.'/edit') }}">
-                                            <i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-blue" data-toggle="tooltip" data-placement="left" data-original-title="Editar información"></i>
-                                        </a>
-                                        @if ($torneo->estado==1)
-                                        <a href="#" onclick="eliminarModal({{ $torneo->id }})" data-toggle="modal" data-target="#eliminarModal">
-                                            <i class="feather icon-trash-2 f-w-600 f-16 text-c-red" data-toggle="tooltip" data-placement="left" data-original-title="¿Deja de asistir?"></i>
-                                        </a>
-                                        @endif
-
-                                    </td>
-                                </tr>
+                                        </td>
+                                    </tr>
                                 @endforeach
 
                                 <div class="modal fade" id="eliminarModal" tabindex="-1" role="dialog">
@@ -135,12 +127,11 @@ function concatenar($numero){
                                                 @csrf
                                                 @method('DELETE')
                                                 <div class="modal-body">
-                                                    <p>Cuando un usuario deja de asistir ya no se pueden crear evaluaciones nuevas y su ficha no puede ser modificada hasta que vuelva a asistir. Tampoco podrá iniciar sesión</p>
                                                     <p>Esta acción no podrá deshacerse. ¿Quieres continuar?</p>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="submit" class="btn btn-danger btn-round">
-                                                        <i class="icofont icofont-ui-delete"></i> Sí, el usuario ya no asiste
+                                                        <i class="icofont icofont-ui-delete"></i> Sí
                                                     </button>
                                                     <button class="btn btn-outline-primary btn-round" data-dismiss="modal">
                                                         <i class="icofont icofont-circled-left"></i> Cancelar
