@@ -60,10 +60,6 @@ class User extends Authenticatable
     {
         return $this->nombres.' '.$this->apellidos;
     }
-    public function modalidades()
-    {
-        return $this->belongToMany('App\Models\Modalidad');
-    }
 
     public function club()
     {

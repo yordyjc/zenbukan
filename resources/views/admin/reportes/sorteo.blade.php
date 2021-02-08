@@ -80,22 +80,22 @@ function concatenar($numero){
                                 </div>
                             </div>
 
-                            <div class="col-sm-3">
+                            <div class="col-sm-4">
                                 <div class="form-group" style="margin-top: 36px;">
                                     <button type="submit" id="button-submit" class="btn btn-primary btn-sm">
                                         Generar
                                     </button>
-                                    <a href="" class="descarga btn btn-success btn-sm ml-2">Excel</a>
+                                    <a href="#" class="descarga btn btn-success btn-sm ml-2">Descargar</a>
                                 </div>
                             </div>
                         </div>
                     </form>
                 </div>
                 <br />
-                <div class="alert alert-info background-info">
-                    <h5>Sorteo</h5>
+                <div class="alert alert-info background-info text-center">
+                    <h5 id="titulo">Sorteo</h5>
                 </div>
-                <div class="table-responsive">
+                <!-- <div class="table-responsive">
                     <table>
                         <thead>
                             <tr>
@@ -106,6 +106,11 @@ function concatenar($numero){
                         <tbody id="sorteo">
                         </tbody>
                     </table>
+                </div> -->
+                <div class="col-md-4">
+                    <div id="contenido">
+
+                    </div>
                 </div>
 
             </div>
@@ -126,11 +131,11 @@ function concatenar($numero){
     });
 </script>
 <script type="text/javascript">
-    $(document).ready( function () {
-        var formData=$("#form-reporte").serialize();
-        var excel=URLs+'/admin/reporte-fechas-excel?'+formData;
-        $(".descarga").attr('href', excel);
-    });
+    // $(document).ready( function () {
+    //     var formData=$("#form-reporte").serialize();
+    //     var excel=URLs+'/admin/reporte-fechas-excel?'+formData;
+    //     $(".descarga").attr('href', excel);
+    // });
 </script>
 <script>
     $(document).ready( function () {
@@ -172,7 +177,7 @@ function concatenar($numero){
                //alert(route);
                 $.get(route, function(data){
                     $('#categorias').empty();
-                    var html_select = '<option value = "">--Categorias--</option>';
+                    var html_select = '<option value = "">-- Categorias--</option>';
                     for(var i=0; i<data.length; ++i)
                     {
                         html_select += '<option value ="'+ data[i].id +'">'+data[i].kumite+'</option>'
@@ -188,16 +193,29 @@ function concatenar($numero){
         var route = $('#form-sorteo').attr('action');
         var method = $('#form-sorteo').attr('method');
         var frmData = $('#form-sorteo').serialize();
+        var titulo = $('#torneos option:selected').text();
+        $('#titulo').html(titulo);
         //alert('holi');
         $("#button-submit").attr('disabled', 'disabled');
         sendRequest(route,frmData,method, function(data, textStatus){
             $("#button-submit").removeAttr('disabled');
+            $('#contenido').empty();
             if(data.status == 200)
             {
                 $('#sorteo').empty();
                 data=data.responseJSON;
+
                 $.each(data, function(index, value){
-                    $('#sorteo').append('<tr> <td>'+index+'</td> <td>'+value+'</td> </tr>');
+                    //$('#sorteo').append('<tr> <td>'+index+'</td> <td>'+value['competidor']['nombres']+' '+value['competidor']['apellidos']+'</td> </tr>');
+                    if(index%2 == 1)
+                    {
+                        $('#contenido').append('<div class="btn btn-outline-primary btn-block">'+index+' '+value['competidor']['nombres']+' '+value['competidor']['apellidos']+'</div>');
+                    }
+                    else
+                    {
+                        $('#contenido').append('<div class="btn btn-outline-danger btn-block">'+index+' '+value['competidor']['nombres']+' '+value['competidor']['apellidos']+'</div>'+'<br>');
+                    }
+
                 });
             }
         });

@@ -68,7 +68,7 @@ function concatenar($numero){
                             </div>
                             <div class="col-sm-6">
                                 <button type="submit" id="button-submit" class="btn btn-primary btn-sm">
-                                    Generar
+                                    Agregar
                                 </button>
                             </div>
                         </div>

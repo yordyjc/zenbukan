@@ -390,7 +390,7 @@ class ReportesController extends Controller
     {
         if($request->ajax())
         {
-            $inscripciones = Inscripcion::where('modalidad_id', $request->categoria)->with('competidor')->get();
+            $inscripciones = Inscripcion::where('modalidad_id', $request->categoria)->with('modalidad')->get();
             //agrupamos por club
             $agrupados= $inscripciones->groupBy('competidor.club_id');
 
@@ -619,7 +619,7 @@ class ReportesController extends Controller
                 }
                 else{
                     $combates[$i] = $sorteados[key($sorteados)];
-                    $combates[$i+1]="robot";
+                    $combates[$i+1]['competidor']['apellidos']="robot";
                     next($sorteados);
                 }
             }
