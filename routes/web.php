@@ -129,6 +129,12 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/perfil-user/changepass','user\PerfilController@changepass');
         Route::get('/perfil-user/confirmpass','user\PerfilController@confirmpass');
     });
+
+    Route::prefix('/juez')->group(function(){
+        Route::middleware(['juez'])->group(function(){
+            Route::get('/torneos','Juez\JuecesController@index');
+        });
+    });
 });
 
 Route::get('/','Front\FrontController@index');

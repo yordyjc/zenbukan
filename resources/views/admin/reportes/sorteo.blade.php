@@ -209,11 +209,11 @@ function concatenar($numero){
                     //$('#sorteo').append('<tr> <td>'+index+'</td> <td>'+value['competidor']['nombres']+' '+value['competidor']['apellidos']+'</td> </tr>');
                     if(index%2 == 1)
                     {
-                        $('#contenido').append('<div class="btn btn-outline-primary btn-block">'+index+' '+value['competidor']['nombres']+' '+value['competidor']['apellidos']+'</div>');
+                        $('#contenido').append('<div class="btn btn-outline-primary btn-block">'+index+'. '+value['competidor']['nombres']+' '+value['competidor']['apellidos']+'</div>');
                     }
                     else
                     {
-                        $('#contenido').append('<div class="btn btn-outline-danger btn-block">'+index+' '+value['competidor']['nombres']+' '+value['competidor']['apellidos']+'</div>'+'<br>');
+                        $('#contenido').append('<div class="btn btn-outline-danger btn-block">'+index+'. '+value['competidor']['nombres']+' '+value['competidor']['apellidos']+'</div>'+'<br>');
                     }
 
                 });
