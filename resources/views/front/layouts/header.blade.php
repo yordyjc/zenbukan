@@ -38,10 +38,10 @@
 
                             @else {{-- Usuario --}}
                             <li class="elementskit-dropdown-has">
-                                <a href="{{ url('/user/mificha') }}">Mi cuenta</a>
+                                <a href="{{ url('/juez/categorias') }}">Mi cuenta</a>
                                 <ul class="elementskit-dropdown elementskit-submenu-panel">
                                     <li><a>Bienvenido, {{ Auth::user()->nombres }}</a></li>
-                                    <li><a href="{{ url('user/mificha') }}">Panel de usuario</a></li>
+                                    <li><a href="{{ url('juez/categorias') }}">Panel de usuario</a></li>
                                     <li>
                                         <form action="{{ url('/logout') }}" method="post">
                                         <a href="">

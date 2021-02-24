@@ -91,7 +91,7 @@ class LoginController extends Controller
                 }
                 elseif (Auth::user()->tipo==3 && Auth::user()->activo==1) {
 
-                    return redirect('/juez/torneos');
+                    return redirect('/juez/categorias');
 
                 }
                 else{

@@ -66,4 +66,9 @@ class User extends Authenticatable
         return $this->belongsTo('App\Models\Club','club_id');
     }
 
+    public function modalidades()
+    {
+        return $this->belongsToMany('App\Models\Modalidad');
+    }
+
 }

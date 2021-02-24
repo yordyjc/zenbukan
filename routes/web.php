@@ -132,7 +132,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::prefix('/juez')->group(function(){
         Route::middleware(['juez'])->group(function(){
-            Route::get('/torneos','Juez\JuecesController@index');
+            Route::get('/categorias','Juez\JuecesController@index');
+            Route::get('/combates/{id}','Juez\JuecesController@frmCombates');
         });
     });
 });

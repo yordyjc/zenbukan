@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Input;
 use File;
 use Carbon\Carbon;
 use Auth;
-
+use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Models\Sector;
 use App\Models\Ficha;
@@ -29,6 +29,7 @@ use Maatwebsite\Excel\Events\AfterSheet;
 use App\Models\Torneo;
 use App\Models\Modalidad;
 use App\Models\Inscripcion;
+use App\Models\Posicion;
 
 class ReportesController extends Controller
 {
@@ -620,13 +621,50 @@ class ReportesController extends Controller
                 else{
                     $combates[$i] = $sorteados[key($sorteados)];
                     $combates[$i+1]['competidor']['apellidos']="robot";
+                    $combates[$i+1]['id']="0";
                     next($sorteados);
                 }
             }
+            //$this->saveSorteo($combates);
+            $posicionesdestroy = Posicion::where('modalidad_id',$request->categoria)->delete();
+            //$posicionesdestroy->truncate();
+            //$posicionesdestroy->destroy();
+            foreach($combates as $key=>$value)
+            {
+                $posicion = new Posicion();
+                if($combates[$key]['id']==0){
+                    $posicion->inscripcion_id = $combates[$key]['id'];
+
+                }
+                else{
+                    $posicion->inscripcion_id = 0;
+                }
+                $posicion->posicion = $key;
+                $posicion->ronda = 1;
+                $posicion->modalidad_id = $request->categoria;
+                $posicion->save();
+            }
+
             return $combates;
+
+
+        }
+    }
+
+    public function saveSorteo($sorteados)
+    {
+        //$posicion = new Posicion();
+        foreach ($sorteados as $sorteado)
+        {
+            $posicion = new Posicion();
+            $posicion->id_inscripcion = $sorteado['id'];
+            $posicion->posicion = key($sorteado);
+            $posicion->ronda = 1;
         }
     }
 }
+
+
 
 class fechasExcelExport implements FromView, ShouldAutoSize, WithEvents
 {

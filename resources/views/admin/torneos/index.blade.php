@@ -82,10 +82,11 @@ function concatenar($numero){
                                         <td>
                                             {{ $torneo->lugar }}
                                         </td>
-                                        <td>{{ Carbon::parse($torneo->fecha)->format('d \d\e M. \d\e Y') }}
-                                        <p>{{ Carbon::parse($torneo->hora)->format('h:i a')}}</p>
-                                        </td>
                                         <td>
+                                            {{ Carbon::parse($torneo->fecha)->format('d \d\e M. \d\e Y') }}
+                                            <p>{{ Carbon::parse($torneo->hora)->format('h:i a')}}</p>
+                                        </td>
+                                        <td class="text-center">
                                             @if ($torneo->inscripciones == 1)
                                                 <span class="label label-success" data-toggle="tooltip" data-placement="left" data-original-title="Inscripciones abiertas">Abiertas</span>
                                             @else
@@ -97,10 +98,11 @@ function concatenar($numero){
                                             <a href="{{ url('/admin/agregar-modalidades/'.$torneo->id) }}">
                                                 <i class="icon feather icon-tag f-w-600 f-16 m-r-15 text-c-yellow" data-toggle="tooltip" data-placement="left" data-original-title="Ver y/o Agregar modalidades"></i>
                                             </a>
-
+                                            @if(count($torneo->modalidades)>0)
                                             <a href="{{ url('/admin/modalidades/'.$torneo->id) }}">
                                                 <i class="icon feather icon-user-plus f-w-600 f-16 m-r-15 text-c-green" data-toggle="tooltip" data-placement="left" data-original-title="Gestionar jueces"></i>
                                             </a>
+                                            @endif
                                             <a href="{{ url('/admin/torneos/'.$torneo->id.'/edit') }}">
                                                 <i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-blue" data-toggle="tooltip" data-placement="left" data-original-title="Editar información"></i>
                                             </a>

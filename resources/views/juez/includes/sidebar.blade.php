@@ -3,7 +3,7 @@
 		<div class="pcoded-inner-navbar main-menu">
 			<ul class="pcoded-item pcoded-left-item">
 				<li class="@yield('dashboard')">
-					<a href="{{ url('/juez') }}" class="waves-effect waves-dark">
+					<a href="{{ url('/juez/torneos') }}" class="waves-effect waves-dark">
 						<span class="pcoded-micon"><i class="feather icon-home"></i></span>
 						<span class="pcoded-mtext">Principal</span>
 					</a>
@@ -16,7 +16,7 @@
                     </a>
                     <ul class="pcoded-submenu">
                         <li class="@yield('ver-torneos')">
-                            <a href="{{ url('/user/actual') }}" class="waves-effect waves-dark">
+                            <a href="{{ url('/juez/torneos') }}" class="waves-effect waves-dark">
                                 <span class="pcoded-mtext">Ver torneos asignados</span>
                             </a>
                         </li>
