@@ -58,7 +58,7 @@ class ClubesTableSeeder extends Seeder
                 'nombre' => 'SSS',
                 'pais_id' => '1'
             ),
-            8 => array(
+            9 => array(
                 'id' => 10,
                 'nombre' => 'KOBUKAN',
                 'pais_id' => '1'

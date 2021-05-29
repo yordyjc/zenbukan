@@ -633,11 +633,10 @@ class ReportesController extends Controller
             {
                 $posicion = new Posicion();
                 if($combates[$key]['id']==0){
-                    $posicion->inscripcion_id = $combates[$key]['id'];
-
+                    $posicion->inscripcion_id = 0;
                 }
                 else{
-                    $posicion->inscripcion_id = 0;
+                    $posicion->inscripcion_id = $combates[$key]['id'];
                 }
                 $posicion->posicion = $key;
                 $posicion->ronda = 1;

@@ -206,6 +206,96 @@ class InscripcionesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    public function storeInscripcion(Request $request)
+    {
+        if(Auth::user()->tipo == 1)
+        {
+            $a= 'required';
+        }
+        else
+        {
+            $a='';
+        }
+        $validator = Validator::make($request->all(), [
+            'nombre' => 'required|string',
+            'apellido' => 'required|string',
+            'edad' =>'integer',
+            'club' =>$a,
+            'grado' => 'required',
+            'sexo' =>'required',
+            'foto' => 'file|mimes:png,jpg,jpeg|max:5120',
+            'talla' => 'numeric|min:0.60|max:2.20',
+            'email'=> 'required|string|email|max:255|unique:users'
+        ]);
+        if ($validator->fails()) {
+            alert()->error('Ups!','La operación no pudo ser completada')->autoClose(4000)->showCloseButton();
+            return redirect('/admin/inscripciones/nuevo/'.$request->torneo)
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $competidor = New User();
+        $competidor->nombres = $request->nombre;
+        $competidor->apellidos = $request->apellido;
+        $competidor->email = $request->email;
+        $competidor->password = bcrypt('12345678');
+        $competidor->telefono = $request->telefono;
+        $competidor->sexo = $request->sexo;
+        if(Auth::user()->tipo==1)
+        {
+            $competidor->club_id = $request->club;
+        }
+        else
+        {
+            $competidor->club_id = Auth::user()->club_id;
+        }
+
+
+        if ($request->nacimiento) {
+            $competidor->nacimiento = $request->nacimiento;
+        }
+        if ($request->edad) {
+            $competidor->edad = $request->edad;
+        }
+        $competidor->observaciones = $request->observaciones;
+
+        $foto  = Input::file('foto');
+        if (!is_null($foto)) {
+            $name2=str_replace(' ', '-', strtolower($request->nombre.' '.$request->apellido));
+            $largo=strlen($name2);
+            $extension=$foto->getClientOriginalExtension();
+            $fin=$largo - strlen($extension);
+            $name=$name2.'.'.$extension;
+            $path=public_path().'/resources/img/user/';
+            $foto->move($path,$name);
+            $competidor->foto='/resources/img/user/'.$name;
+        }
+        $competidor->save();
+
+        //Agregando inscripcion
+        $inscripcion = New Inscripcion();
+        $inscripcion->anfitrion_id = Auth::user()->id;
+        $ultimocompetidor = User::orderBy('id','desc')->first();
+        if($request->kumite)
+        {
+            $inscripcion->kumite = $request->kumite;
+        }
+        if($request->kata)
+        {
+            $inscripcion->kata = $request->kata;
+        }
+        $inscripcion->modalidad_id =$request->modalidad;
+        $inscripcion->competidor_id = $ultimocompetidor->id;
+        $inscripcion->cabeza_serie = $request->cabeza_serie;
+        $inscripcion->edad = $request->edad;
+        $inscripcion->grado = $request->grado;
+        $inscripcion->save();
+
+        alert()->success('¡Yeah!',$competidor->nombres.' '.$competidor->apellidos.' fue registrado con éxito')->autoClose(5000)->showCloseButton();
+        return redirect('/admin/inscripciones/torneos-vigentes');
+    }
+
     public function edit($id)
     {
         //

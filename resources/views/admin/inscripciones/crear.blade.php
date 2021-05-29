@@ -25,9 +25,10 @@ active
             </div>
             <div class="card-block">
 
-                <form id="form-submit" action="{{ url('/admin/inscripciones') }}" method="post" enctype="multipart/form-data">
+                <form id="form-submit" action="{{ url('/admin/inscripciones/store-inscripcion') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="torneo" value="{{$torneo->id}}">
+                    <input type="hidden" name="modalidad" id="modalidad">
                     <div class="col-sm-10 offset-sm-1">
 
                         <div class="form-group {{ $errors->has('nombre') ? ' has-danger' : '' }} row">
@@ -120,7 +121,7 @@ active
                             </label>
                             <div class="col-md-10">
                                 <select name="grado" id="grado" class="sector form-control form-control-round fill select2">
-                                    <option value=NULL selected>--Seleccione--</option>
+                                    <option value="" selected>--Seleccione--</option>
                                     <option value="9">9º Kyu</option>
                                     <option value="8">8º Kyu</option>
                                     <option value="7">7º Kyu</option>
@@ -131,9 +132,9 @@ active
                                     <option value="2">2º Kyu</option>
                                     <option value="1">1º Kyu</option>
                                 </select>
-                                @if ($errors->has('club'))
+                                @if ($errors->has('grado'))
                                     <div class="col-form-label">
-                                        {{ $errors->first('club') }}
+                                        {{ $errors->first('grado') }}
                                     </div>
                                 @endif
                             </div>
@@ -264,12 +265,13 @@ active
                 data=data.responseJSON;
                 $("#modalidad_kata").html(data.kata);
                 $("#modalidad_kumite").html(data.kumite);
+                $("#modalidad").val(data.id);
 
 
             }
             else
             {
-                alert('hasta el tux csm');
+
             }
         });
 

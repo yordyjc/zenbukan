@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Club extends Model
 {
-    protected $table='clubes';
+    protected $table = 'clubes';
     protected $guarded = [];
 
     public function pais()

@@ -87,7 +87,8 @@ Route::middleware(['auth'])->group(function () {
 
             //Inscripciones
             //Route::resource('/inscripciones', 'Admin\InscripcionesController');
-            Route::get('inscripciones/lista-inscritos','Admin\InscripcionesController@listaInscritos');
+
+            Route::post('inscripciones/store-inscripcion','Admin\InscripcionesController@storeInscripcion');
             Route::get('inscripciones/torneos-vigentes/','Admin\InscripcionesController@torneosVigentes');
             Route::get('inscripciones/inscritos/{id}','Admin\InscripcionesController@Inscritos');
             Route::get('inscripciones/nuevo/{id}','Admin\InscripcionesController@frmCrear');
@@ -133,7 +134,9 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('/juez')->group(function(){
         Route::middleware(['juez'])->group(function(){
             Route::get('/categorias','Juez\JuecesController@index');
-            Route::get('/combates/{id}','Juez\JuecesController@frmCombates');
+            Route::get('/categorias/{id}','Juez\JuecesController@Combates');
+            Route::get('/kata/{id}','Juez\JuecesController@calificarKata');
+            Route::get('/kumite/{id}','Juez\JuecesController@calificarKumite');
         });
     });
 });
