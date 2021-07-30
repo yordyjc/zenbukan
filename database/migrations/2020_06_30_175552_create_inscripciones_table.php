@@ -18,6 +18,7 @@ class CreateInscripcionesTable extends Migration
             $table->integer('anfitrion_id')->unsigned();
             $table->integer('modalidad_id')->unsigned();
             $table->integer('competidor_id')->unsigned();
+            $table->integer('club_id')->unsigned(); //usado para identificar rapidamente el club al que pertenece
             $table->boolean('cabeza_serie')->nullable()->default(0);
             $table->boolean('kata')->default(0);
             $table->boolean('kumite')->default(0);
@@ -31,6 +32,7 @@ class CreateInscripcionesTable extends Migration
             $table->foreign('anfitrion_id')->references('id')->on('users');
             $table->foreign('modalidad_id')->references('id')->on('modalidades');
             $table->foreign('competidor_id')->references('id')->on('users');
+            $table->foreign('club_id')->references('id')->on('clubes');
 
         });
     }

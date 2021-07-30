@@ -27,7 +27,7 @@ class TorneosTableSeeder extends Seeder
                     'lugar' =>'Tacna',
                     'estado' => 1,
                     'inscripciones' => 1,
-                    'activo' => 0,
+                    'activo' => 1,
                     'created_at' => '2020-09-19 00:49:58',
                     'updated_at' => '2020-09-19 00:49:58'
                 ),

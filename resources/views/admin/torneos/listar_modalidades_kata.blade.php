@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('title')
-Torneos
+Modalidaddes de {{$modalidades[0]->torneo->nombre}}
 @endsection
 
 @section('torneos')
@@ -44,9 +44,7 @@ function concatenar($numero){
         <div class="card">
             <div class="card-header">
                 <h5>@yield('title')</h5>
-                <div class="card-header-right">
-                    <a href="{{ url('/admin/torneos/create') }}" class="btn waves-effect waves-light btn-primary btn-outline-primary btn-sm"> <i class="icofont icofont-ui-add" style="color:#4680ff;"></i> Agregar Torneo</a>
-                </div>
+
             </div>
             <div class="card-block">
 
@@ -55,66 +53,30 @@ function concatenar($numero){
                         <thead>
                             <tr>
                                 <th>Nº</th>
-                                <th>Nombre</th>
-                                <th>Lugar</th>
-                                <th>Fecha del torneo</th>
-                                <th>Inscripciones</th>
-                                <th>Acciones</th>
+                                <th>Modalidad</th>
+                                <th>Accciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @if (count($torneos)>0)
-                                @foreach ($torneos as $torneo)
+                            @if (count($modalidades)>0)
+                                @foreach ($modalidades as $modalidad)
                                     <tr>
                                         <td>
-                                                Nro. {{ concatenar($torneo->id) }}
+                                                Nro. {{ concatenar($modalidad->id) }}
                                         </td>
                                         <td>
                                             <div class="d-inline-block align-middle">
                                                 <div class="d-inline-block">
                                                     <h6>
-                                                        {{ $torneo->nombre }}
+                                                        {{ $modalidad->kata }}
                                                     </h6>
-                                                    <p class="text-muted m-b-0">creado el {{ Carbon::parse($torneo->created_at)->format('d/m/Y h:i a') }}</p>
                                                 </div>
                                             </div>
                                         </td>
-                                        <td>
-                                            {{ $torneo->lugar }}
-                                        </td>
-                                        <td>
-                                            {{ Carbon::parse($torneo->fecha)->format('d \d\e M. \d\e Y') }}
-                                            <p>{{ Carbon::parse($torneo->hora)->format('h:i a')}}</p>
-                                        </td>
                                         <td class="text-center">
-                                            @if ($torneo->inscripciones == 1)
-                                                <span class="label label-success" data-toggle="tooltip" data-placement="left" data-original-title="Inscripciones abiertas">Abiertas</span>
-                                            @else
-                                                <span class="label label-danger" data-toggle="tooltip" data-placement="left" data-original-title="Inscripciones cerradas">Cerradas</span>
-                                            @endif
-                                        </td>
-                                        <td class="text-center">
-
-                                            <a href="{{ url('/admin/agregar-modalidades/'.$torneo->id) }}">
-                                                <i class="icon feather icon-tag f-w-600 f-16 m-r-15 text-c-yellow" data-toggle="tooltip" data-placement="left" data-original-title="Ver y/o Agregar modalidades"></i>
+                                            <a href="{{ url('/admin/torneos/kata/puntajes/'.$modalidad->id) }}">
+                                                <i class="icon feather icon-external-link f-w-600 f-16 m-r-15 text-c-blue" data-toggle="tooltip" data-placement="left" data-original-title="Ver puntajes"></i>
                                             </a>
-                                            @if(count($torneo->modalidades)>0)
-                                            <a href="{{ url('/admin/modalidades/'.$torneo->id) }}">
-                                                <i class="icon feather icon-user-plus f-w-600 f-16 m-r-15 text-c-green" data-toggle="tooltip" data-placement="left" data-original-title="Gestionar jueces"></i>
-                                            </a>
-                                            @endif
-                                            <a href="{{ url('/admin/torneos/'.$torneo->id.'/edit') }}">
-                                                <i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-blue" data-toggle="tooltip" data-placement="left" data-original-title="Editar información"></i>
-                                            </a>
-                                            <a href="{{ url('/admin/torneos/kata/'.$torneo->id) }}">
-                                                <i class="icon feather icon-external-link f-w-600 f-16 m-r-15 text-c-blue" data-toggle="tooltip" data-placement="left" data-original-title="Ver modalidades kata"></i>
-                                            </a>
-                                            @if ($torneo->estado==1)
-                                            <a href="#" onclick="eliminarModal({{ $torneo->id }})" data-toggle="modal" data-target="#eliminarModal">
-                                                <i class="feather icon-trash-2 f-w-600 f-16 text-c-red" data-toggle="tooltip" data-placement="left" data-original-title="¿Deja de asistir?"></i>
-                                            </a>
-                                            @endif
-
                                         </td>
                                     </tr>
                                 @endforeach

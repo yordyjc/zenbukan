@@ -90,15 +90,22 @@
             @if(Auth::user()->tipo == 1)
             <div class="pcoded-navigation-label">Gestión de reportes</div>
             <ul class="pcoded-item pcoded-left-item">
-                <li class="pcoded-hasmenu @yield('reportes')">
+                <li class="pcoded-hasmenu @yield('sorteos')">
                     <a href="javascript:void(0)" class="waves-effect waves-dark">
                         <span class="pcoded-micon"><i class="feather icon-save"></i></span>
-                        <span class="pcoded-mtext">Reportes</span>
+                        <span class="pcoded-mtext">Sorteos</span>
                     </a>
                     <ul class="pcoded-submenu">
                         <li class="@yield('reporte-fechas')">
                             <a href="{{url('admin/sorteo')}}" class="waves-effect waves-dark">
-                                <span class="pcoded-mtext">Sorteo por categoria</span>
+                                <span class="pcoded-mtext">Sorteo Kumite por categoria</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="pcoded-submenu">
+                        <li class="@yield('sorteo-kata')">
+                            <a href="{{url('admin/sorteo/kata')}}" class="waves-effect waves-dark">
+                                <span class="pcoded-mtext">Sorteo kata por categoria</span>
                             </a>
                         </li>
                     </ul>

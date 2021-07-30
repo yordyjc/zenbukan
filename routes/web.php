@@ -79,6 +79,9 @@ Route::middleware(['auth'])->group(function () {
 
             //Zenbukan
             Route::resource('torneos','Admin\TorneosController');
+            Route::get('torneos/kata/{id}','Admin\TorneosController@listarCategoriasKata');
+            Route::get('torneos/kata/puntajes/{id}','Admin\TorneosController@verCalificacionesKata');
+
             Route::resource('clubes','Admin\ClubesController');
 
             Route::get('/agregar-modalidades/{id}', 'Admin\ModalidadesController@agregarModalidades');
@@ -105,6 +108,9 @@ Route::middleware(['auth'])->group(function () {
 
              //reportes
              Route::get('/sorteo','Admin\ReportesController@frmSorteo');
+             Route::get('/sorteo/kata','Admin\SorteosController@frmSorteoKata');
+             Route::post('/sorteo/kata','Admin\SorteosController@generarSorteokata');
+             Route::get('/sorteo/categorias-kata/{id}','Admin\SorteosController@getCategoriasKata');
              Route::post('/sorteo','Admin\ReportesController@generarSorteo');
              Route::get('/sorteo/{id}','Admin\ReportesController@getCategorias');
 
@@ -135,8 +141,10 @@ Route::middleware(['auth'])->group(function () {
         Route::middleware(['juez'])->group(function(){
             Route::get('/categorias','Juez\JuecesController@index');
             Route::get('/categorias/{id}','Juez\JuecesController@Combates');
-            Route::get('/kata/{id}','Juez\JuecesController@calificarKata');
-            Route::get('/kumite/{id}','Juez\JuecesController@calificarKumite');
+            Route::get('/categorias/kata/{id}','Juez\JuecesController@frmKata');//formulario donde sale los grupos de esa categoria
+            Route::get('/categorias/calificacion/kata/{id}/{grupo}','Juez\JuecesController@frmCalificarKata');
+            Route::post('/categorias/calificacion/kata','Juez\JuecesController@calificaKata');//pantalla para calificar kata
+            //Route::get('/categorias/kumite/{id}','Juez\JuecesController@calificarKumite');
         });
     });
 });

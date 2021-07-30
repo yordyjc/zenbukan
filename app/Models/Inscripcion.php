@@ -23,4 +23,9 @@ class Inscripcion extends Model
     {
         return $this->belongsTo('App\User','anfitrion_id');
     }
+
+    public function club()
+    {
+        return $this->belongsTo('App\Models\Club','club_id');
+    }
 }

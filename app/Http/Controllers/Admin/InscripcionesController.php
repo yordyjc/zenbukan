@@ -16,7 +16,7 @@ use Auth;
 use App\User;
 use App\Models\Inscripcion;
 use App\Models\Torneo;
-use App\Models\club;
+use App\Models\Club;
 use App\Models\Sector;
 use App\Models\Modalidad;
 
@@ -169,7 +169,7 @@ class InscripcionesController extends Controller
         //Agregando inscripcion
         $inscripcion = New Inscripcion();
         $ultimocompetidor = User::orderBy('id','desc')->first();
-        $competidor->anfitrion_id = Auth::user()->id;
+        $inscripcion->anfitrion_id = Auth::user()->id;
         if($request->kumite)
         {
             $inscripcion->kumite = $request->kumite;
@@ -183,6 +183,7 @@ class InscripcionesController extends Controller
         $inscripcion->cabeza_serie = $request->cabeza_serie;
         $inscripcion->edad = $request->edad;
         $inscripcion->grado = $request->grado;
+        $inscripcion->club_id = Auth::user()->club_id;
         $inscripcion->save();
 
         alert()->success('¡Yeah!',$competidor->nombres.' '.$competidor->apellidos.' fue registrado con éxito')->autoClose(5000)->showCloseButton();
@@ -226,7 +227,7 @@ class InscripcionesController extends Controller
             'sexo' =>'required',
             'foto' => 'file|mimes:png,jpg,jpeg|max:5120',
             'talla' => 'numeric|min:0.60|max:2.20',
-            'email'=> 'required|string|email|max:255|unique:users'
+            //'email'=> 'required|string|email|max:255|unique:users'
         ]);
         if ($validator->fails()) {
             alert()->error('Ups!','La operación no pudo ser completada')->autoClose(4000)->showCloseButton();
@@ -290,6 +291,14 @@ class InscripcionesController extends Controller
         $inscripcion->cabeza_serie = $request->cabeza_serie;
         $inscripcion->edad = $request->edad;
         $inscripcion->grado = $request->grado;
+        if(Auth::user()->tipo==1)
+        {
+            $inscripcion->club_id = $request->club;
+        }
+        else
+        {
+            $inscripcion->club_id = Auth::user()->club_id;
+        }
         $inscripcion->save();
 
         alert()->success('¡Yeah!',$competidor->nombres.' '.$competidor->apellidos.' fue registrado con éxito')->autoClose(5000)->showCloseButton();

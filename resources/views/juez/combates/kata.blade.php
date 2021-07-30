@@ -1,168 +1,113 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @include('juez.includes.css')
-    @include('juez.includes.data')
-    <title>Combates | Zenbukan</title>
-</head>
-<body style="background:#fff">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header col-md-12">
-                        <h3 class="text-center">Calificaciones</h3>
+@extends('juez.layouts.app')
 
-                    </div>
-                    <div class="card-block offset-md-1">
-                        <div class="row">
-                            <div class="col-md-5">
-                                <div class="btn btn-outline-primary btn-block">Milthon Choquehuanca</div>
-                                <br>
-                                <form action="#" method="post" enctype="multipart/form-data">
-                                    @csrf
-                                    <div class="form-group {{ $errors->has('atletico') ? ' has-danger' : '' }} row">
+@section('title')
+    Grupos de la categoria
+@endsection
 
-                                        <label class="col-md-4 col-form-label" for="atletico">
-                                            Nivel atletico
-                                        </label>
-                                        <div class="col-md-4">
-                                            <input type="number" class="form-control form-control-round {{ $errors->has('tecnico1') ? ' form-control-danger' : '' }}" id="tecnico" name="tecnico" value="{{ old('tecnico') }}">
-                                            @if ($errors->has('tecnico1'))
-                                            <div class="col-form-label">
-                                                {{ $errors->first('tecnico1') }}
-                                            </div>
-                                            @endif
-                                        </div>
-                                        <div class="col-md-4">
-                                            <input type="number" class="form-control form-control-round {{ $errors->has('tecnico2') ? ' form-control-danger' : '' }}" id="tecnico" name="tecnico" value="{{ old('tecnico') }}">
-                                            @if ($errors->has('tecnico2'))
-                                            <div class="col-form-label">
-                                                {{ $errors->first('tecnico2') }}
-                                            </div>
-                                            @endif
-                                        </div>
-                                    </div>
+@section('torneos')
+active pcoded-trigger
+@endsection
 
-                                    <div class="form-group {{ $errors->has('tecnico') ? ' has-danger' : '' }} row">
+@section('ver-torneos')
+active
+@endsection
 
-                                        <label class="col-md-4 col-form-label" for="tecnico">
-                                            Nivel atletico
-                                        </label>
-                                        <div class="col-md-4">
-                                            <input type="number" class="form-control form-control-round {{ $errors->has('tecnico1') ? ' form-control-danger' : '' }}" id="tecnico" name="tecnico" value="{{ old('tecnico') }}">
-                                            @if ($errors->has('tecnico1'))
-                                            <div class="col-form-label">
-                                                {{ $errors->first('tecnico1') }}
-                                            </div>
-                                            @endif
-                                        </div>
-                                        <div class="col-md-4">
-                                            <input type="number" class="form-control form-control-round {{ $errors->has('tecnico2') ? ' form-control-danger' : '' }}" id="tecnico" name="tecnico" value="{{ old('tecnico') }}">
-                                            @if ($errors->has('tecnico2'))
-                                            <div class="col-form-label">
-                                                {{ $errors->first('tecnico2') }}
-                                            </div>
-                                            @endif
-                                        </div>
+@section('content')
 
-                                    </div>
-                                    <div class="col-sm-10 offset-sm-1">
-                                        <div class="form-group row">
-                                            <div class="col-sm-6">
-                                                <button type="submit" class="btn btn-primary btn-round btn-block m-b-0">
-                                                    <i class="icofont icofont-save"></i> Calificar
-                                                </button>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <button type="reset" class="btn btn-outline-primary btn-round btn-block m-b-0">
-                                                    <i class="icofont icofont-refresh"></i> Limpiar
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div><!-- /.col-sm-10 offset-sm-1 -->
-                                </form>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="text-center">VS</div>
-                            </div>
-                            <div class="col-md-5">
-                                <div class="btn btn-outline-danger btn-block">Javier Giramay</div>
-                                <br>
-                                <form action="#" method="post" enctype="multipart/form-data">
-                                    @csrf
-                                    <div class="form-group {{ $errors->has('atletico') ? ' has-danger' : '' }} row">
+@php
+use Carbon\Carbon;
+setlocale(LC_TIME, 'es_ES.UTF-8');
+Carbon::setLocale('es');
 
-                                        <label class="col-md-4 col-form-label" for="atletico">
-                                            Nivel atletico
-                                        </label>
-                                        <div class="col-md-4">
-                                            <input type="number" class="form-control form-control-round {{ $errors->has('tecnico1') ? ' form-control-danger' : '' }}" id="tecnico" name="tecnico" value="{{ old('tecnico') }}">
-                                            @if ($errors->has('tecnico1'))
-                                            <div class="col-form-label">
-                                                {{ $errors->first('tecnico1') }}
-                                            </div>
-                                            @endif
-                                        </div>
-                                        <div class="col-md-4">
-                                            <input type="number" class="form-control form-control-round {{ $errors->has('tecnico2') ? ' form-control-danger' : '' }}" id="tecnico" name="tecnico" value="{{ old('tecnico') }}">
-                                            @if ($errors->has('tecnico2'))
-                                            <div class="col-form-label">
-                                                {{ $errors->first('tecnico2') }}
-                                            </div>
-                                            @endif
-                                        </div>
-                                    </div>
+function concatenar($numero){
+    $n=strlen($numero);
+    if ($n==1) {
+        $a='0000'.$numero;
+    }
+    else if ($n==2) {
+        $a='000'.$numero;
+    }
+    else if ($n==3) {
+        $a='00'.$numero;
+    }
+    else if ($n==4) {
+        $a='0'.$numero;
+    }
+    else{
+        $a=$numero;
+    }
+    return $a;
+}
+@endphp
 
-                                    <div class="form-group {{ $errors->has('tecnico') ? ' has-danger' : '' }} row">
 
-                                        <label class="col-md-4 col-form-label" for="tecnico">
-                                            Nivel atletico
-                                        </label>
-                                        <div class="col-md-4">
-                                            <input type="number" class="form-control form-control-round {{ $errors->has('tecnico1') ? ' form-control-danger' : '' }}" id="tecnico" name="tecnico" value="{{ old('tecnico') }}">
-                                            @if ($errors->has('tecnico1'))
-                                            <div class="col-form-label">
-                                                {{ $errors->first('tecnico1') }}
-                                            </div>
-                                            @endif
-                                        </div>
-                                        <div class="col-md-4">
-                                            <input type="number" class="form-control form-control-round {{ $errors->has('tecnico2') ? ' form-control-danger' : '' }}" id="tecnico" name="tecnico" value="{{ old('tecnico') }}">
-                                            @if ($errors->has('tecnico2'))
-                                            <div class="col-form-label">
-                                                {{ $errors->first('tecnico2') }}
-                                            </div>
-                                            @endif
-                                        </div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h5>@yield('title')</h5>
+                <div class="card-header-right">
 
-                                    </div>
-                                    <div class="col-sm-10 offset-sm-1">
-                                        <div class="form-group row">
-                                            <div class="col-sm-6">
-                                                <button type="submit" class="btn btn-primary btn-round btn-block m-b-0">
-                                                    <i class="icofont icofont-save"></i> Calificar
-                                                </button>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <button type="reset" class="btn btn-outline-primary btn-round btn-block m-b-0">
-                                                    <i class="icofont icofont-refresh"></i> Limpiar
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div><!-- /.col-sm-10 offset-sm-1 -->
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                </div>
+            </div>
+            <div class="card-block">
+                <div class="alert alert-info background-info text-center">
+                    <h5 id="titulo">Categoria {{$ultGrupo->modalidad->kata}}</h5>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Grupo</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for($i=1;$i<=$ultGrupo->grupo;$i++)
+                                <tr>
+                                    <td>Grupo nº {{$i}}</td>
+                                    <td>
+                                        <a href="{{url('/juez/categorias/calificacion/kata/'.$ultGrupo->modalidad_id.'/'.$i)}}">
+                                            <i class="icon feather icon-external-link f-w-600 f-16 m-r-15 text-c-blue" data-toggle="tooltip" data-placement="left" data-original-title="ver grupos de Kata"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endfor
+                        </tbody>
+                    </table>
+
+
 
                 </div>
             </div>
         </div>
     </div>
-    @include('juez.includes.js')
-</body>
-</html>
+</div>
+@endsection
+
+@section('js')
+<script>
+    $(document).ready( function () {
+        $('#zenbukanTable').DataTable({
+            // "paging":    false,
+            //"info":      false,
+            // "searching": false,
+            "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "Todos"]],
+            "language": {
+                "lengthMenu": "Mostrar  _MENU_  registros por página",
+                "zeroRecords": "Ningún registro encontrado",
+                "info": "Página _PAGE_ de _PAGES_",
+                "infoEmpty": "Sin registros",
+                "infoFiltered": "(búsqueda realizada en _MAX_  registros)",
+                "search": "Buscar: ",
+                "paginate": {
+                    "previous": "Anterior",
+                    "next": "Siguiente"
+                }
+            },
+            "order":[]
+        });
+    });
+
+</script>
+@endsection

@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('title')
-Torneos
+Resultados de Cat.
 @endsection
 
 @section('torneos')
@@ -15,6 +15,9 @@ active
 @section('content')
 @php
 use Carbon\Carbon;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
+Use App\Models\Calificacioneskata;
 setlocale(LC_TIME, 'es_ES.UTF-8');
 Carbon::setLocale('es');
 
@@ -37,6 +40,30 @@ function concatenar($numero){
     }
     return $a;
 }
+function ordenar($id)
+{
+    $ordenado=Calificacioneskata::where('posicioneskata_id',$id)->orderBy('puntajeTecnico','asc')->get();
+    return $ordenado;
+}
+function promTec($puntajes)
+{
+    $sum=0;
+    foreach($puntajes as $puntaje)
+    {
+        $sum=$sum+$puntaje->puntajeTecnico;
+    }
+    return $res=$sum*0.7;
+
+}
+function promAth($puntajes)
+{
+    $sum=0;
+    foreach($puntajes as $puntaje)
+    {
+        $sum=$sum+$puntaje->puntajeAtletico;
+    }
+    return $res=$sum*0.3;
+}
 @endphp
 
 <div class="row">
@@ -44,9 +71,7 @@ function concatenar($numero){
         <div class="card">
             <div class="card-header">
                 <h5>@yield('title')</h5>
-                <div class="card-header-right">
-                    <a href="{{ url('/admin/torneos/create') }}" class="btn waves-effect waves-light btn-primary btn-outline-primary btn-sm"> <i class="icofont icofont-ui-add" style="color:#4680ff;"></i> Agregar Torneo</a>
-                </div>
+
             </div>
             <div class="card-block">
 
@@ -55,67 +80,70 @@ function concatenar($numero){
                         <thead>
                             <tr>
                                 <th>Nº</th>
-                                <th>Nombre</th>
-                                <th>Lugar</th>
-                                <th>Fecha del torneo</th>
-                                <th>Inscripciones</th>
-                                <th>Acciones</th>
+                                <th>Nombres</th>
+                                <th>Club</th>
+                                <th>Ronda</th>
+                                <th>Grupo</th>
+                                <th>Nivel</th>
+                                <th>Puntajes</th>
+                                <th>Peso</th>
+                                <th>Res. Parcial</th>
+                                <th>Res. Total</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @if (count($torneos)>0)
-                                @foreach ($torneos as $torneo)
+                            @if (count($posiciones)>0)
+                                @foreach ($posiciones as $posicion)
                                     <tr>
                                         <td>
-                                                Nro. {{ concatenar($torneo->id) }}
+                                            Nro. {{ concatenar($posicion->id) }}
                                         </td>
                                         <td>
                                             <div class="d-inline-block align-middle">
                                                 <div class="d-inline-block">
                                                     <h6>
-                                                        {{ $torneo->nombre }}
+                                                        <img src="{{$posicion->inscripcion->club->pais->bandera}}" alt="" width="25px">  {{$posicion->inscripcion->competidor->nombres }} {{ $posicion->inscripcion->competidor->apellidos }}
+                                                        <p>({{$posicion->inscripcion->club->pais->nombre}}, {{$posicion->inscripcion->club->pais->simbolo}}) </p>
                                                     </h6>
-                                                    <p class="text-muted m-b-0">creado el {{ Carbon::parse($torneo->created_at)->format('d/m/Y h:i a') }}</p>
                                                 </div>
                                             </div>
                                         </td>
-                                        <td>
-                                            {{ $torneo->lugar }}
+                                        <td class="text-center">
+                                            {{$posicion->inscripcion->club->nombre}}
                                         </td>
-                                        <td>
-                                            {{ Carbon::parse($torneo->fecha)->format('d \d\e M. \d\e Y') }}
-                                            <p>{{ Carbon::parse($torneo->hora)->format('h:i a')}}</p>
+                                        <td>{{$posicion->ronda}}</td>
+                                        <td>{{$posicion->grupo}}</td>
+                                        <td >
+                                            <div class="row col-md-12">TEC</div>
+                                            <div class="row col-md-12">ATH</div>
                                         </td>
                                         <td class="text-center">
-                                            @if ($torneo->inscripciones == 1)
-                                                <span class="label label-success" data-toggle="tooltip" data-placement="left" data-original-title="Inscripciones abiertas">Abiertas</span>
-                                            @else
-                                                <span class="label label-danger" data-toggle="tooltip" data-placement="left" data-original-title="Inscripciones cerradas">Cerradas</span>
-                                            @endif
+                                            <div class="row col-md-12">
+                                                @if(count($posicion->puntajes))
+                                                    @foreach(ordenar($posicion->id) as $puntajes)
+                                                        {{$puntajes->puntajeTecnico}}&nbsp;&nbsp;
+                                                    @endforeach
+                                                @endif
+                                            </div>
+                                            <div class="row col-md-12">
+                                                @if(count($posicion->puntajes))
+                                                    @foreach($posicion->puntajes as $puntajes)
+                                                        {{$puntajes->puntajeAtletico}}&nbsp;&nbsp;
+                                                    @endforeach
+                                                @endif
+                                            </div>
                                         </td>
                                         <td class="text-center">
-
-                                            <a href="{{ url('/admin/agregar-modalidades/'.$torneo->id) }}">
-                                                <i class="icon feather icon-tag f-w-600 f-16 m-r-15 text-c-yellow" data-toggle="tooltip" data-placement="left" data-original-title="Ver y/o Agregar modalidades"></i>
-                                            </a>
-                                            @if(count($torneo->modalidades)>0)
-                                            <a href="{{ url('/admin/modalidades/'.$torneo->id) }}">
-                                                <i class="icon feather icon-user-plus f-w-600 f-16 m-r-15 text-c-green" data-toggle="tooltip" data-placement="left" data-original-title="Gestionar jueces"></i>
-                                            </a>
-                                            @endif
-                                            <a href="{{ url('/admin/torneos/'.$torneo->id.'/edit') }}">
-                                                <i class="icon feather icon-edit f-w-600 f-16 m-r-15 text-c-blue" data-toggle="tooltip" data-placement="left" data-original-title="Editar información"></i>
-                                            </a>
-                                            <a href="{{ url('/admin/torneos/kata/'.$torneo->id) }}">
-                                                <i class="icon feather icon-external-link f-w-600 f-16 m-r-15 text-c-blue" data-toggle="tooltip" data-placement="left" data-original-title="Ver modalidades kata"></i>
-                                            </a>
-                                            @if ($torneo->estado==1)
-                                            <a href="#" onclick="eliminarModal({{ $torneo->id }})" data-toggle="modal" data-target="#eliminarModal">
-                                                <i class="feather icon-trash-2 f-w-600 f-16 text-c-red" data-toggle="tooltip" data-placement="left" data-original-title="¿Deja de asistir?"></i>
-                                            </a>
-                                            @endif
-
+                                            <div class="row col-md-12">*0.7</div>
+                                            <div class="row col-md-12">*0.3</div>
                                         </td>
+                                        <td class="text-center">
+                                            <div class="row col-md-12">
+                                                {{promTec($posicion->puntajes)}}
+                                            </div>
+                                            <div class="row col-md-12">{{promAth($posicion->puntajes)}}</div>
+                                        </td>
+                                        <td class="text-center"><strong><h4>{{promTec($posicion->puntajes) + promAth($posicion->puntajes)}}</h4></strong></td>
                                     </tr>
                                 @endforeach
 

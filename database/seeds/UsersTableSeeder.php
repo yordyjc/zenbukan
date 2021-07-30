@@ -120,7 +120,8 @@ class UsersTableSeeder extends Seeder
                 'kata' => 1,
                 'kumite' => 1,
                 'edad' => rand(16,18),
-                'grado' => NULL
+                'grado' => NULL,
+                'club_id' => rand(1,10)
             ]);
 
             $orden=$orden+1;

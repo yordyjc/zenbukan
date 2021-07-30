@@ -10,6 +10,10 @@ use File;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use Response;
+Use App\Models\Modalidad;
+Use App\Models\Calificacioneskata;
+Use App\Models\Posicioneskata;
+
 
 
 class TorneosController extends Controller
@@ -82,6 +86,7 @@ class TorneosController extends Controller
         $torneo->bases = $request->bases;
         $torneo->fecha = $request->fecha;
         $torneo->hora = $request->hora;
+        $torneo->activo=1;
         if($request->precio)
         {
             $torneo->precio = $request->precio;
@@ -178,4 +183,18 @@ class TorneosController extends Controller
         $torneo->save();
         return redirect('admin/torneos');
     }
+    function listarCategoriasKata($id)
+    {
+        $modalidades = Modalidad::where('torneo_id',$id)->orderBy('id','desc')->get();
+        return view('admin.torneos.listar_modalidades_kata')
+            ->with('modalidades',$modalidades);
+    }
+    function verCalificacionesKata($id)
+    {
+        $posiciones=Posicioneskata::where('modalidad_id',$id)->orderBy('grupo','desc')->with('inscripcion.competidor')->with('inscripcion.club')->get();
+        return view('admin.torneos.calificaciones_kata')
+            ->with('posiciones',$posiciones);
+        //return $posiciones;
+    }
 }
+

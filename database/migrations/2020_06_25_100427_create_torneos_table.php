@@ -28,7 +28,7 @@ class CreateTorneosTable extends Migration
             $table->boolean('kumite')->nullable()->default(0);
             $table->boolean('estado')->default(1); // usado para simular la eliminacion del torneo
             $table->boolean('inscripciones')->default(1);
-            $table->boolean('activo')->default(0); // 1 cuando el torneo se esta desarrollando
+            $table->boolean('activo')->default(1); // 1 cuando el torneo se esta desarrollando, por ahora le pondre por fecto 1, pero debe habilitarse desde el panel
             $table->timestamps();
         });
     }

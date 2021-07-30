@@ -18,6 +18,7 @@ class PaisesTableSeeder extends Seeder
             array (
                 'id' => 1,
                 'nombre' => 'Perú',
+                'simbolo' => 'PE',
                 'bandera' => '/resources/img/paises/peru.png',
                 'created_at' => NULL,
                 'updated_at' => NULL,
@@ -26,6 +27,7 @@ class PaisesTableSeeder extends Seeder
             array (
                 'id' => 2,
                 'nombre' => 'Chile',
+                'simbolo' => 'CHI',
                 'bandera' => '/resources/img/paises/chile.png',
                 'created_at' => NULL,
                 'updated_at' => NULL,
@@ -34,6 +36,7 @@ class PaisesTableSeeder extends Seeder
             array (
                 'id' => 3,
                 'nombre' => 'Argentina',
+                'simbolo' => 'ARG',
                 'bandera' => '/resources/img/paises/argentina.png',
                 'created_at' => NULL,
                 'updated_at' => NULL,
@@ -42,6 +45,7 @@ class PaisesTableSeeder extends Seeder
             array (
                 'id' => 4,
                 'nombre' => 'Paraguay',
+                'simbolo' => 'PAR',
                 'bandera' => '/resources/img/paises/paraguay.png',
                 'created_at' => NULL,
                 'updated_at' => NULL,
@@ -50,6 +54,7 @@ class PaisesTableSeeder extends Seeder
             array (
                 'id' => 5,
                 'nombre' => 'Uruguay',
+                'simbolo' => 'URU',
                 'bandera' => '/resources/img/paises/uruguay.png',
                 'created_at' => NULL,
                 'updated_at' => NULL,
@@ -58,6 +63,7 @@ class PaisesTableSeeder extends Seeder
             array (
                 'id' => 6,
                 'nombre' => 'Brasil',
+                'simbolo' => 'BRA',
                 'bandera' => '/resources/img/paises/brasil.png',
                 'created_at' => NULL,
                 'updated_at' => NULL,
@@ -66,6 +72,7 @@ class PaisesTableSeeder extends Seeder
             array (
                 'id' => 7,
                 'nombre' => 'Colombia',
+                'simbolo' => 'COL',
                 'bandera' => '/resources/img/paises/colombia.png',
                 'created_at' => NULL,
                 'updated_at' => NULL,
@@ -74,6 +81,7 @@ class PaisesTableSeeder extends Seeder
             array (
                 'id' => 8,
                 'nombre' => 'Ecuador',
+                'simbolo' => 'ECU',
                 'bandera' => '/resources/img/paises/ecuador.png',
                 'created_at' => NULL,
                 'updated_at' => NULL,
@@ -81,7 +89,8 @@ class PaisesTableSeeder extends Seeder
             8 =>
             array (
                 'id' => 9,
-                'nombre' => 'EEUU',
+                'nombre' => 'Estados Unidos',
+                'simbolo' => 'EEUU',
                 'bandera' => '/resources/img/paises/eeuu.png',
                 'created_at' => NULL,
                 'updated_at' => NULL,
