@@ -53,7 +53,7 @@ class JuecesController extends Controller
                 CALIFICACIONES
      *************************************/
 
-    public function frmCalificarKata($id,$grupo)
+    public function frmCalificarKata($id)
     {
         /*
         $posicionkata = Posicioneskata::find($id);
@@ -67,9 +67,11 @@ class JuecesController extends Controller
         //$ultimaRonda=DB::table('posicioneskata')->select('ronda')->distinct()->get();
         //$ultimo=$ultimaRonda;
 
-        $posicionkata = Posicioneskata::where('modalidad_id', $modalidad_id)->where('ronda',$ultimaRonda->ronda)->where('grupo',$grupo)->orderBy('id','asc')->with('inscripcion.competidor')->with('inscripcion.club')->first();
+        $posicionkata = Posicioneskata::where('modalidad_id', $modalidad_id)->where('ronda',$ultimaRonda->ronda)->where('grupo',1)->orderBy('id','asc')->with('inscripcion.competidor')->with('inscripcion.club')->first();
+        $ultGrupo=Posicioneskata::where('modalidad_id', $modalidad_id)->where('ronda',$ultimaRonda->ronda)->orderBy('grupo','desc')->first();
         return view('juez.combates.pantalla_calificacion_kata')
-            ->with('posicionkata',$posicionkata);
+            ->with('posicionkata',$posicionkata)
+            ->with('ultGrupo', $ultGrupo->grupo);
     }
 
     public function calificaKata(Request $request)
@@ -97,10 +99,21 @@ class JuecesController extends Controller
 
 
         $posicionkata = Posicioneskata::where('modalidad_id', $request->modalidad)->where('ronda',$request->ronda)->where('grupo',$request->grupo)->where('orden',$request->orden+1)->orderBy('id','asc')->with('inscripcion.competidor')->with('inscripcion.club')->first();
-
+        if($posicionkata =="")
+        {
+            $request->grupo=$request->grupo+1;
+            if($request->grupo>$request->ultGrupo)
+            {
+                $posicionkata = Posicioneskata::where('modalidad_id', $request->modalidad)->where('ronda',$request->ronda)->where('grupo',1)->where('orden',1)->orderBy('id','asc')->with('inscripcion.competidor')->with('inscripcion.club')->first();
+            }
+            else{
+                $posicionkata = Posicioneskata::where('modalidad_id', $request->modalidad)->where('ronda',$request->ronda)->where('grupo',$request->grupo)->where('orden',1)->orderBy('id','asc')->with('inscripcion.competidor')->with('inscripcion.club')->first();
+            }
+        }
 
         return view('juez.combates.pantalla_calificacion_kata')
-           ->with('posicionkata',$posicionkata);
+           ->with('posicionkata',$posicionkata)
+           ->with('ultGrupo',$request->ultGrupo);
         //return redirect('/juez/categorias/kata/'.$posicionkata->modalidad->id);
     }
 

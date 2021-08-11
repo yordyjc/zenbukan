@@ -142,7 +142,8 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/categorias','Juez\JuecesController@index');
             Route::get('/categorias/{id}','Juez\JuecesController@Combates');
             Route::get('/categorias/kata/{id}','Juez\JuecesController@frmKata');//formulario donde sale los grupos de esa categoria
-            Route::get('/categorias/calificacion/kata/{id}/{grupo}','Juez\JuecesController@frmCalificarKata');
+            //Route::get('/categorias/calificacion/kata/{id}/{grupo}','Juez\JuecesController@frmCalificarKata');
+            Route::get('/categorias/calificacion/kata/{id}','Juez\JuecesController@frmCalificarKata');
             Route::post('/categorias/calificacion/kata','Juez\JuecesController@calificaKata');//pantalla para calificar kata
             //Route::get('/categorias/kumite/{id}','Juez\JuecesController@calificarKumite');
         });

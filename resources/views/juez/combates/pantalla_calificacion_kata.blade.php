@@ -52,10 +52,11 @@
                     </div>
                     <div class="card-block offset-md-1">
                     <form action="{{url('/juez/categorias/calificacion/kata')}}" method="post" enctype="multipart/form-data">
-                    <input type="hidden" name="orden" value="{{$posicionkata->orden}}">
+                    <input type="text" name="orden" value="{{$posicionkata->orden}}">
                     <input type="hidden" name="modalidad" value="{{$posicionkata->modalidad_id}}">
-                    <input type="hidden" name="ronda" value="{{$posicionkata->ronda}}">
-                    <input type="hidden" name="grupo" value="{{$posicionkata->grupo}}">
+                    <input type="text" name="ronda" value="{{$posicionkata->ronda}}">
+                    <input type="text" name="grupo" value="{{$posicionkata->grupo}}">
+                    <input type="text" name="ultGrupo" value="{{$ultGrupo}}">
                         <div class="row">
                             <div class="col-md-5">
                                 <div class="text-center"><h4>Nivel Técnico</h4></div>
