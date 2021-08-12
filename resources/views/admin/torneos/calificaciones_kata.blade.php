@@ -40,9 +40,9 @@ function concatenar($numero){
     }
     return $a;
 }
-function ordenar($id)
+function ordenar($id, $tipo)
 {
-    $ordenado=Calificacioneskata::where('posicioneskata_id',$id)->orderBy('puntajeTecnico','asc')->get();
+    $ordenado=Calificacioneskata::where('posicioneskata_id',$id)->orderBy($tipo,'asc')->get();
     return $ordenado;
 }
 function promTec($puntajes)
@@ -55,14 +55,22 @@ function promTec($puntajes)
     return $res=$sum*0.7;
 
 }
-function promAth($puntajes)
+function promPar($puntajes, $nivel)
 {
     $sum=0;
-    foreach($puntajes as $puntaje)
+    $nPuntajes=count($puntajes);
+    for($i=2; $i < $nPuntajes-2; $i++)
     {
-        $sum=$sum+$puntaje->puntajeAtletico;
+            $sum=$sum+$puntajes[$i]->$nivel;
     }
-    return $res=$sum*0.3;
+    if($nivel =='puntajeTecnico')
+    {
+        $factor=0.7;
+    }
+    else{
+        $factor=0.3;
+    }
+    return $res=$sum*$factor;
 }
 @endphp
 
@@ -120,14 +128,15 @@ function promAth($puntajes)
                                         <td class="text-center">
                                             <div class="row col-md-12">
                                                 @if(count($posicion->puntajes))
-                                                    @foreach(ordenar($posicion->id) as $puntajes)
+                                                    @foreach(ordenar($posicion->id, 'puntajeTecnico') as $puntajes)
+
                                                         {{$puntajes->puntajeTecnico}}&nbsp;&nbsp;
                                                     @endforeach
                                                 @endif
                                             </div>
                                             <div class="row col-md-12">
                                                 @if(count($posicion->puntajes))
-                                                    @foreach($posicion->puntajes as $puntajes)
+                                                    @foreach(ordenar($posicion->id, 'puntajeAtletico') as $puntajes)
                                                         {{$puntajes->puntajeAtletico}}&nbsp;&nbsp;
                                                     @endforeach
                                                 @endif
@@ -139,11 +148,11 @@ function promAth($puntajes)
                                         </td>
                                         <td class="text-center">
                                             <div class="row col-md-12">
-                                                {{promTec($posicion->puntajes)}}
+                                                {{promPar(ordenar($posicion->id, 'puntajeTecnico'),'puntajeTecnico')}}
                                             </div>
-                                            <div class="row col-md-12">{{promAth($posicion->puntajes)}}</div>
+                                            <div class="row col-md-12">{{promPar(ordenar($posicion->id, 'puntajeAtletico'),'puntajeAtletico')}}</div>
                                         </td>
-                                        <td class="text-center"><strong><h4>{{promTec($posicion->puntajes) + promAth($posicion->puntajes)}}</h4></strong></td>
+                                        <td class="text-center"><strong><h4>{{promPar(ordenar($posicion->id, 'puntajeTecnico'),'puntajeTecnico')+promPar(ordenar($posicion->id, 'puntajeAtletico'),'puntajeAtletico')}}</h4></strong></td>
                                     </tr>
                                 @endforeach
 
