@@ -81,6 +81,7 @@ Route::middleware(['auth'])->group(function () {
             Route::resource('torneos','Admin\TorneosController');
             Route::get('torneos/kata/{id}','Admin\TorneosController@listarCategoriasKata');
             Route::get('torneos/kata/puntajes/{id}','Admin\TorneosController@verCalificacionesKata');
+            Route::get('torneos/kata/puntajes/comp/{id}','Admin\TorneosController@verPantCalKata');
 
             Route::resource('clubes','Admin\ClubesController');
 

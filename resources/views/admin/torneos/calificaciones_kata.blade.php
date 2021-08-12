@@ -97,6 +97,7 @@ function promPar($puntajes, $nivel)
                                 <th>Peso</th>
                                 <th>Res. Parcial</th>
                                 <th>Res. Total</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -153,6 +154,11 @@ function promPar($puntajes, $nivel)
                                             <div class="row col-md-12">{{promPar(ordenar($posicion->id, 'puntajeAtletico'),'puntajeAtletico')}}</div>
                                         </td>
                                         <td class="text-center"><strong><h4>{{promPar(ordenar($posicion->id, 'puntajeTecnico'),'puntajeTecnico')+promPar(ordenar($posicion->id, 'puntajeAtletico'),'puntajeAtletico')}}</h4></strong></td>
+                                        <td>
+                                            <a href="{{ url('/admin/torneos/kata/puntajes/comp/'.$posicion->id) }}">
+                                                <i class="icon feather icon-external-link f-w-600 f-16 m-r-15 text-c-blue" data-toggle="tooltip" data-placement="left" data-original-title="Ver pantalla"></i>
+                                            </a>
+                                        </td>
                                     </tr>
                                 @endforeach
 

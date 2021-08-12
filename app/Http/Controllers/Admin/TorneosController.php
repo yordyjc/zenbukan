@@ -196,5 +196,12 @@ class TorneosController extends Controller
             ->with('posiciones',$posiciones);
         //return $posiciones;
     }
+    function verPantCalKata($id)
+    {
+        $posicion=Posicioneskata::find($id);
+
+        return view('admin.torneos.pantalla_calificacion_kata')
+            ->with('posicionkata',$posicion);
+    }
 }
 
