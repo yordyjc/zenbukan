@@ -203,5 +203,58 @@ class TorneosController extends Controller
         return view('admin.torneos.pantalla_calificacion_kata')
             ->with('posicionkata',$posicion);
     }
+    function verRondasKata($id)
+    {
+        $modalidad=$id;
+        $ultimaRonda=Posicioneskata::where('modalidad_id', $id)->select('ronda')->orderBy('ronda','desc')->first();
+        if($ultimaRonda==""){
+            $ultimaRonda=0;
+        }
+
+        else{
+            $ultimaRonda=$ultimaRonda->ronda;
+        }
+        return view('admin.torneos.rondas')
+            ->with('ultimaRonda', $ultimaRonda)
+            ->with('modalidad', $modalidad);
+    }
+    function sigRondaKata($id, $ronda)
+    {
+        $posiciones=Posicioneskata::where('modalidad_id',$id)->where('ronda',$ronda)->get();
+
+        foreach($posiciones as $posicion)
+        {
+            $savePosicion=Posicioneskata::find($posicion->id);
+            $savePosicion->puntajeath = $this->promPar($this->ordenar($posicion->id,'puntajeAtletico'),'puntajeAtletico');
+            $savePosicion->puntajetec = $this->promPar($this->ordenar($posicion->id,'puntajeTecnico'),'puntajeTecnico');
+            $savePosicion->puntajefinal=$savePosicion->puntajeath + $savePosicion->puntajetec;
+            $savePosicion->save();
+        }
+
+        return redirect('/admin/torneos/kata/rondas/'.$id);
+
+    }
+    function ordenar($id, $tipo)
+    {
+        $ordenado=Calificacioneskata::where('posicioneskata_id',$id)->orderBy($tipo,'asc')->get();
+        return $ordenado;
+    }
+    function promPar($puntajes, $nivel)
+    {
+        $sum=0;
+        $nPuntajes=count($puntajes);
+        for($i=2; $i < $nPuntajes-2; $i++)
+        {
+                $sum=$sum+$puntajes[$i]->$nivel;
+        }
+        if($nivel =='puntajeTecnico')
+        {
+            $factor=0.7;
+        }
+        else{
+            $factor=0.3;
+        }
+        return $res=$sum*$factor;
+    }
 }
 

@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('title')
-Modalidaddes de {{$modalidades[0]->torneo->nombre}}
+Rondas de la categoria
 @endsection
 
 @section('torneos')
@@ -52,37 +52,25 @@ function concatenar($numero){
                     <table id="fitnessTable" class="table table-striped table-hover" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Nº</th>
-                                <th>Modalidad</th>
+                                <th>Ronda</th>
                                 <th>Accciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @if (count($modalidades)>0)
-                                @foreach ($modalidades as $modalidad)
+                            @if ($ultimaRonda>0)
+                                @for ($i=1; $i<=$ultimaRonda; $i++)
                                     <tr>
                                         <td>
-                                                Nro. {{ concatenar($modalidad->id) }}
+                                                Ronda Nº {{$i}}
                                         </td>
-                                        <td>
-                                            <div class="d-inline-block align-middle">
-                                                <div class="d-inline-block">
-                                                    <h6>
-                                                        {{ $modalidad->kata }}
-                                                    </h6>
-                                                </div>
-                                            </div>
-                                        </td>
+
                                         <td class="text-center">
-                                            <a href="{{ url('/admin/torneos/kata/puntajes/'.$modalidad->id) }}">
-                                                <i class="icon feather icon-external-link f-w-600 f-16 m-r-15 text-c-blue" data-toggle="tooltip" data-placement="left" data-original-title="Ver puntajes"></i>
-                                            </a>
-                                            <a href="{{ url('/admin/torneos/kata/rondas/'.$modalidad->id) }}">
-                                                <i class="icon feather icon-external-link f-w-600 f-16 m-r-15 text-c-green" data-toggle="tooltip" data-placement="left" data-original-title="Gestionar rondas"></i>
+                                            <a href="{{ url('/admin/torneos/kata/sigron/'.$modalidad.'/'.$i) }}">
+                                                <i class="icon feather icon-external-link f-w-600 f-16 m-r-15 text-c-blue" data-toggle="tooltip" data-placement="left" data-original-title="Pasar a la siguiente ronda"></i>
                                             </a>
                                         </td>
                                     </tr>
-                                @endforeach
+                                @endfor
 
                                 <div class="modal fade" id="eliminarModal" tabindex="-1" role="dialog">
                                     <div class="modal-dialog" role="document">

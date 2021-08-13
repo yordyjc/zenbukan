@@ -21,6 +21,9 @@ class CreatePosicioneskataTable extends Migration
             $table->integer('grupo');
             $table->integer('ronda');
             $table->boolean('flag')->nullable();
+            $table->float('puntajeath')->nullable();
+            $table->float('puntajetec')->nullable();
+            $table->float('puntajefinal')->nullable();
             $table->timestamps();
         });
         Schema::table('posicioneskata', function($table){
