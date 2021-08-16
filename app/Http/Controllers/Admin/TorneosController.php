@@ -231,7 +231,101 @@ class TorneosController extends Controller
             $savePosicion->save();
         }
 
+        //Obtener los 4 primeros de cada grupo
+        $ultGrupo=Posicioneskata::where('modalidad_id', $id)->where('ronda',$ronda)->orderBy('grupo','desc')->first();
+        $ultGrupo=$ultGrupo->grupo;
+        switch($ultGrupo)
+        {
+            case  4:
+                $topgrupo1=Posicioneskata::where('modalidad_id', $id)->where('ronda',$ronda)->where('grupo',1)->orderBy('puntajefinal','desc')->take(4)->get();
+                $topgrupo2=Posicioneskata::where('modalidad_id', $id)->where('ronda',$ronda)->where('grupo',2)->orderBy('puntajefinal','desc')->take(4)->get();
+                $topgrupo3=Posicioneskata::where('modalidad_id', $id)->where('ronda',$ronda)->where('grupo',3)->orderBy('puntajefinal','desc')->take(4)->get();
+                $topgrupo4=Posicioneskata::where('modalidad_id', $id)->where('ronda',$ronda)->where('grupo',4)->orderBy('puntajefinal','desc')->take(4)->get();
+
+                $topgrupos= $topgrupo1->merge($topgrupo2);
+                $topgrupos=$topgrupos->merge($topgrupo3);
+                $topgrupos=$topgrupos->merge($topgrupo4);
+                //Registramos los competidores a la siguiete ronda
+                $orden=1;
+                foreach($topgrupos as $top)
+                {
+                    if($top->grupo<=2){
+                        $grupo=1;
+                    }
+                    else{
+                        $grupo=2;
+                    }
+                    $savePosicion = New Posicioneskata();
+                    $savePosicion->inscripcion_id=$top->inscripcion_id;
+                    $savePosicion->modalidad_id=$top->modalidad_id;
+                    $savePosicion->grupo=$grupo;
+                    $savePosicion->ronda=$ronda+1;
+                    $savePosicion->orden=$orden++;
+                    $savePosicion->save();
+                    if($orden==9)
+                        $orden=1;
+                }
+            case 2:
+                $topgrupo1=Posicioneskata::where('modalidad_id', $id)->where('ronda',$ronda)->where('grupo',1)->orderBy('puntajefinal','desc')->take(3)->get();
+                $topgrupo2=Posicioneskata::where('modalidad_id', $id)->where('ronda',$ronda)->where('grupo',2)->orderBy('puntajefinal','desc')->take(3)->get();
+                //pasamos a la final
+                $final1=New Posicioneskata();
+                $final1->inscripcion_id=$topgrupo1[0]->inscripcion_id;
+                $final1->modalidad_id=$topgrupo1[0]->modalidad_id;
+                $final1->grupo=1;
+                $final1->ronda=$ronda+1;
+                $final1->orden=1;
+                $final1->final=1;
+                $final1->save();
+
+                $final2=New Posicioneskata();
+                $final2->inscripcion_id=$topgrupo2[0]->inscripcion_id;
+                $final2->modalidad_id=$topgrupo2[0]->modalidad_id;
+                $final2->grupo=1;
+                $final2->ronda=$ronda+1;
+                $final2->orden=2;
+                $final2->final=1;
+                $final2->save();
+                //Los que pasan a la semifinal 1
+                $primsemifinal1=New Posicioneskata();
+                $primsemifinal1->inscripcion_id=$topgrupo1[1]->inscripcion_id;
+                $primsemifinal1->modalidad_id=$topgrupo1[1]->modalidad_id;
+                $primsemifinal1->grupo=1;
+                $primsemifinal1->ronda=$ronda+1;
+                $primsemifinal1->orden=1;
+                $primsemifinal1->final=2;
+                $primsemifinal1->save();
+
+                $primsemifinal2=New Posicioneskata();
+                $primsemifinal2->inscripcion_id=$topgrupo2[2]->inscripcion_id;
+                $primsemifinal2->modalidad_id=$topgrupo2[2]->modalidad_id;
+                $primsemifinal2->grupo=1;
+                $primsemifinal2->ronda=$ronda+1;
+                $primsemifinal2->orden=2;
+                $primsemifinal2->final=2;
+                $primsemifinal2->save();
+
+                //Los que pasan a la semifinal2
+                $primsemifinal1=New Posicioneskata();
+                $primsemifinal1->inscripcion_id=$topgrupo2[1]->inscripcion_id;
+                $primsemifinal1->modalidad_id=$topgrupo2[1]->modalidad_id;
+                $primsemifinal1->grupo=1;
+                $primsemifinal1->ronda=$ronda+1;
+                $primsemifinal1->orden=1;
+                $primsemifinal1->final=3;
+                $primsemifinal1->save();
+
+                $primsemifinal2=New Posicioneskata();
+                $primsemifinal2->inscripcion_id=$topgrupo1[2]->inscripcion_id;
+                $primsemifinal2->modalidad_id=$topgrupo1[2]->modalidad_id;
+                $primsemifinal2->grupo=1;
+                $primsemifinal2->ronda=$ronda+1;
+                $primsemifinal2->orden=2;
+                $primsemifinal2->final=3;
+                $primsemifinal2->save();
+        }
         return redirect('/admin/torneos/kata/rondas/'.$id);
+        //return $ult;
 
     }
     function ordenar($id, $tipo)
@@ -255,6 +349,11 @@ class TorneosController extends Controller
             $factor=0.3;
         }
         return $res=$sum*$factor;
+    }
+    function pruebas()
+    {
+        for($i=1;$i<=8;$i++){ $cal = New Calificacioneskata(); $cal->posicioneskata_id=41; $cal->juez_id=13; $cal->puntajeTecnico=rand(5,10); $cal->puntajeAtletico=rand(5,10); $cal->save();}
+        return 'holi';
     }
 }
 

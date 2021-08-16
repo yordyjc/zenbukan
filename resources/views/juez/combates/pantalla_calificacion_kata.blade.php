@@ -25,38 +25,58 @@
                 <div class="card" style="background:#000; color:#fff">
                     <div class="card-header offset-md-1">
                         <div class="row">
-                            <div col-lg-3 col-md-3 col-sm-3>
+                            <div col-lg-2 col-md-2 col-sm-2>
                                 <div class="card-block"><h3>{{$posicionkata->inscripcion->modalidad->kata}}</h3></div>
 
                             </div>
-                            <div col-lg-3 col-md-3 col-sm-3>
+                            <div col-lg-2 col-md-2 col-sm-2>
                                 <div class="card-block">
                                     <img src="{{$posicionkata->inscripcion->club->pais->bandera}}" width="40px"/>
                                 </div>
 
                             </div>
-                            <div col-lg-3 col-md-3 col-sm-3>
+                            <div col-lg-2 col-md-2 col-sm-2>
                                 <div class="card-block">
                                     <h3>{{$posicionkata->inscripcion->club->pais->simbolo}}</h3>
                                 </div>
 
                             </div>
-                            <div col-lg-3 col-md-3 col-sm-3>
+                            <div col-lg-4 col-md-4 col-sm-4>
                                 <div class="card-block">
                                     <h3>{{$posicionkata->inscripcion->competidor->apellidos}}, {{$posicionkata->inscripcion->competidor->nombres}}</h3>
                                 </div>
 
+                            </div>
+                            <div col-lg-2 col-md-2 col-sm-2>
+                                <div class="card-block">
+                                    @if($posicionkata->final != null)
+                                    @switch($posicionkata->final)
+                                        @case(1)
+                                            <h3>Final</h3>
+                                            @break
+                                        @case(2)
+                                            <h3>Semifinal 1</h3>
+                                            @break
+                                        @case(3)
+                                            <h3>Semifinal 2</h3>
+                                            @break
+                                    @endswitch
+
+                                    @else
+                                    <h3>Ronda {{$posicionkata->ronda}}</h3>
+                                    @endif
+                                </div>
                             </div>
                         </div>
 
                     </div>
                     <div class="card-block offset-md-1">
                     <form action="{{url('/juez/categorias/calificacion/kata')}}" method="post" enctype="multipart/form-data">
-                    <input type="text" name="orden" value="{{$posicionkata->orden}}">
+                    <input type="hidden" name="orden" value="{{$posicionkata->orden}}">
                     <input type="hidden" name="modalidad" value="{{$posicionkata->modalidad_id}}">
-                    <input type="text" name="ronda" value="{{$posicionkata->ronda}}">
-                    <input type="text" name="grupo" value="{{$posicionkata->grupo}}">
-                    <input type="text" name="ultGrupo" value="{{$ultGrupo}}">
+                    <input type="hidden" name="ronda" value="{{$posicionkata->ronda}}">
+                    <input type="hidden" name="grupo" value="{{$posicionkata->grupo}}">
+                    <input type="hidden" name="ultGrupo" value="{{$ultGrupo}}">
                         <div class="row">
                             <div class="col-md-5">
                                 <div class="text-center"><h4>Nivel Técnico</h4></div>

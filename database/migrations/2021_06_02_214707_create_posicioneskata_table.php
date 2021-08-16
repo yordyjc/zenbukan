@@ -24,6 +24,7 @@ class CreatePosicioneskataTable extends Migration
             $table->float('puntajeath')->nullable();
             $table->float('puntajetec')->nullable();
             $table->float('puntajefinal')->nullable();
+            $table->integer('final')->nullable();
             $table->timestamps();
         });
         Schema::table('posicioneskata', function($table){
