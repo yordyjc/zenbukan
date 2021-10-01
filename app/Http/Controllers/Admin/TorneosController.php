@@ -13,6 +13,7 @@ use Response;
 Use App\Models\Modalidad;
 Use App\Models\Calificacioneskata;
 Use App\Models\Posicioneskata;
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -206,17 +207,21 @@ class TorneosController extends Controller
     function verRondasKata($id)
     {
         $modalidad=$id;
-        $ultimaRonda=Posicioneskata::where('modalidad_id', $id)->select('ronda')->orderBy('ronda','desc')->first();
+        $ultimaRonda=Posicioneskata::where('modalidad_id', $id)->orderBy('ronda','desc')->first();
         if($ultimaRonda==""){
             $ultimaRonda=0;
+            $labelFinal="";
         }
 
         else{
+            $labelFinal=$ultimaRonda->final;
             $ultimaRonda=$ultimaRonda->ronda;
         }
         return view('admin.torneos.rondas')
             ->with('ultimaRonda', $ultimaRonda)
-            ->with('modalidad', $modalidad);
+            ->with('modalidad', $modalidad)
+            ->with('labelFinal', $labelFinal);
+
     }
     function sigRondaKata($id, $ronda)
     {
@@ -268,24 +273,7 @@ class TorneosController extends Controller
             case 2:
                 $topgrupo1=Posicioneskata::where('modalidad_id', $id)->where('ronda',$ronda)->where('grupo',1)->orderBy('puntajefinal','desc')->take(3)->get();
                 $topgrupo2=Posicioneskata::where('modalidad_id', $id)->where('ronda',$ronda)->where('grupo',2)->orderBy('puntajefinal','desc')->take(3)->get();
-                //pasamos a la final
-                $final1=New Posicioneskata();
-                $final1->inscripcion_id=$topgrupo1[0]->inscripcion_id;
-                $final1->modalidad_id=$topgrupo1[0]->modalidad_id;
-                $final1->grupo=1;
-                $final1->ronda=$ronda+1;
-                $final1->orden=1;
-                $final1->final=1;
-                $final1->save();
 
-                $final2=New Posicioneskata();
-                $final2->inscripcion_id=$topgrupo2[0]->inscripcion_id;
-                $final2->modalidad_id=$topgrupo2[0]->modalidad_id;
-                $final2->grupo=1;
-                $final2->ronda=$ronda+1;
-                $final2->orden=2;
-                $final2->final=1;
-                $final2->save();
                 //Los que pasan a la semifinal 1
                 $primsemifinal1=New Posicioneskata();
                 $primsemifinal1->inscripcion_id=$topgrupo1[1]->inscripcion_id;
@@ -311,7 +299,7 @@ class TorneosController extends Controller
                 $primsemifinal1->modalidad_id=$topgrupo2[1]->modalidad_id;
                 $primsemifinal1->grupo=1;
                 $primsemifinal1->ronda=$ronda+1;
-                $primsemifinal1->orden=1;
+                $primsemifinal1->orden=3;
                 $primsemifinal1->final=3;
                 $primsemifinal1->save();
 
@@ -320,10 +308,32 @@ class TorneosController extends Controller
                 $primsemifinal2->modalidad_id=$topgrupo1[2]->modalidad_id;
                 $primsemifinal2->grupo=1;
                 $primsemifinal2->ronda=$ronda+1;
-                $primsemifinal2->orden=2;
+                $primsemifinal2->orden=4;
                 $primsemifinal2->final=3;
                 $primsemifinal2->save();
+
+                //pasamos a la final
+                $final1=New Posicioneskata();
+                $final1->inscripcion_id=$topgrupo1[0]->inscripcion_id;
+                $final1->modalidad_id=$topgrupo1[0]->modalidad_id;
+                $final1->grupo=1;
+                $final1->ronda=$ronda+1;
+                $final1->orden=5;
+                $final1->final=1;
+                $final1->save();
+
+                $final2=New Posicioneskata();
+                $final2->inscripcion_id=$topgrupo2[0]->inscripcion_id;
+                $final2->modalidad_id=$topgrupo2[0]->modalidad_id;
+                $final2->grupo=1;
+                $final2->ronda=$ronda+1;
+                $final2->orden=6;
+                $final2->final=1;
+                $final2->save();
+            case 1:
+                return "Saludos";
         }
+
         return redirect('/admin/torneos/kata/rondas/'.$id);
         //return $ult;
 
@@ -350,6 +360,38 @@ class TorneosController extends Controller
         }
         return $res=$sum*$factor;
     }
+    function finalKata($id)
+    {
+        $ultimaRonda=Posicioneskata::where('modalidad_id', $id)->orderBy('ronda','desc')->first();
+        if($ultimaRonda->final==NULL)
+        {
+            $posiciones=Posicioneskata::where('modalidad_id',$id)->where('ronda',$ultimaRonda->ronda)->get();
+            foreach($posiciones as $posicion)
+            {
+                $savePosicion=Posicioneskata::find($posicion->id);
+                $savePosicion->puntajeath = $this->promPar($this->ordenar($posicion->id,'puntajeAtletico'),'puntajeAtletico');
+                $savePosicion->puntajetec = $this->promPar($this->ordenar($posicion->id,'puntajeTecnico'),'puntajeTecnico');
+                $savePosicion->puntajefinal=$savePosicion->puntajeath + $savePosicion->puntajetec;
+                $savePosicion->save();
+            }
+        }
+
+        $posiciones=Posicioneskata::where('modalidad_id',$id)->where('ronda', $ultimaRonda->ronda)->with('inscripcion.competidor')->with('inscripcion.club')->get();
+        $posiciones = $posiciones->groupBy('final');
+        //return view('admin.torneos.resultados_finales')->with('posiciones',$posiciones);
+        //$posi = DB::table('posicioneskata')->where('modalidad_id', $id)->where('ronda', $ultimaRonda->ronda)->where('final',1)->with('inscripcion')->get();
+        $campeones = collect([]);
+        foreach($posiciones as $posicion=>$key)
+        {
+                $res=$key->max('puntajefinal');
+                $final1=$key->where('puntajefinal', $res);
+                $campeones = $campeones->merge($final1);
+
+        }
+
+        return view('admin.torneos.resultados_finales')->with('campeones',$campeones);
+    }
+
     function pruebas()
     {
         for($i=1;$i<=8;$i++){ $cal = New Calificacioneskata(); $cal->posicioneskata_id=41; $cal->juez_id=13; $cal->puntajeTecnico=rand(5,10); $cal->puntajeAtletico=rand(5,10); $cal->save();}

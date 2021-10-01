@@ -30,6 +30,24 @@ active
                     <input type="hidden" name="torneo" value="{{$torneo->id}}">
                     <input type="hidden" name="modalidad" id="modalidad">
                     <div class="col-sm-10 offset-sm-1">
+                        <div class="form-group {{ $errors->has('dni') ? ' has-danger' : '' }} row">
+                            <label class="col-md-2 col-form-label" for="dni">
+                                DNI
+                            </label>
+                            <div class="col-md-4">
+                                {!!Form::select('dni',$dni, old('dni'), ["class"=>"form-control input-sm form-control-round fill select2", 'placeholder'=>'--Seleccione dni--',"id"=>"dni"])!!}
+                                @if ($errors->has('dni'))
+                                <div class="col-form-label">
+                                    {{ $errors->first('dni') }}
+                                </div>
+                                @endif
+                            </div>
+                            <div class="col-md-2">
+                                <a href="" class="btn waves-effect waves-light btn-primary btn-outline-primary btn-sm">
+                                    <i class="icofont icofont-ui-add" style="color:#4680ff;"></i> Nuevo
+                                </a>
+                            </div>
+                        </div>
 
                         <div class="form-group {{ $errors->has('nombre') ? ' has-danger' : '' }} row">
                             <label class="col-md-2 col-form-label" for="nombre">

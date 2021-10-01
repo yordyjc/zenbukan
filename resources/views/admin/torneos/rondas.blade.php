@@ -61,13 +61,24 @@ function concatenar($numero){
                                 @for ($i=1; $i<=$ultimaRonda; $i++)
                                     <tr>
                                         <td>
+                                            @if($labelFinal != "" && $i==$ultimaRonda)
+                                            Final y Semifinal
+                                            @else
                                                 Ronda Nº {{$i}}
+                                            @endif
                                         </td>
 
                                         <td class="text-center">
+                                            @if($i==$ultimaRonda && $labelFinal == "")
                                             <a href="{{ url('/admin/torneos/kata/sigron/'.$modalidad.'/'.$i) }}">
                                                 <i class="icon feather icon-external-link f-w-600 f-16 m-r-15 text-c-blue" data-toggle="tooltip" data-placement="left" data-original-title="Pasar a la siguiente ronda"></i>
                                             </a>
+                                            @endif
+                                            @if($i==$ultimaRonda && $labelFinal != "")
+                                            <a href="{{ url('/admin/torneos/kata/final/'.$modalidad) }}">
+                                                <i class="icon feather icon-external-link f-w-600 f-16 m-r-15 text-c-green" data-toggle="tooltip" data-placement="left" data-original-title="Ver Resultados"></i>
+                                            </a>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endfor

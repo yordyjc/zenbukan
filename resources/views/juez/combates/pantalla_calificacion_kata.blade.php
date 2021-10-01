@@ -47,6 +47,7 @@
                                 </div>
 
                             </div>
+                            <div class="offset-md-4"></div>
                             <div col-lg-2 col-md-2 col-sm-2>
                                 <div class="card-block">
                                     @if($posicionkata->final != null)
@@ -72,10 +73,11 @@
                     </div>
                     <div class="card-block offset-md-1">
                     <form action="{{url('/juez/categorias/calificacion/kata')}}" method="post" enctype="multipart/form-data">
-                    <input type="hidden" name="orden" value="{{$posicionkata->orden}}">
+                    <input type="text" name="orden" value="{{$posicionkata->orden}}">
                     <input type="hidden" name="modalidad" value="{{$posicionkata->modalidad_id}}">
-                    <input type="hidden" name="ronda" value="{{$posicionkata->ronda}}">
-                    <input type="hidden" name="grupo" value="{{$posicionkata->grupo}}">
+                    <input type="text" name="ronda" value="{{$posicionkata->ronda}}">
+                    <input type="text" name="grupo" value="{{$posicionkata->grupo}}">
+                    <input type="text" name="final" value="{{$posicionkata->final}}">
                     <input type="hidden" name="ultGrupo" value="{{$ultGrupo}}">
                         <div class="row">
                             <div class="col-md-5">

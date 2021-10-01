@@ -37,7 +37,7 @@
 
                         <div class="row">
                             <div class="col-md-4" style="background:firebrick;">
-                                holas
+                                <div style="margin-top:15%;"><center style="font-size:90px;">{{$posicionkata->puntajefinal}}</center></div>
                             </div>
                             <div class="col-md-8">
                                 <div class="row">
