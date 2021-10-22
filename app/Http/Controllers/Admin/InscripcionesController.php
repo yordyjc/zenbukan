@@ -64,10 +64,10 @@ class InscripcionesController extends Controller
     public function frmCrear($id)
     {
         $clubes= Club::all()->pluck('nombre', 'id');
-        $competidores=User::where('tipo',4)->where('activo',1)->where('club_id',Auth::user()->club_id)->get();
+        $competidores=User::where('tipo',4)->where('activo',1)->where('club_id',Auth::user()->club_id)->pluck('doc','id');
         //$sectores = Sector::all()->pluck('sector','id');
         $torneo = Torneo::find($id);
-        return view('admin.inscripciones.crear')->with('torneo',$torneo)->with('clubes',$clubes);
+        return view('admin.inscripciones.crear')->with('torneo',$torneo)->with('clubes',$clubes)->with('dni', $competidores);
     }
 
      public function create()

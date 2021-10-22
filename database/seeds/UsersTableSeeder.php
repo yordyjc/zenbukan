@@ -51,6 +51,7 @@ class UsersTableSeeder extends Seeder
                 'tipo' => 1,
                 'foto' => '/resources/img/user/default.png',
                 'observaciones' => NULL,
+                'doc' =>'11111112',
                 'confirmado' => 1,
                 'confirmacion_code' => NULL,
                 'activo' => 1,
@@ -74,6 +75,7 @@ class UsersTableSeeder extends Seeder
                 'tipo' => 1,
                 'foto' => '/resources/img/user/default.png',
                 'observaciones' => NULL,
+                'doc' =>'11111111',
                 'confirmado' => 1,
                 'confirmacion_code' => NULL,
                 'activo' => 1,
@@ -103,6 +105,7 @@ class UsersTableSeeder extends Seeder
                 'edad' => $faker->optional(0.2)->numberBetween(18,35),
                 'foto' => '/resources/img/user/default.png',
                 'observaciones' => NULL,
+                'doc' => $faker->unique()->numberBetween(11111113,99999999),
                 'confirmado' => 1,
                 'club_id' => rand(1,10),
 
