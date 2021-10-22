@@ -28,7 +28,7 @@ class CreateUsersTable extends Migration
             $table->integer('tipo')->default(4);//1->admin | 2->inscripciones | 3->Juez | 4->usuario
             $table->string('foto')->nullable();
             $table->text('observaciones')->nullable();
-
+            $table->string('doc')->unique();
             $table->boolean('confirmado')->default(1); //1 correo confirmado, 0 sin confirmar
             $table->string('confirmacion_code')->nullable();
             $table->boolean('activo')->default(1); //1 activo, 0 baneado

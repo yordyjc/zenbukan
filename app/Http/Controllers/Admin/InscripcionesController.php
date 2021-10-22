@@ -64,6 +64,7 @@ class InscripcionesController extends Controller
     public function frmCrear($id)
     {
         $clubes= Club::all()->pluck('nombre', 'id');
+        $competidores=User::where('tipo',4)->where('activo',1)->where('club_id',Auth::user()->club_id)->get();
         //$sectores = Sector::all()->pluck('sector','id');
         $torneo = Torneo::find($id);
         return view('admin.inscripciones.crear')->with('torneo',$torneo)->with('clubes',$clubes);
@@ -183,7 +184,14 @@ class InscripcionesController extends Controller
         $inscripcion->cabeza_serie = $request->cabeza_serie;
         $inscripcion->edad = $request->edad;
         $inscripcion->grado = $request->grado;
-        $inscripcion->club_id = Auth::user()->club_id;
+        if(Auth::user()->tipo==1)
+        {
+            $competidor->club_id = $request->club;
+        }
+        else
+        {
+            $competidor->club_id = Auth::user()->club_id;
+        }
         $inscripcion->save();
 
         alert()->success('¡Yeah!',$competidor->nombres.' '.$competidor->apellidos.' fue registrado con éxito')->autoClose(5000)->showCloseButton();
@@ -396,4 +404,5 @@ class InscripcionesController extends Controller
         $inscripcion->delete();
         return redirect('admin/inscripciones/inscritos/'.$im);
     }
+
 }
