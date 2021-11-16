@@ -97,6 +97,7 @@ Route::middleware(['auth'])->group(function () {
             //Route::resource('/inscripciones', 'Admin\InscripcionesController');
 
             Route::post('inscripciones/store-inscripcion','Admin\InscripcionesController@storeInscripcion');
+            Route::post('inscripciones/store-competidor','Admin\InscripcionesController@storeCompetidor');
             Route::get('inscripciones/torneos-vigentes/','Admin\InscripcionesController@torneosVigentes');
             Route::get('inscripciones/inscritos/{id}','Admin\InscripcionesController@Inscritos');
             Route::get('inscripciones/nuevo/{id}','Admin\InscripcionesController@frmCrear');
@@ -105,7 +106,7 @@ Route::middleware(['auth'])->group(function () {
             Route::put('inscripciones/lista-inscritos/{id}','Admin\InscripcionesController@aprobarCompetencia');
             Route::put('inscripciones/inscritos/{im}/{id}','Admin\InscripcionesController@aprobarPorTorneo');
             Route::delete('inscripciones/inscritos/{im}/{id}','Admin\InscripcionesController@destroyInscripcion');
-
+            Route::get('inscripciones/getNombre/{id}','Admin\InscripcionesController@getNombre');
              //jueces
              Route::get('/agregar-jueces/{id}','Admin\JuecesController@agregarJueces');
              Route::post('/agregar-juez','Admin\JuecesController@storeJueces');

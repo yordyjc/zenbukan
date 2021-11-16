@@ -29,93 +29,29 @@ active
                     @csrf
                     <input type="hidden" name="torneo" value="{{$torneo->id}}">
                     <input type="hidden" name="modalidad" id="modalidad">
-                    <div class="col-sm-10 offset-sm-1">
+                    <div class="col-md-10 offset-sm-1">
                         <div class="form-group {{ $errors->has('dni') ? ' has-danger' : '' }} row">
-                            <label class="col-md-2 col-form-label" for="dni">
+                            <label class="col-md-2 col-form-label" for="newDni">
                                 DNI
                             </label>
                             <div class="col-md-4">
-                                {!!Form::select('dni',$dni, old('dni'), ["class"=>"form-control input-sm form-control-round fill select2", 'placeholder'=>'--Seleccione dni--',"id"=>"dni"])!!}
-                                @if ($errors->has('dni'))
+                                {!!Form::select('dniComp',$dniComp, old('dniComp'), ["class"=>"form-control input-sm form-control-round fill select2", 'placeholder'=>'--Seleccione dni--',"id"=>"dniComp"])!!}
+                                @if ($errors->has('dniComp'))
                                 <div class="col-form-label">
-                                    {{ $errors->first('dni') }}
+                                    {{ $errors->first('dniComp') }}
                                 </div>
                                 @endif
                             </div>
                             <div class="col-md-2">
-                                <a href="" class="btn waves-effect waves-light btn-primary btn-outline-primary btn-sm">
+                                <a href="#" class="btn waves-effect waves-light btn-primary btn-outline-primary btn-sm" data-toggle="modal" data-target="#nuevocompModal">
                                     <i class="icofont icofont-ui-add" style="color:#4680ff;"></i> Nuevo
                                 </a>
                             </div>
+                            <label class="col-md-4 col-form-label">
+                                <div id="nomComp"></div>
+                            </label>
                         </div>
 
-                        <div class="form-group {{ $errors->has('nombre') ? ' has-danger' : '' }} row">
-                            <label class="col-md-2 col-form-label" for="nombre">
-                                Nombres
-                            </label>
-                            <div class="col-md-10">
-                                <input type="text" class="form-control form-control-round {{ $errors->has('nombre') ? ' form-control-danger' : '' }}" id="nombre" name="nombre" value="{{ old('nombre') }}">
-                                @if ($errors->has('nombre'))
-                                <div class="col-form-label">
-                                    {{ $errors->first('nombre') }}
-                                </div>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group {{ $errors->has('apellido') ? ' has-danger' : '' }} row">
-                            <label class="col-md-2 col-form-label" for="apellido">
-                                Apellidos
-                            </label>
-                            <div class="col-md-10">
-                                <input type="text" class="form-control form-control-round {{ $errors->has('apellido') ? ' form-control-danger' : '' }}" id="apellido" name="apellido" value="{{ old('apellido') }}">
-                                @if ($errors->has('apellido'))
-                                <div class="col-form-label">
-                                    {{ $errors->first('apellido') }}
-                                </div>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-md-2 col-form-label" for="sexo">
-                                Sexo
-                            </label>
-                            <div class="col-md-10 form-radio">
-                                <div class="radio radio-inline">
-                                    <label>
-                                    <input type="radio" name="sexo" id="sexo" value="1" checked="checked">
-                                    <i class="helper"></i>Hombre
-                                    </label>
-                                </div>
-                                <div class="radio radio-inline">
-                                    <label>
-                                    <input type="radio" name="sexo" id="sexo" value="0" >
-                                    <i class="helper"></i>Mujer
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group {{ $errors->has('nacimiento') ? ' has-danger' : '' }} row">
-                            <label class="col-md-2 col-form-label" for="nacimiento">
-                                Fecha de Nac.
-                            </label>
-                            <div class="col-md-4">
-                                <input type="date" class="form-control form-control-round {{ $errors->has('nacimiento') ? ' form-control-danger' : '' }}" id="nacimiento" name="nacimiento" value="{{ old('nacimiento') }}">
-                                @if ($errors->has('nacimiento'))
-                                <div class="col-form-label">
-                                    {{ $errors->first('nacimiento') }}
-                                </div>
-                                @endif
-                            </div>
-                            <label class="col-md-2 col-form-label" for="edad">
-                                o edad
-                            </label>
-                            <div class="col-md-4">
-                                <input type="number" class="form-control form-control-round {{ $errors->has('edad') ? ' form-control-danger' : '' }}" id="edad" name="edad" value="{{ old('edad') }}">
-                            </div>
-                        </div>
                         @if(Auth::user()->tipo ==1)
                             <div class="form-group {{ $errors->has('club') ? ' has-danger' : '' }} row">
                                 <label class="col-md-2 col-form-label" for="club">
@@ -203,20 +139,6 @@ active
                                 </div>
                             </div>
                         </div>
-
-                        <div class="form-group {{ $errors->has('email') ? ' has-danger' : '' }} row">
-                            <label class="col-md-2 col-form-label" for="email">
-                                E-mail
-                            </label>
-                            <div class="col-md-10">
-                                <input type="email" class="form-control form-control-round {{ $errors->has('email') ? ' form-control-danger' : '' }}" id="email" name="email" value="{{ old('email') }}">
-                                @if ($errors->has('email'))
-                                <div class="col-form-label">
-                                    {{ $errors->first('email') }}
-                                </div>
-                                @endif
-                            </div>
-                        </div>
                     </div>
 
                     <div class="col-sm-10 offset-sm-1">
@@ -235,6 +157,119 @@ active
                     </div><!-- /.col-sm-10 offset-sm-1 -->
 
                 </form>
+                <div class="modal fade" id="nuevocompModal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div class="modal-title">
+                                    <h5>Nuevo competidor</h5>
+                                </div>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form id="form-modal" onsubmit="return false;" enctype="multipart/form-data">
+                                @csrf
+                                @method('POST')
+                                <div class="modal-body">
+                                    <div class="form-group row">
+                                        <label for="Dni" class="col-md-3 col-form-label">DNI</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control form-control-round" id="Dni" name="Dni">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="nombres" class="col-md-3 col-form-label">Nombres</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control form-control-round {{$errors->has('nombres') ? 'form-control-danger' : ''}}" id="nombres" name="nombres" value="{{old('nombres')}}">
+                                            @if ($errors->has('nombres'))
+                                            <div class="col-form-label">
+                                                {{ $errors->first('nombres') }}
+                                            </div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="apellidos" class="col-md-3 col-form-label">Apellidos</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control form-control-round {{$errors->has('apellidos') ? 'form-control-danger' : ''}}" id="apellidos" name="apellidos" value="{{old('apellidos')}}">
+                                            @if ($errors->has('apellidos'))
+                                            <div class="col-form-label">
+                                                {{ $errors->first('apellidos') }}
+                                            </div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 col-form-label" for="sexo">
+                                            Sexo
+                                        </label>
+                                        <div class="col-md-9 form-radio">
+                                            <div class="radio radio-inline">
+                                                <label>
+                                                <input type="radio" name="sexo" id="sexo" value="1" >
+                                                <i class="helper"></i>Masculino
+                                                </label>
+                                            </div>
+                                            <div class="radio radio-inline">
+                                                <label>
+                                                <input type="radio" name="sexo" id="sexo" value="0" checked="checked">
+                                                <i class="helper"></i>Femenino
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group {{ $errors->has('nacimiento') ? ' has-danger' : '' }} row">
+                                        <label class="col-md-3 col-form-label" for="nacimiento">
+                                            Fecha de Nac.
+                                        </label>
+                                        <div class="col-md-4">
+                                            <input type="date" class="form-control form-control-round {{ $errors->has('nacimiento') ? ' form-control-danger' : '' }}" id="nacimiento" name="nacimiento" value="{{ old('nacimiento') }}">
+                                            @if ($errors->has('nacimiento'))
+                                            <div class="col-form-label">
+                                                {{ $errors->first('nacimiento') }}
+                                            </div>
+                                            @endif
+                                        </div>
+                                        <label class="col-md-2 col-form-label" for="edad">
+                                            o edad
+                                        </label>
+                                        <div class="col-md-3">
+                                            <input type="number" class="form-control form-control-round {{ $errors->has('edad') ? ' form-control-danger' : '' }}" id="edad" name="edad" value="{{ old('edad') }}">
+                                            @if ($errors->has('edad'))
+                                            <div class="col-form-label">
+                                                {{ $errors->first('edad') }}
+                                            </div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="form-group {{ $errors->has('foto') ? ' has-danger' : '' }} row">
+                                        <label class="col-md-2 col-form-label" for="foto">
+                                            Foto
+                                        </label>
+                                        <div class="col-md-10">
+                                            <input type="file"id="foto" class="form-control form-control-round {{ $errors->has('foto') ? ' form-control-danger' : '' }}" name="foto"  accept=".png, .jpg, .jpeg">
+                                            @if ($errors->has('foto'))
+                                            <div class="col-form-label">
+                                                {{ $errors->first('foto') }}
+                                            </div>
+                                            @endif
+                                            <h6>Previsualización:</h6><img id="img-foto" src="/resources/img/default.jpg" style="width:300px;" alt="Previsualización" class="img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="submit" class="btn btn-outline-primary btn-round" id=button-submit>
+                                    <i class="icofont icofont-circled-left"></i> Aceptar
+                                </button>
+                                <button class="btn btn-danger btn-round" data-dismiss="modal">
+                                    <i class="icofont icofont-ui-delete"></i> Cancelar
+                                </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -272,6 +307,25 @@ active
     document.getElementById('foto').addEventListener('change', archivoFile, false);
 </script>
 <script>
+    function getNombre()
+    {
+        var id =$('#dniComp').val();
+        var route = URLs+'/admin/inscripciones/getNombre/'+id;
+        var method = 'GET';
+        sendRequest(route, null, method, function(data, textStatus){
+            if(data.status==200)
+            {
+                data=data.responseJSON;
+                $("#nomComp").html(data[0].nombres + ' '+ data[0].apellidos);
+            }
+            else
+            {
+
+            }
+        });
+
+    }
+
     function obtenerCategoria()
     {
         var route = URLs+'/admin/inscripciones/categoria';
@@ -294,8 +348,52 @@ active
         });
 
     }
+    $('#form-modal').submit(function(e){
+        var route = URLs+'/admin/inscripciones/store-competidor';
+        var method = 'POST';
+        //var frmData= $("#form-modal").serialize();
+        var frmData= new FormData($('#form-modal')[0]);
+        $.ajax({
+            type: "POST",
+            url: URLs+'/admin/inscripciones/store-competidor',
+            cache:false,
+            data: frmData,
+            contentType: false,
+            processData: false,
+            success: function(data){
+                    data=data.responseJSON;
+                    $('#nuevocompModal').modal('hide');
+                    location.reload();
+            },
+            error:function(data)
+            {
+                if(data.status==422)
+                {
+                    var errors=data.responseJSON;
+                    $.each(errors, function(index, val) {
+                        printError(index,val[0]);
+                    });
+                }
+                else
+                {
+                    swal({
+                            title: "Error al realizar la operación",
+                            type:  "error",
+                            button: "Cerrar",
+                            timer: "3000",
+                            backdrop: "rgba(242, 116, 116, 0.45)"
+                        });
+                }
+            }
+        });
+
+    });
+    document.getElementById('foto').addEventListener('change', archivoFile, false);
     $('#grado').change(function(){
         obtenerCategoria();
+    });
+    $('#dniComp').change(function(){
+        getNombre();
     });
 
 </script>

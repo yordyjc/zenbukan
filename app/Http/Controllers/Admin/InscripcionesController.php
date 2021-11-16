@@ -67,7 +67,7 @@ class InscripcionesController extends Controller
         $competidores=User::where('tipo',4)->where('activo',1)->where('club_id',Auth::user()->club_id)->pluck('doc','id');
         //$sectores = Sector::all()->pluck('sector','id');
         $torneo = Torneo::find($id);
-        return view('admin.inscripciones.crear')->with('torneo',$torneo)->with('clubes',$clubes)->with('dni', $competidores);
+        return view('admin.inscripciones.crear')->with('torneo',$torneo)->with('clubes',$clubes)->with('dniComp', $competidores);
     }
 
      public function create()
@@ -227,14 +227,8 @@ class InscripcionesController extends Controller
             $a='';
         }
         $validator = Validator::make($request->all(), [
-            'nombre' => 'required|string',
-            'apellido' => 'required|string',
-            'edad' =>'integer',
             'club' =>$a,
-            'grado' => 'required',
-            'sexo' =>'required',
-            'foto' => 'file|mimes:png,jpg,jpeg|max:5120',
-            'talla' => 'numeric|min:0.60|max:2.20',
+            'grado' => 'required'
             //'email'=> 'required|string|email|max:255|unique:users'
         ]);
         if ($validator->fails()) {
@@ -243,44 +237,6 @@ class InscripcionesController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         }
-
-        $competidor = New User();
-        $competidor->nombres = $request->nombre;
-        $competidor->apellidos = $request->apellido;
-        $competidor->email = $request->email;
-        $competidor->password = bcrypt('12345678');
-        $competidor->telefono = $request->telefono;
-        $competidor->sexo = $request->sexo;
-        if(Auth::user()->tipo==1)
-        {
-            $competidor->club_id = $request->club;
-        }
-        else
-        {
-            $competidor->club_id = Auth::user()->club_id;
-        }
-
-
-        if ($request->nacimiento) {
-            $competidor->nacimiento = $request->nacimiento;
-        }
-        if ($request->edad) {
-            $competidor->edad = $request->edad;
-        }
-        $competidor->observaciones = $request->observaciones;
-
-        $foto  = Input::file('foto');
-        if (!is_null($foto)) {
-            $name2=str_replace(' ', '-', strtolower($request->nombre.' '.$request->apellido));
-            $largo=strlen($name2);
-            $extension=$foto->getClientOriginalExtension();
-            $fin=$largo - strlen($extension);
-            $name=$name2.'.'.$extension;
-            $path=public_path().'/resources/img/user/';
-            $foto->move($path,$name);
-            $competidor->foto='/resources/img/user/'.$name;
-        }
-        $competidor->save();
 
         //Agregando inscripcion
         $inscripcion = New Inscripcion();
@@ -295,7 +251,7 @@ class InscripcionesController extends Controller
             $inscripcion->kata = $request->kata;
         }
         $inscripcion->modalidad_id =$request->modalidad;
-        $inscripcion->competidor_id = $ultimocompetidor->id;
+        $inscripcion->competidor_id = $request->dniComp;
         $inscripcion->cabeza_serie = $request->cabeza_serie;
         $inscripcion->edad = $request->edad;
         $inscripcion->grado = $request->grado;
@@ -309,7 +265,7 @@ class InscripcionesController extends Controller
         }
         $inscripcion->save();
 
-        alert()->success('¡Yeah!',$competidor->nombres.' '.$competidor->apellidos.' fue registrado con éxito')->autoClose(5000)->showCloseButton();
+        alert()->success('¡Yeah!','Competidor registrado con éxito')->autoClose(5000)->showCloseButton();
         return redirect('/admin/inscripciones/torneos-vigentes');
     }
 
@@ -346,18 +302,19 @@ class InscripcionesController extends Controller
     {
         if($request->ajax())
         {
+            $competidor=User::find($request->dniComp);
             $torneo = $request->torneo;
-            if($request->nacimiento)
+            if($competidor->nacimiento)
             {
-                $edad = Carbon::parse($request->nacimiento)->age;
+                $edad = Carbon::parse($competidor->nacimiento)->age;
             }
-            if($request->edad)
+            if($competidor->edad)
             {
-                $edad = $request->edad;
+                $edad = $competidor->edad;
             }
 
             $grado = $request->grado;
-            $sexo = $request->sexo;
+            $sexo = $competidor->sexo;
             $modalidad_id = NULL;
             $modalidades=Modalidad::where('torneo_id',$torneo)->where('sexo',$sexo)->get();
 
@@ -405,4 +362,72 @@ class InscripcionesController extends Controller
         return redirect('admin/inscripciones/inscritos/'.$im);
     }
 
+    public function getNombre(Request $request, $id)
+    {
+        if($request->ajax())
+        {
+            $nomComp=User::select('nombres','apellidos')
+                ->where('id',$id)
+                ->get();
+            return $nomComp;
+        }
+    }
+    //METODOS PARA COMPETIDORES
+    public function storeCompetidor(Request $request)
+    {
+        if($request->ajax())
+        {
+            if($request->nacimiento)
+            {
+                $a='required';
+                $b='';
+            }
+            else
+            {
+                $a='';
+                $b='required';
+            }
+            $validator = Validator::make($request->all(), [
+                'Dni' =>'required||max:8|unique:users,doc',
+                'nombres' => 'required|string',
+                'apellidos' => 'required|string',
+                'nacimiento' =>$a,
+                'edad'=> $b
+
+                //'email'=> 'required|string|email|max:255|unique:users'
+            ]);
+            if ($validator->fails()) {
+                return response()->json($validator->errors(),422);
+                //return $validator->errors();
+            }
+            $competidor = New User();
+            $competidor->doc=$request->Dni;
+            $competidor->nombres = $request->nombres;
+            $competidor->apellidos = $request->apellidos;
+            $competidor->password = bcrypt('12345678');
+            $competidor->sexo = $request->sexo;
+            $competidor->club_id = Auth::user()->club_id;
+            if ($request->nacimiento) {
+                $competidor->nacimiento = $request->nacimiento;
+            }
+            if ($request->edad) {
+                $competidor->edad = $request->edad;
+            }
+
+            $foto  = Input::file('foto');
+            if (!is_null($foto)) {
+                $name2=str_replace(' ', '-', strtolower($request->nombres.' '.$request->apellidos.' '.$request->Dni));
+                $largo=strlen($name2);
+                $extension=$foto->getClientOriginalExtension();
+                $fin=$largo - strlen($extension);
+                $name=$name2.'.'.$extension;
+                $path=public_path().'/resources/img/user/';
+                $foto->move($path,$name);
+                $competidor->foto='/resources/img/user/'.$name;
+            }
+            $competidor->save();
+            return $foto;
+            }
+    }
 }
+

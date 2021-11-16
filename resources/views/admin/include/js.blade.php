@@ -59,6 +59,14 @@
             opts.complete=cb;
             $.ajax(opts);
         }
+        function printError(element,val) {
+            var me=$("#"+element);
+            var pather=$(me.parent()[0]);
+            if (!pather.hasClass('has-error')) {
+                pather.addClass('has-error');
+                pather.append('<span class="help-block">'+val+'</span>');
+            }
+        }
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
