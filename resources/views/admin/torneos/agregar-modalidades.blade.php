@@ -36,7 +36,7 @@ active
                     </div>
                     <div class="row">
                         <div class="col-sm-12 alert bg-warning text-dark">
-                            En la columna "torneo_id" debe colocar 2.<br>
+                            En la columna "torneo_id" debe colocar {{ $torneo->id }}.<br>
                             En la columna "sexo" considere 1 para varones y 0 para mujeres.
                         </div>
                     </div>

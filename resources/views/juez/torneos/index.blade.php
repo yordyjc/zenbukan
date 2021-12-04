@@ -91,9 +91,6 @@ function concatenar($numero){
 
                                     <td class="text-center">
                                         @if($modalidad->torneo->activo == 1)
-                                        <a href="{{url('/juez/categorias/'.$modalidad->id)}}">
-                                            <i class="icon feather icon-external-link f-w-600 f-16 m-r-15 text-c-green" data-toggle="tooltip" data-placement="left" data-original-title="ver claves de kumite "></i>
-                                        </a>
                                         <a href="{{url('/juez/categorias/calificacion/kata/'.$modalidad->id)}}">
                                             <i class="icon feather icon-external-link f-w-600 f-16 m-r-15 text-c-blue" data-toggle="tooltip" data-placement="left" data-original-title="ver grupos de Kata"></i>
                                         </a>

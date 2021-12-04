@@ -25,6 +25,19 @@ active
                     @csrf
 
                     <div class="col-sm-10 offset-sm-1">
+                        <div class="form-group {{ $errors->has('dni') ? ' has-danger' : '' }} row">
+                            <label class="col-md-2 col-form-label" for="dni">
+                                DNI
+                            </label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control form-control-round {{ $errors->has('dni') ? ' form-control-danger' : '' }}" id="dni" name="dni" value="{{ old('dni') }}">
+                                @if ($errors->has('dni'))
+                                <div class="col-form-label">
+                                    {{ $errors->first('dni') }}
+                                </div>
+                                @endif
+                            </div>
+                        </div>
                         <div class="form-group {{ $errors->has('nombres') ? ' has-danger' : '' }} row">
                             <label class="col-md-2 col-form-label" for="nombres">
                                 Nombres

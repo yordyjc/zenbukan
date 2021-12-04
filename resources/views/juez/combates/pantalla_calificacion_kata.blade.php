@@ -73,11 +73,11 @@
                     </div>
                     <div class="card-block offset-md-1">
                     <form action="{{url('/juez/categorias/calificacion/kata')}}" method="post" enctype="multipart/form-data">
-                    <input type="text" name="orden" value="{{$posicionkata->orden}}">
+                    <input type="hidden" name="orden" value="{{$posicionkata->orden}}">
                     <input type="hidden" name="modalidad" value="{{$posicionkata->modalidad_id}}">
-                    <input type="text" name="ronda" value="{{$posicionkata->ronda}}">
-                    <input type="text" name="grupo" value="{{$posicionkata->grupo}}">
-                    <input type="text" name="final" value="{{$posicionkata->final}}">
+                    <input type="hidden" name="ronda" value="{{$posicionkata->ronda}}">
+                    <input type="hidden" name="grupo" value="{{$posicionkata->grupo}}">
+                    <input type="hidden" name="final" value="{{$posicionkata->final}}">
                     <input type="hidden" name="ultGrupo" value="{{$ultGrupo}}">
                         <div class="row">
                             <div class="col-md-5">
@@ -86,7 +86,6 @@
                                     <div class="form-group {{ $errors->has('tecnico') ? ' has-danger' : '' }} row">
                                         <div class="col-md-6">
                                             <select class="form-control form-control-round {{ $errors->has('tecnico1') ? ' form-control-danger' : '' }}" id="tecnico1" name="tecnico1">
-                                                <option value ="">Seleccione un valor</option>
                                                 <option value =0>0</option>
                                                 <option value =5>5</option>
                                                 <option value =6>6</option>
@@ -103,7 +102,6 @@
                                         </div>
                                         <div class="col-md-6">
                                             <select class="form-control form-control-round {{ $errors->has('tecnico2') ? ' form-control-danger' : '' }}" id="tecnico2" name="tecnico2">
-                                                    <option value ="">Seleccione un valor</option>
                                                     <option value =0>.0</option>
                                                     <option value =0.2> .2</option>
                                                     <option value =0.4> .4</option>
@@ -132,7 +130,6 @@
                                     <div class="form-group {{ $errors->has('atletico') ? ' has-danger' : '' }} row">
                                         <div class="col-md-6">
                                             <select class="form-control form-control-round {{ $errors->has('atletico1') ? ' form-control-danger' : '' }}" id="atletico1" name="atletico1">
-                                                <option value ="">Seleccione un valor</option>
                                                 <option value =0>0</option>
                                                 <option value =5>5</option>
                                                 <option value =6>6</option>
@@ -149,7 +146,6 @@
                                         </div>
                                         <div class="col-md-6">
                                         <select class="form-control form-control-round {{ $errors->has('atletico2') ? ' form-control-danger' : '' }}" id="atletico2" name="atletico2">
-                                            <option value ="">Seleccione un valor</option>
                                             <option value =0>.0</option>
                                             <option value =0.2> .2</option>
                                             <option value =0.4> .4</option>

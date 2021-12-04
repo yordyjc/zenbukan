@@ -266,7 +266,7 @@ class InscripcionesController extends Controller
         $inscripcion->save();
 
         alert()->success('¡Yeah!','Competidor registrado con éxito')->autoClose(5000)->showCloseButton();
-        return redirect('/admin/inscripciones/torneos-vigentes');
+        return redirect('/admin/inscripciones/nuevo/'.$request->torneo);
     }
 
     public function edit($id)

@@ -27,6 +27,7 @@ class ModalidadesController extends Controller
 
     public function storeModalidades(Request $request)
     {
+        $deletemod=Modalidad::where('torneo_id',$request->torneo)->delete();
         $file = $request->file;
         Excel::import(new ModalidadesImport, $file);
         alert()->success('Yeah!', 'Operación realizada con éxito');

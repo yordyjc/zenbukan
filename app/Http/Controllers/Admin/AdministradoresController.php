@@ -169,6 +169,7 @@ class AdministradoresController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'nombres' => 'required|string',
+            'dni'=>'required|unique:users,doc',
             'apellidos' => 'required|string',
             'telefono' => 'required',
             'email' => 'required|string|email|max:255|unique:users',
@@ -182,6 +183,7 @@ class AdministradoresController extends Controller
                 ->withInput();
         }
         $user=New User();
+        $user->doc=$request->dni;
         $user->nombres=$request->nombres;
         $user->apellidos=$request->apellidos;
         $user->email=$request->email;
